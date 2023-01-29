@@ -77,180 +77,142 @@ abstract class _FlutterValueKey extends FlutterValueKey {
   String get value;
 }
 
-FlutterGlobalKeyNavigatorStateProvider
-    _$FlutterGlobalKeyNavigatorStateProviderFromJson(
-        Map<String, dynamic> json) {
-  return _FlutterGlobalKeyNavigatorStateProvider.fromJson(json);
+FlutterGlobalKeyNavigatorState _$FlutterGlobalKeyNavigatorStateFromJson(
+    Map<String, dynamic> json) {
+  return _FlutterGlobalKeyNavigatorState.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FlutterGlobalKeyNavigatorStateProvider {
-  ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
-  String get family => throw _privateConstructorUsedError;
-  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
+mixin _$FlutterGlobalKeyNavigatorState {
+  String? get debugLabel => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterGlobalKeyNavigatorStateProvider value) $default,
+    TResult Function(_FlutterGlobalKeyNavigatorState value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterGlobalKeyNavigatorStateProvider
-    extends _FlutterGlobalKeyNavigatorStateProvider {
-  _$_FlutterGlobalKeyNavigatorStateProvider(
-      {this.debugLabel, required this.family, required this.child})
-      : super._();
+class _$_FlutterGlobalKeyNavigatorState
+    extends _FlutterGlobalKeyNavigatorState {
+  _$_FlutterGlobalKeyNavigatorState({this.debugLabel}) : super._();
 
-  factory _$_FlutterGlobalKeyNavigatorStateProvider.fromJson(
+  factory _$_FlutterGlobalKeyNavigatorState.fromJson(
           Map<String, dynamic> json) =>
-      _$$_FlutterGlobalKeyNavigatorStateProviderFromJson(json);
+      _$$_FlutterGlobalKeyNavigatorStateFromJson(json);
 
   @override
-  final ZacBuilder<String?>? debugLabel;
-  @override
-  final String family;
-  @override
-  final ZacBuilder<Widget> child;
+  final String? debugLabel;
 
   @override
   String toString() {
-    return 'FlutterGlobalKeyNavigatorStateProvider(debugLabel: $debugLabel, family: $family, child: $child)';
+    return 'FlutterGlobalKeyNavigatorState(debugLabel: $debugLabel)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterGlobalKeyNavigatorStateProvider &&
+            other is _$_FlutterGlobalKeyNavigatorState &&
             (identical(other.debugLabel, debugLabel) ||
-                other.debugLabel == debugLabel) &&
-            (identical(other.family, family) || other.family == family) &&
-            (identical(other.child, child) || other.child == child));
+                other.debugLabel == debugLabel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, debugLabel, family, child);
+  int get hashCode => Object.hash(runtimeType, debugLabel);
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterGlobalKeyNavigatorStateProvider value) $default,
+    TResult Function(_FlutterGlobalKeyNavigatorState value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _FlutterGlobalKeyNavigatorStateProvider
-    extends FlutterGlobalKeyNavigatorStateProvider {
-  factory _FlutterGlobalKeyNavigatorStateProvider(
-          {final ZacBuilder<String?>? debugLabel,
-          required final String family,
-          required final ZacBuilder<Widget> child}) =
-      _$_FlutterGlobalKeyNavigatorStateProvider;
-  _FlutterGlobalKeyNavigatorStateProvider._() : super._();
+abstract class _FlutterGlobalKeyNavigatorState
+    extends FlutterGlobalKeyNavigatorState {
+  factory _FlutterGlobalKeyNavigatorState({final String? debugLabel}) =
+      _$_FlutterGlobalKeyNavigatorState;
+  _FlutterGlobalKeyNavigatorState._() : super._();
 
-  factory _FlutterGlobalKeyNavigatorStateProvider.fromJson(
-          Map<String, dynamic> json) =
-      _$_FlutterGlobalKeyNavigatorStateProvider.fromJson;
+  factory _FlutterGlobalKeyNavigatorState.fromJson(Map<String, dynamic> json) =
+      _$_FlutterGlobalKeyNavigatorState.fromJson;
 
   @override
-  ZacBuilder<String?>? get debugLabel;
-  @override
-  String get family;
-  @override
-  ZacBuilder<Widget> get child;
+  String? get debugLabel;
 }
 
-FlutterGlobalKeyScaffoldMessengerStateProvider
-    _$FlutterGlobalKeyScaffoldMessengerStateProviderFromJson(
+FlutterGlobalKeyScaffoldMessengerState
+    _$FlutterGlobalKeyScaffoldMessengerStateFromJson(
         Map<String, dynamic> json) {
-  return _FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson(json);
+  return _FlutterGlobalKeyScaffoldMessengerState.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FlutterGlobalKeyScaffoldMessengerStateProvider {
-  ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
-  String get family => throw _privateConstructorUsedError;
-  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
+mixin _$FlutterGlobalKeyScaffoldMessengerState {
+  String? get debugLabel => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterGlobalKeyScaffoldMessengerStateProvider value)
-        $default,
+    TResult Function(_FlutterGlobalKeyScaffoldMessengerState value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_FlutterGlobalKeyScaffoldMessengerStateProvider
-    extends _FlutterGlobalKeyScaffoldMessengerStateProvider {
-  _$_FlutterGlobalKeyScaffoldMessengerStateProvider(
-      {this.debugLabel, required this.family, required this.child})
-      : super._();
+class _$_FlutterGlobalKeyScaffoldMessengerState
+    extends _FlutterGlobalKeyScaffoldMessengerState {
+  _$_FlutterGlobalKeyScaffoldMessengerState({this.debugLabel}) : super._();
 
-  factory _$_FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson(
+  factory _$_FlutterGlobalKeyScaffoldMessengerState.fromJson(
           Map<String, dynamic> json) =>
-      _$$_FlutterGlobalKeyScaffoldMessengerStateProviderFromJson(json);
+      _$$_FlutterGlobalKeyScaffoldMessengerStateFromJson(json);
 
   @override
-  final ZacBuilder<String?>? debugLabel;
-  @override
-  final String family;
-  @override
-  final ZacBuilder<Widget> child;
+  final String? debugLabel;
 
   @override
   String toString() {
-    return 'FlutterGlobalKeyScaffoldMessengerStateProvider(debugLabel: $debugLabel, family: $family, child: $child)';
+    return 'FlutterGlobalKeyScaffoldMessengerState(debugLabel: $debugLabel)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_FlutterGlobalKeyScaffoldMessengerStateProvider &&
+            other is _$_FlutterGlobalKeyScaffoldMessengerState &&
             (identical(other.debugLabel, debugLabel) ||
-                other.debugLabel == debugLabel) &&
-            (identical(other.family, family) || other.family == family) &&
-            (identical(other.child, child) || other.child == child));
+                other.debugLabel == debugLabel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, debugLabel, family, child);
+  int get hashCode => Object.hash(runtimeType, debugLabel);
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_FlutterGlobalKeyScaffoldMessengerStateProvider value)
-        $default,
+    TResult Function(_FlutterGlobalKeyScaffoldMessengerState value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _FlutterGlobalKeyScaffoldMessengerStateProvider
-    extends FlutterGlobalKeyScaffoldMessengerStateProvider {
-  factory _FlutterGlobalKeyScaffoldMessengerStateProvider(
-          {final ZacBuilder<String?>? debugLabel,
-          required final String family,
-          required final ZacBuilder<Widget> child}) =
-      _$_FlutterGlobalKeyScaffoldMessengerStateProvider;
-  _FlutterGlobalKeyScaffoldMessengerStateProvider._() : super._();
+abstract class _FlutterGlobalKeyScaffoldMessengerState
+    extends FlutterGlobalKeyScaffoldMessengerState {
+  factory _FlutterGlobalKeyScaffoldMessengerState({final String? debugLabel}) =
+      _$_FlutterGlobalKeyScaffoldMessengerState;
+  _FlutterGlobalKeyScaffoldMessengerState._() : super._();
 
-  factory _FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson(
+  factory _FlutterGlobalKeyScaffoldMessengerState.fromJson(
           Map<String, dynamic> json) =
-      _$_FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson;
+      _$_FlutterGlobalKeyScaffoldMessengerState.fromJson;
 
   @override
-  ZacBuilder<String?>? get debugLabel;
-  @override
-  String get family;
-  @override
-  ZacBuilder<Widget> get child;
+  String? get debugLabel;
 }

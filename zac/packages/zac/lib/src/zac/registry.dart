@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
 import 'package:zac/src/zac/generated_registry.dart';
@@ -13,7 +13,7 @@ class ZacRegistry extends DelegatingMap<String, Object> {
   static final ZacRegistry _singleton = () {
     final register = ZacRegistry._()
       ..registerGeneric(
-          ConsumeSharedValue.union, ConsumeSharedValue.fromRegister);
+          SharedStateConsume.unionValue, SharedStateConsume.fromRegister);
     addZacBuilders(register);
     return register;
   }();

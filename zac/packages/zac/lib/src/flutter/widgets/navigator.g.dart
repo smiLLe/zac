@@ -112,13 +112,13 @@ _$_ZacNavigatorStateRoot _$$_ZacNavigatorStateRootFromJson(
       fieldKeyMap: const {r'$type': 'builder'},
     );
 
-_$_ZacNavigatorStateSharedValue _$$_ZacNavigatorStateSharedValueFromJson(
+_$_ZacNavigatorStateShared _$$_ZacNavigatorStateSharedFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_ZacNavigatorStateSharedValue',
+      r'_$_ZacNavigatorStateShared',
       json,
       ($checkedConvert) {
-        final val = _$_ZacNavigatorStateSharedValue(
+        final val = _$_ZacNavigatorStateShared(
           value: $checkedConvert(
               'value',
               (v) =>

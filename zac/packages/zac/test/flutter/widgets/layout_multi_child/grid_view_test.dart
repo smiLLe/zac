@@ -69,30 +69,4 @@ void main() {
                 'GridView.keyboardDismissBehavior',
                 ScrollViewKeyboardDismissBehavior.onDrag));
   });
-
-  testWidgets('FlutterGridView consumes ScrollController', (tester) async {
-    await testJSON(
-      tester,
-      <String, dynamic>{
-        'builder': 'z:1:ScrollController.provide',
-        'child': {
-          'builder': 'f:1:GridView',
-          'key': KeysModel.getValueKey('FINDME'),
-          'gridDelegate': GridDelegateModel.json,
-          'controller': {
-            'builder': 'z:1:SharedValue.consume',
-            'family': 'Zac.ScrollController',
-          },
-        },
-      },
-    );
-    final findMe = find.byKey(const ValueKey('FINDME'));
-
-    final widget = findMe.evaluate().first.widget;
-
-    expect(
-        widget,
-        isA<GridView>().having((p0) => p0.controller, 'GridView.controller',
-            isA<ScrollController>()));
-  });
 }

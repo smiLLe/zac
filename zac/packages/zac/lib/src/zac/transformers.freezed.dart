@@ -2383,8 +2383,6 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
       return _ObjectRuntimeType.fromJson(json);
     case 'z:1:Transformer:Object.hashCode':
       return _ObjectHashCode.fromJson(json);
-    case 'z:1:Transformer:Object.equalsSharedValue':
-      return _ObjectEqualsSharedValue.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'builder', 'ObjectTransformer',
@@ -2408,7 +2406,6 @@ mixin _$ObjectTransformer {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -2456,7 +2453,6 @@ class _$_ObjectIsList extends _ObjectIsList {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isList(this);
   }
@@ -2513,7 +2509,6 @@ class _$_ObjectIsMap extends _ObjectIsMap {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isMap(this);
   }
@@ -2570,7 +2565,6 @@ class _$_ObjectIsBool extends _ObjectIsBool {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isBool(this);
   }
@@ -2627,7 +2621,6 @@ class _$_ObjectIsString extends _ObjectIsString {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isString(this);
   }
@@ -2684,7 +2677,6 @@ class _$_ObjectIsDouble extends _ObjectIsDouble {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isDouble(this);
   }
@@ -2741,7 +2733,6 @@ class _$_ObjectIsInt extends _ObjectIsInt {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isInt(this);
   }
@@ -2798,7 +2789,6 @@ class _$_ObjectIsNull extends _ObjectIsNull {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isNull(this);
   }
@@ -2855,7 +2845,6 @@ class _$_ObjectIsActionPayload extends _ObjectIsActionPayload {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return isActionPayload(this);
   }
@@ -2880,7 +2869,7 @@ class _$_ObjectEquals extends _ObjectEquals {
       _$$_ObjectEqualsFromJson(json);
 
   @override
-  final Object? other;
+  final ZacBuilder<Object?> other;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -2895,13 +2884,12 @@ class _$_ObjectEquals extends _ObjectEquals {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ObjectEquals &&
-            const DeepCollectionEquality().equals(other.other, this.other));
+            (identical(other.other, this.other) || other.other == this.other));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(other));
+  int get hashCode => Object.hash(runtimeType, other);
 
   @override
   @optionalTypeArgs
@@ -2918,20 +2906,20 @@ class _$_ObjectEquals extends _ObjectEquals {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return equals(this);
   }
 }
 
 abstract class _ObjectEquals extends ObjectTransformer {
-  factory _ObjectEquals({required final Object? other}) = _$_ObjectEquals;
+  factory _ObjectEquals({required final ZacBuilder<Object?> other}) =
+      _$_ObjectEquals;
   _ObjectEquals._() : super._();
 
   factory _ObjectEquals.fromJson(Map<String, dynamic> json) =
       _$_ObjectEquals.fromJson;
 
-  Object? get other;
+  ZacBuilder<Object?> get other;
 }
 
 /// @nodoc
@@ -2977,7 +2965,6 @@ class _$_ObjectToString extends _ObjectToString {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return toString(this);
   }
@@ -3034,7 +3021,6 @@ class _$_ObjectRuntimeType extends _ObjectRuntimeType {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return runtimeType(this);
   }
@@ -3091,7 +3077,6 @@ class _$_ObjectHashCode extends _ObjectHashCode {
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
     required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
   }) {
     return hashCode(this);
   }
@@ -3103,71 +3088,6 @@ abstract class _ObjectHashCode extends ObjectTransformer {
 
   factory _ObjectHashCode.fromJson(Map<String, dynamic> json) =
       _$_ObjectHashCode.fromJson;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ObjectEqualsSharedValue extends _ObjectEqualsSharedValue {
-  _$_ObjectEqualsSharedValue({required this.value, final String? $type})
-      : $type = $type ?? 'z:1:Transformer:Object.equalsSharedValue',
-        super._();
-
-  factory _$_ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =>
-      _$$_ObjectEqualsSharedValueFromJson(json);
-
-  @override
-  final ZacBuilder<Object?>? value;
-
-  @JsonKey(name: 'builder')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ObjectTransformer.equalsSharedValue(value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ObjectEqualsSharedValue &&
-            (identical(other.value, value) || other.value == value));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, value);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ObjectIsList value) isList,
-    required TResult Function(_ObjectIsMap value) isMap,
-    required TResult Function(_ObjectIsBool value) isBool,
-    required TResult Function(_ObjectIsString value) isString,
-    required TResult Function(_ObjectIsDouble value) isDouble,
-    required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
-    required TResult Function(_ObjectEquals value) equals,
-    required TResult Function(_ObjectToString value) toString,
-    required TResult Function(_ObjectRuntimeType value) runtimeType,
-    required TResult Function(_ObjectHashCode value) hashCode,
-    required TResult Function(_ObjectEqualsSharedValue value) equalsSharedValue,
-  }) {
-    return equalsSharedValue(this);
-  }
-}
-
-abstract class _ObjectEqualsSharedValue extends ObjectTransformer {
-  factory _ObjectEqualsSharedValue(
-      {required final ZacBuilder<Object?>? value}) = _$_ObjectEqualsSharedValue;
-  _ObjectEqualsSharedValue._() : super._();
-
-  factory _ObjectEqualsSharedValue.fromJson(Map<String, dynamic> json) =
-      _$_ObjectEqualsSharedValue.fromJson;
-
-  ZacBuilder<Object?>? get value;
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {

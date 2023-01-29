@@ -6,17 +6,12 @@ part of 'completer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacCompleterVoidProvider _$$_ZacCompleterVoidProviderFromJson(
-        Map<String, dynamic> json) =>
+_$_ZacCompleterVoid _$$_ZacCompleterVoidFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_ZacCompleterVoidProvider',
+      r'_$_ZacCompleterVoid',
       json,
       ($checkedConvert) {
-        final val = _$_ZacCompleterVoidProvider(
-          family: $checkedConvert('family', (v) => v as String),
-          child: $checkedConvert(
-              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
-        );
+        final val = _$_ZacCompleterVoid();
         return val;
       },
     );

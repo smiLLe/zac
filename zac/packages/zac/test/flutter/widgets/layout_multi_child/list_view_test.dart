@@ -119,33 +119,4 @@ void main() {
             .having((p0) => p0.physics, 'ListView.physics',
                 isA<AlwaysScrollableScrollPhysics>()));
   });
-
-  testWidgets('FlutterListView() consumes the ScrollController',
-      (tester) async {
-    await testJSON(
-      tester,
-      <String, dynamic>{
-        'builder': 'z:1:ScrollController.provide',
-        'child': {
-          'builder': 'f:1:Material',
-          'child': {
-            'builder': 'f:1:ListView',
-            'key': KeysModel.getValueKey('FINDME'),
-            'controller': {
-              'builder': 'z:1:SharedValue.consume',
-              'family': 'Zac.ScrollController',
-            },
-          },
-        },
-      },
-    );
-    final findMe = find.byKey(const ValueKey('FINDME'));
-
-    final widget = findMe.evaluate().first.widget;
-
-    expect(
-        widget,
-        isA<ListView>().having((p0) => p0.controller,
-            'FlutterListView.controller', isA<ScrollController>()));
-  });
 }

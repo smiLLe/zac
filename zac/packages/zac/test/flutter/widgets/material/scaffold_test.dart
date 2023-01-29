@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/all.dart';
-import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -231,21 +230,21 @@ void main() {
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
-                  body: SharedValueProviderBuilder.provideString(
-                    value: 'hello world',
-                    family: 'shared',
-                    child: FlutterElevatedButton(
-                      key: FlutterValueKey('button'),
-                      onPressed: ZacListOfActions([
-                        FlutterScaffoldActions.showBottomSheet(
-                          FlutterText(
-                            ConsumeSharedValue<String>(family: 'shared'),
-                          ),
+                    body: ZacSharedStateProvider(
+                  states: {
+                    'shared': ZacSharedStateProvide.value('hello world'),
+                  },
+                  child: FlutterElevatedButton(
+                    key: FlutterValueKey('button'),
+                    onPressed: ZacListOfActions([
+                      FlutterScaffoldActions.showBottomSheet(
+                        FlutterText(
+                          SharedStateConsume<String>(family: 'shared'),
                         ),
-                      ]),
-                    ),
+                      ),
+                    ]),
                   ),
-                ),
+                )),
               ),
             ),
           ),
@@ -311,16 +310,17 @@ void main() {
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
-                  body: SharedValueProviderBuilder.provideString(
-                    value: 'hello world',
-                    family: 'shared',
+                  body: ZacSharedStateProvider(
+                    states: {
+                      'shared': ZacSharedStateProvide.value('hello world'),
+                    },
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
                       onPressed: ZacListOfActions([
                         FlutterScaffoldMessenger.showSnackBar(
                           FlutterSnackBar(
                             content: FlutterText(
-                              ConsumeSharedValue<String>(family: 'shared'),
+                              SharedStateConsume<String>(family: 'shared'),
                             ),
                           ),
                         ),
@@ -447,9 +447,10 @@ void main() {
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
-                  body: SharedValueProviderBuilder.provideString(
-                    value: 'hello world',
-                    family: 'shared',
+                  body: ZacSharedStateProvider(
+                    states: {
+                      'shared': ZacSharedStateProvide.value('hello world'),
+                    },
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
                       onPressed: ZacListOfActions([

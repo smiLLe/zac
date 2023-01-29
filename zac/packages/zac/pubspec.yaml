@@ -5,7 +5,7 @@ homepage: https://github.com/smiLLe/zac/tree/main/zac/packages/zac
 repository: https://github.com/smiLLe/zac/tree/main/zac/packages/zac
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.19.0 <3.0.0"
   flutter: ">=3.0.0"
 
 dependencies:

@@ -381,8 +381,6 @@ class ObjectTransformer
   static const String unionValueAsInt = 'z:1:Transformer:Object.asInt';
   static const String unionValueAsDouble = 'z:1:Transformer:Object.asDouble';
   static const String unionValueEquals = 'z:1:Transformer:Object.equals';
-  static const String unionValueEqualsSharedValue =
-      'z:1:Transformer:Object.equalsSharedValue';
   static const String unionValueToString = 'z:1:Transformer:Object.toString';
   static const String unionValueRuntimeType =
       'z:1:Transformer:Object.runtimeType';
@@ -416,7 +414,8 @@ class ObjectTransformer
   factory ObjectTransformer.isActionPayload() = _ObjectIsActionPayload;
 
   @FreezedUnionValue(ObjectTransformer.unionValueEquals)
-  factory ObjectTransformer.equals({required Object? other}) = _ObjectEquals;
+  factory ObjectTransformer.equals({required ZacBuilder<Object?> other}) =
+      _ObjectEquals;
 
   @FreezedUnionValue(ObjectTransformer.unionValueToString)
   factory ObjectTransformer.toString() = _ObjectToString;
@@ -426,11 +425,6 @@ class ObjectTransformer
 
   @FreezedUnionValue(ObjectTransformer.unionValueHashCode)
   factory ObjectTransformer.hashCode() = _ObjectHashCode;
-
-  @FreezedUnionValue(ObjectTransformer.unionValueEqualsSharedValue)
-  factory ObjectTransformer.equalsSharedValue({
-    required ZacBuilder<Object?>? value,
-  }) = _ObjectEqualsSharedValue;
 
   late final ZacTransform _transform = ZacTransform(
       (ZacTransformValue transformValue, BuildContext context,
@@ -445,9 +439,7 @@ class ObjectTransformer
       isDouble: (_) => value is double,
       isNull: (_) => null == value,
       isActionPayload: (_) => value is ZacActionPayload,
-      equals: (obj) => obj.other == value,
-      equalsSharedValue: (obj) =>
-          obj.value?.build(context, zacContext) == value,
+      equals: (obj) => obj.other.build(context, zacContext) == value,
       hashCode: (_) => value.hashCode,
       runtimeType: (_) => value.runtimeType,
       toString: (_) => value.toString(),

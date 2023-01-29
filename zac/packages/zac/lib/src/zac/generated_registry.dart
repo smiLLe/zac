@@ -81,8 +81,7 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_padding.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_to_box_adapter.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/shared_value.dart';
-import 'package:zac/src/zac/state_machine.dart';
+import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -217,6 +216,8 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('f:1:Color.fromARGB', FlutterColor.fromJson)
     ..register('f:1:Color.fromRGBO', FlutterColor.fromJson)
     ..register('f:1:Column', FlutterColumn.fromJson)
+    ..register('f:1:Completer<void>', ZacCompleterVoid.fromJson)
+    ..register('f:1:Completer<void>.complete', ZacCompleterActions.fromJson)
     ..register('f:1:ConstrainedBox', FlutterConstrainedBox.fromJson)
     ..register('f:1:Container', FlutterContainer.fromJson)
     ..register(
@@ -315,6 +316,10 @@ void addZacBuilders(ZacRegistry registry) {
         'f:1:FractionalTranslation', FlutterFractionalTranslation.fromJson)
     ..register('f:1:FractionallySizedBox', FlutterFractionallySizedBox.fromJson)
     ..register('f:1:GestureDetector', FlutterGestureDetector.fromJson)
+    ..register('f:1:GlobalKey<NavigatorState>',
+        FlutterGlobalKeyNavigatorState.fromJson)
+    ..register('f:1:GlobalKey<ScaffoldMessengerState>',
+        FlutterGlobalKeyScaffoldMessengerState.fromJson)
     ..register('f:1:GridView', FlutterGridView.fromJson)
     ..register(
         'f:1:HitTestBehavior.deferToChild', FlutterHitTestBehavior.fromJson)
@@ -417,6 +422,7 @@ void addZacBuilders(ZacRegistry registry) {
         FlutterScaffoldMessenger.fromJson)
     ..register(
         'f:1:ScaffoldMessenger.showSnackBar', FlutterScaffoldMessenger.fromJson)
+    ..register('f:1:ScrollController', FlutterScrollController.fromJson)
     ..register('f:1:ScrollViewKeyboardDismissBehavior.manual',
         FlutterScrollViewKeyboardDismissBehavior.fromJson)
     ..register('f:1:ScrollViewKeyboardDismissBehavior.onDrag',
@@ -564,48 +570,23 @@ void addZacBuilders(ZacRegistry registry) {
     ..register(
         'f:1:WrapCrossAlignment.start', FlutterWrapCrossAlignment.fromJson)
     ..register('f:1:showDialog', FlutterDialogActions.fromJson)
-    ..register('z:1:Completer<void>.complete', ZacCompleterActions.fromJson)
-    ..register('z:1:Completer<void>.provide', ZacCompleterVoidProvider.fromJson)
     ..register('z:1:ControlFlowAction.if', ZacControlFlowAction.fromJson)
     ..register('z:1:DateTime', ZacDateTime.fromJson)
     ..register('z:1:ExecuteActions.listen', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:ExecuteActions.once', ZacExecuteActionsBuilder.fromJson)
-    ..register('z:1:GlobalKey<NavigatorState>.provide',
-        FlutterGlobalKeyNavigatorStateProvider.fromJson)
-    ..register('z:1:GlobalKey<ScaffoldMessengerState>.provide',
-        FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson)
     ..register('z:1:List<Widget>', ZacListOfWidgets.fromJson)
-    ..register('z:1:List<Widget>.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:List<Widget>.updateShared', SharedValueActions.fromJson)
     ..register('z:1:List<ZacAction>', ZacListOfActions.fromJson)
     ..register('z:1:List<ZacTransform>', ZacListOfTransformers.fromJson)
     ..register('z:1:Map<String, Widget>', ZacMapOfWidgets.fromJson)
     ..register(
-        'z:1:Map<String, Widget>.provide', SharedValueProviderBuilder.fromJson)
-    ..register(
         'z:1:Navigator.popUntilRouteName', FlutterNavigatorActions.fromJson)
     ..register('z:1:NavigatorState.shared', FlutterNavigatorState.fromJson)
     ..register('z:1:Object', ZacObject.fromJson)
-    ..register('z:1:Object.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:ScrollController.provide', FlutterScrollController.fromJson)
-    ..register('z:1:SharedValue.invalidate', SharedValueActions.fromJson)
+    ..register('z:1:SharedState.provide', ZacSharedStateProvider.fromJson)
     ..register(
-        'z:1:SharedValue.transformCurrentValue', SharedValueActions.fromJson)
-    ..register('z:1:SharedValue.update', SharedValueActions.fromJson)
-    ..register('z:1:SharedValue.updateFromPayload', SharedValueActions.fromJson)
-    ..register(
-        'z:1:StateMachine.provide', ZacStateMachineProviderBuilder.fromJson)
-    ..register('z:1:StateMachine:Action.send', ZacStateMachineActions.fromJson)
-    ..register(
-        'z:1:StateMachine:Action.trySend', ZacStateMachineActions.fromJson)
-    ..register('z:1:StateMachine:BuildState',
-        ZacStateMachineBuildStateBuilder.fromJson)
-    ..register('z:1:StateMachine:Transformer.pickContext',
-        ZacStateMachineTransformer.fromJson)
-    ..register('z:1:StateMachine:Transformer.pickState',
-        ZacStateMachineTransformer.fromJson)
+        'z:1:SharedState.transformCurrentValue', SharedStateActions.fromJson)
+    ..register('z:1:SharedState.update', SharedStateActions.fromJson)
     ..register('z:1:String', ZacString.fromJson)
-    ..register('z:1:String.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:Transformer:ActionPayload.toList',
         ZacActionPayloadTransformer.fromJson)
     ..register('z:1:Transformer:ActionPayload.toObject',
@@ -690,20 +671,9 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Transformer:num.toInt', NumTransformer.fromJson)
     ..register('z:1:Widget', ZacWidgetBuilder.fromJson)
     ..register('z:1:Widget.isolate', ZacWidgetBuilder.fromJson)
-    ..register('z:1:Widget.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:Widget.updateShared', SharedValueActions.fromJson)
-    ..register(
-        'z:1:ZacBuilder<Object>.provide', SharedValueProviderBuilder.fromJson)
-    ..register(
-        'z:1:ZacBuilder<Object>.updateShared', SharedValueActions.fromJson)
     ..register('z:1:ZacValue.asActionPayload', ZacValueActions.fromJson)
     ..register('z:1:bool', ZacBool.fromJson)
-    ..register('z:1:bool.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:double', ZacDouble.fromJson)
-    ..register('z:1:double.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:int', ZacInt.fromJson)
-    ..register('z:1:int.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:null.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:null.updateShared', SharedValueActions.fromJson)
     ..register('z:1:num', ZacNum.fromJson);
 }

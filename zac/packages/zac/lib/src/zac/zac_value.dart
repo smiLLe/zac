@@ -42,6 +42,27 @@ class ZacValueActions with _$ZacValueActions implements ZacBuilder<ZacAction> {
 }
 
 @freezedZacBuilder
+class ZacValue<T> with _$ZacValue<T> implements ZacBuilder<T> {
+  ZacValue._();
+
+  static const String unionValue = 'z:1:ZacValue';
+
+  factory ZacValue.fromJson(Map<String, dynamic> map) =>
+      _$ZacValueFromJson(map);
+
+  @FreezedUnionValue(ZacValue.unionValue)
+  factory ZacValue(Object value) = _ZacValue<T>;
+
+  @override
+  T build(BuildContext context, ZacContext zacContext) {
+    if (value is T) return value as T;
+
+    throw StateError(
+        'It was not possible to return $T from ${ZacValue<T>}.build');
+  }
+}
+
+@freezedZacBuilder
 class ZacNum with _$ZacNum implements ZacBuilder<num> {
   ZacNum._();
 

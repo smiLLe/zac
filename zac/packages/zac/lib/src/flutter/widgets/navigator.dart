@@ -1,6 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,6 @@ abstract class RouteWithArgs {
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
-    SharedValueConsumeType onConsume = const SharedValueConsumeType.watch(),
   });
 }
 
@@ -49,12 +48,19 @@ class FlutterMaterialPageRoute
     required String familyName,
     required Object? arguments,
   }) {
+    late final ZacSharedStateProvide sharedArgs;
+    if (arguments is ZacBuilder<Object>) {
+      sharedArgs = ZacSharedStateProvide.builder(arguments);
+    } else if (null == arguments) {
+      sharedArgs = ZacSharedStateProvide.n();
+    } else {
+      sharedArgs = ZacSharedStateProvide.value(arguments);
+    }
+
     return MaterialPageRoute<Object?>(
-      builder: (_) => SharedValueProvider(
-        childBuilder: child.build,
-        valueBuilder: (_, __, ___) => arguments,
-        family: familyName,
-        autoCreate: true,
+      builder: (_) => ZacSharedStateProviderWidget(
+        states: {familyName: sharedArgs},
+        buildChild: child.build,
       ),
       settings: settings?.build(context, zacContext),
       fullscreenDialog: fullscreenDialog?.build(context, zacContext) ?? false,
@@ -80,7 +86,6 @@ class FlutterMaterialPageRoute
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
-    SharedValueConsumeType onConsume = const SharedValueConsumeType.watch(),
   }) {
     return _build(
       context,
@@ -127,12 +132,19 @@ class FlutterPageRouteBuilder
     required String familyName,
     required Object? arguments,
   }) {
+    late final ZacSharedStateProvide sharedArgs;
+    if (arguments is ZacBuilder<Object>) {
+      sharedArgs = ZacSharedStateProvide.builder(arguments);
+    } else if (null == arguments) {
+      sharedArgs = ZacSharedStateProvide.n();
+    } else {
+      sharedArgs = ZacSharedStateProvide.value(arguments);
+    }
+
     return PageRouteBuilder<ZacBuilder<List<ZacAction>>?>(
-      pageBuilder: (_, __, ___) => SharedValueProvider(
-        childBuilder: child.build,
-        valueBuilder: (_, __, ___) => arguments,
-        family: familyName,
-        autoCreate: true,
+      pageBuilder: (_, __, ___) => ZacSharedStateProviderWidget(
+        states: {familyName: sharedArgs},
+        buildChild: child.build,
       ),
       settings: settings?.build(context, zacContext),
       opaque: opaque?.build(context, zacContext) ?? true,
@@ -162,7 +174,6 @@ class FlutterPageRouteBuilder
     ZacContext zacContext, {
     required Object? args,
     required String? argName,
-    SharedValueConsumeType onConsume = const SharedValueConsumeType.watch(),
   }) {
     return _build(
       context,
@@ -191,7 +202,7 @@ class FlutterNavigatorState
   @FreezedUnionValue('z:1:NavigatorState.shared')
   factory FlutterNavigatorState.shared({
     required ZacBuilder<GlobalKey<NavigatorState>> value,
-  }) = _ZacNavigatorStateSharedValue;
+  }) = _ZacNavigatorStateShared;
 
   @override
   NavigatorState build(BuildContext context, ZacContext zacContext) {
@@ -418,7 +429,7 @@ class FlutterRouteFactory with _$FlutterRouteFactory, ZacBuilder<RouteFactory> {
     required Map<String, ZacBuilder<Route<Object?>>> routes,
 
     /// Key of the map equals the route name. Value of the map equals the
-    /// [SharedValue] family.
+    /// [SharedState] family.
     required Map<String, String>? familyNameOfArguments,
   }) = _FlutterRouteFactory;
 

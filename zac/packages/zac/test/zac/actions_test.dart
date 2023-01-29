@@ -1,10 +1,11 @@
+import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -42,7 +43,7 @@ void main() {
 
             ZacControlFlowAction.ifCond(
               condition: ZacListOfTransformers(
-                  [ObjectTransformer.equals(other: 'hello')]),
+                  [ObjectTransformer.equals(other: ZacString('hello'))]),
               ifTrue: ZacListOfActions([TestAction(trueCb)]),
               ifFalse: ZacListOfActions([TestAction(falseCb)]),
             ).build(getContext(), getZacContext()).execute(
@@ -67,7 +68,7 @@ void main() {
             final falseCb = MockTestActionExecute();
             ZacControlFlowAction.ifCond(
               condition: ZacListOfTransformers(
-                  [ObjectTransformer.equals(other: 'world')]),
+                  [ObjectTransformer.equals(other: ZacString('world'))]),
               ifTrue: ZacListOfActions([TestAction(trueCb)]),
               ifFalse: ZacListOfActions([TestAction(falseCb)]),
             ).build(getContext(), getZacContext()).execute(
@@ -92,9 +93,9 @@ void main() {
           final falseCb = MockTestActionExecute();
           ZacControlFlowAction.ifCond(
             condition: ZacListOfTransformers([
-              ObjectTransformer.equals(other: 'hello'),
-              ObjectTransformer.equals(other: 'THAT IS FALSE'),
-              ObjectTransformer.equals(other: 'hello'),
+              ObjectTransformer.equals(other: ZacString('hello')),
+              ObjectTransformer.equals(other: ZacString('THAT IS FALSE')),
+              ObjectTransformer.equals(other: ZacString('hello')),
             ]),
             ifTrue: ZacListOfActions([TestAction(trueCb)]),
             ifFalse: ZacListOfActions([TestAction(falseCb)]),
@@ -109,27 +110,6 @@ void main() {
               .called(1);
           verifyZeroInteractions(trueCb);
         });
-        // late ZacContext zacContext;
-        // final trueCb = MockLeakedActionCb();
-        // final falseCb = MockLeakedActionCb();
-
-        // await testZacWidget(tester, LeakContext(cb: (c) => zacContext = c));
-        // ZacControlFlowAction.ifCond(
-        //   condition: ZacTransformers([
-        //     ObjectTransformer.equals(other: 'hello'),
-        //     ObjectTransformer.equals(other: 'THAT IS FALSE'),
-        //     ObjectTransformer.equals(other: 'hello'),
-        //   ]),
-        //   ifTrue: ZacActions([LeakAction(trueCb)]),
-        //   ifFalse: ZacActions([LeakAction(falseCb)]),
-        // ).execute(ZacActionPayload.param('hello'), zacContext);
-
-        // verify(falseCb(
-        //         argThat(isA<ZacActionPayload>()
-        //             .having((p0) => p0.params, 'payload params', 'hello')),
-        //         argThat(isA<ZacContext>())))
-        //     .called(1);
-        // verifyZeroInteractions(trueCb);
       });
 
       testWidgets('will throw an error if payload is empty', (tester) async {
@@ -219,9 +199,8 @@ void main() {
       final cb = MockTestActionExecute();
       await testWithContextsWraped(
         tester,
-        (child) => SharedValueProviderBuilder.provideInt(
-          value: 1,
-          family: 'shared',
+        (child) => ZacSharedStateProvider(
+          states: {'shared': ZacSharedStateProvide.value(1)},
           child: ZacExecuteActionsBuilder.listen(
             actions: ZacListOfActions([TestAction(cb)]),
             family: 'shared',
@@ -234,8 +213,11 @@ void main() {
         (getContext, getZacContext) async {
           verifyZeroInteractions(cb);
 
-          SharedValue.update(
-              getContext(), getZacContext(), 'shared', (current) => 2);
+          getContext()
+              .widgetRef
+              .read(SharedState.provider('shared'))
+              .update((_) => 2);
+
           await tester.pumpAndSettle();
 
           verify(cb(

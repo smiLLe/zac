@@ -6,54 +6,26 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
 part 'completer.freezed.dart';
 part 'completer.g.dart';
 
 @freezedZacBuilder
-class ZacCompleterVoidProvider
-    with _$ZacCompleterVoidProvider, ZacBuilder<Widget> {
-  const ZacCompleterVoidProvider._();
+class ZacCompleterVoid with _$ZacCompleterVoid, ZacBuilder<Completer<void>> {
+  ZacCompleterVoid._();
 
-  factory ZacCompleterVoidProvider.fromJson(Map<String, dynamic> json) =>
-      _$ZacCompleterVoidProviderFromJson(json);
+  factory ZacCompleterVoid.fromJson(Map<String, dynamic> json) =>
+      _$ZacCompleterVoidFromJson(json);
 
-  @FreezedUnionValue('z:1:Completer<void>.provide')
-  factory ZacCompleterVoidProvider({
-    required SharedValueFamily family,
-    required ZacBuilder<Widget> child,
-  }) = _ZacCompleterVoidProvider;
+  @FreezedUnionValue('f:1:Completer<void>')
+  factory ZacCompleterVoid() = _ZacCompleterVoid;
 
-  Completer<void> _valueBuilder(AutoDisposeStateProviderRef<Object?> ref,
-      BuildContext context, ZacContext zacContext) {
-    return map((_) {
-      final completer = Completer<void>();
-      ref.onDispose(() {
-        if (completer.isCompleted) return;
-        completer.complete();
-      });
-      return completer;
-    });
-  }
-
-  Widget _childBuilder(BuildContext context, ZacContext zacContext) => map(
-        (obj) => obj.child.build(context, zacContext),
-      );
+  late final Completer<void> _completer = Completer<void>();
 
   @override
-  Widget build(BuildContext context, ZacContext zacContext) {
-    return map(
-      (obj) {
-        return SharedValueProvider(
-          childBuilder: _childBuilder,
-          valueBuilder: _valueBuilder,
-          family: obj.family,
-        );
-      },
-    );
-  }
+  Completer<void> build(BuildContext context, ZacContext zacContext) =>
+      _completer;
 }
 
 @freezedZacBuilder
@@ -65,7 +37,7 @@ class ZacCompleterActions
   factory ZacCompleterActions.fromJson(Map<String, dynamic> json) =>
       _$ZacCompleterActionsFromJson(json);
 
-  @FreezedUnionValue('z:1:Completer<void>.complete')
+  @FreezedUnionValue('f:1:Completer<void>.complete')
   factory ZacCompleterActions.completeVoid({
     required ZacBuilder<Completer> completer,
   }) = _ZacCompleterActionsVoid;

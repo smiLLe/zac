@@ -112,35 +112,6 @@ void main() {
         .called(1);
   });
 
-  testWidgets('FlutterTextField() consumes the ScrollController',
-      (tester) async {
-    await testJSON(
-      tester,
-      <String, dynamic>{
-        'builder': 'z:1:ScrollController.provide',
-        'child': {
-          'builder': 'f:1:Material',
-          'child': {
-            'builder': 'f:1:TextField',
-            'key': KeysModel.getValueKey('FINDME'),
-            'scrollController': {
-              'builder': 'z:1:SharedValue.consume',
-              'family': 'Zac.ScrollController',
-            },
-          },
-        },
-      },
-    );
-    final findMe = find.byKey(const ValueKey('FINDME'));
-
-    final widget = findMe.evaluate().first.widget;
-
-    expect(
-        widget,
-        isA<TextField>().having((p0) => p0.scrollController,
-            'TextField.scrollController', isA<ScrollController>()));
-  });
-
   testWidgets(
     'FlutterTextField() onTap',
     (tester) async {},

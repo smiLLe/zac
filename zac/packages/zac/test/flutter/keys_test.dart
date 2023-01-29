@@ -25,50 +25,17 @@ void main() {
     });
   });
 
-  group('Provide GlobalKey<NavigatorState>', () {
-    test('is in converters', () {
-      expectInRegistry('z:1:GlobalKey<NavigatorState>.provide',
-          FlutterGlobalKeyNavigatorStateProvider.fromJson);
-    });
-
-    testWidgets('.build()', (tester) async {
-      await testWithContextsWraped(
-        tester,
-        (child) => FlutterGlobalKeyNavigatorStateProvider(
-          family: 'shared',
-          child: child,
-        ),
-        (getContext, getZacContext) {
-          expect(
-              ConsumeSharedValue<GlobalKey<NavigatorState>>(family: 'shared')
-                  .build(getContext(), getZacContext()),
-              isA<GlobalKey<NavigatorState>>());
-        },
-      );
+  group('GlobalKey<NavigatorState>', () {
+    test('is in registry', () {
+      expectInRegistry('f:1:GlobalKey<NavigatorState>',
+          FlutterGlobalKeyNavigatorState.fromJson);
     });
   });
 
   group('Provide GlobalKey<ScaffoldMessengerState>', () {
-    test('is in converters', () {
-      expectInRegistry('z:1:GlobalKey<ScaffoldMessengerState>.provide',
-          FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson);
-    });
-
-    testWidgets('.build()', (tester) async {
-      await testWithContextsWraped(
-        tester,
-        (child) => FlutterGlobalKeyScaffoldMessengerStateProvider(
-          family: 'shared',
-          child: child,
-        ),
-        (getContext, getZacContext) {
-          expect(
-              ConsumeSharedValue<GlobalKey<ScaffoldMessengerState>>(
-                      family: 'shared')
-                  .build(getContext(), getZacContext()),
-              isA<GlobalKey<ScaffoldMessengerState>>());
-        },
-      );
+    test('is in registry', () {
+      expectInRegistry('f:1:GlobalKey<ScaffoldMessengerState>',
+          FlutterGlobalKeyScaffoldMessengerState.fromJson);
     });
   });
 }

@@ -16,104 +16,85 @@ final _privateConstructorUsedError = UnsupportedError(
 
 FlutterScrollController _$FlutterScrollControllerFromJson(
     Map<String, dynamic> json) {
-  return _ScrollControllerProvide.fromJson(json);
+  return _FlutterScrollController.fromJson(json);
 }
 
 /// @nodoc
 mixin _$FlutterScrollController {
-  ZacBuilder<double?>? get initialScrollOffset =>
-      throw _privateConstructorUsedError;
-  ZacBuilder<bool?>? get keepScrollOffset => throw _privateConstructorUsedError;
-  ZacBuilder<String?>? get debugLabel => throw _privateConstructorUsedError;
-  String? get family => throw _privateConstructorUsedError;
-  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
+  double? get initialScrollOffset => throw _privateConstructorUsedError;
+  bool? get keepScrollOffset => throw _privateConstructorUsedError;
+  String? get debugLabel => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ScrollControllerProvide value) $default,
+    TResult Function(_FlutterScrollController value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ScrollControllerProvide extends _ScrollControllerProvide {
-  _$_ScrollControllerProvide(
-      {this.initialScrollOffset,
-      this.keepScrollOffset,
-      this.debugLabel,
-      this.family,
-      required this.child})
+class _$_FlutterScrollController extends _FlutterScrollController {
+  _$_FlutterScrollController(
+      {this.initialScrollOffset, this.keepScrollOffset, this.debugLabel})
       : super._();
 
-  factory _$_ScrollControllerProvide.fromJson(Map<String, dynamic> json) =>
-      _$$_ScrollControllerProvideFromJson(json);
+  factory _$_FlutterScrollController.fromJson(Map<String, dynamic> json) =>
+      _$$_FlutterScrollControllerFromJson(json);
 
   @override
-  final ZacBuilder<double?>? initialScrollOffset;
+  final double? initialScrollOffset;
   @override
-  final ZacBuilder<bool?>? keepScrollOffset;
+  final bool? keepScrollOffset;
   @override
-  final ZacBuilder<String?>? debugLabel;
-  @override
-  final String? family;
-  @override
-  final ZacBuilder<Widget> child;
+  final String? debugLabel;
 
   @override
   String toString() {
-    return 'FlutterScrollController(initialScrollOffset: $initialScrollOffset, keepScrollOffset: $keepScrollOffset, debugLabel: $debugLabel, family: $family, child: $child)';
+    return 'FlutterScrollController(initialScrollOffset: $initialScrollOffset, keepScrollOffset: $keepScrollOffset, debugLabel: $debugLabel)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ScrollControllerProvide &&
+            other is _$_FlutterScrollController &&
             (identical(other.initialScrollOffset, initialScrollOffset) ||
                 other.initialScrollOffset == initialScrollOffset) &&
             (identical(other.keepScrollOffset, keepScrollOffset) ||
                 other.keepScrollOffset == keepScrollOffset) &&
             (identical(other.debugLabel, debugLabel) ||
-                other.debugLabel == debugLabel) &&
-            (identical(other.family, family) || other.family == family) &&
-            (identical(other.child, child) || other.child == child));
+                other.debugLabel == debugLabel));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, initialScrollOffset,
-      keepScrollOffset, debugLabel, family, child);
+  int get hashCode => Object.hash(
+      runtimeType, initialScrollOffset, keepScrollOffset, debugLabel);
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ScrollControllerProvide value) $default,
+    TResult Function(_FlutterScrollController value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ScrollControllerProvide extends FlutterScrollController {
-  factory _ScrollControllerProvide(
-      {final ZacBuilder<double?>? initialScrollOffset,
-      final ZacBuilder<bool?>? keepScrollOffset,
-      final ZacBuilder<String?>? debugLabel,
-      final String? family,
-      required final ZacBuilder<Widget> child}) = _$_ScrollControllerProvide;
-  _ScrollControllerProvide._() : super._();
+abstract class _FlutterScrollController extends FlutterScrollController {
+  factory _FlutterScrollController(
+      {final double? initialScrollOffset,
+      final bool? keepScrollOffset,
+      final String? debugLabel}) = _$_FlutterScrollController;
+  _FlutterScrollController._() : super._();
 
-  factory _ScrollControllerProvide.fromJson(Map<String, dynamic> json) =
-      _$_ScrollControllerProvide.fromJson;
+  factory _FlutterScrollController.fromJson(Map<String, dynamic> json) =
+      _$_FlutterScrollController.fromJson;
 
   @override
-  ZacBuilder<double?>? get initialScrollOffset;
+  double? get initialScrollOffset;
   @override
-  ZacBuilder<bool?>? get keepScrollOffset;
+  bool? get keepScrollOffset;
   @override
-  ZacBuilder<String?>? get debugLabel;
-  @override
-  String? get family;
-  @override
-  ZacBuilder<Widget> get child;
+  String? get debugLabel;
 }

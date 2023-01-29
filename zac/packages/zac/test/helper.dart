@@ -111,7 +111,7 @@ Future<void> testWithContextsWraped(
                 (context, zacContext) {
                   _context = context;
                   _zacContext = zacContext;
-                  return const FlutterSizedBox.shrink();
+                  return const SizedBox.shrink();
                 },
               ),
             ),
@@ -176,14 +176,13 @@ class TestTransformExecute extends Mock {
 }
 
 class TestWidget implements ZacBuilder<Widget> {
-  final ZacBuilder<Widget> Function(BuildContext context, ZacContext zacContext)
-      cb;
+  final Widget Function(BuildContext context, ZacContext zacContext) cb;
 
   TestWidget(this.cb);
 
   @override
   Widget build(BuildContext context, ZacContext zacContext) {
-    return cb(context, zacContext).build(context, zacContext);
+    return cb(context, zacContext);
   }
 }
 

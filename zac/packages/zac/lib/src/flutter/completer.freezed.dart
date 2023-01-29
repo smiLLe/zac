@@ -14,77 +14,57 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ZacCompleterVoidProvider _$ZacCompleterVoidProviderFromJson(
-    Map<String, dynamic> json) {
-  return _ZacCompleterVoidProvider.fromJson(json);
+ZacCompleterVoid _$ZacCompleterVoidFromJson(Map<String, dynamic> json) {
+  return _ZacCompleterVoid.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacCompleterVoidProvider {
-  String get family => throw _privateConstructorUsedError;
-  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
-
+mixin _$ZacCompleterVoid {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacCompleterVoidProvider value) $default,
+    TResult Function(_ZacCompleterVoid value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacCompleterVoidProvider extends _ZacCompleterVoidProvider {
-  _$_ZacCompleterVoidProvider({required this.family, required this.child})
-      : super._();
+class _$_ZacCompleterVoid extends _ZacCompleterVoid {
+  _$_ZacCompleterVoid() : super._();
 
-  factory _$_ZacCompleterVoidProvider.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacCompleterVoidProviderFromJson(json);
-
-  @override
-  final String family;
-  @override
-  final ZacBuilder<Widget> child;
+  factory _$_ZacCompleterVoid.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacCompleterVoidFromJson(json);
 
   @override
   String toString() {
-    return 'ZacCompleterVoidProvider(family: $family, child: $child)';
+    return 'ZacCompleterVoid()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacCompleterVoidProvider &&
-            (identical(other.family, family) || other.family == family) &&
-            (identical(other.child, child) || other.child == child));
+        (other.runtimeType == runtimeType && other is _$_ZacCompleterVoid);
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, family, child);
+  int get hashCode => runtimeType.hashCode;
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacCompleterVoidProvider value) $default,
+    TResult Function(_ZacCompleterVoid value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ZacCompleterVoidProvider extends ZacCompleterVoidProvider {
-  factory _ZacCompleterVoidProvider(
-      {required final String family,
-      required final ZacBuilder<Widget> child}) = _$_ZacCompleterVoidProvider;
-  _ZacCompleterVoidProvider._() : super._();
+abstract class _ZacCompleterVoid extends ZacCompleterVoid {
+  factory _ZacCompleterVoid() = _$_ZacCompleterVoid;
+  _ZacCompleterVoid._() : super._();
 
-  factory _ZacCompleterVoidProvider.fromJson(Map<String, dynamic> json) =
-      _$_ZacCompleterVoidProvider.fromJson;
-
-  @override
-  String get family;
-  @override
-  ZacBuilder<Widget> get child;
+  factory _ZacCompleterVoid.fromJson(Map<String, dynamic> json) =
+      _$_ZacCompleterVoid.fromJson;
 }
 
 ZacCompleterActions _$ZacCompleterActionsFromJson(Map<String, dynamic> json) {

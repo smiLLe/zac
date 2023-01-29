@@ -554,7 +554,8 @@ _$_ObjectEquals _$$_ObjectEqualsFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$_ObjectEquals(
-          other: $checkedConvert('other', (v) => v),
+          other: $checkedConvert(
+              'other', (v) => ZacBuilder<Object?>.fromJson(v as Object)),
           $type: $checkedConvert('builder', (v) => v as String?),
         );
         return val;
@@ -594,24 +595,6 @@ _$_ObjectHashCode _$$_ObjectHashCodeFromJson(Map<String, dynamic> json) =>
       json,
       ($checkedConvert) {
         final val = _$_ObjectHashCode(
-          $type: $checkedConvert('builder', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {r'$type': 'builder'},
-    );
-
-_$_ObjectEqualsSharedValue _$$_ObjectEqualsSharedValueFromJson(
-        Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_ObjectEqualsSharedValue',
-      json,
-      ($checkedConvert) {
-        final val = _$_ObjectEqualsSharedValue(
-          value: $checkedConvert(
-              'value',
-              (v) =>
-                  v == null ? null : ZacBuilder<Object?>.fromJson(v as Object)),
           $type: $checkedConvert('builder', (v) => v as String?),
         );
         return val;

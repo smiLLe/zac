@@ -18,43 +18,28 @@ _$_FlutterValueKey _$$_FlutterValueKeyFromJson(Map<String, dynamic> json) =>
       },
     );
 
-_$_FlutterGlobalKeyNavigatorStateProvider
-    _$$_FlutterGlobalKeyNavigatorStateProviderFromJson(
-            Map<String, dynamic> json) =>
-        $checkedCreate(
-          r'_$_FlutterGlobalKeyNavigatorStateProvider',
-          json,
-          ($checkedConvert) {
-            final val = _$_FlutterGlobalKeyNavigatorStateProvider(
-              debugLabel: $checkedConvert(
-                  'debugLabel',
-                  (v) => v == null
-                      ? null
-                      : ZacBuilder<String?>.fromJson(v as Object)),
-              family: $checkedConvert('family', (v) => v as String),
-              child: $checkedConvert(
-                  'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
-            );
-            return val;
-          },
+_$_FlutterGlobalKeyNavigatorState _$$_FlutterGlobalKeyNavigatorStateFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_FlutterGlobalKeyNavigatorState',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterGlobalKeyNavigatorState(
+          debugLabel: $checkedConvert('debugLabel', (v) => v as String?),
         );
+        return val;
+      },
+    );
 
-_$_FlutterGlobalKeyScaffoldMessengerStateProvider
-    _$$_FlutterGlobalKeyScaffoldMessengerStateProviderFromJson(
+_$_FlutterGlobalKeyScaffoldMessengerState
+    _$$_FlutterGlobalKeyScaffoldMessengerStateFromJson(
             Map<String, dynamic> json) =>
         $checkedCreate(
-          r'_$_FlutterGlobalKeyScaffoldMessengerStateProvider',
+          r'_$_FlutterGlobalKeyScaffoldMessengerState',
           json,
           ($checkedConvert) {
-            final val = _$_FlutterGlobalKeyScaffoldMessengerStateProvider(
-              debugLabel: $checkedConvert(
-                  'debugLabel',
-                  (v) => v == null
-                      ? null
-                      : ZacBuilder<String?>.fromJson(v as Object)),
-              family: $checkedConvert('family', (v) => v as String),
-              child: $checkedConvert(
-                  'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+            final val = _$_FlutterGlobalKeyScaffoldMessengerState(
+              debugLabel: $checkedConvert('debugLabel', (v) => v as String?),
             );
             return val;
           },

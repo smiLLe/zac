@@ -4,7 +4,6 @@ import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/widgets/layout/sized_box.dart';
 import 'package:zac/src/zac/context.dart';
 
-import 'package:zac/src/zac/shared_value.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -1204,22 +1203,22 @@ void main() {
       _expectFromJson<ObjectTransformer>(
         fromJson: ObjectTransformer.fromJson,
         converter: 'z:1:Transformer:Object.equals',
-        equals: ObjectTransformer.equals(other: 5),
+        equals: ObjectTransformer.equals(other: ZacInt(5)),
         props: <String, dynamic>{
-          'other': 5,
+          'other': {'builder': 'z:1:int', 'value': 5},
         },
       );
 
       await testWithContexts(tester, (getContext, getZacContext) {
         expect(
-            ObjectTransformer.equals(other: 5)
+            ObjectTransformer.equals(other: ZacInt(5))
                 .build(getContext(), getZacContext())
                 .transform(
                     ZacTransformValue(5), getContext(), getZacContext(), null),
             isTrue);
 
         expect(
-            ObjectTransformer.equals(other: 5)
+            ObjectTransformer.equals(other: ZacInt(5))
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue('foo'), getContext(),
                     getZacContext(), null),
@@ -1289,55 +1288,6 @@ void main() {
                 .transform(ZacTransformValue('foo'), getContext(),
                     getZacContext(), null),
             'foo');
-      });
-    });
-
-    group('.equalsSharedValue()', () {
-      test('fromJson', () {
-        _expectFromJson<ObjectTransformer>(
-          fromJson: ObjectTransformer.fromJson,
-          converter: 'z:1:Transformer:Object.equalsSharedValue',
-          equals: ObjectTransformer.equalsSharedValue(
-              value: ConsumeSharedValue<Object?>(family: 'shared')),
-          props: <String, dynamic>{
-            'value': {
-              'builder': 'z:1:SharedValue.consume',
-              'family': 'shared',
-            }
-          },
-        );
-      });
-
-      testWidgets('.transform()', (tester) async {
-        await testWithContextsWraped(
-          tester,
-          (child) => SharedValueProviderBuilder.provideInt(
-            value: 5,
-            family: 'shared',
-            child: SharedValueProviderBuilder.provideString(
-              value: 'foo',
-              family: 'shared2',
-              child: child,
-            ),
-          ),
-          (getContext, getZacContext) {
-            expect(
-                ObjectTransformer.equalsSharedValue(
-                        value: ConsumeSharedValue<Object>(family: 'shared'))
-                    .build(getContext(), getZacContext())
-                    .transform(ZacTransformValue(5), getContext(),
-                        getZacContext(), null),
-                isTrue);
-
-            expect(
-                ObjectTransformer.equalsSharedValue(
-                        value: ConsumeSharedValue<Object>(family: 'shared2'))
-                    .build(getContext(), getZacContext())
-                    .transform(ZacTransformValue(5), getContext(),
-                        getZacContext(), null),
-                isFalse);
-          },
-        );
       });
     });
   });

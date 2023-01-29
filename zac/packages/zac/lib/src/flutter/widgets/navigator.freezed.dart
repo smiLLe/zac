@@ -318,7 +318,7 @@ FlutterNavigatorState _$FlutterNavigatorStateFromJson(
     case 'f:1:NavigatorState.root':
       return _ZacNavigatorStateRoot.fromJson(json);
     case 'z:1:NavigatorState.shared':
-      return _ZacNavigatorStateSharedValue.fromJson(json);
+      return _ZacNavigatorStateShared.fromJson(json);
 
     default:
       throw CheckedFromJsonException(json, 'builder', 'FlutterNavigatorState',
@@ -332,7 +332,7 @@ mixin _$FlutterNavigatorState {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateSharedValue value) shared,
+    required TResult Function(_ZacNavigatorStateShared value) shared,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -371,7 +371,7 @@ class _$_ZacNavigatorStateClosest extends _ZacNavigatorStateClosest {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateSharedValue value) shared,
+    required TResult Function(_ZacNavigatorStateShared value) shared,
   }) {
     return closest(this);
   }
@@ -418,7 +418,7 @@ class _$_ZacNavigatorStateRoot extends _ZacNavigatorStateRoot {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateSharedValue value) shared,
+    required TResult Function(_ZacNavigatorStateShared value) shared,
   }) {
     return root(this);
   }
@@ -434,13 +434,13 @@ abstract class _ZacNavigatorStateRoot extends FlutterNavigatorState {
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
-  _$_ZacNavigatorStateSharedValue({required this.value, final String? $type})
+class _$_ZacNavigatorStateShared extends _ZacNavigatorStateShared {
+  _$_ZacNavigatorStateShared({required this.value, final String? $type})
       : $type = $type ?? 'z:1:NavigatorState.shared',
         super._();
 
-  factory _$_ZacNavigatorStateSharedValue.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacNavigatorStateSharedValueFromJson(json);
+  factory _$_ZacNavigatorStateShared.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacNavigatorStateSharedFromJson(json);
 
   @override
   final ZacBuilder<GlobalKey<NavigatorState>> value;
@@ -457,7 +457,7 @@ class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacNavigatorStateSharedValue &&
+            other is _$_ZacNavigatorStateShared &&
             (identical(other.value, value) || other.value == value));
   }
 
@@ -470,20 +470,20 @@ class _$_ZacNavigatorStateSharedValue extends _ZacNavigatorStateSharedValue {
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacNavigatorStateClosest value) closest,
     required TResult Function(_ZacNavigatorStateRoot value) root,
-    required TResult Function(_ZacNavigatorStateSharedValue value) shared,
+    required TResult Function(_ZacNavigatorStateShared value) shared,
   }) {
     return shared(this);
   }
 }
 
-abstract class _ZacNavigatorStateSharedValue extends FlutterNavigatorState {
-  factory _ZacNavigatorStateSharedValue(
+abstract class _ZacNavigatorStateShared extends FlutterNavigatorState {
+  factory _ZacNavigatorStateShared(
           {required final ZacBuilder<GlobalKey<NavigatorState>> value}) =
-      _$_ZacNavigatorStateSharedValue;
-  _ZacNavigatorStateSharedValue._() : super._();
+      _$_ZacNavigatorStateShared;
+  _ZacNavigatorStateShared._() : super._();
 
-  factory _ZacNavigatorStateSharedValue.fromJson(Map<String, dynamic> json) =
-      _$_ZacNavigatorStateSharedValue.fromJson;
+  factory _ZacNavigatorStateShared.fromJson(Map<String, dynamic> json) =
+      _$_ZacNavigatorStateShared.fromJson;
 
   ZacBuilder<GlobalKey<NavigatorState>> get value;
 }

@@ -6,7 +6,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_value.dart';
+import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
@@ -124,7 +124,7 @@ class ZacExecuteActionsBuilder
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
     required ZacBuilder<List<ZacAction>> actions,
-    required SharedValueFamily family,
+    required SharedStateFamily family,
     ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderListen;
 
@@ -151,15 +151,17 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
 
   final List<ZacAction> Function(BuildContext context, ZacContext zacContext)
       actions;
-  final SharedValueFamily family;
+  final SharedStateFamily family;
   final Widget Function(BuildContext context, ZacContext zacContext)? child;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext();
-    ref.listen<SharedValueType>(SharedValue.provider(family), (previous, next) {
+    ref.listen<SharedState>(SharedState.provider(family), (previous, next) {
       actions(context, zacContext).execute(
-          ZacActionPayload.param2(next, previous), context, zacContext);
+          ZacActionPayload.param2(next.value, previous?.value),
+          context,
+          zacContext);
     });
 
     return child?.call(context, zacContext) ?? const SizedBox.shrink();

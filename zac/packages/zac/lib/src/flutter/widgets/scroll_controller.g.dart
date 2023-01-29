@@ -6,28 +6,18 @@ part of 'scroll_controller.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ScrollControllerProvide _$$_ScrollControllerProvideFromJson(
+_$_FlutterScrollController _$$_FlutterScrollControllerFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_ScrollControllerProvide',
+      r'_$_FlutterScrollController',
       json,
       ($checkedConvert) {
-        final val = _$_ScrollControllerProvide(
+        final val = _$_FlutterScrollController(
           initialScrollOffset: $checkedConvert(
-              'initialScrollOffset',
-              (v) =>
-                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
-          keepScrollOffset: $checkedConvert(
-              'keepScrollOffset',
-              (v) =>
-                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
-          debugLabel: $checkedConvert(
-              'debugLabel',
-              (v) =>
-                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
-          family: $checkedConvert('family', (v) => v as String?),
-          child: $checkedConvert(
-              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+              'initialScrollOffset', (v) => (v as num?)?.toDouble()),
+          keepScrollOffset:
+              $checkedConvert('keepScrollOffset', (v) => v as bool?),
+          debugLabel: $checkedConvert('debugLabel', (v) => v as String?),
         );
         return val;
       },

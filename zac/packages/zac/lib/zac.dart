@@ -6,6 +6,6 @@ export 'src/zac/action.dart';
 export 'src/zac/state_machine.dart';
 export 'src/zac/zac_value.dart';
 export 'src/zac/widget.dart';
-export 'src/zac/shared_value.dart';
+export 'src/zac/shared_state.dart';
 export 'src/zac/transformers.dart';
 export 'src/flutter/all.dart';
