@@ -32,6 +32,59 @@ void main() {
     });
   });
 
+  group('BuiltInActions', () {
+    testWidgets('.withPayload', (tester) async {
+      await testWithContexts(tester, (getContext, getZacContext) {
+        final cb = MockTestActionExecute();
+        ZacBuiltInActions.withPayload(
+          payload: 'hello',
+          actions: ZacListOfActions([TestAction(cb)]),
+        ).build(getContext(), getZacContext()).execute(
+            ZacActionPayload.param('IGNORED'), getContext(), getZacContext());
+
+        verify(cb(
+          argThat(isA<ZacActionPayload>()
+              .having((p0) => p0.params, 'payload params', 'hello')),
+          any,
+          any,
+        )).called(1);
+
+        ZacBuiltInActions.withPayload(
+          payload: <String, dynamic>{'builder': 'f:1:SizedBox'},
+          actions: ZacListOfActions([TestAction(cb)]),
+        ).build(getContext(), getZacContext()).execute(
+            ZacActionPayload.param('IGNORED'), getContext(), getZacContext());
+
+        verify(cb(
+          argThat(isA<ZacActionPayload>()
+              .having((p0) => p0.params, 'payload params', FlutterSizedBox())),
+          any,
+          any,
+        )).called(1);
+
+        ZacBuiltInActions.withPayload(
+          payload: 'hello',
+          actions: ZacListOfActions([TestAction(cb)]),
+          transformer: ZacListOfTransformers([
+            TestTransform((transformValue, context, zacContext, payload) {
+              return 1;
+            })
+          ]),
+        ).build(getContext(), getZacContext()).execute(
+            ZacActionPayload.param('IGNORED'), getContext(), getZacContext());
+
+        verify(cb(
+          argThat(isA<ZacActionPayload>()
+              .having((p0) => p0.params, 'payload params', 1)),
+          any,
+          any,
+        )).called(1);
+
+        verifyNoMoreInteractions(cb);
+      });
+    });
+  });
+
   group('Control Flow Actions:', () {
     group('if Action', () {
       testWidgets('will execute Action if condition is true', (tester) async {

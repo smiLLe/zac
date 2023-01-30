@@ -570,6 +570,9 @@ void addZacBuilders(ZacRegistry registry) {
     ..register(
         'f:1:WrapCrossAlignment.start', FlutterWrapCrossAlignment.fromJson)
     ..register('f:1:showDialog', FlutterDialogActions.fromJson)
+    ..register('z:1:Action.withPayload', ZacBuiltInActions.fromJson)
+    ..register('z:1:Completer<void>.complete', ZacCompleterActions.fromJson)
+    ..register('z:1:Completer<void>.provide', ZacCompleterVoidProvider.fromJson)
     ..register('z:1:ControlFlowAction.if', ZacControlFlowAction.fromJson)
     ..register('z:1:DateTime', ZacDateTime.fromJson)
     ..register('z:1:ExecuteActions.listen', ZacExecuteActionsBuilder.fromJson)
@@ -584,8 +587,14 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Object', ZacObject.fromJson)
     ..register('z:1:SharedState.provide', ZacSharedStateProvider.fromJson)
     ..register(
-        'z:1:SharedState.transformCurrentValue', SharedStateActions.fromJson)
-    ..register('z:1:SharedState.update', SharedStateActions.fromJson)
+        'z:1:SharedValue.transformCurrentValue', SharedValueActions.fromJson)
+    ..register('z:1:SharedValue.update', SharedValueActions.fromJson)
+    ..register('z:1:SharedValue.updateFromPayload', SharedValueActions.fromJson)
+    ..register('z:1:StateMachine:Action.send', ZacStateMachineActions.fromJson)
+    ..register(
+        'z:1:StateMachine:Action.trySend', ZacStateMachineActions.fromJson)
+    ..register('z:1:StateMachine:Build', ZacStateMachineBuild.fromJson)
+    ..register('z:1:StateMachines.provide', ZacStateMachineProvider.fromJson)
     ..register('z:1:String', ZacString.fromJson)
     ..register('z:1:Transformer:ActionPayload.toList',
         ZacActionPayloadTransformer.fromJson)

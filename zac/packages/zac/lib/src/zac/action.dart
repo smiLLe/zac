@@ -7,6 +7,7 @@ import 'package:zac/src/base.dart';
 
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_state.dart';
+import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
@@ -197,6 +198,50 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
     if (null == child || !doneState.value) return const SizedBox.shrink();
     return child?.call(context, zacContext) ?? const SizedBox.shrink();
   }
+}
+
+@freezedZacBuilder
+class ZacBuiltInActions
+    with _$ZacBuiltInActions
+    implements ZacBuilder<ZacAction> {
+  ZacBuiltInActions._();
+
+  factory ZacBuiltInActions.fromJson(Map<String, dynamic> json) =>
+      _$ZacBuiltInActionsFromJson(json);
+
+  /// This will convert the payload to a ZacBuilder if given a Map
+  @FreezedUnionValue('z:1:Action.withPayload')
+  factory ZacBuiltInActions.withPayload({
+    required Object payload,
+    required ZacBuilder<List<ZacAction>> actions,
+    ZacBuilder<List<ZacTransform>>? transformer,
+  }) = _OverridePayload;
+
+  late final ZacAction _action = ZacAction(
+      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+    map(withPayload: (obj) {
+      var subPayload = ZacRegistry.ifBuilderLikeMap<Object>(
+        obj.payload,
+        cb: (map, converterName) => ZacRegistry().when<Object>(
+          name: converterName,
+          noType: (builder) => builder.call(map),
+          withType: (builder) => builder.call<Object>(map),
+        ),
+        orElse: () => obj.payload,
+      );
+
+      subPayload = transformer?.build(context, zacContext).transform(
+              ZacTransformValue(subPayload), context, zacContext, payload) ??
+          subPayload;
+
+      actions
+          .build(context, zacContext)
+          .execute(ZacActionPayload.param(subPayload), context, zacContext);
+    });
+  });
+
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
 }
 
 @freezedZacBuilder

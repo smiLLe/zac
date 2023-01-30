@@ -131,7 +131,7 @@
       "name": "logging",
       "rootUri": "file:///C:/Users/micha/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.1.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.18"
     },
     {
       "name": "matcher",
