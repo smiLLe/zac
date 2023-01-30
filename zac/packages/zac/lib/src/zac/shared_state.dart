@@ -116,7 +116,7 @@ class ZacSharedStateProvider
   factory ZacSharedStateProvider.fromJson(Map<String, dynamic> json) =>
       _$ZacSharedStateProviderFromJson(json);
 
-  @FreezedUnionValue('z:1:SharedState.provide')
+  @FreezedUnionValue('z:1:SharedStates.provide')
   factory ZacSharedStateProvider({
     required Map<SharedStateFamily, ZacSharedStateProvide> states,
     required ZacBuilder<Widget> child,

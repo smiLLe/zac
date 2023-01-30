@@ -11,7 +11,7 @@ import '../helper.dart';
 void main() {
   test('in registry', () {
     expectInRegistry(
-        'z:1:SharedState.provide', ZacSharedStateProvider.fromJson);
+        'z:1:SharedStates.provide', ZacSharedStateProvider.fromJson);
 
     expectInRegistry([
       'z:1:SharedState.consume',
@@ -168,7 +168,7 @@ void main() {
   group('SharedStateConsume:', () {
     testWidgets('Consume value and builder types', (tester) async {
       await testJSON(tester, <String, dynamic>{
-        'builder': 'z:1:SharedState.provide',
+        'builder': 'z:1:SharedStates.provide',
         'states': {
           'shared1': {
             'builder': 'z:1:SharedStateType:Value',

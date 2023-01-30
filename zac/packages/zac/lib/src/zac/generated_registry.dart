@@ -584,10 +584,10 @@ void addZacBuilders(ZacRegistry registry) {
         'z:1:Navigator.popUntilRouteName', FlutterNavigatorActions.fromJson)
     ..register('z:1:NavigatorState.shared', FlutterNavigatorState.fromJson)
     ..register('z:1:Object', ZacObject.fromJson)
-    ..register('z:1:SharedState.provide', ZacSharedStateProvider.fromJson)
     ..register(
         'z:1:SharedState.transformCurrentValue', SharedStateActions.fromJson)
     ..register('z:1:SharedState.update', SharedStateActions.fromJson)
+    ..register('z:1:SharedStates.provide', ZacSharedStateProvider.fromJson)
     ..register('z:1:StateMachine:Action.send', ZacStateMachineActions.fromJson)
     ..register(
         'z:1:StateMachine:Action.trySend', ZacStateMachineActions.fromJson)
