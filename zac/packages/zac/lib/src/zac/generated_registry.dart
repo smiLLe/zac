@@ -599,6 +599,7 @@ void addZacBuilders(ZacRegistry registry) {
         'z:1:StateMachine:Action.trySend', ZacStateMachineActions.fromJson)
     ..register('z:1:StateMachine:Build', ZacStateMachineBuild.fromJson)
     ..register('z:1:StateMachines.provide', ZacStateMachineProvider.fromJson)
+    ..register('z:1:String', ZacString.fromJson)
     ..register('z:1:String.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:Transformer:ActionPayload.toList',
         ZacActionPayloadTransformer.fromJson)

@@ -903,9 +903,8 @@ ZacBuiltInActions _$ZacBuiltInActionsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ZacBuiltInActions {
   Object get payload => throw _privateConstructorUsedError;
-  ZacListBuilder<ZacAction, List<ZacAction>> get actions =>
-      throw _privateConstructorUsedError;
-  ZacListBuilder<ZacTransform, List<ZacTransform>>? get transformer =>
+  ZacBuilder<List<ZacAction>> get actions => throw _privateConstructorUsedError;
+  ZacBuilder<List<ZacTransform>>? get transformer =>
       throw _privateConstructorUsedError;
 
   @optionalTypeArgs
@@ -928,9 +927,9 @@ class _$_OverridePayload extends _OverridePayload {
   @override
   final Object payload;
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>> actions;
+  final ZacBuilder<List<ZacAction>> actions;
   @override
-  final ZacListBuilder<ZacTransform, List<ZacTransform>>? transformer;
+  final ZacBuilder<List<ZacTransform>>? transformer;
 
   @override
   String toString() {
@@ -965,9 +964,8 @@ class _$_OverridePayload extends _OverridePayload {
 abstract class _OverridePayload extends ZacBuiltInActions {
   factory _OverridePayload(
       {required final Object payload,
-      required final ZacListBuilder<ZacAction, List<ZacAction>> actions,
-      final ZacListBuilder<ZacTransform, List<ZacTransform>>?
-          transformer}) = _$_OverridePayload;
+      required final ZacBuilder<List<ZacAction>> actions,
+      final ZacBuilder<List<ZacTransform>>? transformer}) = _$_OverridePayload;
   _OverridePayload._() : super._();
 
   factory _OverridePayload.fromJson(Map<String, dynamic> json) =
@@ -976,9 +974,9 @@ abstract class _OverridePayload extends ZacBuiltInActions {
   @override
   Object get payload;
   @override
-  ZacListBuilder<ZacAction, List<ZacAction>> get actions;
+  ZacBuilder<List<ZacAction>> get actions;
   @override
-  ZacListBuilder<ZacTransform, List<ZacTransform>>? get transformer;
+  ZacBuilder<List<ZacTransform>>? get transformer;
 }
 
 ZacControlFlowAction _$ZacControlFlowActionFromJson(Map<String, dynamic> json) {

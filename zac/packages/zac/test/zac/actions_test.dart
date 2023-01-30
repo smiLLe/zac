@@ -37,7 +37,7 @@ void main() {
         final cb = MockTestActionExecute();
         ZacBuiltInActions.withPayload(
           payload: 'hello',
-          actions: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
+          actions: ZacListOfActions([TestAction(cb)]),
         ).build(getContext(), getZacContext()).execute(
             ZacActionPayload.param('IGNORED'), getContext(), getZacContext());
 
@@ -50,7 +50,7 @@ void main() {
 
         ZacBuiltInActions.withPayload(
           payload: <String, dynamic>{'builder': 'f:1:SizedBox'},
-          actions: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
+          actions: ZacListOfActions([TestAction(cb)]),
         ).build(getContext(), getZacContext()).execute(
             ZacActionPayload.param('IGNORED'), getContext(), getZacContext());
 
@@ -63,8 +63,8 @@ void main() {
 
         ZacBuiltInActions.withPayload(
           payload: 'hello',
-          actions: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
-          transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+          actions: ZacListOfActions([TestAction(cb)]),
+          transformer: ZacListOfTransformers([
             TestTransform((transformValue, context, zacContext, payload) {
               return 1;
             })

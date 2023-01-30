@@ -77,14 +77,22 @@ _$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
     );
 
 _$_OverridePayload _$$_OverridePayloadFromJson(Map<String, dynamic> json) =>
-    _$_OverridePayload(
-      payload: json['payload'] as Object,
-      actions: ZacListBuilder<ZacAction, List<ZacAction>>.fromJson(
-          json['actions'] as Object),
-      transformer: json['transformer'] == null
-          ? null
-          : ZacListBuilder<ZacTransform, List<ZacTransform>>.fromJson(
-              json['transformer'] as Object),
+    $checkedCreate(
+      r'_$_OverridePayload',
+      json,
+      ($checkedConvert) {
+        final val = _$_OverridePayload(
+          payload: $checkedConvert('payload', (v) => v as Object),
+          actions: $checkedConvert('actions',
+              (v) => ZacBuilder<List<ZacAction>>.fromJson(v as Object)),
+          transformer: $checkedConvert(
+              'transformer',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacTransform>>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );
 
 _$_ZacControlFlowActionIf _$$_ZacControlFlowActionIfFromJson(

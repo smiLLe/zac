@@ -211,8 +211,8 @@ class ZacBuiltInActions
   @FreezedUnionValue('z:1:Action.withPayload')
   factory ZacBuiltInActions.withPayload({
     required Object payload,
-    required ZacListBuilder<ZacAction, List<ZacAction>> actions,
-    ZacListBuilder<ZacTransform, List<ZacTransform>>? transformer,
+    required ZacBuilder<List<ZacAction>> actions,
+    ZacBuilder<List<ZacTransform>>? transformer,
   }) = _OverridePayload;
 
   late final ZacAction _action = ZacAction(
