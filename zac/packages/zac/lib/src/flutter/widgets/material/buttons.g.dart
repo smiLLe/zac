@@ -8,148 +8,223 @@ part of 'buttons.dart';
 
 _$_FlutterElevatedButton _$$_FlutterElevatedButtonFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterElevatedButton(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
-      onLongPress: json['onLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onLongPress'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterElevatedButton',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterElevatedButton(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onLongPress: $checkedConvert(
+              'onLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterElevatedButtonIcon _$$_FlutterElevatedButtonIconFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterElevatedButtonIcon(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      icon: ZacBuilder<Widget>.fromJson(json['icon'] as Object),
-      label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
-      onLongPress: json['onLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onLongPress'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterElevatedButtonIcon',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterElevatedButtonIcon(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          icon: $checkedConvert(
+              'icon', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          label: $checkedConvert(
+              'label', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onLongPress: $checkedConvert(
+              'onLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterOutlinedButton _$$_FlutterOutlinedButtonFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterOutlinedButton(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
-      onLongPress: json['onLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onLongPress'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterOutlinedButton',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterOutlinedButton(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onLongPress: $checkedConvert(
+              'onLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterOutlinedButtonIcon _$$_FlutterOutlinedButtonIconFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterOutlinedButtonIcon(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      icon: ZacBuilder<Widget>.fromJson(json['icon'] as Object),
-      label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
-      onLongPress: json['onLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onLongPress'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterOutlinedButtonIcon',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterOutlinedButtonIcon(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          icon: $checkedConvert(
+              'icon', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          label: $checkedConvert(
+              'label', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onLongPress: $checkedConvert(
+              'onLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterTextButton _$$_FlutterTextButtonFromJson(Map<String, dynamic> json) =>
-    _$_FlutterTextButton(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
-      onLongPress: json['onLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onLongPress'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterTextButton',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterTextButton(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onLongPress: $checkedConvert(
+              'onLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterTextButtonIcon _$$_FlutterTextButtonIconFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterTextButtonIcon(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      icon: ZacBuilder<Widget>.fromJson(json['icon'] as Object),
-      label: ZacBuilder<Widget>.fromJson(json['label'] as Object),
-      onPressed: json['onPressed'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onPressed'] as Object),
-      onLongPress: json['onLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onLongPress'] as Object),
-      autofocus: json['autofocus'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['autofocus'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterTextButtonIcon',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterTextButtonIcon(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          icon: $checkedConvert(
+              'icon', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          label: $checkedConvert(
+              'label', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          onPressed: $checkedConvert(
+              'onPressed',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onLongPress: $checkedConvert(
+              'onLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          autofocus: $checkedConvert(
+              'autofocus',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );

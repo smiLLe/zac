@@ -32,7 +32,7 @@ class FlutterListView with _$FlutterListView implements ZacBuilder<ListView> {
     ZacBuilder<bool?>? addRepaintBoundaries,
     ZacBuilder<bool?>? addSemanticIndexes,
     ZacBuilder<double?>? cacheExtent,
-    ZacListBuilder<Widget, List<Widget>?>? children,
+    ZacBuilder<List<Widget>?>? children,
     ZacBuilder<int?>? semanticChildCount,
 // DragStartBehavior dragStartBehavior = DragStartBehavior.start,
     ZacBuilder<ScrollViewKeyboardDismissBehavior?>? keyboardDismissBehavior,

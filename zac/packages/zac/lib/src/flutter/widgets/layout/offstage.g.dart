@@ -7,14 +7,22 @@ part of 'offstage.dart';
 // **************************************************************************
 
 _$_FlutterOffstage _$$_FlutterOffstageFromJson(Map<String, dynamic> json) =>
-    _$_FlutterOffstage(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      offstage: json['offstage'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['offstage'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterOffstage',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterOffstage(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          offstage: $checkedConvert(
+              'offstage',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

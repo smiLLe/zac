@@ -8,54 +8,89 @@ part of 'progress_indicator.dart';
 
 _$_FlutterProgressIndicatorLinear _$$_FlutterProgressIndicatorLinearFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterProgressIndicatorLinear(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      value: json['value'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['value'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      color: json['color'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
-      minHeight: json['minHeight'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['minHeight'] as Object),
-      semanticsLabel: json['semanticsLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticsLabel'] as Object),
-      semanticsValue: json['semanticsValue'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticsValue'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterProgressIndicatorLinear',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterProgressIndicatorLinear(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          value: $checkedConvert(
+              'value',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          color: $checkedConvert(
+              'color',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          minHeight: $checkedConvert(
+              'minHeight',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          semanticsLabel: $checkedConvert(
+              'semanticsLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          semanticsValue: $checkedConvert(
+              'semanticsValue',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterProgressIndicatorCircular
     _$$_FlutterProgressIndicatorCircularFromJson(Map<String, dynamic> json) =>
-        _$_FlutterProgressIndicatorCircular(
-          key: json['key'] == null
-              ? null
-              : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-          value: json['value'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(json['value'] as Object),
-          backgroundColor: json['backgroundColor'] == null
-              ? null
-              : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-          color: json['color'] == null
-              ? null
-              : ZacBuilder<Color?>.fromJson(json['color'] as Object),
-          strokeWidth: json['strokeWidth'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(json['strokeWidth'] as Object),
-          semanticsLabel: json['semanticsLabel'] == null
-              ? null
-              : ZacBuilder<String?>.fromJson(json['semanticsLabel'] as Object),
-          semanticsValue: json['semanticsValue'] == null
-              ? null
-              : ZacBuilder<String?>.fromJson(json['semanticsValue'] as Object),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterProgressIndicatorCircular',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterProgressIndicatorCircular(
+              key: $checkedConvert(
+                  'key',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<Key?>.fromJson(v as Object)),
+              value: $checkedConvert(
+                  'value',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              backgroundColor: $checkedConvert(
+                  'backgroundColor',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<Color?>.fromJson(v as Object)),
+              color: $checkedConvert(
+                  'color',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<Color?>.fromJson(v as Object)),
+              strokeWidth: $checkedConvert(
+                  'strokeWidth',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              semanticsLabel: $checkedConvert(
+                  'semanticsLabel',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<String?>.fromJson(v as Object)),
+              semanticsValue: $checkedConvert(
+                  'semanticsValue',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<String?>.fromJson(v as Object)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );

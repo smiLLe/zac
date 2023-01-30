@@ -8,42 +8,57 @@ part of 'gesture_detector.dart';
 
 _$_FlutterGestureDetector _$$_FlutterGestureDetectorFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterGestureDetector(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      onTap: json['onTap'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onTap'] as Object),
-      onSecondaryTap: json['onSecondaryTap'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onSecondaryTap'] as Object),
-      onDoubleTap: json['onDoubleTap'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onDoubleTap'] as Object),
-      onLongPress: json['onLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onLongPress'] as Object),
-      onSecondaryLongPress: json['onSecondaryLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onSecondaryLongPress'] as Object),
-      onTertiaryLongPress: json['onTertiaryLongPress'] == null
-          ? null
-          : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-              json['onTertiaryLongPress'] as Object),
-      behavior: json['behavior'] == null
-          ? null
-          : FlutterHitTestBehavior.fromJson(
-              json['behavior'] as Map<String, dynamic>),
-      excludeFromSemantics: json['excludeFromSemantics'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['excludeFromSemantics'] as Object),
+    $checkedCreate(
+      r'_$_FlutterGestureDetector',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterGestureDetector(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          onTap: $checkedConvert(
+              'onTap',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onSecondaryTap: $checkedConvert(
+              'onSecondaryTap',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onDoubleTap: $checkedConvert(
+              'onDoubleTap',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onLongPress: $checkedConvert(
+              'onLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onSecondaryLongPress: $checkedConvert(
+              'onSecondaryLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          onTertiaryLongPress: $checkedConvert(
+              'onTertiaryLongPress',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+          behavior: $checkedConvert(
+              'behavior',
+              (v) => v == null
+                  ? null
+                  : FlutterHitTestBehavior.fromJson(v as Map<String, dynamic>)),
+          excludeFromSemantics: $checkedConvert(
+              'excludeFromSemantics',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

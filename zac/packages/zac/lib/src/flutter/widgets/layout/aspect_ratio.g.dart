@@ -8,12 +8,20 @@ part of 'aspect_ratio.dart';
 
 _$_FlutterAspectRatio _$$_FlutterAspectRatioFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterAspectRatio(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      aspectRatio: ZacBuilder<double>.fromJson(json['aspectRatio'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterAspectRatio',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterAspectRatio(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          aspectRatio: $checkedConvert(
+              'aspectRatio', (v) => ZacBuilder<double>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

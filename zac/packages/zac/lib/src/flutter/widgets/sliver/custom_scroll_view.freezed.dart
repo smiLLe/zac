@@ -33,8 +33,7 @@ mixin _$FlutterCustomScrollView {
   ZacBuilder<Key?>? get center => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get anchor => throw _privateConstructorUsedError;
   ZacBuilder<double?>? get cacheExtent => throw _privateConstructorUsedError;
-  ZacListBuilder<Widget, List<Widget>?>? get slivers =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<List<Widget>?>? get slivers => throw _privateConstructorUsedError;
   ZacBuilder<int?>? get semanticChildCount =>
       throw _privateConstructorUsedError; // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
   FlutterScrollViewKeyboardDismissBehavior? get keyboardDismissBehavior =>
@@ -95,7 +94,7 @@ class _$_FlutterCustomScrollView extends _FlutterCustomScrollView {
   @override
   final ZacBuilder<double?>? cacheExtent;
   @override
-  final ZacListBuilder<Widget, List<Widget>?>? slivers;
+  final ZacBuilder<List<Widget>?>? slivers;
   @override
   final ZacBuilder<int?>? semanticChildCount;
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
@@ -183,7 +182,7 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
       final ZacBuilder<Key?>? center,
       final ZacBuilder<double?>? anchor,
       final ZacBuilder<double?>? cacheExtent,
-      final ZacListBuilder<Widget, List<Widget>?>? slivers,
+      final ZacBuilder<List<Widget>?>? slivers,
       final ZacBuilder<int?>? semanticChildCount,
       final FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
       final ZacBuilder<String?>? restorationId,
@@ -214,7 +213,7 @@ abstract class _FlutterCustomScrollView extends FlutterCustomScrollView {
   @override
   ZacBuilder<double?>? get cacheExtent;
   @override
-  ZacListBuilder<Widget, List<Widget>?>? get slivers;
+  ZacBuilder<List<Widget>?>? get slivers;
   @override
   ZacBuilder<int?>? get semanticChildCount;
   @override // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,

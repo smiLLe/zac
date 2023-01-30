@@ -27,8 +27,7 @@ mixin _$FlutterIndexedStack {
       throw _privateConstructorUsedError;
   ZacBuilder<StackFit?>? get sizing => throw _privateConstructorUsedError;
   ZacBuilder<int?>? get index => throw _privateConstructorUsedError;
-  ZacListBuilder<Widget, List<Widget>?>? get children =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<List<Widget>?>? get children => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
@@ -63,7 +62,7 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
   @override
   final ZacBuilder<int?>? index;
   @override
-  final ZacListBuilder<Widget, List<Widget>?>? children;
+  final ZacBuilder<List<Widget>?>? children;
 
   @override
   String toString() {
@@ -102,13 +101,12 @@ class _$_FlutterIndexedStack extends _FlutterIndexedStack {
 
 abstract class _FlutterIndexedStack extends FlutterIndexedStack {
   factory _FlutterIndexedStack(
-          {final ZacBuilder<Key?>? key,
-          final ZacBuilder<AlignmentGeometry?>? alignment,
-          final ZacBuilder<TextDirection?>? textDirection,
-          final ZacBuilder<StackFit?>? sizing,
-          final ZacBuilder<int?>? index,
-          final ZacListBuilder<Widget, List<Widget>?>? children}) =
-      _$_FlutterIndexedStack;
+      {final ZacBuilder<Key?>? key,
+      final ZacBuilder<AlignmentGeometry?>? alignment,
+      final ZacBuilder<TextDirection?>? textDirection,
+      final ZacBuilder<StackFit?>? sizing,
+      final ZacBuilder<int?>? index,
+      final ZacBuilder<List<Widget>?>? children}) = _$_FlutterIndexedStack;
   _FlutterIndexedStack._() : super._();
 
   factory _FlutterIndexedStack.fromJson(Map<String, dynamic> json) =
@@ -125,5 +123,5 @@ abstract class _FlutterIndexedStack extends FlutterIndexedStack {
   @override
   ZacBuilder<int?>? get index;
   @override
-  ZacListBuilder<Widget, List<Widget>?>? get children;
+  ZacBuilder<List<Widget>?>? get children;
 }

@@ -30,7 +30,7 @@ class FlutterScaffold with _$FlutterScaffold implements ZacBuilder<Scaffold> {
     ZacBuilder<Widget?>? floatingActionButton,
     // FloatingActionButtonLocation? floatingActionButtonLocation,
     // FloatingActionButtonAnimator? floatingActionButtonAnimator,
-    ZacListBuilder<Widget, List<Widget>?>? persistentFooterButtons,
+    ZacBuilder<List<Widget>?>? persistentFooterButtons,
     ZacBuilder<Widget?>? drawer,
     // DrawerCallback? onDrawerChanged,
     ZacBuilder<Widget?>? endDrawer,
@@ -309,7 +309,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
     FlutterSnackBarAction? action,
     // Duration duration = _snackBarDisplayDuration,
     // Animation<double>? animation,
-    ZacListBuilder<ZacAction, List<ZacAction>?>? onVisible,
+    ZacBuilder<List<ZacAction>?>? onVisible,
     // DismissDirection dismissDirection = DismissDirection.down,
   }) = _FlutterSnackBar;
 
@@ -383,7 +383,7 @@ class FlutterSnackBarAction
     ZacBuilder<Color?>? textColor,
     ZacBuilder<Color?>? disabledTextColor,
     required ZacBuilder<String> label,
-    required ZacListBuilder<ZacAction, List<ZacAction>> onPressed,
+    required ZacBuilder<List<ZacAction>> onPressed,
   }) = _FlutterSnackBarAction;
 
   SnackBarAction _buildWidget(BuildContext context, ZacContext zacContext) {
@@ -419,7 +419,7 @@ class FlutterMaterialBanner
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> content,
     ZacBuilder<TextStyle?>? contentTextStyle,
-    required ZacListBuilder<Widget, List<Widget>> actions,
+    required ZacBuilder<List<Widget>> actions,
     ZacBuilder<double?>? elevation,
     ZacBuilder<Widget?>? leading,
     ZacBuilder<Color?>? backgroundColor,
@@ -428,7 +428,7 @@ class FlutterMaterialBanner
     ZacBuilder<bool?>? forceActionsBelow,
 // OverflowBarAlignment overflowAlignment = OverflowBarAlignment.end,
 // Animation<double>? animation,
-    ZacListBuilder<ZacAction, List<ZacAction>?>? onVisible,
+    ZacBuilder<List<ZacAction>?>? onVisible,
   }) = _FlutterMaterialBanner;
 
   MaterialBanner _buildWidget(BuildContext context, ZacContext zacContext) {

@@ -8,202 +8,299 @@ part of 'dialog.dart';
 
 _$_FlutterDialogsDialog _$$_FlutterDialogsDialogFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterDialogsDialog(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      insetPadding: json['insetPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsets?>.fromJson(json['insetPadding'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterDialogsDialog',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterDialogsDialog(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          insetPadding: $checkedConvert(
+              'insetPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsets?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterDialogsAlertDialog _$$_FlutterDialogsAlertDialogFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterDialogsAlertDialog(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      title: json['title'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['title'] as Object),
-      content: json['content'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['content'] as Object),
-      actions: json['actions'] == null
-          ? null
-          : ZacListBuilder<Widget, List<Widget>?>.fromJson(
-              json['actions'] as Object),
-      titlePadding: json['titlePadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
-              json['titlePadding'] as Object),
-      titleTextStyle: json['titleTextStyle'] == null
-          ? null
-          : ZacBuilder<TextStyle?>.fromJson(json['titleTextStyle'] as Object),
-      contentPadding: json['contentPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
-              json['contentPadding'] as Object),
-      contentTextStyle: json['contentTextStyle'] == null
-          ? null
-          : ZacBuilder<TextStyle?>.fromJson(json['contentTextStyle'] as Object),
-      actionsPadding: json['actionsPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
-              json['actionsPadding'] as Object),
-      actionsAlignment: json['actionsAlignment'] == null
-          ? null
-          : ZacBuilder<MainAxisAlignment?>.fromJson(
-              json['actionsAlignment'] as Object),
-      actionsOverflowDirection: json['actionsOverflowDirection'] == null
-          ? null
-          : ZacBuilder<VerticalDirection?>.fromJson(
-              json['actionsOverflowDirection'] as Object),
-      actionsOverflowButtonSpacing: json['actionsOverflowButtonSpacing'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(
-              json['actionsOverflowButtonSpacing'] as Object),
-      buttonPadding: json['buttonPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
-              json['buttonPadding'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      semanticLabel: json['semanticLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticLabel'] as Object),
-      insetPadding: json['insetPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsets?>.fromJson(json['insetPadding'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      scrollable: json['scrollable'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['scrollable'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterDialogsAlertDialog',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterDialogsAlertDialog(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          title: $checkedConvert(
+              'title',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          content: $checkedConvert(
+              'content',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          actions: $checkedConvert(
+              'actions',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<Widget>?>.fromJson(v as Object)),
+          titlePadding: $checkedConvert(
+              'titlePadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          titleTextStyle: $checkedConvert(
+              'titleTextStyle',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<TextStyle?>.fromJson(v as Object)),
+          contentPadding: $checkedConvert(
+              'contentPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          contentTextStyle: $checkedConvert(
+              'contentTextStyle',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<TextStyle?>.fromJson(v as Object)),
+          actionsPadding: $checkedConvert(
+              'actionsPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          actionsAlignment: $checkedConvert(
+              'actionsAlignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<MainAxisAlignment?>.fromJson(v as Object)),
+          actionsOverflowDirection: $checkedConvert(
+              'actionsOverflowDirection',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<VerticalDirection?>.fromJson(v as Object)),
+          actionsOverflowButtonSpacing: $checkedConvert(
+              'actionsOverflowButtonSpacing',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          buttonPadding: $checkedConvert(
+              'buttonPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          semanticLabel: $checkedConvert(
+              'semanticLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          insetPadding: $checkedConvert(
+              'insetPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsets?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          scrollable: $checkedConvert(
+              'scrollable',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterDialogsSimpleDialog _$$_FlutterDialogsSimpleDialogFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterDialogsSimpleDialog(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      title: json['title'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['title'] as Object),
-      children: json['children'] == null
-          ? null
-          : ZacListBuilder<Widget, List<Widget>?>.fromJson(
-              json['children'] as Object),
-      titlePadding: json['titlePadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
-              json['titlePadding'] as Object),
-      titleTextStyle: json['titleTextStyle'] == null
-          ? null
-          : ZacBuilder<TextStyle?>.fromJson(json['titleTextStyle'] as Object),
-      contentPadding: json['contentPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsetsGeometry?>.fromJson(
-              json['contentPadding'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      semanticLabel: json['semanticLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticLabel'] as Object),
-      insetPadding: json['insetPadding'] == null
-          ? null
-          : ZacBuilder<EdgeInsets?>.fromJson(json['insetPadding'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      $type: json['builder'] as String?,
+    $checkedCreate(
+      r'_$_FlutterDialogsSimpleDialog',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterDialogsSimpleDialog(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          title: $checkedConvert(
+              'title',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          children: $checkedConvert(
+              'children',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<List<Widget>?>.fromJson(v as Object)),
+          titlePadding: $checkedConvert(
+              'titlePadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          titleTextStyle: $checkedConvert(
+              'titleTextStyle',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<TextStyle?>.fromJson(v as Object)),
+          contentPadding: $checkedConvert(
+              'contentPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsetsGeometry?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          semanticLabel: $checkedConvert(
+              'semanticLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          insetPadding: $checkedConvert(
+              'insetPadding',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<EdgeInsets?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_FlutterDialogsSimpleDialogOption
     _$$_FlutterDialogsSimpleDialogOptionFromJson(Map<String, dynamic> json) =>
-        _$_FlutterDialogsSimpleDialogOption(
-          key: json['key'] == null
-              ? null
-              : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-          child: json['child'] == null
-              ? null
-              : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-          onPressed: json['onPressed'] == null
-              ? null
-              : ZacListBuilder<ZacAction, List<ZacAction>?>.fromJson(
-                  json['onPressed'] as Object),
-          padding: json['padding'] == null
-              ? null
-              : ZacBuilder<EdgeInsets?>.fromJson(json['padding'] as Object),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_FlutterDialogsSimpleDialogOption',
+          json,
+          ($checkedConvert) {
+            final val = _$_FlutterDialogsSimpleDialogOption(
+              key: $checkedConvert(
+                  'key',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<Key?>.fromJson(v as Object)),
+              child: $checkedConvert(
+                  'child',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<Widget?>.fromJson(v as Object)),
+              onPressed: $checkedConvert(
+                  'onPressed',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<List<ZacAction>?>.fromJson(v as Object)),
+              padding: $checkedConvert(
+                  'padding',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<EdgeInsets?>.fromJson(v as Object)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_FlutterDialogActionsShowDialog _$$_FlutterDialogActionsShowDialogFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterDialogActionsShowDialog(
-      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
-      barrierDismissible: json['barrierDismissible'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['barrierDismissible'] as Object),
-      barrierColor: json['barrierColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['barrierColor'] as Object),
-      barrierLabel: json['barrierLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['barrierLabel'] as Object),
-      useSafeArea: json['useSafeArea'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['useSafeArea'] as Object),
-      useRootNavigator: json['useRootNavigator'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(json['useRootNavigator'] as Object),
-      routeSettings: json['routeSettings'] == null
-          ? null
-          : ZacBuilder<RouteSettings?>.fromJson(
-              json['routeSettings'] as Object),
+    $checkedCreate(
+      r'_$_FlutterDialogActionsShowDialog',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterDialogActionsShowDialog(
+          child: $checkedConvert(
+              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+          barrierDismissible: $checkedConvert(
+              'barrierDismissible',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          barrierColor: $checkedConvert(
+              'barrierColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          barrierLabel: $checkedConvert(
+              'barrierLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+          useSafeArea: $checkedConvert(
+              'useSafeArea',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          useRootNavigator: $checkedConvert(
+              'useRootNavigator',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          routeSettings: $checkedConvert(
+              'routeSettings',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<RouteSettings?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

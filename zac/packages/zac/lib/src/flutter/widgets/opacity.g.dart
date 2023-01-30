@@ -7,16 +7,24 @@ part of 'opacity.dart';
 // **************************************************************************
 
 _$_FlutterOpacity _$$_FlutterOpacityFromJson(Map<String, dynamic> json) =>
-    _$_FlutterOpacity(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      opacity: ZacBuilder<double>.fromJson(json['opacity'] as Object),
-      alwaysIncludeSemantics: json['alwaysIncludeSemantics'] == null
-          ? null
-          : ZacBuilder<bool?>.fromJson(
-              json['alwaysIncludeSemantics'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterOpacity',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterOpacity(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          opacity: $checkedConvert(
+              'opacity', (v) => ZacBuilder<double>.fromJson(v as Object)),
+          alwaysIncludeSemantics: $checkedConvert(
+              'alwaysIncludeSemantics',
+              (v) =>
+                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

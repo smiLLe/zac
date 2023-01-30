@@ -8,25 +8,36 @@ part of 'unconstrained_box.dart';
 
 _$_FlutterUnconstrainedBox _$$_FlutterUnconstrainedBoxFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterUnconstrainedBox(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      textDirection: json['textDirection'] == null
-          ? null
-          : ZacBuilder<TextDirection?>.fromJson(
-              json['textDirection'] as Object),
-      alignment: json['alignment'] == null
-          ? null
-          : ZacBuilder<AlignmentGeometry?>.fromJson(
-              json['alignment'] as Object),
-      constrainedAxis: json['constrainedAxis'] == null
-          ? null
-          : ZacBuilder<Axis?>.fromJson(json['constrainedAxis'] as Object),
-      clipBehavior: json['clipBehavior'] == null
-          ? null
-          : ZacBuilder<Clip?>.fromJson(json['clipBehavior'] as Object),
+    $checkedCreate(
+      r'_$_FlutterUnconstrainedBox',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterUnconstrainedBox(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          textDirection: $checkedConvert(
+              'textDirection',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<TextDirection?>.fromJson(v as Object)),
+          alignment: $checkedConvert(
+              'alignment',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<AlignmentGeometry?>.fromJson(v as Object)),
+          constrainedAxis: $checkedConvert(
+              'constrainedAxis',
+              (v) =>
+                  v == null ? null : ZacBuilder<Axis?>.fromJson(v as Object)),
+          clipBehavior: $checkedConvert(
+              'clipBehavior',
+              (v) =>
+                  v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

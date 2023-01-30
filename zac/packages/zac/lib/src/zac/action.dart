@@ -118,13 +118,13 @@ class ZacExecuteActionsBuilder
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValue)
   factory ZacExecuteActionsBuilder.once({
-    required ZacListBuilder<ZacAction, List<ZacAction>> actions,
+    required ZacBuilder<List<ZacAction>> actions,
     ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderOnce;
 
   @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
   factory ZacExecuteActionsBuilder.listen({
-    required ZacListBuilder<ZacAction, List<ZacAction>> actions,
+    required ZacBuilder<List<ZacAction>> actions,
     required SharedValueFamily family,
     ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderListen;
@@ -255,9 +255,9 @@ class ZacControlFlowAction
 
   @FreezedUnionValue(ZacControlFlowAction.unionValue)
   factory ZacControlFlowAction.ifCond({
-    required ZacListBuilder<ZacTransform, List<ZacTransform>> condition,
-    required ZacListBuilder<ZacAction, List<ZacAction>> ifTrue,
-    ZacListBuilder<ZacAction, List<ZacAction>>? ifFalse,
+    required ZacBuilder<List<ZacTransform>> condition,
+    required ZacBuilder<List<ZacAction>> ifTrue,
+    ZacBuilder<List<ZacAction>>? ifFalse,
   }) = _ZacControlFlowActionIf;
 
   late final ZacAction _action = ZacAction(

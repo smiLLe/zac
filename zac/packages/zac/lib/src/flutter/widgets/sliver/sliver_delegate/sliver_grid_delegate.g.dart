@@ -9,44 +9,73 @@ part of 'sliver_grid_delegate.dart';
 _$_SliverGridDelegateWithFixedCrossAxisCount
     _$$_SliverGridDelegateWithFixedCrossAxisCountFromJson(
             Map<String, dynamic> json) =>
-        _$_SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: json['crossAxisCount'] as int,
-          mainAxisSpacing: json['mainAxisSpacing'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(json['mainAxisSpacing'] as Object),
-          crossAxisSpacing: json['crossAxisSpacing'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(
-                  json['crossAxisSpacing'] as Object),
-          childAspectRatio: json['childAspectRatio'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(
-                  json['childAspectRatio'] as Object),
-          mainAxisExtent: json['mainAxisExtent'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(json['mainAxisExtent'] as Object),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_SliverGridDelegateWithFixedCrossAxisCount',
+          json,
+          ($checkedConvert) {
+            final val = _$_SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount:
+                  $checkedConvert('crossAxisCount', (v) => v as int),
+              mainAxisSpacing: $checkedConvert(
+                  'mainAxisSpacing',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              crossAxisSpacing: $checkedConvert(
+                  'crossAxisSpacing',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              childAspectRatio: $checkedConvert(
+                  'childAspectRatio',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              mainAxisExtent: $checkedConvert(
+                  'mainAxisExtent',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );
 
 _$_SliverGridDelegateWithMaxCrossAxisExtent
     _$$_SliverGridDelegateWithMaxCrossAxisExtentFromJson(
             Map<String, dynamic> json) =>
-        _$_SliverGridDelegateWithMaxCrossAxisExtent(
-          maxCrossAxisExtent:
-              ZacBuilder<double>.fromJson(json['maxCrossAxisExtent'] as Object),
-          mainAxisSpacing: json['mainAxisSpacing'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(json['mainAxisSpacing'] as Object),
-          crossAxisSpacing: json['crossAxisSpacing'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(
-                  json['crossAxisSpacing'] as Object),
-          childAspectRatio: json['childAspectRatio'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(
-                  json['childAspectRatio'] as Object),
-          mainAxisExtent: json['mainAxisExtent'] == null
-              ? null
-              : ZacBuilder<double?>.fromJson(json['mainAxisExtent'] as Object),
-          $type: json['builder'] as String?,
+        $checkedCreate(
+          r'_$_SliverGridDelegateWithMaxCrossAxisExtent',
+          json,
+          ($checkedConvert) {
+            final val = _$_SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: $checkedConvert('maxCrossAxisExtent',
+                  (v) => ZacBuilder<double>.fromJson(v as Object)),
+              mainAxisSpacing: $checkedConvert(
+                  'mainAxisSpacing',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              crossAxisSpacing: $checkedConvert(
+                  'crossAxisSpacing',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              childAspectRatio: $checkedConvert(
+                  'childAspectRatio',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              mainAxisExtent: $checkedConvert(
+                  'mainAxisExtent',
+                  (v) => v == null
+                      ? null
+                      : ZacBuilder<double?>.fromJson(v as Object)),
+              $type: $checkedConvert('builder', (v) => v as String?),
+            );
+            return val;
+          },
+          fieldKeyMap: const {r'$type': 'builder'},
         );

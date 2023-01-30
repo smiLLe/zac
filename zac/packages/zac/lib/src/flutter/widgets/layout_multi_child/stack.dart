@@ -23,7 +23,7 @@ class FlutterStack with _$FlutterStack implements ZacBuilder<Stack> {
     ZacBuilder<TextDirection?>? textDirection,
     ZacBuilder<StackFit?>? fit,
     ZacBuilder<Clip?>? clipBehavior,
-    ZacListBuilder<Widget, List<Widget>?>? children,
+    ZacBuilder<List<Widget>?>? children,
   }) = _FlutterStack;
 
   Stack _buildWidget(BuildContext context, ZacContext zacContext) {

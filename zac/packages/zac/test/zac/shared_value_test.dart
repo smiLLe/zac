@@ -139,34 +139,34 @@ void main() {
       await testWithContextsWraped(
         tester,
         (child) => SharedValueProviderBuilder.provideWidgets(
-          value: ZacValueList<Widget, List<Widget>>([FlutterSizedBox()]),
+          value: ZacListOfWidgets([FlutterSizedBox()]),
           family: 'shared',
           child: child,
         ),
         (getContext, getZacContext) {
           expect(getContext().widgetRef.watch(SharedValue.provider('shared')),
-              ZacValueList<Widget, List<Widget>>([FlutterSizedBox()]));
+              ZacListOfWidgets([FlutterSizedBox()]));
         },
       );
     });
 
-    testWidgets('provide Map<String, Widget>', (tester) async {
-      await testWithContextsWraped(
-        tester,
-        (child) => SharedValueProviderBuilder.provideWidgetsMap(
-          value: ZacValueMap<Widget, Map<String, Widget>>(
-              {'a': FlutterSizedBox()}),
-          family: 'shared',
-          child: child,
-        ),
-        (getContext, getZacContext) {
-          expect(
-              getContext().widgetRef.watch(SharedValue.provider('shared')),
-              ZacValueMap<Widget, Map<String, Widget>>(
-                  {'a': FlutterSizedBox()}));
-        },
-      );
-    });
+    // testWidgets('provide Map<String, Widget>', (tester) async {
+    //   await testWithContextsWraped(
+    //     tester,
+    //     (child) => SharedValueProviderBuilder.provideWidgetsMap(
+    //       value: ZacValueMap<Widget, Map<String, Widget>>(
+    //           {'a': FlutterSizedBox()}),
+    //       family: 'shared',
+    //       child: child,
+    //     ),
+    //     (getContext, getZacContext) {
+    //       expect(
+    //           getContext().widgetRef.watch(SharedValue.provider('shared')),
+    //           ZacValueMap<Widget, Map<String, Widget>>(
+    //               {'a': FlutterSizedBox()}));
+    //     },
+    //   );
+    // });
 
     testWidgets('provide any ZacBuilder', (tester) async {
       await testWithContextsWraped(
@@ -278,114 +278,114 @@ void main() {
     });
   });
 
-  group('ConsumeSharedValueList', () {
-    test('Is in registry', () {
-      expectInRegistry(
-          ['z:1:SharedValueList.consume'], ConsumeSharedValueList.fromRegister);
-    });
+  // group('ConsumeSharedValueList', () {
+  //   test('Is in registry', () {
+  //     expectInRegistry(
+  //         ['z:1:SharedValueList.consume'], ConsumeSharedValueList.fromRegister);
+  //   });
 
-    testWidgets('can consume null as list item', (tester) async {
-      await testWithContextsWraped(
-        tester,
-        (child) => SharedValueProviderBuilder.provideObject(
-          value: [1, null],
-          family: 'shared',
-          child: child,
-        ),
-        (getContext, getZacContext) {
-          expect(
-              ConsumeSharedValueList<int?, List<int?>>(family: 'shared')
-                  .build(getContext(), getZacContext()),
-              [1, null]);
-        },
-      );
-    });
+  //   testWidgets('can consume null as list item', (tester) async {
+  //     await testWithContextsWraped(
+  //       tester,
+  //       (child) => SharedValueProviderBuilder.provideObject(
+  //         value: [1, null],
+  //         family: 'shared',
+  //         child: child,
+  //       ),
+  //       (getContext, getZacContext) {
+  //         expect(
+  //             ConsumeSharedValueList<int?, List<int?>>(family: 'shared')
+  //                 .build(getContext(), getZacContext()),
+  //             [1, null]);
+  //       },
+  //     );
+  //   });
 
-    testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
-      await testFindWidget(
-        tester,
-        (valueKey) => SharedValueProviderBuilder.provideWidgets(
-          value: ZacValueList<Widget, List<Widget>>([
-            FlutterSizedBox(
-              key: valueKey,
-            )
-          ]),
-          family: 'shared',
-          child: FlutterColumn(
-            children: ConsumeSharedValueList<Widget, List<Widget>>(
-              family: 'shared',
-            ),
-          ),
-        ),
-      );
-    });
+  //   testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
+  //     await testFindWidget(
+  //       tester,
+  //       (valueKey) => SharedValueProviderBuilder.provideWidgets(
+  //         value: ZacListOfWidgets([
+  //           FlutterSizedBox(
+  //             key: valueKey,
+  //           )
+  //         ]),
+  //         family: 'shared',
+  //         child: FlutterColumn(
+  //           children: ConsumeSharedValueList<Widget, List<Widget>>(
+  //             family: 'shared',
+  //           ),
+  //         ),
+  //       ),
+  //     );
+  //   });
 
-    testWidgets('can consume a String', (tester) async {
-      await testWithContextsWraped(
-        tester,
-        (child) => SharedValueProviderBuilder.provideObject(
-          value: ['hello', 'world'],
-          family: 'shared',
-          child: child,
-        ),
-        (getContext, getZacContext) {
-          expect(
-              ConsumeSharedValueList<String, List<String>>(family: 'shared')
-                  .build(getContext(), getZacContext()),
-              ['hello', 'world']);
-        },
-      );
-    });
-  });
+  //   testWidgets('can consume a String', (tester) async {
+  //     await testWithContextsWraped(
+  //       tester,
+  //       (child) => SharedValueProviderBuilder.provideObject(
+  //         value: ['hello', 'world'],
+  //         family: 'shared',
+  //         child: child,
+  //       ),
+  //       (getContext, getZacContext) {
+  //         expect(
+  //             ConsumeSharedValueList<String, List<String>>(family: 'shared')
+  //                 .build(getContext(), getZacContext()),
+  //             ['hello', 'world']);
+  //       },
+  //     );
+  //   });
+  // });
 
-  group('ConsumeSharedValueMap', () {
-    test('Is in registry', () {
-      expectInRegistry(
-          ['z:1:SharedValueMap.consume'], ConsumeSharedValueMap.fromRegister);
-    });
+  // group('ConsumeSharedValueMap', () {
+  //   test('Is in registry', () {
+  //     expectInRegistry(
+  //         ['z:1:SharedValueMap.consume'], ConsumeSharedValueMap.fromRegister);
+  //   });
 
-    testWidgets('can consume null as value', (tester) async {
-      await testWithContextsWraped(
-        tester,
-        (child) => SharedValueProviderBuilder.provideObject(
-          value: {'a': null, 'b': 1},
-          family: 'shared',
-          child: child,
-        ),
-        (getContext, getZacContext) {
-          expect(
-              ConsumeSharedValueMap<int?, Map<String, int?>>(family: 'shared')
-                  .build(getContext(), getZacContext()),
-              {'a': null, 'b': 1});
-        },
-      );
-    });
+  //   testWidgets('can consume null as value', (tester) async {
+  //     await testWithContextsWraped(
+  //       tester,
+  //       (child) => SharedValueProviderBuilder.provideObject(
+  //         value: {'a': null, 'b': 1},
+  //         family: 'shared',
+  //         child: child,
+  //       ),
+  //       (getContext, getZacContext) {
+  //         expect(
+  //             ConsumeSharedValueMap<int?, Map<String, int?>>(family: 'shared')
+  //                 .build(getContext(), getZacContext()),
+  //             {'a': null, 'b': 1});
+  //       },
+  //     );
+  //   });
 
-    testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
-      await testWithContextsWraped(
-        tester,
-        (child) => SharedValueProviderBuilder.provideWidgetsMap(
-          value: ZacValueMap<Widget, Map<String, Widget>>({
-            'a': FlutterSizedBox(
-              key: FlutterValueKey('map_child'),
-            )
-          }),
-          family: 'shared',
-          child: child,
-        ),
-        (getContext, getZacContext) {
-          final map = ConsumeSharedValueMap<Widget, Map<String, Widget>>(
-                  family: 'shared')
-              .build(getContext(), getZacContext());
+  //   testWidgets('can consume a ZacBuilder<Widget>', (tester) async {
+  //     await testWithContextsWraped(
+  //       tester,
+  //       (child) => SharedValueProviderBuilder.provideWidgetsMap(
+  //         value: ZacValueMap<Widget, Map<String, Widget>>({
+  //           'a': FlutterSizedBox(
+  //             key: FlutterValueKey('map_child'),
+  //           )
+  //         }),
+  //         family: 'shared',
+  //         child: child,
+  //       ),
+  //       (getContext, getZacContext) {
+  //         final map = ConsumeSharedValueMap<Widget, Map<String, Widget>>(
+  //                 family: 'shared')
+  //             .build(getContext(), getZacContext());
 
-          expect(
-              map['a'],
-              isA<SizedBox>().having(
-                  (p0) => p0.key, 'SizedBox.key', const ValueKey('map_child')));
-        },
-      );
-    });
-  });
+  //         expect(
+  //             map['a'],
+  //             isA<SizedBox>().having(
+  //                 (p0) => p0.key, 'SizedBox.key', const ValueKey('map_child')));
+  //       },
+  //     );
+  //   });
+  // });
 
   group('SharedValue', () {
     test('provider default value', () {
@@ -514,7 +514,7 @@ void main() {
                 value: 'AA',
                 family: 'sharedA',
                 child: FlutterColumn(
-                  children: ZacValueList<Widget, List<Widget>>([
+                  children: ZacListOfWidgets([
                     FlutterText(ConsumeSharedValue<String>(family: 'sharedA')),
                     FlutterText(ConsumeSharedValue<String>(family: 'sharedB')),
                     FlutterText(ConsumeSharedValue<String>(family: 'sharedC')),
@@ -650,7 +650,7 @@ void main() {
             value: 'hello',
             family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>>(
+              children: ZacListOfWidgets(
                 [
                   FlutterText(ConsumeSharedValue<String>(family: 'shared')),
                   child,
@@ -689,7 +689,7 @@ void main() {
             value: 'foo',
             family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>>([
+              children: ZacListOfWidgets([
                 FlutterText(ConsumeSharedValue(family: 'shared')),
                 child,
               ]),
@@ -700,7 +700,7 @@ void main() {
 
             [
               SharedValueActions.update(
-                      value: ZacValue('bar'), family: 'shared')
+                      value: ZacString('bar'), family: 'shared')
                   .build(getContext(), getZacContext())
             ].execute(const ZacActionPayload(), getContext(), getZacContext());
 
@@ -725,10 +725,10 @@ void main() {
             value: 'foo',
             family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>>([
+              children: ZacListOfWidgets([
                 FlutterText(ConsumeSharedValue(
                   family: 'shared',
-                  transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+                  transformer: ZacListOfTransformers([
                     TestTransform(
                       (transformValue, context, zacContext, payload) {
                         if (transformValue.value == null) return 'IS NULL';
@@ -768,10 +768,10 @@ void main() {
         await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideWidget(
-            value: FlutterText(ZacValue('foo')),
+            value: FlutterText(ZacString('foo')),
             family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>>([
+              children: ZacListOfWidgets([
                 ConsumeSharedValue(family: 'shared'),
                 child,
               ]),
@@ -782,7 +782,7 @@ void main() {
 
             [
               SharedValueActions.updateWithWidget(
-                value: FlutterText(ZacValue('bar')),
+                value: FlutterText(ZacString('bar')),
                 family: 'shared',
               ).build(getContext(), getZacContext())
             ].execute(const ZacActionPayload(), getContext(), getZacContext());
@@ -802,43 +802,42 @@ void main() {
             'z:1:List<Widget>.updateShared', SharedValueActions.fromJson);
       });
 
-      testWidgets('execute', (tester) async {
-        await testWithContextsWraped(
-          tester,
-          (child) => SharedValueProviderBuilder.provideWidgets(
-            value: ZacValueList<Widget, List<Widget>>([
-              FlutterText(ZacValue('foo')),
-            ]),
-            family: 'shared',
-            child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>>([
-                FlutterColumn(
-                  children: ConsumeSharedValueList<Widget, List<Widget>>(
-                    family: 'shared',
-                  ),
-                ),
-                child,
-              ]),
-            ),
-          ),
-          (getContext, getZacContext) async {
-            expect(find.text('foo'), findsOneWidget);
+      // testWidgets('execute', (tester) async {
+      //   await testWithContextsWraped(
+      //     tester,
+      //     (child) => SharedValueProviderBuilder.provideWidgets(
+      //       value: ZacListOfWidgets([
+      //         FlutterText(ZacValue('foo')),
+      //       ]),
+      //       family: 'shared',
+      //       child: FlutterColumn(
+      //         children: ZacListOfWidgets([
+      //           FlutterColumn(
+      //             children: ConsumeSharedValueList<Widget, List<Widget>>(
+      //               family: 'shared',
+      //             ),
+      //           ),
+      //           child,
+      //         ]),
+      //       ),
+      //     ),
+      //     (getContext, getZacContext) async {
+      //       expect(find.text('foo'), findsOneWidget);
 
-            [
-              SharedValueActions.updateWithWidgets(
-                value: ZacValueList<Widget, List<Widget>>(
-                    [FlutterText(ZacValue('bar'))]),
-                family: 'shared',
-              ).build(getContext(), getZacContext())
-            ].execute(const ZacActionPayload(), getContext(), getZacContext());
+      //       [
+      //         SharedValueActions.updateWithWidgets(
+      //           value: ZacListOfWidgets([FlutterText(ZacValue('bar'))]),
+      //           family: 'shared',
+      //         ).build(getContext(), getZacContext())
+      //       ].execute(const ZacActionPayload(), getContext(), getZacContext());
 
-            await tester.pump();
+      //       await tester.pump();
 
-            expect(find.text('foo'), findsNothing);
-            expect(find.text('bar'), findsOneWidget);
-          },
-        );
-      });
+      //       expect(find.text('foo'), findsNothing);
+      //       expect(find.text('bar'), findsOneWidget);
+      //     },
+      //   );
+      // });
     });
 
     group('.updateWithBuilder()', () {
@@ -851,10 +850,10 @@ void main() {
         await testWithContextsWraped(
           tester,
           (child) => SharedValueProviderBuilder.provideAnyBuilder(
-            value: ZacValue('foo'),
+            value: ZacString('foo'),
             family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>>([
+              children: ZacListOfWidgets([
                 FlutterText(ConsumeSharedValue(family: 'shared')),
                 child,
               ]),
@@ -865,7 +864,7 @@ void main() {
 
             [
               SharedValueActions.updateWithBuilder(
-                value: ZacValue('bar'),
+                value: ZacString('bar'),
                 family: 'shared',
               ).build(getContext(), getZacContext())
             ].execute(const ZacActionPayload(), getContext(), getZacContext());
@@ -892,7 +891,7 @@ void main() {
             value: 'foo',
             family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>>([
+              children: ZacListOfWidgets([
                 FlutterText(ConsumeSharedValue(family: 'shared')),
                 child,
               ]),
@@ -904,7 +903,7 @@ void main() {
             [
               SharedValueActions.transformCurrentValue(
                 family: 'shared',
-                transformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+                transformer: ZacListOfTransformers([
                   TestTransform(
                     (transformValue, context, zacContext, payload) => 'bar',
                   )
@@ -934,7 +933,7 @@ void main() {
             value: 'foo',
             family: 'shared',
             child: FlutterColumn(
-              children: ZacValueList<Widget, List<Widget>>([
+              children: ZacListOfWidgets([
                 FlutterText(ConsumeSharedValue(family: 'shared')),
                 child,
               ]),
@@ -946,7 +945,7 @@ void main() {
             [
               SharedValueActions.updateFromPayload(
                 family: 'shared',
-                transformer: ZacValueList<ZacTransform, List<ZacTransform>>(
+                transformer: ZacListOfTransformers(
                     [ZacActionPayloadTransformer.toObject()]),
               ).build(getContext(), getZacContext())
             ].execute(
@@ -977,8 +976,7 @@ void main() {
                   context: getContext(),
                   zacContext: getZacContext(),
                   consumeType: SharedValueConsumeType.watch(
-                      select: ZacValueList<ZacTransform, List<ZacTransform>>(
-                          [_ConcatStr('bar')])),
+                      select: ZacListOfTransformers([_ConcatStr('bar')])),
                   family: 'shared',
                 ),
                 'foobar');

@@ -46,10 +46,8 @@ void main() {
         (child) => FlutterElevatedButton(
           child: child,
           key: FlutterValueKey('FIND_ME'),
-          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onPressedCb)]),
-          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onLongPressCb)]),
+          onPressed: ZacListOfActions([TestAction(onPressedCb)]),
+          onLongPress: ZacListOfActions([TestAction(onLongPressCb)]),
         ),
         (getContext, getZacContext) async {
           await tester.tap(findMe);
@@ -62,10 +60,8 @@ void main() {
             (child) => FlutterOutlinedButton(
               child: child,
               key: FlutterValueKey('FIND_ME'),
-              onPressed: ZacValueList<ZacAction, List<ZacAction>>(
-                  [TestAction(onPressedCb)]),
-              onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-                  [TestAction(onLongPressCb)]),
+              onPressed: ZacListOfActions([TestAction(onPressedCb)]),
+              onLongPress: ZacListOfActions([TestAction(onLongPressCb)]),
             ),
             (getContext, getZacContext) async {
               await tester.tap(findMe);
@@ -78,10 +74,8 @@ void main() {
                 (child) => FlutterTextButton(
                   child: child,
                   key: FlutterValueKey('FIND_ME'),
-                  onPressed: ZacValueList<ZacAction, List<ZacAction>>(
-                      [TestAction(onPressedCb)]),
-                  onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-                      [TestAction(onLongPressCb)]),
+                  onPressed: ZacListOfActions([TestAction(onPressedCb)]),
+                  onLongPress: ZacListOfActions([TestAction(onLongPressCb)]),
                 ),
                 (getContext, getZacContext) async {
                   await tester.tap(findMe);
@@ -171,10 +165,8 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onPressedCb)]),
-          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onLongPressCb)]),
+          onPressed: ZacListOfActions([TestAction(onPressedCb)]),
+          onLongPress: ZacListOfActions([TestAction(onLongPressCb)]),
         ),
       );
       var findMe = find.byKey(const ValueKey('FIND_ME'));
@@ -190,10 +182,8 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onPressedCb)]),
-          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onLongPressCb)]),
+          onPressed: ZacListOfActions([TestAction(onPressedCb)]),
+          onLongPress: ZacListOfActions([TestAction(onLongPressCb)]),
         ),
       );
 
@@ -210,10 +200,8 @@ void main() {
           icon: FlutterSizedBox(),
           label: FlutterSizedBox(),
           key: FlutterValueKey('FIND_ME'),
-          onPressed: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onPressedCb)]),
-          onLongPress: ZacValueList<ZacAction, List<ZacAction>>(
-              [TestAction(onLongPressCb)]),
+          onPressed: ZacListOfActions([TestAction(onPressedCb)]),
+          onLongPress: ZacListOfActions([TestAction(onLongPressCb)]),
         ),
       );
       findMe = find.byKey(const ValueKey('FIND_ME'));

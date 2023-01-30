@@ -25,7 +25,7 @@ class FlutterRow with _$FlutterRow implements ZacBuilder<Row> {
     ZacBuilder<TextDirection?>? textDirection,
     ZacBuilder<VerticalDirection?>? verticalDirection,
     ZacBuilder<TextBaseline?>? textBaseline,
-    ZacListBuilder<Widget, List<Widget>?>? children,
+    ZacBuilder<List<Widget>?>? children,
   }) = _FlutterRow;
 
   Row _buildWidget(BuildContext context, ZacContext zacContext) {

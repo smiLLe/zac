@@ -7,15 +7,23 @@ part of 'flexible.dart';
 // **************************************************************************
 
 _$_FlutterFlexible _$$_FlutterFlexibleFromJson(Map<String, dynamic> json) =>
-    _$_FlutterFlexible(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      flex: json['flex'] == null
-          ? null
-          : ZacBuilder<int?>.fromJson(json['flex'] as Object),
-      fit: json['fit'] == null
-          ? null
-          : ZacBuilder<FlexFit?>.fromJson(json['fit'] as Object),
-      child: ZacBuilder<Widget>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterFlexible',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterFlexible(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          flex: $checkedConvert('flex',
+              (v) => v == null ? null : ZacBuilder<int?>.fromJson(v as Object)),
+          fit: $checkedConvert(
+              'fit',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<FlexFit?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

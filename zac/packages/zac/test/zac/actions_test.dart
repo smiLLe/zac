@@ -94,12 +94,10 @@ void main() {
             final falseCb = MockTestActionExecute();
 
             ZacControlFlowAction.ifCond(
-              condition: ZacValueList<ZacTransform, List<ZacTransform>>(
+              condition: ZacListOfTransformers(
                   [ObjectTransformer.equals(other: 'hello')]),
-              ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
-                  [TestAction(trueCb)]),
-              ifFalse: ZacValueList<ZacAction, List<ZacAction>>(
-                  [TestAction(falseCb)]),
+              ifTrue: ZacListOfActions([TestAction(trueCb)]),
+              ifFalse: ZacListOfActions([TestAction(falseCb)]),
             ).build(getContext(), getZacContext()).execute(
                 ZacActionPayload.param('hello'), getContext(), getZacContext());
 
@@ -121,12 +119,10 @@ void main() {
             final trueCb = MockTestActionExecute();
             final falseCb = MockTestActionExecute();
             ZacControlFlowAction.ifCond(
-              condition: ZacValueList<ZacTransform, List<ZacTransform>>(
+              condition: ZacListOfTransformers(
                   [ObjectTransformer.equals(other: 'world')]),
-              ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
-                  [TestAction(trueCb)]),
-              ifFalse: ZacValueList<ZacAction, List<ZacAction>>(
-                  [TestAction(falseCb)]),
+              ifTrue: ZacListOfActions([TestAction(trueCb)]),
+              ifFalse: ZacListOfActions([TestAction(falseCb)]),
             ).build(getContext(), getZacContext()).execute(
                 ZacActionPayload.param('hello'), getContext(), getZacContext());
 
@@ -148,15 +144,13 @@ void main() {
           final trueCb = MockTestActionExecute();
           final falseCb = MockTestActionExecute();
           ZacControlFlowAction.ifCond(
-            condition: ZacValueList<ZacTransform, List<ZacTransform>>([
+            condition: ZacListOfTransformers([
               ObjectTransformer.equals(other: 'hello'),
               ObjectTransformer.equals(other: 'THAT IS FALSE'),
               ObjectTransformer.equals(other: 'hello'),
             ]),
-            ifTrue:
-                ZacValueList<ZacAction, List<ZacAction>>([TestAction(trueCb)]),
-            ifFalse:
-                ZacValueList<ZacAction, List<ZacAction>>([TestAction(falseCb)]),
+            ifTrue: ZacListOfActions([TestAction(trueCb)]),
+            ifFalse: ZacListOfActions([TestAction(falseCb)]),
           ).build(getContext(), getZacContext()).execute(
               ZacActionPayload.param('hello'), getContext(), getZacContext());
 
@@ -195,9 +189,8 @@ void main() {
         await testWithContexts(tester, (getContext, getZacContext) {
           expect(
               () => ZacControlFlowAction.ifCond(
-                    condition:
-                        ZacValueList<ZacTransform, List<ZacTransform>>([]),
-                    ifTrue: ZacValueList<ZacAction, List<ZacAction>>([]),
+                    condition: ZacListOfTransformers([]),
+                    ifTrue: ZacListOfActions([]),
                   ).build(getContext(), getZacContext()).execute(
                       const ZacActionPayload(), getContext(), getZacContext()),
               throwsA(isA<StateError>().having(
@@ -213,9 +206,9 @@ void main() {
         await testWithContexts(tester, (getContext, getZacContext) {
           expect(
               () => ZacControlFlowAction.ifCond(
-                    condition: ZacValueList<ZacTransform, List<ZacTransform>>(
-                        [ObjectTransformer.toString()]),
-                    ifTrue: ZacValueList<ZacAction, List<ZacAction>>(
+                    condition:
+                        ZacListOfTransformers([ObjectTransformer.toString()]),
+                    ifTrue: ZacListOfActions(
                         [TestAction.noop(<String, dynamic>{})]),
                   ).build(getContext(), getZacContext()).execute(
                       ZacActionPayload.param('hello'),
@@ -261,8 +254,7 @@ void main() {
       await testWidgetBuilder(
           tester,
           ZacExecuteActionsBuilder.once(
-            actions: ZacValueList<ZacAction, List<ZacAction>>(
-                [TestAction(executeCb)]),
+            actions: ZacListOfActions([TestAction(executeCb)]),
           ));
       verify(executeCb(
               argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
@@ -284,7 +276,7 @@ void main() {
           value: 1,
           family: 'shared',
           child: ZacExecuteActionsBuilder.listen(
-            actions: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
+            actions: ZacListOfActions([TestAction(cb)]),
             family: 'shared',
             child: FlutterSizedBox(
               key: FlutterValueKey('child'),

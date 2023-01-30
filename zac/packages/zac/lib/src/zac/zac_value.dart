@@ -4,195 +4,11 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
 part 'zac_value.freezed.dart';
 part 'zac_value.g.dart';
-
-bool isType<T, Y>() => T == Y;
-
-class _Converter<T> implements JsonConverter<T, Object?> {
-  const _Converter();
-
-  @override
-  T fromJson(Object? data) {
-    if (isType<T, Object>() || isType<T, Object?>()) {
-      return data as T;
-    } else if ((isType<T, int>() || isType<T, int?>()) && data is num) {
-      return data.toInt() as T;
-    } else if ((isType<T, double>() || isType<T, double?>()) && data is num) {
-      return data.toDouble() as T;
-    } else if ((isType<T, num>() || isType<T, num?>()) && data is num) {
-      return data as T;
-    } else if ((isType<T, String>() || isType<T, String?>()) &&
-        data is String) {
-      return data as T;
-    } else if ((isType<T, bool>() || isType<T, bool?>()) && data is bool) {
-      return data as T;
-    } else if ((isType<T, DateTime>() || isType<T, DateTime?>()) &&
-        data is String) {
-      return DateTime.parse(data) as T;
-    } else if (data is T) {
-      return data;
-    }
-
-    throw StateError('''
-It was not possible to convert data in ${ZacValue<T>}.fromJson().
-The given data is not supported:
-$data''');
-  }
-
-  @override
-  Object? toJson(T object) => throw UnimplementedError();
-}
-
-@freezedZacBuilder
-class ZacValue<T extends Object?> with _$ZacValue<T> implements ZacBuilder<T> {
-  const ZacValue._();
-
-  static const String union = 'z:1:ZacValue';
-
-  static ZacValue<T> fromRegister<T extends Object?>(Map<String, dynamic> map) {
-    return ZacValue<T>.fromJson(map);
-  }
-
-  factory ZacValue.fromJson(Object data) {
-    return ZacRegistry.ifBuilderLikeMap<ZacValue<T>>(
-      data,
-      cb: (map, converterName) {
-        assert(converterName == ZacValue.union);
-        return _$ZacValueFromJson<T>(map);
-      },
-      orElse: () => _$ZacValueFromJson<T>(<String, dynamic>{
-        'builder': ZacValue.union,
-        'value': data,
-      }),
-    );
-  }
-
-  @FreezedUnionValue(ZacValue.union)
-  factory ZacValue(@_Converter() T value) = _ZacValue<T>;
-
-  @override
-  T build(BuildContext context, ZacContext zacContext) => value;
-}
-
-@freezedZacBuilder
-class ZacValueList<T extends Object?, X extends List<T>?>
-    with _$ZacValueList<T, X>
-    implements ZacListBuilder<T, X> {
-  const ZacValueList._();
-
-  static const String union = 'z:1:ZacValueList';
-
-  /// freezed generates a code like this
-  ///   factory _$ZacValueList.fromJson(Map<String, dynamic> json) =>
-  ///   _$ZacValueListFromJson(json);
-  ///
-  /// _$ZacValueList is missing <T,X>
-  /// it should be: _$ZacValueList<T,X>(json)
-  ///
-  /// This will result in X being a Never type
-  factory ZacValueList._freezedFix(ZacValueList<T, Object?> zV) {
-    return ZacValueList<T, X>(zV.items);
-  }
-
-  static ZacValueList<T, X> fromRegister<T extends Object?, X extends List<T>?>(
-      Map<String, dynamic> map) {
-    return ZacValueList<T, X>.fromJson(map);
-  }
-
-  factory ZacValueList.fromJson(Object data) {
-    return ZacRegistry.ifBuilderLikeMap<ZacValueList<T, X>>(
-      data,
-      cb: (map, converterName) {
-        assert(converterName == ZacValueList.union);
-        return ZacValueList<T, X>._freezedFix(
-            _$ZacValueListFromJson<T, X>(map));
-      },
-      orElse: () {
-        if (data is! List) {
-          throw StateError('Unsupported type in ${ZacValueList<T, X>}: $data');
-        }
-
-        return ZacValueList<T, X>._freezedFix(
-            _$ZacValueListFromJson<T, X>(<String, dynamic>{
-          'builder': ZacValueList.union,
-          'items': data,
-        }));
-      },
-    );
-  }
-
-  @FreezedUnionValue(ZacValueList.union)
-  factory ZacValueList(List<ZacBuilder<T>> items) = _ZacValueListSimple<T, X>;
-
-  @override
-  X build(BuildContext context, ZacContext zacContext) {
-    return <T>[
-      for (var item in items) item.build(context, zacContext),
-    ] as X;
-  }
-}
-
-@freezedZacBuilder
-class ZacValueMap<T extends Object?, X extends Map<String, T>?>
-    with _$ZacValueMap<T, X>
-    implements ZacMapBuilder<T, X> {
-  const ZacValueMap._();
-
-  static const String union = 'z:1:ZacValueMap';
-
-  static ZacValueMap<T, X>
-      fromRegister<T extends Object?, X extends Map<String, T>?>(
-          Map<String, dynamic> map) {
-    return ZacValueMap<T, X>.fromJson(map);
-  }
-
-  /// freezed generates a code like this
-  ///   factory _$ZacValueMap.fromJson(Map<String, dynamic> json) =>
-  ///   _$$_ZacValueMapFromJson(json);
-  ///
-  /// ZacValueMap is missing <T,X>
-  /// it should be: _ZacValueMap<T,X>(json)
-  ///
-  /// This will result in X being a Never type
-  factory ZacValueMap._freezedFix(ZacValueMap<T, Object?> zV) {
-    return ZacValueMap<T, X>(zV.items);
-  }
-
-  factory ZacValueMap.fromJson(Object data) {
-    return ZacRegistry.ifBuilderLikeMap<ZacValueMap<T, X>>(
-      data,
-      cb: (map, converterName) {
-        assert(ZacValueMap.union == converterName);
-        return ZacValueMap<T, X>._freezedFix(_$ZacValueMapFromJson<T, X>(map));
-      },
-      orElse: () {
-        if (data is! Map) {
-          throw StateError('Unsupported type in ${ZacValueMap<T, X>}: $data');
-        }
-
-        return ZacValueMap<T, X>._freezedFix(
-            _$ZacValueMapFromJson<T, X>(<String, dynamic>{
-          'builder': ZacValueMap.union,
-          'items': data,
-        }));
-      },
-    );
-  }
-
-  @FreezedUnionValue(ZacValueMap.union)
-  factory ZacValueMap(Map<String, ZacBuilder<T>> items) = _ZacValueMap<T, X>;
-
-  @override
-  X build(BuildContext context, ZacContext zacContext) {
-    return <String, T>{
-      for (var entry in items.entries)
-        entry.key: entry.value.build(context, zacContext),
-    } as X;
-  }
-}
 
 @freezedZacBuilder
 class ZacValueActions with _$ZacValueActions implements ZacBuilder<ZacAction> {
@@ -206,7 +22,7 @@ class ZacValueActions with _$ZacValueActions implements ZacBuilder<ZacAction> {
   @FreezedUnionValue(ZacValueActions.unionValue)
   factory ZacValueActions.asPayload({
     required ZacBuilder<Object?> value,
-    required ZacListBuilder<ZacAction, List<ZacAction>> actions,
+    required ZacBuilder<List<ZacAction>> actions,
   }) = _ZacValueActionsAsPayload;
 
   late final ZacAction _action = ZacAction(
@@ -223,4 +39,291 @@ class ZacValueActions with _$ZacValueActions implements ZacBuilder<ZacAction> {
 
   @override
   ZacAction build(BuildContext context, ZacContext zacContext) => _action;
+}
+
+@freezedZacBuilder
+class ZacNum with _$ZacNum implements ZacBuilder<num> {
+  ZacNum._();
+
+  static const String unionValue = 'z:1:num';
+
+  factory ZacNum.fromJson(Object data) => ZacRegistry.ifBuilderLikeMap<ZacNum>(
+        data,
+        cb: (map, converterName) => _$ZacNumFromJson(map),
+        orElse: () => _$ZacNumFromJson(<String, dynamic>{
+          'builder': ZacNum.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacNum.unionValue)
+  factory ZacNum(num value) = _ZacNum;
+
+  @override
+  num build(BuildContext context, ZacContext zacContext) {
+    return value;
+  }
+}
+
+@freezedZacBuilder
+class ZacInt with _$ZacInt implements ZacBuilder<int> {
+  ZacInt._();
+
+  static const String unionValue = 'z:1:int';
+
+  factory ZacInt.fromJson(Object data) => ZacRegistry.ifBuilderLikeMap<ZacInt>(
+        data,
+        cb: (map, converterName) => _$ZacIntFromJson(map),
+        orElse: () => _$ZacIntFromJson(<String, dynamic>{
+          'builder': ZacInt.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacInt.unionValue)
+  factory ZacInt(int value) = _ZacInt;
+
+  @override
+  int build(BuildContext context, ZacContext zacContext) {
+    return value;
+  }
+}
+
+@freezedZacBuilder
+class ZacDouble with _$ZacDouble implements ZacBuilder<double> {
+  ZacDouble._();
+
+  static const String unionValue = 'z:1:double';
+
+  factory ZacDouble.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacDouble>(
+        data,
+        cb: (map, converterName) => _$ZacDoubleFromJson(map),
+        orElse: () => _$ZacDoubleFromJson(<String, dynamic>{
+          'builder': ZacDouble.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacDouble.unionValue)
+  factory ZacDouble(double value) = _ZacDouble;
+
+  @override
+  double build(BuildContext context, ZacContext zacContext) {
+    return value;
+  }
+}
+
+@freezedZacBuilder
+class ZacString with _$ZacString implements ZacBuilder<String> {
+  ZacString._();
+
+  static const String unionValue = 'z:1:String';
+
+  factory ZacString.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacString>(
+        data,
+        cb: (map, converterName) => _$ZacStringFromJson(map),
+        orElse: () => _$ZacStringFromJson(<String, dynamic>{
+          'builder': ZacString.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacString.unionValue)
+  factory ZacString(String value) = _ZacString;
+
+  @override
+  String build(BuildContext context, ZacContext zacContext) {
+    return value;
+  }
+}
+
+@freezedZacBuilder
+class ZacBool with _$ZacBool implements ZacBuilder<bool> {
+  ZacBool._();
+
+  static const String unionValue = 'z:1:bool';
+
+  factory ZacBool.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacBool>(
+        data,
+        cb: (map, converterName) => _$ZacBoolFromJson(map),
+        orElse: () => _$ZacBoolFromJson(<String, dynamic>{
+          'builder': ZacBool.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacBool.unionValue)
+  factory ZacBool(bool value) = _ZacBool;
+
+  @override
+  bool build(BuildContext context, ZacContext zacContext) {
+    return value;
+  }
+}
+
+@freezedZacBuilder
+class ZacObject with _$ZacObject implements ZacBuilder<Object> {
+  ZacObject._();
+
+  static const String unionValue = 'z:1:Object';
+
+  factory ZacObject.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacObject>(
+        data,
+        cb: (map, converterName) => _$ZacObjectFromJson(map),
+        orElse: () => _$ZacObjectFromJson(<String, dynamic>{
+          'builder': ZacObject.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacObject.unionValue)
+  factory ZacObject(Object value) = _ZacObject;
+
+  @override
+  Object build(BuildContext context, ZacContext zacContext) {
+    return value;
+  }
+}
+
+@freezedZacBuilder
+class ZacDateTime with _$ZacDateTime implements ZacBuilder<DateTime> {
+  ZacDateTime._();
+
+  static const String unionValue = 'z:1:DateTime';
+
+  factory ZacDateTime.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacDateTime>(
+        data,
+        cb: (map, converterName) => _$ZacDateTimeFromJson(map),
+        orElse: () => _$ZacDateTimeFromJson(<String, dynamic>{
+          'builder': ZacDateTime.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacDateTime.unionValue)
+  factory ZacDateTime(DateTime value) = _ZacDateTime;
+
+  @override
+  DateTime build(BuildContext context, ZacContext zacContext) {
+    return value;
+  }
+}
+
+@freezedZacBuilder
+class ZacListOfWidgets
+    with _$ZacListOfWidgets
+    implements ZacBuilder<List<Widget>> {
+  ZacListOfWidgets._();
+
+  static const String unionValue = 'z:1:List<Widget>';
+
+  factory ZacListOfWidgets.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacListOfWidgets>(
+        data,
+        cb: (map, converterName) => _$ZacListOfWidgetsFromJson(map),
+        orElse: () => _$ZacListOfWidgetsFromJson(<String, dynamic>{
+          'builder': ZacListOfWidgets.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacListOfWidgets.unionValue)
+  factory ZacListOfWidgets(List<ZacBuilder<Widget>> value) = _ZacListOfWidgets;
+
+  @override
+  List<Widget> build(BuildContext context, ZacContext zacContext) {
+    return [...value.map((builder) => builder.build(context, zacContext))];
+  }
+}
+
+@freezedZacBuilder
+class ZacMapOfWidgets
+    with _$ZacMapOfWidgets
+    implements ZacBuilder<Map<String, Widget>> {
+  ZacMapOfWidgets._();
+
+  static const String unionValue = 'z:1:Map<String, Widget>';
+
+  factory ZacMapOfWidgets.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacMapOfWidgets>(
+        data,
+        cb: (map, converterName) => _$ZacMapOfWidgetsFromJson(map),
+        orElse: () => _$ZacMapOfWidgetsFromJson(<String, dynamic>{
+          'builder': ZacMapOfWidgets.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacMapOfWidgets.unionValue)
+  factory ZacMapOfWidgets(Map<String, ZacBuilder<Widget>> value) =
+      _ZacMapOfWidgets;
+
+  @override
+  Map<String, Widget> build(BuildContext context, ZacContext zacContext) {
+    return <String, Widget>{
+      for (var entry in value.entries)
+        entry.key: entry.value.build(context, zacContext),
+    };
+  }
+}
+
+@freezedZacBuilder
+class ZacListOfActions
+    with _$ZacListOfActions
+    implements ZacBuilder<List<ZacAction>> {
+  ZacListOfActions._();
+
+  static const String unionValue = 'z:1:List<ZacAction>';
+
+  factory ZacListOfActions.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacListOfActions>(
+        data,
+        cb: (map, converterName) => _$ZacListOfActionsFromJson(map),
+        orElse: () => _$ZacListOfActionsFromJson(<String, dynamic>{
+          'builder': ZacListOfActions.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacListOfActions.unionValue)
+  factory ZacListOfActions(List<ZacBuilder<ZacAction>> value) =
+      _ZacListOfActions;
+
+  @override
+  List<ZacAction> build(BuildContext context, ZacContext zacContext) {
+    return [...value.map((e) => e.build(context, zacContext))];
+  }
+}
+
+@freezedZacBuilder
+class ZacListOfTransformers
+    with _$ZacListOfTransformers
+    implements ZacBuilder<List<ZacTransform>> {
+  ZacListOfTransformers._();
+
+  static const String unionValue = 'z:1:List<ZacTransform>';
+
+  factory ZacListOfTransformers.fromJson(Object data) =>
+      ZacRegistry.ifBuilderLikeMap<ZacListOfTransformers>(
+        data,
+        cb: (map, converterName) => _$ZacListOfTransformersFromJson(map),
+        orElse: () => _$ZacListOfTransformersFromJson(<String, dynamic>{
+          'builder': ZacListOfTransformers.unionValue,
+          'value': data,
+        }),
+      );
+
+  @FreezedUnionValue(ZacListOfTransformers.unionValue)
+  factory ZacListOfTransformers(List<ZacBuilder<ZacTransform>> value) =
+      _ZacListOfTransformers;
+
+  @override
+  List<ZacTransform> build(BuildContext context, ZacContext zacContext) {
+    return [...value.map((e) => e.build(context, zacContext))];
+  }
 }

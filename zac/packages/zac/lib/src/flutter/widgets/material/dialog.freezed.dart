@@ -197,7 +197,7 @@ class _$_FlutterDialogsAlertDialog extends _FlutterDialogsAlertDialog {
   @override
   final ZacBuilder<Widget?>? content;
   @override
-  final ZacListBuilder<Widget, List<Widget>?>? actions;
+  final ZacBuilder<List<Widget>?>? actions;
   @override
   final ZacBuilder<EdgeInsetsGeometry?>? titlePadding;
   @override
@@ -333,7 +333,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
       {final ZacBuilder<Key?>? key,
       final ZacBuilder<Widget?>? title,
       final ZacBuilder<Widget?>? content,
-      final ZacListBuilder<Widget, List<Widget>?>? actions,
+      final ZacBuilder<List<Widget>?>? actions,
       final ZacBuilder<EdgeInsetsGeometry?>? titlePadding,
       final ZacBuilder<TextStyle?>? titleTextStyle,
       final ZacBuilder<EdgeInsetsGeometry?>? contentPadding,
@@ -360,7 +360,7 @@ abstract class _FlutterDialogsAlertDialog extends FlutterDialogs {
   ZacBuilder<Key?>? get key;
   ZacBuilder<Widget?>? get title;
   ZacBuilder<Widget?>? get content;
-  ZacListBuilder<Widget, List<Widget>?>? get actions;
+  ZacBuilder<List<Widget>?>? get actions;
   ZacBuilder<EdgeInsetsGeometry?>? get titlePadding;
   ZacBuilder<TextStyle?>? get titleTextStyle;
   ZacBuilder<EdgeInsetsGeometry?>? get contentPadding;
@@ -409,7 +409,7 @@ class _$_FlutterDialogsSimpleDialog extends _FlutterDialogsSimpleDialog {
   @override
   final ZacBuilder<Widget?>? title;
   @override
-  final ZacListBuilder<Widget, List<Widget>?>? children;
+  final ZacBuilder<List<Widget>?>? children;
   @override
   final ZacBuilder<EdgeInsetsGeometry?>? titlePadding;
   @override
@@ -504,7 +504,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialog(
           {final ZacBuilder<Key?>? key,
           final ZacBuilder<Widget?>? title,
-          final ZacListBuilder<Widget, List<Widget>?>? children,
+          final ZacBuilder<List<Widget>?>? children,
           final ZacBuilder<EdgeInsetsGeometry?>? titlePadding,
           final ZacBuilder<TextStyle?>? titleTextStyle,
           final ZacBuilder<EdgeInsetsGeometry?>? contentPadding,
@@ -524,7 +524,7 @@ abstract class _FlutterDialogsSimpleDialog extends FlutterDialogs {
   @override
   ZacBuilder<Key?>? get key;
   ZacBuilder<Widget?>? get title;
-  ZacListBuilder<Widget, List<Widget>?>? get children;
+  ZacBuilder<List<Widget>?>? get children;
   ZacBuilder<EdgeInsetsGeometry?>? get titlePadding;
   ZacBuilder<TextStyle?>? get titleTextStyle;
   ZacBuilder<EdgeInsetsGeometry?>? get contentPadding;
@@ -555,7 +555,7 @@ class _$_FlutterDialogsSimpleDialogOption
   @override
   final ZacBuilder<Widget?>? child;
   @override
-  final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed;
+  final ZacBuilder<List<ZacAction>?>? onPressed;
   @override
   final ZacBuilder<EdgeInsets?>? padding;
 
@@ -600,7 +600,7 @@ abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
   factory _FlutterDialogsSimpleDialogOption(
           {final ZacBuilder<Key?>? key,
           final ZacBuilder<Widget?>? child,
-          final ZacListBuilder<ZacAction, List<ZacAction>?>? onPressed,
+          final ZacBuilder<List<ZacAction>?>? onPressed,
           final ZacBuilder<EdgeInsets?>? padding}) =
       _$_FlutterDialogsSimpleDialogOption;
   _FlutterDialogsSimpleDialogOption._() : super._();
@@ -611,7 +611,7 @@ abstract class _FlutterDialogsSimpleDialogOption extends FlutterDialogs {
   @override
   ZacBuilder<Key?>? get key;
   ZacBuilder<Widget?>? get child;
-  ZacListBuilder<ZacAction, List<ZacAction>?>? get onPressed;
+  ZacBuilder<List<ZacAction>?>? get onPressed;
   ZacBuilder<EdgeInsets?>? get padding;
 }
 

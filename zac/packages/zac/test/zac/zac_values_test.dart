@@ -1,267 +1,130 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:zac/zac.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import '../helper.dart';
 
-Matcher _throwsConverterIssue<T>() {
-  return throwsA(isA<StateError>().having(
-      (p0) => p0.message,
-      'error message',
-      contains(
-          'It was not possible to convert data in ZacValue<$T>.fromJson()')));
-}
-
 void main() {
-  group('ZacValue', () {
-    test('Is in converters', () {
-      expectInRegistry('z:1:ZacValue', ZacValue.fromRegister);
-    });
-
-    group('From Value', () {
-      test('<num>', () {
-        expect(ZacBuilder<num>.fromJson(5), ZacValue<num>(5));
-        expect(ZacBuilder<num>.fromJson(5.1), ZacValue<num>(5.1));
-        expect(ZacBuilder<num?>.fromJson(5), ZacValue<num?>(5));
-        expect(
-            () => ZacBuilder<num>.fromJson(''), _throwsConverterIssue<num>());
-      });
-
-      test('<int>', () {
-        expect(ZacBuilder<int>.fromJson(5), ZacValue<int>(5));
-        expect(ZacBuilder<int?>.fromJson(5), ZacValue<int?>(5));
-        expect(ZacBuilder<int>.fromJson(5.1), ZacValue<int>(5));
-        expect(
-            () => ZacBuilder<int>.fromJson(''), _throwsConverterIssue<int>());
-      });
-
-      test('<double>', () {
-        expect(ZacBuilder<double>.fromJson(5), ZacValue<double>(5.0));
-        expect(ZacBuilder<double>.fromJson(5.1), ZacValue<double>(5.1));
-        expect(ZacBuilder<double?>.fromJson(5.1), ZacValue<double?>(5.1));
-        expect(() => ZacBuilder<double>.fromJson(''),
-            _throwsConverterIssue<double>());
-      });
-
-      test('<String>', () {
-        expect(ZacBuilder<String>.fromJson('foo'), ZacValue<String>('foo'));
-        expect(ZacBuilder<String?>.fromJson('foo'), ZacValue<String?>('foo'));
-        expect(() => ZacBuilder<String>.fromJson(1),
-            _throwsConverterIssue<String>());
-      });
-
-      test('<bool>', () {
-        expect(ZacBuilder<bool>.fromJson(false), ZacValue<bool>(false));
-        expect(ZacBuilder<bool?>.fromJson(false), ZacValue<bool?>(false));
-        expect(
-            () => ZacBuilder<bool>.fromJson(1), _throwsConverterIssue<bool>());
-      });
-
-      test('<DateTime>', () {
-        final now = DateTime.now();
-        expect(ZacBuilder<DateTime>.fromJson(now.toIso8601String()),
-            ZacValue<DateTime>(now));
-        expect(() => ZacBuilder<DateTime>.fromJson(1),
-            _throwsConverterIssue<DateTime>());
-      });
-
-      test('<Object>', () {
-        final now = DateTime.now();
-        expect(ZacBuilder<Object>.fromJson(now.toIso8601String()),
-            ZacValue<Object>(now.toIso8601String()));
-
-        expect(ZacBuilder<Object>.fromJson(5.1), ZacValue<Object>(5.1));
-      });
-
-      testWidgets('.build()', (tester) async {
-        await testWithContextsWraped(
-          tester,
-          (child) => FlutterColumn(
-            children: ZacValueList<Widget, List<Widget>>(
-              [FlutterText(ZacBuilder<String>.fromJson('hello world')), child],
-            ),
-          ),
-          (getContext, getZacContext) {
-            expect(find.text('hello world'), findsOneWidget);
-          },
-        );
-      });
-    });
+  test('ZacNum', () {
+    expectInRegistry(ZacNum.unionValue, ZacNum.fromJson);
+    expect(ZacBuilder<num>.fromJson(5), ZacNum(5));
+    expect(ZacBuilder<num>.fromJson(5.1), ZacNum(5.1));
+    expect(ZacBuilder<num?>.fromJson(5), ZacNum(5));
   });
 
-  group('ZacValueList', () {
-    test('Is in converters', () {
-      expectInRegistry(['z:1:ZacValueList'], ZacValueList.fromRegister);
-    });
-
-    group('From Values', () {
-      test('create from simple list', () {
-        expect(ZacValueList<int, List<int>>.fromJson([4]),
-            ZacValueList<int, List<int>>([ZacBuilder<int>.fromJson(4)]));
-      });
-
-      test('throws if unsupported type in fromJson', () {
-        expect(
-            () => ZacValueList<int, List<int>>.fromJson('NONO'),
-            throwsA(isA<StateError>().having(
-                (p0) => p0.message,
-                'error message',
-                contains(
-                    'Unsupported type in ZacValueList<int, List<int>>: NONO'))));
-      });
-
-      test('will wrap items into a ZacValue', () {
-        expect(
-            ZacValueList<int, List<int>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueList',
-              'items': [4],
-            }),
-            ZacValueList<int, List<int>>([ZacBuilder<int>.fromJson(4)]));
-
-        expect(
-            ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueList',
-              'items': [4],
-            }),
-            ZacValueList<int?, List<int?>>([ZacBuilder<int?>.fromJson(4)]));
-
-        expect(
-            ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueList',
-              'items': [
-                {
-                  'builder': 'f:1:ValueKey',
-                  'value': 'hello',
-                }
-              ],
-            }),
-            ZacValueList<Key, List<Key>>([
-              ZacBuilder<Key>.fromJson({
-                'builder': 'f:1:ValueKey',
-                'value': 'hello',
-              })
-            ]));
-      });
-
-      testWidgets('.build()', (tester) async {
-        testWithContexts(
-          tester,
-          (getContext, getZacContext) {
-            expect(
-                ZacValueList<Key, List<Key>>.fromJson(<String, dynamic>{
-                  'builder': 'z:1:ZacValueList',
-                  'items': [
-                    {
-                      'builder': 'f:1:ValueKey',
-                      'value': 'hello',
-                    },
-                    {
-                      'builder': 'f:1:ValueKey',
-                      'value': 'world',
-                    }
-                  ],
-                }).build(getContext(), getZacContext()),
-                const [ValueKey('hello'), ValueKey('world')]);
-
-            expect(
-                ZacValueList<int?, List<int?>>.fromJson(<String, dynamic>{
-                  'builder': 'z:1:ZacValueList',
-                  'items': [1, 2],
-                }).build(getContext(), getZacContext()),
-                const [1, 2]);
-          },
-        );
-      });
-    });
+  test('ZacInt', () {
+    expectInRegistry(ZacInt.unionValue, ZacInt.fromJson);
+    expect(ZacBuilder<int>.fromJson(5), ZacInt(5));
+    expect(ZacBuilder<int?>.fromJson(5), ZacInt(5));
   });
 
-  group('ZacValueMap', () {
-    test('Is in converters', () {
-      expectInRegistry(['z:1:ZacValueMap'], ZacValueMap.fromRegister);
-    });
+  test('ZacDouble', () {
+    expectInRegistry(ZacDouble.unionValue, ZacDouble.fromJson);
+    expect(ZacBuilder<double>.fromJson(5), ZacDouble(5.0));
+    expect(ZacBuilder<double>.fromJson(5.1), ZacDouble(5.1));
+    expect(ZacBuilder<double?>.fromJson(5.1), ZacDouble(5.1));
+  });
 
-    group('From Values', () {
-      test('create from simple Map', () {
-        expect(
-            ZacMapBuilder<int, Map<String, int>>.fromJson({'a': 1}),
-            ZacValueMap<int, Map<String, int>>(
-                {'a': ZacBuilder<int>.fromJson(1)}));
-      });
+  test('ZacString', () {
+    expectInRegistry(ZacString.unionValue, ZacString.fromJson);
+    expect(ZacBuilder<String>.fromJson('foo'), ZacString('foo'));
+    expect(ZacBuilder<String?>.fromJson('foo'), ZacString('foo'));
+  });
 
-      test('throws if unsupported type in fromJson', () {
-        expect(
-            () => ZacValueMap<int, Map<String, int>>.fromJson('NONO'),
-            throwsA(isA<StateError>().having(
-                (p0) => p0.message,
-                'error message',
-                contains(
-                    'Unsupported type in ZacValueMap<int, Map<String, int>>: NONO'))));
-      });
+  test('ZacBool', () {
+    expectInRegistry(ZacBool.unionValue, ZacBool.fromJson);
+    expect(ZacBuilder<bool>.fromJson(false), ZacBool(false));
+    expect(ZacBuilder<bool?>.fromJson(false), ZacBool(false));
+  });
 
-      test('will wrap items into a ZacBuilder', () {
-        expect(
-            ZacMapBuilder<int, Map<String, int>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueMap',
-              'items': {'a': 1},
-            }),
-            ZacValueMap<int, Map<String, int>>(
-                {'a': ZacBuilder<int>.fromJson(1)}));
-        expect(
-            ZacMapBuilder<int?, Map<String, int?>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueMap',
-              'items': {'a': 1},
-            }),
-            ZacValueMap<int?, Map<String, int?>>(
-                {'a': ZacBuilder<int?>.fromJson(1)}));
+  test('ZacDateTime', () {
+    expectInRegistry(ZacDateTime.unionValue, ZacDateTime.fromJson);
+    final now = DateTime.now();
+    expect(
+        ZacBuilder<DateTime>.fromJson(now.toIso8601String()), ZacDateTime(now));
+    expect(ZacBuilder<DateTime?>.fromJson(now.toIso8601String()),
+        ZacDateTime(now));
+  });
 
-        expect(
-            ZacMapBuilder<Key, Map<String, Key>>.fromJson(<String, dynamic>{
-              'builder': 'z:1:ZacValueMap',
-              'items': {
-                'a': {
-                  'builder': 'f:1:ValueKey',
-                  'value': 'hello',
-                },
-              },
-            }),
-            ZacValueMap<Key, Map<String, Key>>(
-              {
-                'a': ZacBuilder<Key>.fromJson({
-                  'builder': 'f:1:ValueKey',
-                  'value': 'hello',
-                })
-              },
-            ));
-      });
+  test('ZacObject', () {
+    expectInRegistry(ZacObject.unionValue, ZacObject.fromJson);
+    final now = DateTime.now();
+    expect(ZacBuilder<Object>.fromJson(now.toIso8601String()),
+        ZacObject(now.toIso8601String()));
+    expect(ZacBuilder<Object>.fromJson(5.1), ZacObject(5.1));
+    expect(ZacBuilder<Object?>.fromJson(5.1), ZacObject(5.1));
+  });
 
-      testWidgets('.build()', (tester) async {
-        testWithContexts(tester, (getContext, getZacContext) {
-          expect(
-              ZacValueMap<Key, Map<String, Key>>.fromJson(<String, dynamic>{
-                'builder': 'z:1:ZacValueMap',
-                'items': {
-                  'a': {
-                    'builder': 'f:1:ValueKey',
-                    'value': 'hello',
-                  },
-                  'b': {
-                    'builder': 'f:1:ValueKey',
-                    'value': 'world',
-                  }
-                },
-              }).build(getContext(), getZacContext()),
-              const {'a': ValueKey('hello'), 'b': ValueKey('world')});
+  test('ZacListOfWidgets', () {
+    expectInRegistry(ZacListOfWidgets.unionValue, ZacListOfWidgets.fromJson);
+    expect(
+        ZacBuilder<List<Widget>>.fromJson([
+          {'builder': 'f:1:SizedBox'}
+        ]),
+        ZacListOfWidgets([FlutterSizedBox()]));
+    expect(
+        ZacBuilder<List<Widget>?>.fromJson([
+          {'builder': 'f:1:SizedBox'}
+        ]),
+        ZacListOfWidgets([FlutterSizedBox()]));
+  });
 
-          expect(
-              ZacValueMap<int?, Map<String, int?>>.fromJson(<String, dynamic>{
-                'builder': 'z:1:ZacValueMap',
-                'items': {'a': 1, 'b': 2},
-              }).build(getContext(), getZacContext()),
-              const {'a': 1, 'b': 2});
-        });
-      });
-    });
+  test('ZacMapOfWidgets', () {
+    expectInRegistry(ZacMapOfWidgets.unionValue, ZacMapOfWidgets.fromJson);
+    expect(
+        ZacBuilder<Map<String, Widget>>.fromJson({
+          'a': {'builder': 'f:1:SizedBox'}
+        }),
+        ZacMapOfWidgets({'a': FlutterSizedBox()}));
+    expect(
+        ZacBuilder<Map<String, Widget>?>.fromJson({
+          'a': {'builder': 'f:1:SizedBox'}
+        }),
+        ZacMapOfWidgets({'a': FlutterSizedBox()}));
+  });
+
+  test('ZacListOfActions', () {
+    ZacRegistry().register<ZacAction>('test:TestAction', TestAction.noop);
+    expectInRegistry(ZacListOfActions.unionValue, ZacListOfActions.fromJson);
+    expect(
+        ZacBuilder<List<ZacAction>>.fromJson([
+          {'builder': 'test:TestAction'}
+        ]),
+        isA<ZacListOfActions>().having(
+            (p0) => p0.value,
+            'ZacListOfActions value',
+            isA<List<ZacBuilder<ZacAction>>>()
+                .having((p0) => p0.length, 'length', 1)
+                .having((p0) => p0.first, 'first', isA<TestAction>())));
+
+    expect(
+        ZacBuilder<List<ZacAction>?>.fromJson([
+          {'builder': 'test:TestAction'}
+        ]),
+        isA<ZacListOfActions>());
+  });
+
+  test('ZacListOfTransformers', () {
+    ZacRegistry()
+        .register<ZacTransform>('test:TestTransform', TestTransform.noop);
+    expectInRegistry(
+        ZacListOfTransformers.unionValue, ZacListOfTransformers.fromJson);
+    expect(
+        ZacBuilder<List<ZacTransform>>.fromJson([
+          {'builder': 'test:TestTransform'}
+        ]),
+        isA<ZacListOfTransformers>().having(
+            (p0) => p0.value,
+            'ZacListOfTransformers value',
+            isA<List<ZacBuilder<ZacTransform>>>()
+                .having((p0) => p0.length, 'length', 1)
+                .having((p0) => p0.first, 'first', isA<TestTransform>())));
+
+    expect(
+        ZacBuilder<List<ZacTransform>?>.fromJson([
+          {'builder': 'test:TestTransform'}
+        ]),
+        isA<ZacListOfTransformers>());
   });
 
   testWidgets('Pick a ZacValue and pass it to new actions as payload',
@@ -270,10 +133,10 @@ void main() {
     await testWidgetBuilder(
       tester,
       ZacExecuteActionsBuilder.once(
-        actions: ZacValueList<ZacAction, List<ZacAction>>([
+        actions: ZacListOfActions([
           ZacValueActions.asPayload(
             value: ZacBuilder<Object>.fromJson('hello'),
-            actions: ZacValueList<ZacAction, List<ZacAction>>([
+            actions: ZacListOfActions([
               TestAction(
                 (p, context, zacContext) {
                   payload = p;

@@ -8,11 +8,18 @@ part of 'intrinsic_width.dart';
 
 _$_FlutterIntrinsicWidth _$$_FlutterIntrinsicWidthFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterIntrinsicWidth(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterIntrinsicWidth',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterIntrinsicWidth(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

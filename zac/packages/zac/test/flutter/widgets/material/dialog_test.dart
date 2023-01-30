@@ -3,7 +3,6 @@ import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/shared_value.dart';
 import 'package:zac/src/zac/widget.dart';
@@ -223,9 +222,9 @@ void main() {
                   body: FlutterBuilder(
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterDialogActions.showDialog(
-                          child: FlutterText(ZacValue('hello world')),
+                          child: FlutterText(ZacString('hello world')),
                         ),
                       ]),
                     ),
@@ -256,7 +255,7 @@ void main() {
                     family: 'shared',
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
-                      onPressed: ZacValueList<ZacAction, List<ZacAction>>([
+                      onPressed: ZacListOfActions([
                         FlutterDialogActions.showDialog(
                           child: FlutterText(
                             ConsumeSharedValue<String>(family: 'shared'),

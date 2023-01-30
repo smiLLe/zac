@@ -94,7 +94,7 @@ void main() {
       FlutterMaterial(
         child: FlutterTextField(
           key: FlutterValueKey('FINDME'),
-          onChanged: ZacValueList<ZacAction, List<ZacAction>>([TestAction(cb)]),
+          onChanged: ZacListOfActions([TestAction(cb)]),
         ),
       ),
     );

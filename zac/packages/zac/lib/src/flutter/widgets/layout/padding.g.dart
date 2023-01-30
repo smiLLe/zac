@@ -7,13 +7,20 @@ part of 'padding.dart';
 // **************************************************************************
 
 _$_FlutterPadding _$$_FlutterPaddingFromJson(Map<String, dynamic> json) =>
-    _$_FlutterPadding(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      padding:
-          ZacBuilder<EdgeInsetsGeometry>.fromJson(json['padding'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterPadding',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterPadding(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          padding: $checkedConvert('padding',
+              (v) => ZacBuilder<EdgeInsetsGeometry>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

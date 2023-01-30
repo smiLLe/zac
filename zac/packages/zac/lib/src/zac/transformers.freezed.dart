@@ -862,9 +862,9 @@ class _$_MapMapper extends _MapMapper {
       _$$_MapMapperFromJson(json);
 
   @override
-  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? keyTransformer;
+  final ZacBuilder<List<ZacTransform>?>? keyTransformer;
   @override
-  final ZacListBuilder<ZacTransform, List<ZacTransform>?>? valueTransformer;
+  final ZacBuilder<List<ZacTransform>?>? valueTransformer;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -915,16 +915,15 @@ class _$_MapMapper extends _MapMapper {
 
 abstract class _MapMapper extends MapTransformer {
   factory _MapMapper(
-      {final ZacListBuilder<ZacTransform, List<ZacTransform>?>? keyTransformer,
-      final ZacListBuilder<ZacTransform, List<ZacTransform>?>?
-          valueTransformer}) = _$_MapMapper;
+      {final ZacBuilder<List<ZacTransform>?>? keyTransformer,
+      final ZacBuilder<List<ZacTransform>?>? valueTransformer}) = _$_MapMapper;
   _MapMapper._() : super._();
 
   factory _MapMapper.fromJson(Map<String, dynamic> json) =
       _$_MapMapper.fromJson;
 
-  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get keyTransformer;
-  ZacListBuilder<ZacTransform, List<ZacTransform>?>? get valueTransformer;
+  ZacBuilder<List<ZacTransform>?>? get keyTransformer;
+  ZacBuilder<List<ZacTransform>?>? get valueTransformer;
 }
 
 /// @nodoc
@@ -1316,7 +1315,7 @@ class _$_IterableMap extends _IterableMap {
       _$$_IterableMapFromJson(json);
 
   @override
-  final ZacListBuilder<ZacTransform, List<ZacTransform>> transformer;
+  final ZacBuilder<List<ZacTransform>> transformer;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -1364,14 +1363,14 @@ class _$_IterableMap extends _IterableMap {
 
 abstract class _IterableMap extends IterableTransformer {
   factory _IterableMap(
-      {required final ZacListBuilder<ZacTransform, List<ZacTransform>>
-          transformer}) = _$_IterableMap;
+          {required final ZacBuilder<List<ZacTransform>> transformer}) =
+      _$_IterableMap;
   _IterableMap._() : super._();
 
   factory _IterableMap.fromJson(Map<String, dynamic> json) =
       _$_IterableMap.fromJson;
 
-  ZacListBuilder<ZacTransform, List<ZacTransform>> get transformer;
+  ZacBuilder<List<ZacTransform>> get transformer;
 }
 
 /// @nodoc

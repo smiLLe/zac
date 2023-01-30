@@ -7,23 +7,35 @@ part of 'drawer.dart';
 // **************************************************************************
 
 _$_FlutterDrawer _$$_FlutterDrawerFromJson(Map<String, dynamic> json) =>
-    _$_FlutterDrawer(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      backgroundColor: json['backgroundColor'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['backgroundColor'] as Object),
-      elevation: json['elevation'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['elevation'] as Object),
-      shape: json['shape'] == null
-          ? null
-          : ZacBuilder<ShapeBorder?>.fromJson(json['shape'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
-      semanticLabel: json['semanticLabel'] == null
-          ? null
-          : ZacBuilder<String?>.fromJson(json['semanticLabel'] as Object),
+    $checkedCreate(
+      r'_$_FlutterDrawer',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterDrawer(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          backgroundColor: $checkedConvert(
+              'backgroundColor',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+          elevation: $checkedConvert(
+              'elevation',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          shape: $checkedConvert(
+              'shape',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<ShapeBorder?>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          semanticLabel: $checkedConvert(
+              'semanticLabel',
+              (v) =>
+                  v == null ? null : ZacBuilder<String?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

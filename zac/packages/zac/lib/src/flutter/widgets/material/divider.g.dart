@@ -7,23 +7,34 @@ part of 'divider.dart';
 // **************************************************************************
 
 _$_FlutterDivider _$$_FlutterDividerFromJson(Map<String, dynamic> json) =>
-    _$_FlutterDivider(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      height: json['height'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['height'] as Object),
-      thickness: json['thickness'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['thickness'] as Object),
-      indent: json['indent'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['indent'] as Object),
-      endIndent: json['endIndent'] == null
-          ? null
-          : ZacBuilder<double?>.fromJson(json['endIndent'] as Object),
-      color: json['color'] == null
-          ? null
-          : ZacBuilder<Color?>.fromJson(json['color'] as Object),
+    $checkedCreate(
+      r'_$_FlutterDivider',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterDivider(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          height: $checkedConvert(
+              'height',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          thickness: $checkedConvert(
+              'thickness',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          indent: $checkedConvert(
+              'indent',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          endIndent: $checkedConvert(
+              'endIndent',
+              (v) =>
+                  v == null ? null : ZacBuilder<double?>.fromJson(v as Object)),
+          color: $checkedConvert(
+              'color',
+              (v) =>
+                  v == null ? null : ZacBuilder<Color?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

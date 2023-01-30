@@ -8,13 +8,20 @@ part of 'sliver_padding.dart';
 
 _$_FlutterSliverPadding _$$_FlutterSliverPaddingFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterSliverPadding(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      sliver: json['sliver'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['sliver'] as Object),
-      padding:
-          ZacBuilder<EdgeInsetsGeometry>.fromJson(json['padding'] as Object),
+    $checkedCreate(
+      r'_$_FlutterSliverPadding',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSliverPadding(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          sliver: $checkedConvert(
+              'sliver',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+          padding: $checkedConvert('padding',
+              (v) => ZacBuilder<EdgeInsetsGeometry>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

@@ -8,13 +8,20 @@ part of 'constrained_box.dart';
 
 _$_FlutterConstrainedBox _$$_FlutterConstrainedBoxFromJson(
         Map<String, dynamic> json) =>
-    _$_FlutterConstrainedBox(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      constraints:
-          ZacBuilder<BoxConstraints>.fromJson(json['constraints'] as Object),
-      child: json['child'] == null
-          ? null
-          : ZacBuilder<Widget?>.fromJson(json['child'] as Object),
+    $checkedCreate(
+      r'_$_FlutterConstrainedBox',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterConstrainedBox(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          constraints: $checkedConvert('constraints',
+              (v) => ZacBuilder<BoxConstraints>.fromJson(v as Object)),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget?>.fromJson(v as Object)),
+        );
+        return val;
+      },
     );

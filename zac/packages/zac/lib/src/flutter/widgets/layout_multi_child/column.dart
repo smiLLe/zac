@@ -25,7 +25,7 @@ class FlutterColumn with _$FlutterColumn implements ZacBuilder<Column> {
     ZacBuilder<TextDirection?>? textDirection,
     ZacBuilder<VerticalDirection?>? verticalDirection,
     ZacBuilder<TextBaseline?>? textBaseline,
-    ZacListBuilder<Widget, List<Widget>?>? children,
+    ZacBuilder<List<Widget>?>? children,
   }) = _FlutterColumn;
 
   Column _buildWidget(BuildContext context, ZacContext zacContext) {

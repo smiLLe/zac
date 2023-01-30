@@ -568,19 +568,25 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Completer<void>.complete', ZacCompleterActions.fromJson)
     ..register('z:1:Completer<void>.provide', ZacCompleterVoidProvider.fromJson)
     ..register('z:1:ControlFlowAction.if', ZacControlFlowAction.fromJson)
+    ..register('z:1:DateTime', ZacDateTime.fromJson)
     ..register('z:1:ExecuteActions.listen', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:ExecuteActions.once', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:GlobalKey<NavigatorState>.provide',
         FlutterGlobalKeyNavigatorStateProvider.fromJson)
     ..register('z:1:GlobalKey<ScaffoldMessengerState>.provide',
         FlutterGlobalKeyScaffoldMessengerStateProvider.fromJson)
+    ..register('z:1:List<Widget>', ZacListOfWidgets.fromJson)
     ..register('z:1:List<Widget>.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:List<Widget>.updateShared', SharedValueActions.fromJson)
+    ..register('z:1:List<ZacAction>', ZacListOfActions.fromJson)
+    ..register('z:1:List<ZacTransform>', ZacListOfTransformers.fromJson)
+    ..register('z:1:Map<String, Widget>', ZacMapOfWidgets.fromJson)
     ..register(
         'z:1:Map<String, Widget>.provide', SharedValueProviderBuilder.fromJson)
     ..register(
         'z:1:Navigator.popUntilRouteName', FlutterNavigatorActions.fromJson)
     ..register('z:1:NavigatorState.shared', FlutterNavigatorState.fromJson)
+    ..register('z:1:Object', ZacObject.fromJson)
     ..register('z:1:Object.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:ScrollController.provide', FlutterScrollController.fromJson)
     ..register('z:1:SharedValue.invalidate', SharedValueActions.fromJson)
@@ -685,9 +691,13 @@ void addZacBuilders(ZacRegistry registry) {
     ..register(
         'z:1:ZacBuilder<Object>.updateShared', SharedValueActions.fromJson)
     ..register('z:1:ZacValue.asActionPayload', ZacValueActions.fromJson)
+    ..register('z:1:bool', ZacBool.fromJson)
     ..register('z:1:bool.provide', SharedValueProviderBuilder.fromJson)
+    ..register('z:1:double', ZacDouble.fromJson)
     ..register('z:1:double.provide', SharedValueProviderBuilder.fromJson)
+    ..register('z:1:int', ZacInt.fromJson)
     ..register('z:1:int.provide', SharedValueProviderBuilder.fromJson)
     ..register('z:1:null.provide', SharedValueProviderBuilder.fromJson)
-    ..register('z:1:null.updateShared', SharedValueActions.fromJson);
+    ..register('z:1:null.updateShared', SharedValueActions.fromJson)
+    ..register('z:1:num', ZacNum.fromJson);
 }

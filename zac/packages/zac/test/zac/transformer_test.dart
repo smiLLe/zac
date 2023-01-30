@@ -63,8 +63,7 @@ void main() {
       _expectFromJson<IterableTransformer>(
         fromJson: IterableTransformer.fromJson,
         converter: 'z:1:Transformer:Iterable.map',
-        equals: IterableTransformer.map(
-            transformer: ZacValueList<ZacTransform, List<ZacTransform>>([])),
+        equals: IterableTransformer.map(transformer: ZacListOfTransformers([])),
         props: <String, dynamic>{
           'transformer': <dynamic>[],
         },
@@ -74,9 +73,7 @@ void main() {
         tester,
         (getContext, getZacContext) {
           expect(
-              IterableTransformer.map(
-                      transformer:
-                          ZacValueList<ZacTransform, List<ZacTransform>>([]))
+              IterableTransformer.map(transformer: ZacListOfTransformers([]))
                   .build(getContext(), getZacContext())
                   .transform(ZacTransformValue(['foo', 'oof']), getContext(),
                       getZacContext(), null),
@@ -84,9 +81,7 @@ void main() {
 
           expect(
               IterableTransformer.map(
-                      transformer:
-                          ZacValueList<ZacTransform, List<ZacTransform>>(
-                              [_ConcatStr('bar')]))
+                      transformer: ZacListOfTransformers([_ConcatStr('bar')]))
                   .build(getContext(), getZacContext())
                   .transform(ZacTransformValue(['foo', 'oof']), getContext(),
                       getZacContext(), null),
@@ -94,9 +89,7 @@ void main() {
 
           expect(
               () => IterableTransformer.map(
-                      transformer:
-                          ZacValueList<ZacTransform, List<ZacTransform>>(
-                              [_ConcatStr('bar')]))
+                      transformer: ZacListOfTransformers([_ConcatStr('bar')]))
                   .build(getContext(), getZacContext())
                   .transform(ZacTransformValue(55), getContext(),
                       getZacContext(), null),
@@ -776,8 +769,8 @@ void main() {
         fromJson: MapTransformer.fromJson,
         converter: 'z:1:Transformer:Map.map',
         equals: MapTransformer.mapper(
-          keyTransformer: ZacValueList<ZacTransform, List<ZacTransform>?>([]),
-          valueTransformer: ZacValueList<ZacTransform, List<ZacTransform>?>([]),
+          keyTransformer: ZacListOfTransformers([]),
+          valueTransformer: ZacListOfTransformers([]),
         ),
         props: <String, dynamic>{
           'keyTransformer': <dynamic>[],
@@ -802,7 +795,7 @@ void main() {
 
         expect(
             MapTransformer.mapper(
-              keyTransformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+              keyTransformer: ZacListOfTransformers([
                 _ConcatStr('cool'),
                 TestTransform(
                   (transformValue, context, zacContext, payload) {
@@ -811,7 +804,7 @@ void main() {
                   },
                 )
               ]),
-              valueTransformer: ZacValueList<ZacTransform, List<ZacTransform>>([
+              valueTransformer: ZacListOfTransformers([
                 _ConcatStr('hello'),
                 TestTransform(
                   (transformValue, context, zacContext, payload) {
@@ -1722,19 +1715,19 @@ void main() {
       _expectFromJson<IntTransformer>(
         fromJson: IntTransformer.fromJson,
         converter: 'z:1:Transformer:int.incr',
-        equals: IntTransformer.incr(ZacValue<int>(1)),
+        equals: IntTransformer.incr(ZacInt(1)),
         props: <String, dynamic>{'by': 1},
       );
       await testWithContexts(tester, (getContext, getZacContext) {
         expect(
-            IntTransformer.incr(ZacValue<int>(1))
+            IntTransformer.incr(ZacInt(1))
                 .build(getContext(), getZacContext())
                 .transform(
                     ZacTransformValue(5), getContext(), getZacContext(), null),
             6);
 
         expect(
-            () => IntTransformer.incr(ZacValue<int>(1))
+            () => IntTransformer.incr(ZacInt(1))
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(Object()), getContext(),
                     getZacContext(), null),
@@ -1746,20 +1739,20 @@ void main() {
       _expectFromJson<IntTransformer>(
         fromJson: IntTransformer.fromJson,
         converter: 'z:1:Transformer:int.decr',
-        equals: IntTransformer.decr(ZacValue<int>(1)),
+        equals: IntTransformer.decr(ZacInt(1)),
         props: <String, dynamic>{'by': 1},
       );
 
       await testWithContexts(tester, (getContext, getZacContext) {
         expect(
-            IntTransformer.decr(ZacValue<int>(1))
+            IntTransformer.decr(ZacInt(1))
                 .build(getContext(), getZacContext())
                 .transform(
                     ZacTransformValue(5), getContext(), getZacContext(), null),
             4);
 
         expect(
-            () => IntTransformer.decr(ZacValue<int>(1))
+            () => IntTransformer.decr(ZacInt(1))
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(Object()), getContext(),
                     getZacContext(), null),

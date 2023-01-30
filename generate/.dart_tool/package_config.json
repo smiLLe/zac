@@ -129,7 +129,7 @@
     },
     {
       "name": "logging",
-      "rootUri": "file:///C:/Users/micha/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.1.1",
+      "rootUri": "file:///C:/Users/micha/AppData/Local/Pub/Cache/hosted/pub.dev/logging-1.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -254,7 +254,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-30T13:31:35.439943Z",
+  "generated": "2023-01-26T15:31:06.342635Z",
   "generator": "pub",
   "generatorVersion": "2.19.0"
 }

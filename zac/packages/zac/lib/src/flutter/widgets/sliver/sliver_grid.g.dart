@@ -7,12 +7,22 @@ part of 'sliver_grid.dart';
 // **************************************************************************
 
 _$_FlutterSliverGrid _$$_FlutterSliverGridFromJson(Map<String, dynamic> json) =>
-    _$_FlutterSliverGrid(
-      key: json['key'] == null
-          ? null
-          : ZacBuilder<Key?>.fromJson(json['key'] as Object),
-      delegate: FlutterSliverChildDelegate.fromJson(
-          json['delegate'] as Map<String, dynamic>),
-      gridDelegate: FlutterSliverGridDelegate.fromJson(
-          json['gridDelegate'] as Map<String, dynamic>),
+    $checkedCreate(
+      r'_$_FlutterSliverGrid',
+      json,
+      ($checkedConvert) {
+        final val = _$_FlutterSliverGrid(
+          key: $checkedConvert('key',
+              (v) => v == null ? null : ZacBuilder<Key?>.fromJson(v as Object)),
+          delegate: $checkedConvert(
+              'delegate',
+              (v) => FlutterSliverChildDelegate.fromJson(
+                  v as Map<String, dynamic>)),
+          gridDelegate: $checkedConvert(
+              'gridDelegate',
+              (v) => FlutterSliverGridDelegate.fromJson(
+                  v as Map<String, dynamic>)),
+        );
+        return val;
+      },
     );

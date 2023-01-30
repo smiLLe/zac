@@ -33,8 +33,7 @@ FlutterSliverChildDelegate _$FlutterSliverChildDelegateFromJson(
 
 /// @nodoc
 mixin _$FlutterSliverChildDelegate {
-  ZacListBuilder<Widget, List<Widget>> get children =>
-      throw _privateConstructorUsedError;
+  ZacBuilder<List<Widget>> get children => throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get addAutomaticKeepAlives =>
       throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get addRepaintBoundaries =>
@@ -71,7 +70,7 @@ class _$_FlutterSliverChildListDelegate
       _$$_FlutterSliverChildListDelegateFromJson(json);
 
   @override
-  final ZacListBuilder<Widget, List<Widget>> children;
+  final ZacBuilder<List<Widget>> children;
   @override
   final ZacBuilder<bool?>? addAutomaticKeepAlives;
   @override
@@ -126,7 +125,7 @@ class _$_FlutterSliverChildListDelegate
 abstract class _FlutterSliverChildListDelegate
     extends FlutterSliverChildDelegate {
   factory _FlutterSliverChildListDelegate(
-          final ZacListBuilder<Widget, List<Widget>> children,
+          final ZacBuilder<List<Widget>> children,
           {final ZacBuilder<bool?>? addAutomaticKeepAlives,
           final ZacBuilder<bool?>? addRepaintBoundaries,
           final ZacBuilder<bool?>? addSemanticIndexes,
@@ -138,7 +137,7 @@ abstract class _FlutterSliverChildListDelegate
       _$_FlutterSliverChildListDelegate.fromJson;
 
   @override
-  ZacListBuilder<Widget, List<Widget>> get children;
+  ZacBuilder<List<Widget>> get children;
   @override
   ZacBuilder<bool?>? get addAutomaticKeepAlives;
   @override
@@ -167,7 +166,7 @@ class _$_FlutterSliverChildListDelegateFixed
       _$$_FlutterSliverChildListDelegateFixedFromJson(json);
 
   @override
-  final ZacListBuilder<Widget, List<Widget>> children;
+  final ZacBuilder<List<Widget>> children;
   @override
   final ZacBuilder<bool?>? addAutomaticKeepAlives;
   @override
@@ -222,7 +221,7 @@ class _$_FlutterSliverChildListDelegateFixed
 abstract class _FlutterSliverChildListDelegateFixed
     extends FlutterSliverChildDelegate {
   factory _FlutterSliverChildListDelegateFixed(
-          final ZacListBuilder<Widget, List<Widget>> children,
+          final ZacBuilder<List<Widget>> children,
           {final ZacBuilder<bool?>? addAutomaticKeepAlives,
           final ZacBuilder<bool?>? addRepaintBoundaries,
           final ZacBuilder<bool?>? addSemanticIndexes,
@@ -235,7 +234,7 @@ abstract class _FlutterSliverChildListDelegateFixed
       _$_FlutterSliverChildListDelegateFixed.fromJson;
 
   @override
-  ZacListBuilder<Widget, List<Widget>> get children;
+  ZacBuilder<List<Widget>> get children;
   @override
   ZacBuilder<bool?>? get addAutomaticKeepAlives;
   @override
