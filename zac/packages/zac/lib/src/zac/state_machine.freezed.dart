@@ -14,29 +14,30 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-ZacTransition _$ZacTransitionFromJson(Map<String, dynamic> json) {
-  return _ZacTransition.fromJson(json);
+ZacStateMachineTransition _$ZacStateMachineTransitionFromJson(
+    Map<String, dynamic> json) {
+  return _ZacStateMachineTransition.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacTransition {
+mixin _$ZacStateMachineTransition {
   String get event => throw _privateConstructorUsedError;
   String get target => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacTransition value) $default,
+    TResult Function(_ZacStateMachineTransition value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacTransition extends _ZacTransition {
-  _$_ZacTransition({required this.event, required this.target}) : super._();
+class _$_ZacStateMachineTransition implements _ZacStateMachineTransition {
+  _$_ZacStateMachineTransition({required this.event, required this.target});
 
-  factory _$_ZacTransition.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacTransitionFromJson(json);
+  factory _$_ZacStateMachineTransition.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateMachineTransitionFromJson(json);
 
   @override
   final String event;
@@ -45,14 +46,14 @@ class _$_ZacTransition extends _ZacTransition {
 
   @override
   String toString() {
-    return 'ZacTransition(event: $event, target: $target)';
+    return 'ZacStateMachineTransition(event: $event, target: $target)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacTransition &&
+            other is _$_ZacStateMachineTransition &&
             (identical(other.event, event) || other.event == event) &&
             (identical(other.target, target) || other.target == target));
   }
@@ -64,20 +65,19 @@ class _$_ZacTransition extends _ZacTransition {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacTransition value) $default,
+    TResult Function(_ZacStateMachineTransition value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ZacTransition extends ZacTransition {
-  factory _ZacTransition(
+abstract class _ZacStateMachineTransition implements ZacStateMachineTransition {
+  factory _ZacStateMachineTransition(
       {required final String event,
-      required final String target}) = _$_ZacTransition;
-  _ZacTransition._() : super._();
+      required final String target}) = _$_ZacStateMachineTransition;
 
-  factory _ZacTransition.fromJson(Map<String, dynamic> json) =
-      _$_ZacTransition.fromJson;
+  factory _ZacStateMachineTransition.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateMachineTransition.fromJson;
 
   @override
   String get event;
@@ -85,95 +85,196 @@ abstract class _ZacTransition extends ZacTransition {
   String get target;
 }
 
-ZacStateConfig _$ZacStateConfigFromJson(Map<String, dynamic> json) {
-  return _ZacStateConfig.fromJson(json);
+ZacStateMachineStateConfig _$ZacStateMachineStateConfigFromJson(
+    Map<String, dynamic> json) {
+  return _ZacStateMachineStateConfig.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacStateConfig {
-  ZacBuilder<Widget> get widget => throw _privateConstructorUsedError;
-  List<ZacTransition> get on => throw _privateConstructorUsedError;
+mixin _$ZacStateMachineStateConfig {
+  List<ZacStateMachineTransition> get on => throw _privateConstructorUsedError;
+  ZacBuilder<Widget>? get widget => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacStateConfig value) $default,
+    TResult Function(_ZacStateMachineStateConfig value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacStateConfig extends _ZacStateConfig {
-  _$_ZacStateConfig(
-      {required this.widget,
-      final List<ZacTransition> on = const <ZacTransition>[]})
+class _$_ZacStateMachineStateConfig extends _ZacStateMachineStateConfig {
+  _$_ZacStateMachineStateConfig(
+      {final List<ZacStateMachineTransition> on =
+          const <ZacStateMachineTransition>[],
+      this.widget})
       : _on = on,
         super._();
 
-  factory _$_ZacStateConfig.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacStateConfigFromJson(json);
+  factory _$_ZacStateMachineStateConfig.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateMachineStateConfigFromJson(json);
 
-  @override
-  final ZacBuilder<Widget> widget;
-  final List<ZacTransition> _on;
+  final List<ZacStateMachineTransition> _on;
   @override
   @JsonKey()
-  List<ZacTransition> get on {
+  List<ZacStateMachineTransition> get on {
     if (_on is EqualUnmodifiableListView) return _on;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_on);
   }
 
   @override
+  final ZacBuilder<Widget>? widget;
+
+  @override
   String toString() {
-    return 'ZacStateConfig(widget: $widget, on: $on)';
+    return 'ZacStateMachineStateConfig(on: $on, widget: $widget)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacStateConfig &&
-            (identical(other.widget, widget) || other.widget == widget) &&
-            const DeepCollectionEquality().equals(other._on, _on));
+            other is _$_ZacStateMachineStateConfig &&
+            const DeepCollectionEquality().equals(other._on, _on) &&
+            (identical(other.widget, widget) || other.widget == widget));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, widget, const DeepCollectionEquality().hash(_on));
+      runtimeType, const DeepCollectionEquality().hash(_on), widget);
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacStateConfig value) $default,
+    TResult Function(_ZacStateMachineStateConfig value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ZacStateConfig extends ZacStateConfig {
-  factory _ZacStateConfig(
-      {required final ZacBuilder<Widget> widget,
-      final List<ZacTransition> on}) = _$_ZacStateConfig;
-  _ZacStateConfig._() : super._();
+abstract class _ZacStateMachineStateConfig extends ZacStateMachineStateConfig {
+  factory _ZacStateMachineStateConfig(
+      {final List<ZacStateMachineTransition> on,
+      final ZacBuilder<Widget>? widget}) = _$_ZacStateMachineStateConfig;
+  _ZacStateMachineStateConfig._() : super._();
 
-  factory _ZacStateConfig.fromJson(Map<String, dynamic> json) =
-      _$_ZacStateConfig.fromJson;
+  factory _ZacStateMachineStateConfig.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateMachineStateConfig.fromJson;
 
   @override
-  ZacBuilder<Widget> get widget;
+  List<ZacStateMachineTransition> get on;
   @override
-  List<ZacTransition> get on;
+  ZacBuilder<Widget>? get widget;
+}
+
+ZacStateMachineConfig _$ZacStateMachineConfigFromJson(
+    Map<String, dynamic> json) {
+  return _ZacStateMachineConfig.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacStateMachineConfig {
+  Map<String, ZacStateMachineStateConfig> get states =>
+      throw _privateConstructorUsedError;
+  String get initialState => throw _privateConstructorUsedError;
+  ZacBuilder<Widget>? get initialWidget => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacStateMachineConfig value) $default,
+  ) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacStateMachineConfig extends _ZacStateMachineConfig {
+  _$_ZacStateMachineConfig(
+      {required final Map<String, ZacStateMachineStateConfig> states,
+      required this.initialState,
+      this.initialWidget})
+      : _states = states,
+        super._();
+
+  factory _$_ZacStateMachineConfig.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateMachineConfigFromJson(json);
+
+  final Map<String, ZacStateMachineStateConfig> _states;
+  @override
+  Map<String, ZacStateMachineStateConfig> get states {
+    if (_states is EqualUnmodifiableMapView) return _states;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_states);
+  }
+
+  @override
+  final String initialState;
+  @override
+  final ZacBuilder<Widget>? initialWidget;
+
+  @override
+  String toString() {
+    return 'ZacStateMachineConfig(states: $states, initialState: $initialState, initialWidget: $initialWidget)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacStateMachineConfig &&
+            const DeepCollectionEquality().equals(other._states, _states) &&
+            (identical(other.initialState, initialState) ||
+                other.initialState == initialState) &&
+            (identical(other.initialWidget, initialWidget) ||
+                other.initialWidget == initialWidget));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_states),
+      initialState,
+      initialWidget);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacStateMachineConfig value) $default,
+  ) {
+    return $default(this);
+  }
+}
+
+abstract class _ZacStateMachineConfig extends ZacStateMachineConfig {
+  factory _ZacStateMachineConfig(
+      {required final Map<String, ZacStateMachineStateConfig> states,
+      required final String initialState,
+      final ZacBuilder<Widget>? initialWidget}) = _$_ZacStateMachineConfig;
+  _ZacStateMachineConfig._() : super._();
+
+  factory _ZacStateMachineConfig.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateMachineConfig.fromJson;
+
+  @override
+  Map<String, ZacStateMachineStateConfig> get states;
+  @override
+  String get initialState;
+  @override
+  ZacBuilder<Widget>? get initialWidget;
 }
 
 /// @nodoc
 mixin _$ZacStateMachine {
-  Map<String, ZacStateConfig> get states => throw _privateConstructorUsedError;
-  String get state => throw _privateConstructorUsedError;
-  Object? get context => throw _privateConstructorUsedError;
-  void Function(String, Object?) get send => throw _privateConstructorUsedError;
-  void Function(String, Object?) get trySend =>
+  String get family => throw _privateConstructorUsedError;
+  Idle get initial => throw _privateConstructorUsedError;
+  Running get running => throw _privateConstructorUsedError;
+  void Function(String, ZacBuilder<Widget>?) get send =>
+      throw _privateConstructorUsedError;
+  void Function(String, ZacBuilder<Widget>?) get trySend =>
       throw _privateConstructorUsedError;
   bool Function() get isActive => throw _privateConstructorUsedError;
 
@@ -189,12 +290,15 @@ abstract class $ZacStateMachineCopyWith<$Res> {
       _$ZacStateMachineCopyWithImpl<$Res, ZacStateMachine>;
   @useResult
   $Res call(
-      {Map<String, ZacStateConfig> states,
-      String state,
-      Object? context,
-      void Function(String, Object?) send,
-      void Function(String, Object?) trySend,
+      {String family,
+      Idle initial,
+      Running running,
+      void Function(String, ZacBuilder<Widget>?) send,
+      void Function(String, ZacBuilder<Widget>?) trySend,
       bool Function() isActive});
+
+  $IdleCopyWith<$Res> get initial;
+  $RunningCopyWith<$Res> get running;
 }
 
 /// @nodoc
@@ -210,36 +314,55 @@ class _$ZacStateMachineCopyWithImpl<$Res, $Val extends ZacStateMachine>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? states = null,
-    Object? state = null,
-    Object? context = freezed,
+    Object? family = null,
+    Object? initial = null,
+    Object? running = null,
     Object? send = null,
     Object? trySend = null,
     Object? isActive = null,
   }) {
     return _then(_value.copyWith(
-      states: null == states
-          ? _value.states
-          : states // ignore: cast_nullable_to_non_nullable
-              as Map<String, ZacStateConfig>,
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
+      family: null == family
+          ? _value.family
+          : family // ignore: cast_nullable_to_non_nullable
               as String,
-      context: freezed == context ? _value.context : context,
+      initial: null == initial
+          ? _value.initial
+          : initial // ignore: cast_nullable_to_non_nullable
+              as Idle,
+      running: null == running
+          ? _value.running
+          : running // ignore: cast_nullable_to_non_nullable
+              as Running,
       send: null == send
           ? _value.send
           : send // ignore: cast_nullable_to_non_nullable
-              as void Function(String, Object?),
+              as void Function(String, ZacBuilder<Widget>?),
       trySend: null == trySend
           ? _value.trySend
           : trySend // ignore: cast_nullable_to_non_nullable
-              as void Function(String, Object?),
+              as void Function(String, ZacBuilder<Widget>?),
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
               as bool Function(),
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $IdleCopyWith<$Res> get initial {
+    return $IdleCopyWith<$Res>(_value.initial, (value) {
+      return _then(_value.copyWith(initial: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $RunningCopyWith<$Res> get running {
+    return $RunningCopyWith<$Res>(_value.running, (value) {
+      return _then(_value.copyWith(running: value) as $Val);
+    });
   }
 }
 
@@ -252,12 +375,17 @@ abstract class _$$_ZacStateMachineCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Map<String, ZacStateConfig> states,
-      String state,
-      Object? context,
-      void Function(String, Object?) send,
-      void Function(String, Object?) trySend,
+      {String family,
+      Idle initial,
+      Running running,
+      void Function(String, ZacBuilder<Widget>?) send,
+      void Function(String, ZacBuilder<Widget>?) trySend,
       bool Function() isActive});
+
+  @override
+  $IdleCopyWith<$Res> get initial;
+  @override
+  $RunningCopyWith<$Res> get running;
 }
 
 /// @nodoc
@@ -271,31 +399,34 @@ class __$$_ZacStateMachineCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? states = null,
-    Object? state = null,
-    Object? context = freezed,
+    Object? family = null,
+    Object? initial = null,
+    Object? running = null,
     Object? send = null,
     Object? trySend = null,
     Object? isActive = null,
   }) {
     return _then(_$_ZacStateMachine(
-      states: null == states
-          ? _value._states
-          : states // ignore: cast_nullable_to_non_nullable
-              as Map<String, ZacStateConfig>,
-      state: null == state
-          ? _value.state
-          : state // ignore: cast_nullable_to_non_nullable
+      family: null == family
+          ? _value.family
+          : family // ignore: cast_nullable_to_non_nullable
               as String,
-      context: freezed == context ? _value.context : context,
+      initial: null == initial
+          ? _value.initial
+          : initial // ignore: cast_nullable_to_non_nullable
+              as Idle,
+      running: null == running
+          ? _value.running
+          : running // ignore: cast_nullable_to_non_nullable
+              as Running,
       send: null == send
           ? _value.send
           : send // ignore: cast_nullable_to_non_nullable
-              as void Function(String, Object?),
+              as void Function(String, ZacBuilder<Widget>?),
       trySend: null == trySend
           ? _value.trySend
           : trySend // ignore: cast_nullable_to_non_nullable
-              as void Function(String, Object?),
+              as void Function(String, ZacBuilder<Widget>?),
       isActive: null == isActive
           ? _value.isActive
           : isActive // ignore: cast_nullable_to_non_nullable
@@ -308,37 +439,30 @@ class __$$_ZacStateMachineCopyWithImpl<$Res>
 
 class _$_ZacStateMachine extends _ZacStateMachine {
   _$_ZacStateMachine(
-      {required final Map<String, ZacStateConfig> states,
-      required this.state,
-      required this.context,
+      {required this.family,
+      required this.initial,
+      required this.running,
       required this.send,
       required this.trySend,
       required this.isActive})
-      : _states = states,
-        super._();
-
-  final Map<String, ZacStateConfig> _states;
-  @override
-  Map<String, ZacStateConfig> get states {
-    if (_states is EqualUnmodifiableMapView) return _states;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_states);
-  }
+      : super._();
 
   @override
-  final String state;
+  final String family;
   @override
-  final Object? context;
+  final Idle initial;
   @override
-  final void Function(String, Object?) send;
+  final Running running;
   @override
-  final void Function(String, Object?) trySend;
+  final void Function(String, ZacBuilder<Widget>?) send;
+  @override
+  final void Function(String, ZacBuilder<Widget>?) trySend;
   @override
   final bool Function() isActive;
 
   @override
   String toString() {
-    return 'ZacStateMachine(states: $states, state: $state, context: $context, send: $send, trySend: $trySend, isActive: $isActive)';
+    return 'ZacStateMachine(family: $family, initial: $initial, running: $running, send: $send, trySend: $trySend, isActive: $isActive)';
   }
 
   @override
@@ -346,9 +470,9 @@ class _$_ZacStateMachine extends _ZacStateMachine {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachine &&
-            const DeepCollectionEquality().equals(other._states, _states) &&
-            (identical(other.state, state) || other.state == state) &&
-            const DeepCollectionEquality().equals(other.context, context) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.initial, initial) || other.initial == initial) &&
+            (identical(other.running, running) || other.running == running) &&
             (identical(other.send, send) || other.send == send) &&
             (identical(other.trySend, trySend) || other.trySend == trySend) &&
             (identical(other.isActive, isActive) ||
@@ -357,13 +481,7 @@ class _$_ZacStateMachine extends _ZacStateMachine {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_states),
-      state,
-      const DeepCollectionEquality().hash(context),
-      send,
-      trySend,
-      isActive);
+      runtimeType, family, initial, running, send, trySend, isActive);
 
   @JsonKey(ignore: true)
   @override
@@ -374,24 +492,24 @@ class _$_ZacStateMachine extends _ZacStateMachine {
 
 abstract class _ZacStateMachine extends ZacStateMachine {
   factory _ZacStateMachine(
-      {required final Map<String, ZacStateConfig> states,
-      required final String state,
-      required final Object? context,
-      required final void Function(String, Object?) send,
-      required final void Function(String, Object?) trySend,
+      {required final String family,
+      required final Idle initial,
+      required final Running running,
+      required final void Function(String, ZacBuilder<Widget>?) send,
+      required final void Function(String, ZacBuilder<Widget>?) trySend,
       required final bool Function() isActive}) = _$_ZacStateMachine;
   _ZacStateMachine._() : super._();
 
   @override
-  Map<String, ZacStateConfig> get states;
+  String get family;
   @override
-  String get state;
+  Idle get initial;
   @override
-  Object? get context;
+  Running get running;
   @override
-  void Function(String, Object?) get send;
+  void Function(String, ZacBuilder<Widget>?) get send;
   @override
-  void Function(String, Object?) get trySend;
+  void Function(String, ZacBuilder<Widget>?) get trySend;
   @override
   bool Function() get isActive;
   @override
@@ -400,230 +518,152 @@ abstract class _ZacStateMachine extends ZacStateMachine {
       throw _privateConstructorUsedError;
 }
 
-ZacStateMachineProviderBuilder _$ZacStateMachineProviderBuilderFromJson(
+ZacStateMachineProvider _$ZacStateMachineProviderFromJson(
     Map<String, dynamic> json) {
-  return _ZacStateMachineProviderBuilder.fromJson(json);
+  return _ZacStateMachineProvider.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacStateMachineProviderBuilder {
-  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
-  ZacBuilder<String> get family => throw _privateConstructorUsedError;
-  ZacBuilder<String> get initialState => throw _privateConstructorUsedError;
-  Map<String, ZacStateConfig> get states => throw _privateConstructorUsedError;
+mixin _$ZacStateMachineProvider {
+  Map<String, ZacStateMachineConfig> get machines =>
+      throw _privateConstructorUsedError;
   ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
-  ZacBuilder<Object?>? get initialContext => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacStateMachineProviderBuilder value) $default,
+    TResult Function(_ZacStateMachineProvider value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacStateMachineProviderBuilder
-    extends _ZacStateMachineProviderBuilder {
-  _$_ZacStateMachineProviderBuilder(
-      {this.key,
-      required this.family,
-      required this.initialState,
-      required final Map<String, ZacStateConfig> states,
-      required this.child,
-      this.initialContext})
-      : _states = states,
+class _$_ZacStateMachineProvider extends _ZacStateMachineProvider {
+  _$_ZacStateMachineProvider(
+      {required final Map<String, ZacStateMachineConfig> machines,
+      required this.child})
+      : _machines = machines,
         super._();
 
-  factory _$_ZacStateMachineProviderBuilder.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacStateMachineProviderBuilderFromJson(json);
+  factory _$_ZacStateMachineProvider.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateMachineProviderFromJson(json);
 
+  final Map<String, ZacStateMachineConfig> _machines;
   @override
-  final ZacBuilder<Key?>? key;
-  @override
-  final ZacBuilder<String> family;
-  @override
-  final ZacBuilder<String> initialState;
-  final Map<String, ZacStateConfig> _states;
-  @override
-  Map<String, ZacStateConfig> get states {
-    if (_states is EqualUnmodifiableMapView) return _states;
+  Map<String, ZacStateMachineConfig> get machines {
+    if (_machines is EqualUnmodifiableMapView) return _machines;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_states);
+    return EqualUnmodifiableMapView(_machines);
   }
 
   @override
   final ZacBuilder<Widget> child;
-  @override
-  final ZacBuilder<Object?>? initialContext;
 
   @override
   String toString() {
-    return 'ZacStateMachineProviderBuilder(key: $key, family: $family, initialState: $initialState, states: $states, child: $child, initialContext: $initialContext)';
+    return 'ZacStateMachineProvider(machines: $machines, child: $child)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacStateMachineProviderBuilder &&
-            (identical(other.key, key) || other.key == key) &&
-            (identical(other.family, family) || other.family == family) &&
-            (identical(other.initialState, initialState) ||
-                other.initialState == initialState) &&
-            const DeepCollectionEquality().equals(other._states, _states) &&
-            (identical(other.child, child) || other.child == child) &&
-            (identical(other.initialContext, initialContext) ||
-                other.initialContext == initialContext));
+            other is _$_ZacStateMachineProvider &&
+            const DeepCollectionEquality().equals(other._machines, _machines) &&
+            (identical(other.child, child) || other.child == child));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, key, family, initialState,
-      const DeepCollectionEquality().hash(_states), child, initialContext);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_machines), child);
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacStateMachineProviderBuilder value) $default,
+    TResult Function(_ZacStateMachineProvider value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ZacStateMachineProviderBuilder
-    extends ZacStateMachineProviderBuilder {
-  factory _ZacStateMachineProviderBuilder(
-          {final ZacBuilder<Key?>? key,
-          required final ZacBuilder<String> family,
-          required final ZacBuilder<String> initialState,
-          required final Map<String, ZacStateConfig> states,
-          required final ZacBuilder<Widget> child,
-          final ZacBuilder<Object?>? initialContext}) =
-      _$_ZacStateMachineProviderBuilder;
-  _ZacStateMachineProviderBuilder._() : super._();
+abstract class _ZacStateMachineProvider extends ZacStateMachineProvider {
+  factory _ZacStateMachineProvider(
+      {required final Map<String, ZacStateMachineConfig> machines,
+      required final ZacBuilder<Widget> child}) = _$_ZacStateMachineProvider;
+  _ZacStateMachineProvider._() : super._();
 
-  factory _ZacStateMachineProviderBuilder.fromJson(Map<String, dynamic> json) =
-      _$_ZacStateMachineProviderBuilder.fromJson;
+  factory _ZacStateMachineProvider.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateMachineProvider.fromJson;
 
   @override
-  ZacBuilder<Key?>? get key;
-  @override
-  ZacBuilder<String> get family;
-  @override
-  ZacBuilder<String> get initialState;
-  @override
-  Map<String, ZacStateConfig> get states;
+  Map<String, ZacStateMachineConfig> get machines;
   @override
   ZacBuilder<Widget> get child;
-  @override
-  ZacBuilder<Object?>? get initialContext;
 }
 
-ZacStateMachineBuildStateBuilder _$ZacStateMachineBuildStateBuilderFromJson(
-    Map<String, dynamic> json) {
-  return _ZacStateMachineBuildStateBuilder.fromJson(json);
+ZacStateMachineBuild _$ZacStateMachineBuildFromJson(Map<String, dynamic> json) {
+  return _ZacStateMachineBuild.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacStateMachineBuildStateBuilder {
-  ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
-  ZacBuilder<String> get family => throw _privateConstructorUsedError;
-  List<String> get states => throw _privateConstructorUsedError;
-  ZacBuilder<Widget?>? get unmappedStateWidget =>
-      throw _privateConstructorUsedError;
+mixin _$ZacStateMachineBuild {
+  String get family => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacStateMachineBuildStateBuilder value) $default,
+    TResult Function(_ZacStateMachineBuild value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacStateMachineBuildStateBuilder
-    extends _ZacStateMachineBuildStateBuilder {
-  _$_ZacStateMachineBuildStateBuilder(
-      {this.key,
-      required this.family,
-      required final List<String> states,
-      this.unmappedStateWidget})
-      : _states = states,
-        super._();
+class _$_ZacStateMachineBuild extends _ZacStateMachineBuild {
+  _$_ZacStateMachineBuild({required this.family}) : super._();
 
-  factory _$_ZacStateMachineBuildStateBuilder.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacStateMachineBuildStateBuilderFromJson(json);
+  factory _$_ZacStateMachineBuild.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateMachineBuildFromJson(json);
 
   @override
-  final ZacBuilder<Key?>? key;
-  @override
-  final ZacBuilder<String> family;
-  final List<String> _states;
-  @override
-  List<String> get states {
-    if (_states is EqualUnmodifiableListView) return _states;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_states);
-  }
-
-  @override
-  final ZacBuilder<Widget?>? unmappedStateWidget;
+  final String family;
 
   @override
   String toString() {
-    return 'ZacStateMachineBuildStateBuilder(key: $key, family: $family, states: $states, unmappedStateWidget: $unmappedStateWidget)';
+    return 'ZacStateMachineBuild(family: $family)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacStateMachineBuildStateBuilder &&
-            (identical(other.key, key) || other.key == key) &&
-            (identical(other.family, family) || other.family == family) &&
-            const DeepCollectionEquality().equals(other._states, _states) &&
-            (identical(other.unmappedStateWidget, unmappedStateWidget) ||
-                other.unmappedStateWidget == unmappedStateWidget));
+            other is _$_ZacStateMachineBuild &&
+            (identical(other.family, family) || other.family == family));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, key, family,
-      const DeepCollectionEquality().hash(_states), unmappedStateWidget);
+  int get hashCode => Object.hash(runtimeType, family);
 
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacStateMachineBuildStateBuilder value) $default,
+    TResult Function(_ZacStateMachineBuild value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ZacStateMachineBuildStateBuilder
-    extends ZacStateMachineBuildStateBuilder {
-  factory _ZacStateMachineBuildStateBuilder(
-          {final ZacBuilder<Key?>? key,
-          required final ZacBuilder<String> family,
-          required final List<String> states,
-          final ZacBuilder<Widget?>? unmappedStateWidget}) =
-      _$_ZacStateMachineBuildStateBuilder;
-  _ZacStateMachineBuildStateBuilder._() : super._();
+abstract class _ZacStateMachineBuild extends ZacStateMachineBuild {
+  factory _ZacStateMachineBuild({required final String family}) =
+      _$_ZacStateMachineBuild;
+  _ZacStateMachineBuild._() : super._();
 
-  factory _ZacStateMachineBuildStateBuilder.fromJson(
-      Map<String, dynamic> json) = _$_ZacStateMachineBuildStateBuilder.fromJson;
+  factory _ZacStateMachineBuild.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateMachineBuild.fromJson;
 
   @override
-  ZacBuilder<Key?>? get key;
-  @override
-  ZacBuilder<String> get family;
-  @override
-  List<String> get states;
-  @override
-  ZacBuilder<Widget?>? get unmappedStateWidget;
+  String get family;
 }
 
 ZacStateMachineActions _$ZacStateMachineActionsFromJson(
@@ -643,7 +683,7 @@ ZacStateMachineActions _$ZacStateMachineActionsFromJson(
 /// @nodoc
 mixin _$ZacStateMachineActions {
   String get family => throw _privateConstructorUsedError;
-  ZacBuilder<String> get event => throw _privateConstructorUsedError;
+  String get event => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
@@ -667,7 +707,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
   @override
   final String family;
   @override
-  final ZacBuilder<String> event;
+  final String event;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -703,7 +743,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
 abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
   factory _ZacStateMachineActionsSend(
       {required final String family,
-      required final ZacBuilder<String> event}) = _$_ZacStateMachineActionsSend;
+      required final String event}) = _$_ZacStateMachineActionsSend;
   _ZacStateMachineActionsSend._() : super._();
 
   factory _ZacStateMachineActionsSend.fromJson(Map<String, dynamic> json) =
@@ -712,7 +752,7 @@ abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
   @override
   String get family;
   @override
-  ZacBuilder<String> get event;
+  String get event;
 }
 
 /// @nodoc
@@ -730,7 +770,7 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
   @override
   final String family;
   @override
-  final ZacBuilder<String> event;
+  final String event;
 
   @JsonKey(name: 'builder')
   final String $type;
@@ -765,9 +805,8 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
 
 abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
   factory _ZacStateMachineActionsTrySend(
-          {required final String family,
-          required final ZacBuilder<String> event}) =
-      _$_ZacStateMachineActionsTrySend;
+      {required final String family,
+      required final String event}) = _$_ZacStateMachineActionsTrySend;
   _ZacStateMachineActionsTrySend._() : super._();
 
   factory _ZacStateMachineActionsTrySend.fromJson(Map<String, dynamic> json) =
@@ -776,142 +815,5 @@ abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
   @override
   String get family;
   @override
-  ZacBuilder<String> get event;
-}
-
-ZacStateMachineTransformer _$ZacStateMachineTransformerFromJson(
-    Map<String, dynamic> json) {
-  switch (json['builder']) {
-    case 'z:1:StateMachine:Transformer.pickState':
-      return _ZacStateMachineTransformerPickState.fromJson(json);
-    case 'z:1:StateMachine:Transformer.pickContext':
-      return _ZacStateMachineTransformerPickContext.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(
-          json,
-          'builder',
-          'ZacStateMachineTransformer',
-          'Invalid union type "${json['builder']}"!');
-  }
-}
-
-/// @nodoc
-mixin _$ZacStateMachineTransformer {
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacStateMachineTransformerPickState value)
-        pickState,
-    required TResult Function(_ZacStateMachineTransformerPickContext value)
-        pickContext,
-  }) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacStateMachineTransformerPickState
-    extends _ZacStateMachineTransformerPickState {
-  _$_ZacStateMachineTransformerPickState({final String? $type})
-      : $type = $type ?? 'z:1:StateMachine:Transformer.pickState',
-        super._();
-
-  factory _$_ZacStateMachineTransformerPickState.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacStateMachineTransformerPickStateFromJson(json);
-
-  @JsonKey(name: 'builder')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacStateMachineTransformer.pickState()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacStateMachineTransformerPickState);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacStateMachineTransformerPickState value)
-        pickState,
-    required TResult Function(_ZacStateMachineTransformerPickContext value)
-        pickContext,
-  }) {
-    return pickState(this);
-  }
-}
-
-abstract class _ZacStateMachineTransformerPickState
-    extends ZacStateMachineTransformer {
-  factory _ZacStateMachineTransformerPickState() =
-      _$_ZacStateMachineTransformerPickState;
-  _ZacStateMachineTransformerPickState._() : super._();
-
-  factory _ZacStateMachineTransformerPickState.fromJson(
-          Map<String, dynamic> json) =
-      _$_ZacStateMachineTransformerPickState.fromJson;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacStateMachineTransformerPickContext
-    extends _ZacStateMachineTransformerPickContext {
-  _$_ZacStateMachineTransformerPickContext({final String? $type})
-      : $type = $type ?? 'z:1:StateMachine:Transformer.pickContext',
-        super._();
-
-  factory _$_ZacStateMachineTransformerPickContext.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacStateMachineTransformerPickContextFromJson(json);
-
-  @JsonKey(name: 'builder')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacStateMachineTransformer.pickContext()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacStateMachineTransformerPickContext);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacStateMachineTransformerPickState value)
-        pickState,
-    required TResult Function(_ZacStateMachineTransformerPickContext value)
-        pickContext,
-  }) {
-    return pickContext(this);
-  }
-}
-
-abstract class _ZacStateMachineTransformerPickContext
-    extends ZacStateMachineTransformer {
-  factory _ZacStateMachineTransformerPickContext() =
-      _$_ZacStateMachineTransformerPickContext;
-  _ZacStateMachineTransformerPickContext._() : super._();
-
-  factory _ZacStateMachineTransformerPickContext.fromJson(
-          Map<String, dynamic> json) =
-      _$_ZacStateMachineTransformerPickContext.fromJson;
+  String get event;
 }

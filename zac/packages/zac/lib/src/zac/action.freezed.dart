@@ -897,6 +897,91 @@ abstract class _ZacExecuteActionsBuilderListen
   ZacBuilder<Widget>? get child;
 }
 
+ZacBuiltInActions _$ZacBuiltInActionsFromJson(Map<String, dynamic> json) {
+  return _OverridePayload.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacBuiltInActions {
+  Object get payload => throw _privateConstructorUsedError;
+  ZacListBuilder<ZacAction, List<ZacAction>> get actions =>
+      throw _privateConstructorUsedError;
+  ZacListBuilder<ZacTransform, List<ZacTransform>>? get transformer =>
+      throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OverridePayload value) withPayload,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_OverridePayload extends _OverridePayload {
+  _$_OverridePayload(
+      {required this.payload, required this.actions, this.transformer})
+      : super._();
+
+  factory _$_OverridePayload.fromJson(Map<String, dynamic> json) =>
+      _$$_OverridePayloadFromJson(json);
+
+  @override
+  final Object payload;
+  @override
+  final ZacListBuilder<ZacAction, List<ZacAction>> actions;
+  @override
+  final ZacListBuilder<ZacTransform, List<ZacTransform>>? transformer;
+
+  @override
+  String toString() {
+    return 'ZacBuiltInActions.withPayload(payload: $payload, actions: $actions, transformer: $transformer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OverridePayload &&
+            const DeepCollectionEquality().equals(other.payload, payload) &&
+            (identical(other.actions, actions) || other.actions == actions) &&
+            (identical(other.transformer, transformer) ||
+                other.transformer == transformer));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(payload), actions, transformer);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_OverridePayload value) withPayload,
+  }) {
+    return withPayload(this);
+  }
+}
+
+abstract class _OverridePayload extends ZacBuiltInActions {
+  factory _OverridePayload(
+      {required final Object payload,
+      required final ZacListBuilder<ZacAction, List<ZacAction>> actions,
+      final ZacListBuilder<ZacTransform, List<ZacTransform>>?
+          transformer}) = _$_OverridePayload;
+  _OverridePayload._() : super._();
+
+  factory _OverridePayload.fromJson(Map<String, dynamic> json) =
+      _$_OverridePayload.fromJson;
+
+  @override
+  Object get payload;
+  @override
+  ZacListBuilder<ZacAction, List<ZacAction>> get actions;
+  @override
+  ZacListBuilder<ZacTransform, List<ZacTransform>>? get transformer;
+}
+
 ZacControlFlowAction _$ZacControlFlowActionFromJson(Map<String, dynamic> json) {
   return _ZacControlFlowActionIf.fromJson(json);
 }

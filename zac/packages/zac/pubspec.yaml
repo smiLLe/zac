@@ -18,6 +18,7 @@ dependencies:
   flutter_riverpod: ^2.1.1
   hooks_riverpod: ^2.1.1
   collection: ^1.16.0
+  endlich_core: ^0.1.0
 
 dev_dependencies:
   flutter_test:
