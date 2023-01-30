@@ -9,8 +9,8 @@ import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:endlich_core/endlich_core.dart';
 
-// part 'state_machine.freezed.dart';
-// part 'state_machine.g.dart';
+part 'state_machine.freezed.dart';
+part 'state_machine.g.dart';
 
 @freezedZacBuilder
 class ZacStateMachineTransition with _$ZacStateMachineTransition {
@@ -302,11 +302,11 @@ class ZacStateMachineBuildWidget extends HookConsumerWidget {
   }
 }
 
-// @freezedZacBuilder
-// class ZacStateMachineActions
-//     with _$ZacStateMachineActions
-//     implements ZacBuilder<ZacAction> {
-//   ZacStateMachineActions._();
+@freezedZacBuilder
+class ZacStateMachineActions
+    with _$ZacStateMachineActions
+    implements ZacBuilder<ZacAction> {
+  ZacStateMachineActions._();
 
   factory ZacStateMachineActions.fromJson(Map<String, dynamic> json) =>
       _$ZacStateMachineActionsFromJson(json);
@@ -346,6 +346,6 @@ class ZacStateMachineBuildWidget extends HookConsumerWidget {
     );
   });
 
-//   @override
-//   ZacAction build(BuildContext context, ZacContext zacContext) => _action;
-// }
+  @override
+  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
+}

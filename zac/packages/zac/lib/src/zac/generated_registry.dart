@@ -82,6 +82,7 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_to_box_adapter.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/shared_state.dart';
+import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -571,8 +572,6 @@ void addZacBuilders(ZacRegistry registry) {
         'f:1:WrapCrossAlignment.start', FlutterWrapCrossAlignment.fromJson)
     ..register('f:1:showDialog', FlutterDialogActions.fromJson)
     ..register('z:1:Action.withPayload', ZacBuiltInActions.fromJson)
-    ..register('z:1:Completer<void>.complete', ZacCompleterActions.fromJson)
-    ..register('z:1:Completer<void>.provide', ZacCompleterVoidProvider.fromJson)
     ..register('z:1:ControlFlowAction.if', ZacControlFlowAction.fromJson)
     ..register('z:1:DateTime', ZacDateTime.fromJson)
     ..register('z:1:ExecuteActions.listen', ZacExecuteActionsBuilder.fromJson)
@@ -587,9 +586,8 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Object', ZacObject.fromJson)
     ..register('z:1:SharedState.provide', ZacSharedStateProvider.fromJson)
     ..register(
-        'z:1:SharedValue.transformCurrentValue', SharedValueActions.fromJson)
-    ..register('z:1:SharedValue.update', SharedValueActions.fromJson)
-    ..register('z:1:SharedValue.updateFromPayload', SharedValueActions.fromJson)
+        'z:1:SharedState.transformCurrentValue', SharedStateActions.fromJson)
+    ..register('z:1:SharedState.update', SharedStateActions.fromJson)
     ..register('z:1:StateMachine:Action.send', ZacStateMachineActions.fromJson)
     ..register(
         'z:1:StateMachine:Action.trySend', ZacStateMachineActions.fromJson)
@@ -642,8 +640,6 @@ void addZacBuilders(ZacRegistry registry) {
         'z:1:Transformer:Map<String, Object?>.from', MapTransformer.fromJson)
     ..register('z:1:Transformer:Map[key]', MapTransformer.fromJson)
     ..register('z:1:Transformer:Object.equals', ObjectTransformer.fromJson)
-    ..register(
-        'z:1:Transformer:Object.equalsSharedValue', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.hashCode', ObjectTransformer.fromJson)
     ..register(
         'z:1:Transformer:Object.isActionPayload', ObjectTransformer.fromJson)

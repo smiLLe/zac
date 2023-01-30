@@ -1213,7 +1213,7 @@ mixin _$FlutterRouteFactory {
       throw _privateConstructorUsedError;
 
   /// Key of the map equals the route name. Value of the map equals the
-  /// [SharedValue] family.
+  /// [SharedState] family.
   Map<String, String>? get familyNameOfArguments =>
       throw _privateConstructorUsedError;
 
@@ -1246,11 +1246,11 @@ class _$_FlutterRouteFactory extends _FlutterRouteFactory {
   }
 
   /// Key of the map equals the route name. Value of the map equals the
-  /// [SharedValue] family.
+  /// [SharedState] family.
   final Map<String, String>? _familyNameOfArguments;
 
   /// Key of the map equals the route name. Value of the map equals the
-  /// [SharedValue] family.
+  /// [SharedState] family.
   @override
   Map<String, String>? get familyNameOfArguments {
     final value = _familyNameOfArguments;
@@ -1307,7 +1307,7 @@ abstract class _FlutterRouteFactory extends FlutterRouteFactory {
   @override
 
   /// Key of the map equals the route name. Value of the map equals the
-  /// [SharedValue] family.
+  /// [SharedState] family.
   Map<String, String>? get familyNameOfArguments;
 }
 
