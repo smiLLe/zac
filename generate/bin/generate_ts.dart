@@ -1,5 +1,6 @@
 // ignore_for_file:  depend_on_referenced_packages
 
+import 'dart:collection';
 import 'dart:io';
 
 import 'package:analyzer/dart/analysis/analysis_context.dart';
@@ -74,27 +75,6 @@ Future<void> createClassesFile(
   writeFile.writeAsString(template.toString());
 }
 
-abstract class NativeTypes {
-  static bool isFlutterNativeType(DartType type) {
-    if (null != type.alias) {
-      final ele = type.alias!.element;
-      return ele.library.identifier.startsWith('package:flutter') ||
-          ele.library.identifier.startsWith('dart:');
-    }
-
-    if (type is! InterfaceType) return false;
-
-    return type.element.library.identifier.startsWith('package:flutter') ||
-        type.element.library.identifier.startsWith('dart:');
-  }
-
-  static String nativeNameOrLibName(DartType type) {
-    return isFlutterNativeType(type)
-        ? 'native.${OneClass.getName(type)}'
-        : OneClass.cleanUpFlutterPrefix(OneClass.getName(type));
-  }
-}
-
 Future<List<OneFile>> filesToCreate(AnalysisContext ctx, Uri uri) async {
   final fileSystemEntities = Directory.fromUri(uri)
       .listSync(recursive: true)
@@ -128,14 +108,36 @@ class AllFiles {
   ]..sortByCompare(
       (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
 
-  late final Iterable<OneClass> builders = [
+  late final Iterable<ExtendsZacBuilder> builders = [
     ...files
         .where((oneFile) => oneFile.builders.isNotEmpty)
-        .fold<Iterable<OneClass>>([], (previousValue, element) {
+        .fold<Iterable<ExtendsZacBuilder>>([], (previousValue, element) {
       return [...previousValue, ...element.builders];
     })
   ]..sortByCompare(
       (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
+
+  late final Iterable<ExtendsZacBuilder> buildersWithTypeParams = [
+    ...files
+        .where((oneFile) => oneFile.buildersWithTypeParams.isNotEmpty)
+        .fold<Iterable<ExtendsZacBuilder>>([], (previousValue, element) {
+      return [...previousValue, ...element.buildersWithTypeParams];
+    })
+  ]..sortByCompare(
+      (oneClass) => oneClass.element.displayName, (a, b) => a.compareTo(b));
+
+  late final Map<GenerateType, GenerateType?> zacBuilderTypes = () {
+    final map = builders.fold<Map<GenerateType, GenerateType?>>({},
+        (previousValue, cls) {
+      return {
+        ...previousValue,
+        ...cls.zacBuilderTypes,
+      };
+    });
+
+    return SplayTreeMap<GenerateType, GenerateType?>.from(
+        map, (k1, k2) => k1.name.compareTo(k2.name));
+  }();
 }
 
 class OneFile {
@@ -144,7 +146,17 @@ class OneFile {
 
   OneFile(this.lib, this.origin);
 
-  static final List<String> excludeClasses = ['SharedValueConsumeType'];
+  static final List<String> excludeClasses = [];
+
+  late final Map<GenerateType, GenerateType?> zacBuilderTypes = () {
+    return builders.fold<Map<GenerateType, GenerateType?>>({},
+        (previousValue, cls) {
+      return {
+        ...previousValue,
+        ...cls.zacBuilderTypes,
+      };
+    });
+  }();
 
   late final Iterable<ClassElement> _filteredClasses = lib
       .element.topLevelElements
@@ -170,28 +182,19 @@ class OneFile {
           .startsWith('ZacBuilder')))
       .map(OneClass.new);
 
-  late final Iterable<OneClass> builders =
-      _builders.where((cls) => cls.typeParameters.isEmpty).map(OneClass.new);
+  late final Iterable<ExtendsZacBuilder> builders = _builders
+      .where((cls) => cls.typeParameters.isEmpty)
+      .map(ExtendsZacBuilder.new);
 
-  late final Iterable<OneClass> buildersWithTypeParams =
-      _builders.where((cls) => cls.typeParameters.isNotEmpty).map(OneClass.new);
+  late final Iterable<ExtendsZacBuilder> buildersWithTypeParams = _builders
+      .where((cls) => cls.typeParameters.isNotEmpty)
+      .map(ExtendsZacBuilder.new);
 }
 
 class OneClass {
   OneClass(this.element);
 
   final ClassElement element;
-
-  static String getName(DartType type) {
-    if (null != type.alias) {
-      return type.alias!.element.name;
-    }
-    if (type is InterfaceType) {
-      return type.element.name;
-    }
-
-    throw StateError('Invalid type in $NativeTypes: $type');
-  }
 
   static String cleanUpFlutterPrefix(String name) {
     if (name.startsWith('Flutter')) {
@@ -202,61 +205,69 @@ class OneClass {
   }
 
   late final String className = () {
-    return cleanUpFlutterPrefix(getName(element.thisType));
+    return cleanUpFlutterPrefix(element.displayName);
   }();
 
-  late final String classNameWithTypes = () {
-    return cleanUpFlutterPrefix(
-        element.thisType.getDisplayString(withNullability: false));
-  }();
+  late final Iterable<String> classTypeArgs =
+      element.thisType.typeArguments.map((e) => mapDartTypeToTypescript(e));
 
   late final Iterable<UnionValueCtor> tsClassCtors = element.constructors
       .map(UnionValueCtor.new)
       .where((element) => element.canUseAsTSClassCtor);
+}
 
-  bool get implementsZacBuilder => element.allSupertypes.any((element) {
-        final displayString = element.getDisplayString(withNullability: false);
-        return displayString.startsWith('ZacBuilder');
-      });
+class ExtendsZacBuilder extends OneClass {
+  ExtendsZacBuilder(super.element);
 
-  bool get implementsZacListBuilder => element.allSupertypes.any((element) {
-        final displayString = element.getDisplayString(withNullability: false);
-        return displayString.startsWith('ZacListBuilder');
-      });
+  late final Map<GenerateType, GenerateType?> zacBuilderTypes = {
+    ...getZacBuilderTypes(zacBuilder.typeArguments.first),
+    ...tsClassCtors.fold<Map<GenerateType, GenerateType?>>({},
+        (previousValue, cls) {
+      return {
+        ...previousValue,
+        ...cls.zacBuilderTypes,
+      };
+    })
+  };
 
-  bool get implementsZacMapBuilder => element.allSupertypes.any((element) {
-        final displayString = element.getDisplayString(withNullability: false);
-        return displayString.startsWith('ZacMapBuilder');
-      });
+  late final InterfaceType zacBuilder =
+      element.allSupertypes.firstWhere((element) {
+    final displayString = element.getDisplayString(withNullability: false);
+    return displayString.startsWith('ZacBuilder');
+  });
 
-  InterfaceType get implementedZacBuilder {
-    assert(implementsZacBuilder);
-    return element.allSupertypes.firstWhere((element) {
-      final displayString = element.getDisplayString(withNullability: false);
-      return displayString.startsWith('ZacBuilder');
+  late final DartType zacBuilderTypeArg = zacBuilder.typeArguments.first;
+
+  late final InterfaceType? widget = () {
+    if (zacBuilderTypeArg is! InterfaceType) return null;
+    return (zacBuilderTypeArg as InterfaceType)
+        .allSupertypes
+        .firstWhereOrNull((element) {
+      return element.getDisplayString(withNullability: false) == 'Widget';
     });
-  }
-
-  InterfaceType get implementedZacListBuilder {
-    assert(implementsZacListBuilder);
-    return element.allSupertypes.firstWhere((element) {
-      final displayString = element.getDisplayString(withNullability: false);
-      return displayString.startsWith('ZacListBuilder');
-    });
-  }
-
-  InterfaceType get implementedZacMapBuilder {
-    assert(implementsZacMapBuilder);
-    return element.allSupertypes.firstWhere((element) {
-      final displayString = element.getDisplayString(withNullability: false);
-      return displayString.startsWith('ZacMapBuilder');
-    });
-  }
+  }();
 }
 
 class UnionValueCtor {
   UnionValueCtor(this.element);
   final ConstructorElement element;
+
+  late final Map<GenerateType, GenerateType?> zacBuilderTypes = {
+    ...element.parameters.fold<Map<GenerateType, GenerateType?>>({},
+        (previousValue, paramEle) {
+      return {
+        ...previousValue,
+
+        /// add type aliases
+        if (null != paramEle.type.alias) ...getZacBuilderTypes(paramEle.type),
+
+        /// add the Type in ZacBuilder<Type>
+        if (isZacBuilder(paramEle.type))
+          ...getZacBuilderTypes(
+              (paramEle.type as InterfaceType).typeArguments.first),
+      };
+    })
+  };
 
   /// fixes reserved Typescript names
   /// or create a name for base constructor
@@ -298,10 +309,22 @@ class Template {
   final AllFiles allFiles;
   final String header;
 
+  String _classNameTmpl(OneClass cls) {
+    final args =
+        cls.classTypeArgs.isEmpty ? '' : '<${cls.classTypeArgs.join(', ')}>';
+    return '${cls.className}$args';
+  }
+
+  String _ctorName(OneClass cls, UnionValueCtor ctor) {
+    final args =
+        cls.classTypeArgs.isEmpty ? '' : '<${cls.classTypeArgs.join(', ')}>';
+    return '${ctor.name}$args';
+  }
+
   Iterable<String> _ctorTmpl(OneClass cls) {
     return cls.tsClassCtors.map((ctor) {
       final ctorParams = ctor.element.parameters.map((paramEle) {
-        final mappedType = mapDartTypeToTypescript(allFiles, paramEle.type);
+        final mappedType = mapDartTypeToTypescript(paramEle.type);
         var paramNameOpt = paramEle.isOptional ? '?' : '';
         return '${paramEle.displayName}$paramNameOpt: $mappedType';
       });
@@ -315,8 +338,8 @@ class Template {
             'data${allParamsOptional ? '?' : ''}: {${ctorParams.join(',\n')}}';
       }
       return '''
-static ${ctor.name}($ctorParamsDef) {
-  return new ${cls.className}({
+static ${_ctorName(cls, ctor)}($ctorParamsDef) {
+  return new ${_classNameTmpl(cls)}({
     builder: '${ctor.unionValue}'${ctorParams.isNotEmpty ? ',' : ''}
     ${ctorParams.isNotEmpty ? '...data' : ''}
   })
@@ -324,13 +347,46 @@ static ${ctor.name}($ctorParamsDef) {
     });
   }
 
+  Iterable<String> _nativeTypes() {
+    return allFiles.zacBuilderTypes.entries.map((entry) {
+      final leftParams = <String>[];
+      final rightParams = <String>[];
+      if (entry.key.type.element is InterfaceElement) {
+        leftParams.addAll((entry.key.type.element as InterfaceElement)
+            .typeParameters
+            .map((e) => e.displayName));
+      }
+      if (entry.value?.type is InterfaceType) {
+        rightParams.addAll((entry.value!.type as InterfaceType)
+            .typeArguments
+            .map(mapDartTypeToTypescript));
+      }
+
+      return '''
+export interface ${entry.key.name}${leftParams.isEmpty ? '' : '<${leftParams.join(', ')}>'}${null == entry.value ? '' : ' extends ${entry.value!.name}${rightParams.isEmpty ? '' : '<${rightParams.join(', ')}>'}'} {
+  _${entry.key.name}: unknown;
+  ${leftParams.map((e) => '_${entry.key.name}$e: $e;').join('\n')}
+}''';
+    });
+  }
+
   Iterable<String> _builderTmpl() {
     return allFiles.builders.map((cls) {
-      final typeName = mapDartTypeToTypescript(
-          allFiles, cls.implementedZacBuilder.typeArguments.first);
+      final typeName = mapDartTypeToTypescript(cls.zacBuilderTypeArg);
 
       return '''
 export class ${cls.className} extends ZacBuilder<$typeName> {
+  ${_ctorTmpl(cls).join('\n')}
+}''';
+    });
+  }
+
+  Iterable<String> _buildersWithTypeParamsTmpl() {
+    return allFiles.buildersWithTypeParams.map((cls) {
+      final typeName = mapDartTypeToTypescript(cls.zacBuilderTypeArg);
+
+      return '''
+export class ${_classNameTmpl(cls)} extends ZacBuilder<$typeName> {
   ${_ctorTmpl(cls).join('\n')}
 }''';
     });
@@ -347,26 +403,38 @@ export class ${b.className} extends ZacConvertable {
 
   @override
   String toString() {
+    // import * as native from './nativetypes';
     return '''
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as native from './nativetypes';
-
 $header
+
+
+${_nativeTypes().join('\n')}
 
 ${_othersTmpl().join('\n')}
 ${_builderTmpl().join('\n')}
+${_buildersWithTypeParamsTmpl().join('\n')}
+
 ''';
   }
 }
 
-String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
-    [int depth = 0]) {
-  if (null != type.alias && type is FunctionType) {
-    return NativeTypes.nativeNameOrLibName(type);
+String mapDartTypeToTypescript(DartType type, [int depth = 0]) {
+  if (null != type.alias) {
+    return getDisplayName(type.alias!.element);
+  }
+
+  // f.e. SomeClass<T>.. Will be T
+  if (type is TypeParameterType) {
+    return type.element.getDisplayString(withNullability: true);
+  }
+
+  if (type.isVoid || type.isDartCoreObject || type.isDynamic) {
+    return 'any';
   }
 
   if (type is! InterfaceType) {
-    return 'any';
+    throw Exception('Unhandled type in mapDartTypeToTypescript(): $type');
   }
 
   String opt() {
@@ -376,50 +444,167 @@ String mapDartTypeToTypescript(AllFiles allFiles, DartType type,
         : '';
   }
 
-  final name = OneClass.getName(type);
+  if (type.element.displayName == 'ZacBuilder') {
+    final mappedName = mapDartTypeToTypescript(type.typeArguments.first);
+    final def = 'ZacBuilder<$mappedName>${opt()}';
 
-  switch (name) {
-    case 'ZacBuilder':
-      final mappedName =
-          mapDartTypeToTypescript(allFiles, type.typeArguments.first);
-      final def = 'ZacBuilder<$mappedName>${opt()}';
-
-      switch (mappedName) {
-        case 'number':
-        case 'string':
-        case 'boolean':
-          return '$mappedName | $def';
-        default:
-          return def;
-      }
-    case 'ZacListBuilder':
-      final mappedName =
-          mapDartTypeToTypescript(allFiles, type.typeArguments.first);
-      return 'ZacListBuilder<$mappedName>${opt()}';
-    case 'ZacMapBuilder':
-      final mappedName =
-          mapDartTypeToTypescript(allFiles, type.typeArguments.first);
-      return 'ZacMapBuilder<$mappedName>${opt()}';
-    case 'bool':
-      return 'boolean${opt()}';
-    case 'String':
-    case 'DateTime':
-      return 'string${opt()}';
-    case 'double':
-    case 'int':
-    case 'num':
-      return 'number${opt()}';
-    case 'void':
-    case 'dynamic':
-    case 'Object':
-      return 'any${opt()}';
-    case 'Map':
-      return 'Record<string, ${mapDartTypeToTypescript(allFiles, type.typeArguments.last, depth + 1)}>${opt()}';
-    case 'List':
-    case 'Set':
-    case 'Iterable':
-      return 'Array<${mapDartTypeToTypescript(allFiles, type.typeArguments.first, depth + 1)}>${opt()}';
-    default:
-      return NativeTypes.nativeNameOrLibName(type);
+    switch (mappedName) {
+      case 'number':
+      case 'string':
+      case 'boolean':
+        return '$mappedName | $def';
+      default:
+        return def;
+    }
+  } else if (type.isDartCoreBool) {
+    return 'boolean${opt()}';
+  } else if (type.isDartCoreInt ||
+      type.isDartCoreDouble ||
+      type.isDartCoreNum) {
+    return 'number${opt()}';
+  } else if (type.isDartCoreString || type.element.displayName == 'DateTime') {
+    return 'string${opt()}';
+  } else if (type.isDartCoreMap) {
+    return 'Record<string, ${mapDartTypeToTypescript(type.typeArguments.last, depth + 1)}>${opt()}';
+  } else if (type.isDartCoreList ||
+      type.isDartCoreIterable ||
+      type.isDartCoreSet) {
+    return 'Array<${mapDartTypeToTypescript(type.typeArguments.first, depth + 1)}>${opt()}';
   }
+
+  /// TODO: Implement classes with Types
+  else if (type.typeArguments.isNotEmpty) {
+    final mapped = type.typeArguments.map(mapDartTypeToTypescript).join(', ');
+    return '${getDisplayName(type.element)}<$mapped>';
+  } else {
+    return getDisplayName(type.element);
+  }
+}
+
+bool isSubclassOfZacBuilder(DartType type) {
+  if (type is! InterfaceType) return false;
+
+  return type.allSupertypes.any((element) {
+    final displayString = element.getDisplayString(withNullability: false);
+    return displayString.startsWith('ZacBuilder');
+  });
+}
+
+bool isZacBuilder(DartType type) {
+  if (type is! InterfaceType) return false;
+
+  return type.getDisplayString(withNullability: false).startsWith('ZacBuilder');
+}
+
+bool isTypeInFlutter(Element ele) {
+  assert(null != ele.library);
+  return ele.library!.identifier.startsWith('package:flutter') ||
+      ele.library!.identifier.startsWith('dart:');
+}
+
+String getDisplayName(Element ele) {
+  if (isTypeInFlutter(ele)) {
+    return 'Flutter${ele.displayName}';
+  }
+  return ele.displayName;
+}
+
+class GenerateType {
+  final DartType type;
+  final String name;
+
+  GenerateType(this.type, this.name);
+}
+
+/// [type] should be the type arg used in ZacBuilder<Type>.
+/// It will return a Map including the Type and all the supertypes.
+/// This will allow to create TS interface types like:
+/// interface Alignment extends AlignmentGeometry {}
+/// or
+/// interface AppBar extends Widget {}
+///
+/// This will basically build something like
+/// {
+///   'Widget': null,
+///   'Container': 'Widget',
+///   'FlutterEdgeInsetsGeometry': null,
+///   'FlutterEdgeInsets': 'FlutterEdgeInsetsGeometry',
+/// }
+Map<GenerateType, GenerateType?> getZacBuilderTypes(DartType type) {
+  final Map<GenerateType, GenerateType?> map = {};
+
+  /// similar to map.putIfAbsent(..)
+  void addTypeToMap(GenerateType addClass, GenerateType? superClass) {
+    if (null ==
+        map.keys.firstWhereOrNull((element) => element.name == addClass.name)) {
+      map[addClass] = superClass;
+    }
+  }
+
+  if (type.isVoid || type.isDartCoreObject || type.isDynamic) {
+    return map;
+  } else if (null != type.alias) {
+    addTypeToMap(GenerateType(type, getDisplayName(type.alias!.element)), null);
+  } else if (type is InterfaceType) {
+    final widget = type.allSupertypes.firstWhereOrNull((element) {
+      return element.getDisplayString(withNullability: false) == 'Widget';
+    });
+
+    if (null != widget) {
+      addTypeToMap(GenerateType(widget, getDisplayName(widget.element)), null);
+      addTypeToMap(GenerateType(type, getDisplayName(type.element)),
+          GenerateType(widget, getDisplayName(widget.element)));
+    } else {
+      bool wanted(InterfaceType t) {
+        return !(t.isVoid ||
+            t.isDartCoreObject ||
+            t.isDartCoreEnum ||
+            t.isDartCoreSet ||
+            t.isDartCoreMap ||
+            t.isDartCoreList ||
+            t.isDartCoreIterable ||
+            t.isDartCoreBool ||
+            t.isDartCoreDouble ||
+            t.isDartCoreInt ||
+            t.isDartCoreNum ||
+            t.isDartCoreString ||
+            t.isDartCoreFunction ||
+            t.isDynamic ||
+            t.getDisplayString(withNullability: false) == 'DateTime');
+      }
+
+      void addType(InterfaceType t) {
+        if (!wanted(t)) return;
+        final tName = getDisplayName(t.element);
+        addTypeToMap(
+            GenerateType(t, tName),
+            null == t.superclass || !wanted(t.superclass!)
+                ? null
+                : GenerateType(
+                    t.superclass!, getDisplayName(t.superclass!.element)));
+
+        if (null != t.superclass) {
+          addType(t.superclass!);
+        }
+
+        if (t.typeArguments.isNotEmpty) {
+          for (var entry in t.typeArguments
+              .map(getZacBuilderTypes)
+              .fold<Map<GenerateType, GenerateType?>>(
+                  {},
+                  (previousValue, element) =>
+                      {...previousValue, ...element}).entries) {
+            addTypeToMap(entry.key, entry.value);
+          }
+        }
+      }
+
+      addType(type);
+    }
+  } else {
+    throw Exception(
+        'Unhandled type found in getZacBuilderTypes(): ${type.toString()}');
+  }
+
+  return map;
 }

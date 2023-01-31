@@ -22,18 +22,6 @@ _$_ZacValueActionsAsPayload _$$_ZacValueActionsAsPayloadFromJson(
       },
     );
 
-_$_ZacValue<T> _$$_ZacValueFromJson<T>(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_ZacValue',
-      json,
-      ($checkedConvert) {
-        final val = _$_ZacValue<T>(
-          $checkedConvert('value', (v) => v as Object),
-        );
-        return val;
-      },
-    );
-
 _$_ZacNum _$$_ZacNumFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_ZacNum',
       json,

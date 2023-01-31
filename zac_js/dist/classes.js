@@ -12,71 +12,42 @@ export class ZacBuilder extends ZacConvertable {
         return this._doNotUse;
     }
 }
-export class ZacListBuilder extends ZacBuilder {
-}
-export class ZacMapBuilder extends ZacBuilder {
-}
-export class ZacTransform {
-}
-export class ZacAction {
-}
-export class ZacValue extends ZacBuilder {
-    static new(data) {
-        return new ZacValue({
-            builder: 'z:1:ZacValue',
-            value: data,
-        });
-    }
-}
-export class ZacValueList extends ZacListBuilder {
-    static new(data) {
-        return new ZacValueList({
-            builder: 'z:1:ZacValueList',
-            items: data,
-        });
-    }
-}
-export class ZacValueMap extends ZacMapBuilder {
-    static new(data) {
-        return new ZacValueMap({
-            builder: 'z:1:ZacValueMap',
-            items: data,
-        });
-    }
-}
-export class SharedValueConsumeType extends ZacConvertable {
+export class SharedStateConsumeType extends ZacConvertable {
     static watch(data) {
-        return new SharedValueConsumeType(Object.assign({ builder: "z:1:SharedValueConsume.watch" }, data));
+        return new SharedStateConsumeType(Object.assign({ builder: 'z:1:SharedState.watch' }, data));
     }
     static read() {
-        return new SharedValueConsumeType({
-            builder: "z:1:SharedValueConsume.read",
+        return new SharedStateConsumeType({
+            builder: 'z:1:SharedState.read'
         });
     }
 }
-export class ConsumeSharedValue extends ZacBuilder {
-    static new(data) {
-        return new ConsumeSharedValue(Object.assign({ builder: 'z:1:SharedValue.consume' }, data));
+export class ZacSharedStateProvide extends ZacConvertable {
+    static value(data) {
+        return new ZacSharedStateProvide(Object.assign({ builder: 'z:1:SharedStateType:Value' }, data));
+    }
+    static builder(data) {
+        return new ZacSharedStateProvide(Object.assign({ builder: 'z:1:SharedStateType:Builder' }, data));
+    }
+    static n() {
+        return new ZacSharedStateProvide({
+            builder: 'z:1:SharedStateType:Null'
+        });
     }
 }
-export class ConsumeSharedValueList extends ZacListBuilder {
+export class ZacStateMachineConfig extends ZacConvertable {
     static new(data) {
-        return new ConsumeSharedValue(Object.assign({ builder: 'z:1:SharedValueList.consume' }, data));
+        return new ZacStateMachineConfig(Object.assign({ builder: 'z:1:StateMachine' }, data));
     }
 }
-export class ConsumeSharedValueMap extends ZacMapBuilder {
+export class ZacStateMachineStateConfig extends ZacConvertable {
     static new(data) {
-        return new ConsumeSharedValue(Object.assign({ builder: 'z:1:SharedValueMap.consume' }, data));
+        return new ZacStateMachineStateConfig(Object.assign({ builder: 'z:1:StateMachine:StateConfig' }, data));
     }
 }
-export class ZacStateConfig extends ZacConvertable {
+export class ZacStateMachineTransition extends ZacConvertable {
     static new(data) {
-        return new ZacStateConfig(Object.assign({ builder: 'z:1:StateMachine:StateConfig' }, data));
-    }
-}
-export class ZacTransition extends ZacConvertable {
-    static new(data) {
-        return new ZacTransition(Object.assign({ builder: 'z:1:StateMachine:Transition' }, data));
+        return new ZacStateMachineTransition(Object.assign({ builder: 'z:1:StateMachine:Transition' }, data));
     }
 }
 export class BoolTransformer extends ZacBuilder {
@@ -1014,14 +985,14 @@ export class GestureDetector extends ZacBuilder {
         return new GestureDetector(Object.assign({ builder: 'f:1:GestureDetector' }, data));
     }
 }
-export class GlobalKeyNavigatorStateProvider extends ZacBuilder {
+export class GlobalKeyNavigatorState extends ZacBuilder {
     static new(data) {
-        return new GlobalKeyNavigatorStateProvider(Object.assign({ builder: 'z:1:GlobalKey<NavigatorState>.provide' }, data));
+        return new GlobalKeyNavigatorState(Object.assign({ builder: 'f:1:GlobalKey<NavigatorState>' }, data));
     }
 }
-export class GlobalKeyScaffoldMessengerStateProvider extends ZacBuilder {
+export class GlobalKeyScaffoldMessengerState extends ZacBuilder {
     static new(data) {
-        return new GlobalKeyScaffoldMessengerStateProvider(Object.assign({ builder: 'z:1:GlobalKey<ScaffoldMessengerState>.provide' }, data));
+        return new GlobalKeyScaffoldMessengerState(Object.assign({ builder: 'f:1:GlobalKey<ScaffoldMessengerState>' }, data));
     }
 }
 export class GridView extends ZacBuilder {
@@ -1438,7 +1409,7 @@ export class ScaffoldMessenger extends ZacBuilder {
 }
 export class ScrollController extends ZacBuilder {
     static new(data) {
-        return new ScrollController(Object.assign({ builder: 'z:1:ScrollController.provide' }, data));
+        return new ScrollController(Object.assign({ builder: 'f:1:ScrollController' }, data));
     }
 }
 export class ScrollPhysics extends ZacBuilder {
@@ -2352,66 +2323,13 @@ export class ObjectTransformer extends ZacBuilder {
             builder: 'z:1:Transformer:Object.hashCode'
         });
     }
-    static equalsSharedValue(data) {
-        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.equalsSharedValue' }, data));
-    }
 }
-export class SharedValueActions extends ZacBuilder {
+export class SharedStateActions extends ZacBuilder {
     static update(data) {
-        return new SharedValueActions(Object.assign({ builder: 'z:1:SharedValue.update' }, data));
+        return new SharedStateActions(Object.assign({ builder: 'z:1:SharedState.update' }, data));
     }
     static transformCurrentValue(data) {
-        return new SharedValueActions(Object.assign({ builder: 'z:1:SharedValue.transformCurrentValue' }, data));
-    }
-    static updateFromPayload(data) {
-        return new SharedValueActions(Object.assign({ builder: 'z:1:SharedValue.updateFromPayload' }, data));
-    }
-    static updateWithNull(data) {
-        return new SharedValueActions(Object.assign({ builder: 'z:1:null.updateShared' }, data));
-    }
-    static updateWithWidget(data) {
-        return new SharedValueActions(Object.assign({ builder: 'z:1:Widget.updateShared' }, data));
-    }
-    static updateWithWidgets(data) {
-        return new SharedValueActions(Object.assign({ builder: 'z:1:List<Widget>.updateShared' }, data));
-    }
-    static updateWithBuilder(data) {
-        return new SharedValueActions(Object.assign({ builder: 'z:1:ZacBuilder<Object>.updateShared' }, data));
-    }
-    static invalidate(data) {
-        return new SharedValueActions(Object.assign({ builder: 'z:1:SharedValue.invalidate' }, data));
-    }
-}
-export class SharedValueProviderBuilder extends ZacBuilder {
-    static provideInt(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:int.provide' }, data));
-    }
-    static provideDouble(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:double.provide' }, data));
-    }
-    static provideString(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:String.provide' }, data));
-    }
-    static provideBool(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:bool.provide' }, data));
-    }
-    static provideObject(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:Object.provide' }, data));
-    }
-    static provideNull(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:null.provide' }, data));
-    }
-    static provideWidget(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:Widget.provide' }, data));
-    }
-    static provideWidgets(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:List<Widget>.provide' }, data));
-    }
-    static provideWidgetsMap(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:Map<String, Widget>.provide' }, data));
-    }
-    static provideAnyBuilder(data) {
-        return new SharedValueProviderBuilder(Object.assign({ builder: 'z:1:ZacBuilder<Object>.provide' }, data));
+        return new SharedStateActions(Object.assign({ builder: 'z:1:SharedState.transformCurrentValue' }, data));
     }
 }
 export class StringTransformer extends ZacBuilder {
@@ -2449,19 +2367,41 @@ export class ZacActionPayloadTransformer extends ZacBuilder {
         });
     }
 }
-export class ZacCompleterActions extends ZacBuilder {
-    static completeVoid(data) {
-        return new ZacCompleterActions(Object.assign({ builder: 'z:1:Completer<void>.complete' }, data));
+export class ZacBool extends ZacBuilder {
+    static new(data) {
+        return new ZacBool(Object.assign({ builder: 'z:1:bool' }, data));
     }
 }
-export class ZacCompleterVoidProvider extends ZacBuilder {
-    static new(data) {
-        return new ZacCompleterVoidProvider(Object.assign({ builder: 'z:1:Completer<void>.provide' }, data));
+export class ZacBuiltInActions extends ZacBuilder {
+    static withPayload(data) {
+        return new ZacBuiltInActions(Object.assign({ builder: 'z:1:Action.withPayload' }, data));
+    }
+}
+export class ZacCompleterActions extends ZacBuilder {
+    static completeVoid(data) {
+        return new ZacCompleterActions(Object.assign({ builder: 'f:1:Completer<void>.complete' }, data));
+    }
+}
+export class ZacCompleterVoid extends ZacBuilder {
+    static new() {
+        return new ZacCompleterVoid({
+            builder: 'f:1:Completer<void>'
+        });
     }
 }
 export class ZacControlFlowAction extends ZacBuilder {
     static ifCond(data) {
         return new ZacControlFlowAction(Object.assign({ builder: 'z:1:ControlFlowAction.if' }, data));
+    }
+}
+export class ZacDateTime extends ZacBuilder {
+    static new(data) {
+        return new ZacDateTime(Object.assign({ builder: 'z:1:DateTime' }, data));
+    }
+}
+export class ZacDouble extends ZacBuilder {
+    static new(data) {
+        return new ZacDouble(Object.assign({ builder: 'z:1:double' }, data));
     }
 }
 export class ZacExecuteActionsBuilder extends ZacBuilder {
@@ -2472,6 +2412,46 @@ export class ZacExecuteActionsBuilder extends ZacBuilder {
         return new ZacExecuteActionsBuilder(Object.assign({ builder: 'z:1:ExecuteActions.listen' }, data));
     }
 }
+export class ZacInt extends ZacBuilder {
+    static new(data) {
+        return new ZacInt(Object.assign({ builder: 'z:1:int' }, data));
+    }
+}
+export class ZacListOfActions extends ZacBuilder {
+    static new(data) {
+        return new ZacListOfActions(Object.assign({ builder: 'z:1:List<ZacAction>' }, data));
+    }
+}
+export class ZacListOfTransformers extends ZacBuilder {
+    static new(data) {
+        return new ZacListOfTransformers(Object.assign({ builder: 'z:1:List<ZacTransform>' }, data));
+    }
+}
+export class ZacListOfWidgets extends ZacBuilder {
+    static new(data) {
+        return new ZacListOfWidgets(Object.assign({ builder: 'z:1:List<Widget>' }, data));
+    }
+}
+export class ZacMapOfWidgets extends ZacBuilder {
+    static new(data) {
+        return new ZacMapOfWidgets(Object.assign({ builder: 'z:1:Map<String, Widget>' }, data));
+    }
+}
+export class ZacNum extends ZacBuilder {
+    static new(data) {
+        return new ZacNum(Object.assign({ builder: 'z:1:num' }, data));
+    }
+}
+export class ZacObject extends ZacBuilder {
+    static new(data) {
+        return new ZacObject(Object.assign({ builder: 'z:1:Object' }, data));
+    }
+}
+export class ZacSharedStateProvider extends ZacBuilder {
+    static new(data) {
+        return new ZacSharedStateProvider(Object.assign({ builder: 'z:1:SharedStates.provide' }, data));
+    }
+}
 export class ZacStateMachineActions extends ZacBuilder {
     static send(data) {
         return new ZacStateMachineActions(Object.assign({ builder: 'z:1:StateMachine:Action.send' }, data));
@@ -2480,26 +2460,19 @@ export class ZacStateMachineActions extends ZacBuilder {
         return new ZacStateMachineActions(Object.assign({ builder: 'z:1:StateMachine:Action.trySend' }, data));
     }
 }
-export class ZacStateMachineBuildStateBuilder extends ZacBuilder {
+export class ZacStateMachineBuild extends ZacBuilder {
     static new(data) {
-        return new ZacStateMachineBuildStateBuilder(Object.assign({ builder: 'z:1:StateMachine:BuildState' }, data));
+        return new ZacStateMachineBuild(Object.assign({ builder: 'z:1:StateMachine:Build' }, data));
     }
 }
-export class ZacStateMachineProviderBuilder extends ZacBuilder {
+export class ZacStateMachineProvider extends ZacBuilder {
     static new(data) {
-        return new ZacStateMachineProviderBuilder(Object.assign({ builder: 'z:1:StateMachine.provide' }, data));
+        return new ZacStateMachineProvider(Object.assign({ builder: 'z:1:StateMachines.provide' }, data));
     }
 }
-export class ZacStateMachineTransformer extends ZacBuilder {
-    static pickState() {
-        return new ZacStateMachineTransformer({
-            builder: 'z:1:StateMachine:Transformer.pickState'
-        });
-    }
-    static pickContext() {
-        return new ZacStateMachineTransformer({
-            builder: 'z:1:StateMachine:Transformer.pickContext'
-        });
+export class ZacString extends ZacBuilder {
+    static new(data) {
+        return new ZacString(Object.assign({ builder: 'z:1:String' }, data));
     }
 }
 export class ZacValueActions extends ZacBuilder {
@@ -2513,5 +2486,10 @@ export class ZacWidgetBuilder extends ZacBuilder {
     }
     static isolate(data) {
         return new ZacWidgetBuilder(Object.assign({ builder: 'z:1:Widget.isolate' }, data));
+    }
+}
+export class SharedStateConsume extends ZacBuilder {
+    static new(data) {
+        return new SharedStateConsume(Object.assign({ builder: 'z:1:SharedState.consume' }, data));
     }
 }
