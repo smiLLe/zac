@@ -24,7 +24,7 @@ class FlutterInteractiveViewer
     ZacBuilder<Key?>? key,
     required ZacBuilder<Widget> child,
     ZacBuilder<Clip?>? clipBehavior,
-    ZacBuilder<bool?>? alignPanAxis,
+    ZacBuilder<PanAxis?>? panAxis,
     ZacBuilder<EdgeInsets?>? boundaryMargin,
     ZacBuilder<bool?>? constrained,
     ZacBuilder<double?>? maxScale,
@@ -41,7 +41,7 @@ class FlutterInteractiveViewer
     return InteractiveViewer(
       key: key?.build(context, zacContext),
       clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.hardEdge,
-      alignPanAxis: alignPanAxis?.build(context, zacContext) ?? false,
+      panAxis: panAxis?.build(context, zacContext) ?? PanAxis.free,
       boundaryMargin:
           boundaryMargin?.build(context, zacContext) ?? EdgeInsets.zero,
       constrained: constrained?.build(context, zacContext) ?? true,
@@ -66,5 +66,40 @@ class FlutterInteractiveViewer
   @override
   InteractiveViewer build(BuildContext context, ZacContext zacContext) {
     return _buildWidget(context, zacContext);
+  }
+}
+
+@freezedZacBuilder
+class FlutterPanAxis with _$FlutterPanAxis implements ZacBuilder<PanAxis> {
+  const FlutterPanAxis._();
+
+  static const String unionValue = 'f:1:PanAxis.horizontal';
+  static const String unionValueVertical = 'f:1:PanAxis.vertical';
+  static const String unionValueAligned = 'f:1:PanAxis.aligned';
+  static const String unionValueFree = 'f:1:PanAxis.free';
+
+  factory FlutterPanAxis.fromJson(Map<String, dynamic> json) =>
+      _$FlutterPanAxisFromJson(json);
+
+  @FreezedUnionValue(FlutterPanAxis.unionValue)
+  factory FlutterPanAxis.horizontal() = _PanAxisHorizontal;
+
+  @FreezedUnionValue(FlutterPanAxis.unionValueVertical)
+  factory FlutterPanAxis.vertical() = _PanAxisVertical;
+
+  @FreezedUnionValue(FlutterPanAxis.unionValueAligned)
+  factory FlutterPanAxis.aligned() = _PanAxisAligned;
+
+  @FreezedUnionValue(FlutterPanAxis.unionValueFree)
+  factory FlutterPanAxis.free() = _PanAxisFree;
+
+  @override
+  PanAxis build(BuildContext context, ZacContext zacContext) {
+    return map(
+      horizontal: (_) => PanAxis.horizontal,
+      vertical: (_) => PanAxis.vertical,
+      aligned: (_) => PanAxis.aligned,
+      free: (_) => PanAxis.free,
+    );
   }
 }

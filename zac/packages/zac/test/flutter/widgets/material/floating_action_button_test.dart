@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/widgets/material/floating_action_button.dart';
 
 import '../../../helper.dart';
-import '../../models.dart';
 
 void main() {
   test('Is in registry', () {

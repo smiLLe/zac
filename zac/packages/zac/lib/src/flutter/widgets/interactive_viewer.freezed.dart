@@ -24,7 +24,7 @@ mixin _$FlutterInteractiveViewer {
   ZacBuilder<Key?>? get key => throw _privateConstructorUsedError;
   ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
   ZacBuilder<Clip?>? get clipBehavior => throw _privateConstructorUsedError;
-  ZacBuilder<bool?>? get alignPanAxis => throw _privateConstructorUsedError;
+  ZacBuilder<PanAxis?>? get panAxis => throw _privateConstructorUsedError;
   ZacBuilder<EdgeInsets?>? get boundaryMargin =>
       throw _privateConstructorUsedError;
   ZacBuilder<bool?>? get constrained => throw _privateConstructorUsedError;
@@ -53,7 +53,7 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
       {this.key,
       required this.child,
       this.clipBehavior,
-      this.alignPanAxis,
+      this.panAxis,
       this.boundaryMargin,
       this.constrained,
       this.maxScale,
@@ -75,7 +75,7 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
   @override
   final ZacBuilder<Clip?>? clipBehavior;
   @override
-  final ZacBuilder<bool?>? alignPanAxis;
+  final ZacBuilder<PanAxis?>? panAxis;
   @override
   final ZacBuilder<EdgeInsets?>? boundaryMargin;
   @override
@@ -97,7 +97,7 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
 
   @override
   String toString() {
-    return 'FlutterInteractiveViewer(key: $key, child: $child, clipBehavior: $clipBehavior, alignPanAxis: $alignPanAxis, boundaryMargin: $boundaryMargin, constrained: $constrained, maxScale: $maxScale, minScale: $minScale, onInteractionEnd: $onInteractionEnd, onInteractionStart: $onInteractionStart, onInteractionUpdate: $onInteractionUpdate, panEnabled: $panEnabled, scaleEnabled: $scaleEnabled)';
+    return 'FlutterInteractiveViewer(key: $key, child: $child, clipBehavior: $clipBehavior, panAxis: $panAxis, boundaryMargin: $boundaryMargin, constrained: $constrained, maxScale: $maxScale, minScale: $minScale, onInteractionEnd: $onInteractionEnd, onInteractionStart: $onInteractionStart, onInteractionUpdate: $onInteractionUpdate, panEnabled: $panEnabled, scaleEnabled: $scaleEnabled)';
   }
 
   @override
@@ -109,8 +109,7 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
             (identical(other.child, child) || other.child == child) &&
             (identical(other.clipBehavior, clipBehavior) ||
                 other.clipBehavior == clipBehavior) &&
-            (identical(other.alignPanAxis, alignPanAxis) ||
-                other.alignPanAxis == alignPanAxis) &&
+            (identical(other.panAxis, panAxis) || other.panAxis == panAxis) &&
             (identical(other.boundaryMargin, boundaryMargin) ||
                 other.boundaryMargin == boundaryMargin) &&
             (identical(other.constrained, constrained) ||
@@ -138,7 +137,7 @@ class _$_FlutterInteractiveViewer extends _FlutterInteractiveViewer {
       key,
       child,
       clipBehavior,
-      alignPanAxis,
+      panAxis,
       boundaryMargin,
       constrained,
       maxScale,
@@ -163,7 +162,7 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
       {final ZacBuilder<Key?>? key,
       required final ZacBuilder<Widget> child,
       final ZacBuilder<Clip?>? clipBehavior,
-      final ZacBuilder<bool?>? alignPanAxis,
+      final ZacBuilder<PanAxis?>? panAxis,
       final ZacBuilder<EdgeInsets?>? boundaryMargin,
       final ZacBuilder<bool?>? constrained,
       final ZacBuilder<double?>? maxScale,
@@ -185,7 +184,7 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   @override
   ZacBuilder<Clip?>? get clipBehavior;
   @override
-  ZacBuilder<bool?>? get alignPanAxis;
+  ZacBuilder<PanAxis?>? get panAxis;
   @override
   ZacBuilder<EdgeInsets?>? get boundaryMargin;
   @override
@@ -204,4 +203,225 @@ abstract class _FlutterInteractiveViewer extends FlutterInteractiveViewer {
   ZacBuilder<bool?>? get panEnabled;
   @override
   ZacBuilder<bool?>? get scaleEnabled;
+}
+
+FlutterPanAxis _$FlutterPanAxisFromJson(Map<String, dynamic> json) {
+  switch (json['builder']) {
+    case 'f:1:PanAxis.horizontal':
+      return _PanAxisHorizontal.fromJson(json);
+    case 'f:1:PanAxis.vertical':
+      return _PanAxisVertical.fromJson(json);
+    case 'f:1:PanAxis.aligned':
+      return _PanAxisAligned.fromJson(json);
+    case 'f:1:PanAxis.free':
+      return _PanAxisFree.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'builder', 'FlutterPanAxis',
+          'Invalid union type "${json['builder']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$FlutterPanAxis {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PanAxisHorizontal value) horizontal,
+    required TResult Function(_PanAxisVertical value) vertical,
+    required TResult Function(_PanAxisAligned value) aligned,
+    required TResult Function(_PanAxisFree value) free,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_PanAxisHorizontal extends _PanAxisHorizontal {
+  _$_PanAxisHorizontal({final String? $type})
+      : $type = $type ?? 'f:1:PanAxis.horizontal',
+        super._();
+
+  factory _$_PanAxisHorizontal.fromJson(Map<String, dynamic> json) =>
+      _$$_PanAxisHorizontalFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterPanAxis.horizontal()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PanAxisHorizontal);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PanAxisHorizontal value) horizontal,
+    required TResult Function(_PanAxisVertical value) vertical,
+    required TResult Function(_PanAxisAligned value) aligned,
+    required TResult Function(_PanAxisFree value) free,
+  }) {
+    return horizontal(this);
+  }
+}
+
+abstract class _PanAxisHorizontal extends FlutterPanAxis {
+  factory _PanAxisHorizontal() = _$_PanAxisHorizontal;
+  _PanAxisHorizontal._() : super._();
+
+  factory _PanAxisHorizontal.fromJson(Map<String, dynamic> json) =
+      _$_PanAxisHorizontal.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_PanAxisVertical extends _PanAxisVertical {
+  _$_PanAxisVertical({final String? $type})
+      : $type = $type ?? 'f:1:PanAxis.vertical',
+        super._();
+
+  factory _$_PanAxisVertical.fromJson(Map<String, dynamic> json) =>
+      _$$_PanAxisVerticalFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterPanAxis.vertical()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PanAxisVertical);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PanAxisHorizontal value) horizontal,
+    required TResult Function(_PanAxisVertical value) vertical,
+    required TResult Function(_PanAxisAligned value) aligned,
+    required TResult Function(_PanAxisFree value) free,
+  }) {
+    return vertical(this);
+  }
+}
+
+abstract class _PanAxisVertical extends FlutterPanAxis {
+  factory _PanAxisVertical() = _$_PanAxisVertical;
+  _PanAxisVertical._() : super._();
+
+  factory _PanAxisVertical.fromJson(Map<String, dynamic> json) =
+      _$_PanAxisVertical.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_PanAxisAligned extends _PanAxisAligned {
+  _$_PanAxisAligned({final String? $type})
+      : $type = $type ?? 'f:1:PanAxis.aligned',
+        super._();
+
+  factory _$_PanAxisAligned.fromJson(Map<String, dynamic> json) =>
+      _$$_PanAxisAlignedFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterPanAxis.aligned()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PanAxisAligned);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PanAxisHorizontal value) horizontal,
+    required TResult Function(_PanAxisVertical value) vertical,
+    required TResult Function(_PanAxisAligned value) aligned,
+    required TResult Function(_PanAxisFree value) free,
+  }) {
+    return aligned(this);
+  }
+}
+
+abstract class _PanAxisAligned extends FlutterPanAxis {
+  factory _PanAxisAligned() = _$_PanAxisAligned;
+  _PanAxisAligned._() : super._();
+
+  factory _PanAxisAligned.fromJson(Map<String, dynamic> json) =
+      _$_PanAxisAligned.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_PanAxisFree extends _PanAxisFree {
+  _$_PanAxisFree({final String? $type})
+      : $type = $type ?? 'f:1:PanAxis.free',
+        super._();
+
+  factory _$_PanAxisFree.fromJson(Map<String, dynamic> json) =>
+      _$$_PanAxisFreeFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'FlutterPanAxis.free()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_PanAxisFree);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PanAxisHorizontal value) horizontal,
+    required TResult Function(_PanAxisVertical value) vertical,
+    required TResult Function(_PanAxisAligned value) aligned,
+    required TResult Function(_PanAxisFree value) free,
+  }) {
+    return free(this);
+  }
+}
+
+abstract class _PanAxisFree extends FlutterPanAxis {
+  factory _PanAxisFree() = _$_PanAxisFree;
+  _PanAxisFree._() : super._();
+
+  factory _PanAxisFree.fromJson(Map<String, dynamic> json) =
+      _$_PanAxisFree.fromJson;
 }

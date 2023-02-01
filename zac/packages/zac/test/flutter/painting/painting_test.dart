@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/flutter/painting.dart';
 
 import '../../helper.dart';
 import '../models.dart';
@@ -338,7 +337,7 @@ void main() {
         'y': 0.2,
       },
       matcher: (matcher) =>
-          matcher..having((p0) => p0.y, 'TextAlignVertical.y', 0.2),
+          matcher.having((p0) => p0.y, 'TextAlignVertical.y', 0.2),
     );
   });
 }

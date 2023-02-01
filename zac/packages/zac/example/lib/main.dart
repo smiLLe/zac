@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zac/zac.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {

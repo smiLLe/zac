@@ -25,7 +25,9 @@ void main() {
         },
         'panEnabled': false,
         'scaleEnabled': false,
-        'alignPanAxis': true,
+        'panAxis': {
+          'builder': 'f:1:PanAxis.horizontal',
+        },
         'onInteractionStart': const [
           {'builder': 'test.action'}
         ],
@@ -61,8 +63,8 @@ void main() {
                 (p0) => p0.panEnabled, 'InteractiveViewer.panEnabled', isFalse)
             .having((p0) => p0.scaleEnabled, 'InteractiveViewer.scaleEnabled',
                 isFalse)
-            .having((p0) => p0.alignPanAxis, 'InteractiveViewer.alignPanAxis',
-                isTrue)
+            .having((p0) => p0.panAxis, 'InteractiveViewer.panAxis',
+                PanAxis.horizontal)
             // TODO: Actually test the interaction
             .having((p0) => p0.onInteractionStart,
                 'InteractiveViewer.onInteractionStart', isNotNull)
@@ -70,5 +72,31 @@ void main() {
                 'InteractiveViewer.onInteractionEnd', isNotNull)
             .having((p0) => p0.onInteractionUpdate,
                 'InteractiveViewer.onInteractionUpdate', isNotNull));
+  });
+
+  testWidgets('PanAxis', (tester) async {
+    await testBuilder<PanAxis>(
+      tester,
+      'f:1:PanAxis.horizontal',
+      matcher: (matcher) =>
+          matcher.having((p0) => p0, 'horizontal', PanAxis.horizontal),
+    );
+    await testBuilder<PanAxis>(
+      tester,
+      'f:1:PanAxis.vertical',
+      matcher: (matcher) =>
+          matcher.having((p0) => p0, 'vertical', PanAxis.vertical),
+    );
+    await testBuilder<PanAxis>(
+      tester,
+      'f:1:PanAxis.aligned',
+      matcher: (matcher) =>
+          matcher.having((p0) => p0, 'aligned', PanAxis.aligned),
+    );
+    await testBuilder<PanAxis>(
+      tester,
+      'f:1:PanAxis.free',
+      matcher: (matcher) => matcher.having((p0) => p0, 'free', PanAxis.free),
+    );
   });
 }

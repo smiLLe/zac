@@ -21,10 +21,11 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
               'clipBehavior',
               (v) =>
                   v == null ? null : ZacBuilder<Clip?>.fromJson(v as Object)),
-          alignPanAxis: $checkedConvert(
-              'alignPanAxis',
-              (v) =>
-                  v == null ? null : ZacBuilder<bool?>.fromJson(v as Object)),
+          panAxis: $checkedConvert(
+              'panAxis',
+              (v) => v == null
+                  ? null
+                  : ZacBuilder<PanAxis?>.fromJson(v as Object)),
           boundaryMargin: $checkedConvert(
               'boundaryMargin',
               (v) => v == null
@@ -68,4 +69,56 @@ _$_FlutterInteractiveViewer _$$_FlutterInteractiveViewerFromJson(
         );
         return val;
       },
+    );
+
+_$_PanAxisHorizontal _$$_PanAxisHorizontalFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_PanAxisHorizontal',
+      json,
+      ($checkedConvert) {
+        final val = _$_PanAxisHorizontal(
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
+    );
+
+_$_PanAxisVertical _$$_PanAxisVerticalFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_PanAxisVertical',
+      json,
+      ($checkedConvert) {
+        final val = _$_PanAxisVertical(
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
+    );
+
+_$_PanAxisAligned _$$_PanAxisAlignedFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_PanAxisAligned',
+      json,
+      ($checkedConvert) {
+        final val = _$_PanAxisAligned(
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
+    );
+
+_$_PanAxisFree _$$_PanAxisFreeFromJson(Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_PanAxisFree',
+      json,
+      ($checkedConvert) {
+        final val = _$_PanAxisFree(
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );

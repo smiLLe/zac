@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/flutter/painting.dart';
 
 import '../helper.dart';
 
@@ -80,13 +79,6 @@ void main() {
             .having((p0) => p0.end, 'EdgeInsets.end', 3)
             .having((p0) => p0.bottom, 'EdgeInsets.bottom', 4),
       );
-      final map = {
-        'builder': FlutterEdgeInsetsDirectional.unionValueOnly,
-        'start': 1,
-        'top': 2,
-        'end': 3,
-        'bottom': 4,
-      };
     });
   });
 }

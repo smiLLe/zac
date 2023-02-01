@@ -34,7 +34,7 @@ class FlutterCustomScrollView
     ZacBuilder<Key?>? center,
     ZacBuilder<double?>? anchor,
     ZacBuilder<double?>? cacheExtent,
-    ZacBuilder< List<Widget>?>? slivers,
+    ZacBuilder<List<Widget>?>? slivers,
     ZacBuilder<int?>? semanticChildCount,
 // FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
     FlutterScrollViewKeyboardDismissBehavior? keyboardDismissBehavior,
@@ -44,7 +44,27 @@ class FlutterCustomScrollView
 
   @override
   CustomScrollView build(BuildContext context, ZacContext zacContext) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return CustomScrollView(
+      key: key?.build(context, zacContext),
+      scrollDirection:
+          scrollDirection?.build(context, zacContext) ?? Axis.vertical,
+      reverse: reverse?.build(context, zacContext) ?? false,
+      controller: controller?.build(context, zacContext),
+      primary: primary?.build(context, zacContext),
+      physics: physics?.build(context, zacContext),
+// FlutterScrollBehavior? scrollBehavior,
+      shrinkWrap: shrinkWrap?.build(context, zacContext) ?? false,
+      center: center?.build(context, zacContext),
+      anchor: anchor?.build(context, zacContext) ?? 0.0,
+      cacheExtent: cacheExtent?.build(context, zacContext),
+      slivers: slivers?.build(context, zacContext) ?? const <Widget>[],
+      semanticChildCount: semanticChildCount?.build(context, zacContext),
+// FluDragStartBehavior dragStartBehavior = DragStartBehavior.start,
+      keyboardDismissBehavior:
+          keyboardDismissBehavior?.build(context, zacContext) ??
+              ScrollViewKeyboardDismissBehavior.manual,
+      restorationId: restorationId?.build(context, zacContext),
+      clipBehavior: clipBehavior?.build(context, zacContext) ?? Clip.hardEdge,
+    );
   }
 }
