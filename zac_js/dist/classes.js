@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export class ZacConvertable {
     constructor(data) {
         this.data = data;
@@ -2332,6 +2333,11 @@ export class SharedStateActions extends ZacBuilder {
         return new SharedStateActions(Object.assign({ builder: 'z:1:SharedState.transformCurrentValue' }, data));
     }
 }
+export class SharedStateConsume extends ZacBuilder {
+    static new(data) {
+        return new SharedStateConsume(Object.assign({ builder: 'z:1:SharedState.consume' }, data));
+    }
+}
 export class StringTransformer extends ZacBuilder {
     static length_() {
         return new StringTransformer({
@@ -2375,18 +2381,6 @@ export class ZacBool extends ZacBuilder {
 export class ZacBuiltInActions extends ZacBuilder {
     static withPayload(data) {
         return new ZacBuiltInActions(Object.assign({ builder: 'z:1:Action.withPayload' }, data));
-    }
-}
-export class ZacCompleterActions extends ZacBuilder {
-    static completeVoid(data) {
-        return new ZacCompleterActions(Object.assign({ builder: 'f:1:Completer<void>.complete' }, data));
-    }
-}
-export class ZacCompleterVoid extends ZacBuilder {
-    static new() {
-        return new ZacCompleterVoid({
-            builder: 'f:1:Completer<void>'
-        });
     }
 }
 export class ZacControlFlowAction extends ZacBuilder {
@@ -2486,10 +2480,5 @@ export class ZacWidgetBuilder extends ZacBuilder {
     }
     static isolate(data) {
         return new ZacWidgetBuilder(Object.assign({ builder: 'z:1:Widget.isolate' }, data));
-    }
-}
-export class SharedStateConsume extends ZacBuilder {
-    static new(data) {
-        return new SharedStateConsume(Object.assign({ builder: 'z:1:SharedState.consume' }, data));
     }
 }

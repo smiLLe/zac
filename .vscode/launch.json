@@ -26,8 +26,6 @@
             "args": [
                 "--path",
                 "${workspaceFolder}${pathSeparator}zac${pathSeparator}packages${pathSeparator}zac${pathSeparator}lib${pathSeparator}src",
-                "--headFile",
-                "${workspaceFolder}${pathSeparator}zac_js${pathSeparator}src${pathSeparator}header.ts",
                 "--classesFile",
                 "${workspaceFolder}${pathSeparator}zac_js${pathSeparator}src${pathSeparator}classes.ts",
                 "--jsRoot",

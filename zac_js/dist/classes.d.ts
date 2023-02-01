@@ -1,3 +1,6 @@
+export declare type JSONValue = string | number | boolean | {
+    [key: string]: JSONValue;
+} | Array<JSONValue>;
 export declare type ZacBuilderData = {
     builder: string;
     [key: string]: unknown;
@@ -10,6 +13,81 @@ export declare abstract class ZacConvertable {
 export declare abstract class ZacBuilder<T> extends ZacConvertable {
     private _doNotUse;
     get doNotUse(): T;
+}
+export interface DartBlendMode {
+    _DartBlendMode: unknown;
+}
+export interface DartBlurStyle {
+    _DartBlurStyle: unknown;
+}
+export interface DartBoxHeightStyle {
+    _DartBoxHeightStyle: unknown;
+}
+export interface DartBoxWidthStyle {
+    _DartBoxWidthStyle: unknown;
+}
+export interface DartBrightness {
+    _DartBrightness: unknown;
+}
+export interface DartClip {
+    _DartClip: unknown;
+}
+export interface DartColor {
+    _DartColor: unknown;
+}
+export interface DartFilterQuality {
+    _DartFilterQuality: unknown;
+}
+export interface DartFontFeature {
+    _DartFontFeature: unknown;
+}
+export interface DartFontStyle {
+    _DartFontStyle: unknown;
+}
+export interface DartFontWeight {
+    _DartFontWeight: unknown;
+}
+export interface DartLocale {
+    _DartLocale: unknown;
+}
+export interface DartOffset extends DartOffsetBase {
+    _DartOffset: unknown;
+}
+export interface DartOffsetBase {
+    _DartOffsetBase: unknown;
+}
+export interface DartRadius {
+    _DartRadius: unknown;
+}
+export interface DartRect {
+    _DartRect: unknown;
+}
+export interface DartShadow {
+    _DartShadow: unknown;
+}
+export interface DartSize extends DartOffsetBase {
+    _DartSize: unknown;
+}
+export interface DartTextAlign {
+    _DartTextAlign: unknown;
+}
+export interface DartTextBaseline {
+    _DartTextBaseline: unknown;
+}
+export interface DartTextDecoration {
+    _DartTextDecoration: unknown;
+}
+export interface DartTextDecorationStyle {
+    _DartTextDecorationStyle: unknown;
+}
+export interface DartTextDirection {
+    _DartTextDirection: unknown;
+}
+export interface DartTextHeightBehavior {
+    _DartTextHeightBehavior: unknown;
+}
+export interface DartTextLeadingDistribution {
+    _DartTextLeadingDistribution: unknown;
 }
 export interface FlutterAlign extends FlutterWidget {
     _FlutterAlign: unknown;
@@ -31,12 +109,6 @@ export interface FlutterAspectRatio extends FlutterWidget {
 }
 export interface FlutterAxis {
     _FlutterAxis: unknown;
-}
-export interface FlutterBlendMode {
-    _FlutterBlendMode: unknown;
-}
-export interface FlutterBlurStyle {
-    _FlutterBlurStyle: unknown;
 }
 export interface FlutterBorder extends FlutterBoxBorder {
     _FlutterBorder: unknown;
@@ -68,20 +140,11 @@ export interface FlutterBoxDecoration extends FlutterDecoration {
 export interface FlutterBoxFit {
     _FlutterBoxFit: unknown;
 }
-export interface FlutterBoxHeightStyle {
-    _FlutterBoxHeightStyle: unknown;
-}
-export interface FlutterBoxShadow extends FlutterShadow {
+export interface FlutterBoxShadow extends DartShadow {
     _FlutterBoxShadow: unknown;
 }
 export interface FlutterBoxShape {
     _FlutterBoxShape: unknown;
-}
-export interface FlutterBoxWidthStyle {
-    _FlutterBoxWidthStyle: unknown;
-}
-export interface FlutterBrightness {
-    _FlutterBrightness: unknown;
 }
 export interface FlutterButtonBar extends FlutterWidget {
     _FlutterButtonBar: unknown;
@@ -98,24 +161,14 @@ export interface FlutterChangeNotifier {
 export interface FlutterCircleBorder extends FlutterOutlinedBorder {
     _FlutterCircleBorder: unknown;
 }
-export interface FlutterClip {
-    _FlutterClip: unknown;
-}
 export interface FlutterClipOval extends FlutterWidget {
     _FlutterClipOval: unknown;
 }
 export interface FlutterClipRect extends FlutterWidget {
     _FlutterClipRect: unknown;
 }
-export interface FlutterColor {
-    _FlutterColor: unknown;
-}
 export interface FlutterColumn extends FlutterWidget {
     _FlutterColumn: unknown;
-}
-export interface FlutterCompleter<T> {
-    _FlutterCompleter: unknown;
-    _FlutterCompleterT: T;
 }
 export interface FlutterConstrainedBox extends FlutterWidget {
     _FlutterConstrainedBox: unknown;
@@ -168,9 +221,6 @@ export interface FlutterElevatedButton extends FlutterWidget {
 export interface FlutterExpanded extends FlutterWidget {
     _FlutterExpanded: unknown;
 }
-export interface FlutterFilterQuality {
-    _FlutterFilterQuality: unknown;
-}
 export interface FlutterFittedBox extends FlutterWidget {
     _FlutterFittedBox: unknown;
 }
@@ -185,15 +235,6 @@ export interface FlutterFloatingActionButton extends FlutterWidget {
 }
 export interface FlutterFocusNode {
     _FlutterFocusNode: unknown;
-}
-export interface FlutterFontFeature {
-    _FlutterFontFeature: unknown;
-}
-export interface FlutterFontStyle {
-    _FlutterFontStyle: unknown;
-}
-export interface FlutterFontWeight {
-    _FlutterFontWeight: unknown;
 }
 export interface FlutterFractionalOffset extends FlutterAlignment {
     _FlutterFractionalOffset: unknown;
@@ -271,9 +312,6 @@ export interface FlutterListView extends FlutterWidget {
 export interface FlutterLocalKey extends FlutterKey {
     _FlutterLocalKey: unknown;
 }
-export interface FlutterLocale {
-    _FlutterLocale: unknown;
-}
 export interface FlutterMainAxisAlignment {
     _FlutterMainAxisAlignment: unknown;
 }
@@ -301,12 +339,6 @@ export interface FlutterNavigator extends FlutterWidget {
 export interface FlutterNavigatorState extends FlutterState<FlutterNavigator> {
     _FlutterNavigatorState: unknown;
 }
-export interface FlutterOffset extends FlutterOffsetBase {
-    _FlutterOffset: unknown;
-}
-export interface FlutterOffsetBase {
-    _FlutterOffsetBase: unknown;
-}
 export interface FlutterOffstage extends FlutterWidget {
     _FlutterOffstage: unknown;
 }
@@ -333,12 +365,6 @@ export interface FlutterPositioned extends FlutterWidget {
 }
 export interface FlutterProgressIndicator extends FlutterWidget {
     _FlutterProgressIndicator: unknown;
-}
-export interface FlutterRadius {
-    _FlutterRadius: unknown;
-}
-export interface FlutterRect {
-    _FlutterRect: unknown;
 }
 export interface FlutterRefreshIndicator extends FlutterWidget {
     _FlutterRefreshIndicator: unknown;
@@ -389,9 +415,6 @@ export interface FlutterScrollViewKeyboardDismissBehavior {
 export interface FlutterSelectableText extends FlutterWidget {
     _FlutterSelectableText: unknown;
 }
-export interface FlutterShadow {
-    _FlutterShadow: unknown;
-}
 export interface FlutterShapeBorder {
     _FlutterShapeBorder: unknown;
 }
@@ -400,9 +423,6 @@ export interface FlutterShapeDecoration extends FlutterDecoration {
 }
 export interface FlutterSingleChildScrollView extends FlutterWidget {
     _FlutterSingleChildScrollView: unknown;
-}
-export interface FlutterSize extends FlutterOffsetBase {
-    _FlutterSize: unknown;
 }
 export interface FlutterSizedBox extends FlutterWidget {
     _FlutterSizedBox: unknown;
@@ -465,14 +485,8 @@ export interface FlutterSystemUiOverlayStyle {
 export interface FlutterText extends FlutterWidget {
     _FlutterText: unknown;
 }
-export interface FlutterTextAlign {
-    _FlutterTextAlign: unknown;
-}
 export interface FlutterTextAlignVertical {
     _FlutterTextAlignVertical: unknown;
-}
-export interface FlutterTextBaseline {
-    _FlutterTextBaseline: unknown;
 }
 export interface FlutterTextButton extends FlutterWidget {
     _FlutterTextButton: unknown;
@@ -480,29 +494,14 @@ export interface FlutterTextButton extends FlutterWidget {
 export interface FlutterTextCapitalization {
     _FlutterTextCapitalization: unknown;
 }
-export interface FlutterTextDecoration {
-    _FlutterTextDecoration: unknown;
-}
-export interface FlutterTextDecorationStyle {
-    _FlutterTextDecorationStyle: unknown;
-}
-export interface FlutterTextDirection {
-    _FlutterTextDirection: unknown;
-}
 export interface FlutterTextField extends FlutterWidget {
     _FlutterTextField: unknown;
-}
-export interface FlutterTextHeightBehavior {
-    _FlutterTextHeightBehavior: unknown;
 }
 export interface FlutterTextInputAction {
     _FlutterTextInputAction: unknown;
 }
 export interface FlutterTextInputType {
     _FlutterTextInputType: unknown;
-}
-export interface FlutterTextLeadingDistribution {
-    _FlutterTextLeadingDistribution: unknown;
 }
 export interface FlutterTextOverflow {
     _FlutterTextOverflow: unknown;
@@ -558,10 +557,10 @@ export declare class SharedStateConsumeType extends ZacConvertable {
 }
 export declare class ZacSharedStateProvide extends ZacConvertable {
     static value(data: {
-        value: any;
+        value: JSONValue;
     }): ZacSharedStateProvide;
     static builder(data: {
-        value: ZacBuilder<any>;
+        value: ZacBuilder<JSONValue>;
     }): ZacSharedStateProvide;
     static n(): ZacSharedStateProvide;
 }
@@ -636,10 +635,10 @@ export declare class AppBar extends ZacBuilder<FlutterAppBar> {
         flexibleSpace?: ZacBuilder<FlutterWidget>;
         bottom?: ZacBuilder<FlutterWidget>;
         elevation?: number | ZacBuilder<number>;
-        shadowColor?: ZacBuilder<FlutterColor>;
+        shadowColor?: ZacBuilder<DartColor>;
         shape?: ZacBuilder<FlutterShapeBorder>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
-        foregroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
+        foregroundColor?: ZacBuilder<DartColor>;
         iconTheme?: ZacBuilder<FlutterIconThemeData>;
         actionsIconTheme?: ZacBuilder<FlutterIconThemeData>;
         primary?: boolean | ZacBuilder<boolean>;
@@ -666,7 +665,7 @@ export declare class Axis extends ZacBuilder<FlutterAxis> {
     static horizontal(): Axis;
     static vertical(): Axis;
 }
-export declare class BlendMode extends ZacBuilder<FlutterBlendMode> {
+export declare class BlendMode extends ZacBuilder<DartBlendMode> {
     static clear(): BlendMode;
     static color(): BlendMode;
     static colorBurn(): BlendMode;
@@ -697,7 +696,7 @@ export declare class BlendMode extends ZacBuilder<FlutterBlendMode> {
     static srcOver(): BlendMode;
     static xor(): BlendMode;
 }
-export declare class BlurStyle extends ZacBuilder<FlutterBlurStyle> {
+export declare class BlurStyle extends ZacBuilder<DartBlurStyle> {
     static inner(): BlurStyle;
     static normal(): BlurStyle;
     static outer(): BlurStyle;
@@ -711,7 +710,7 @@ export declare class Border extends ZacBuilder<FlutterBorder> {
         left?: ZacBuilder<FlutterBorderSide>;
     }): Border;
     static all(data?: {
-        color?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
         width?: number | ZacBuilder<number>;
         style?: ZacBuilder<FlutterBorderStyle>;
     }): Border;
@@ -726,19 +725,19 @@ export declare class BorderDirectional extends ZacBuilder<FlutterBorderDirection
 }
 export declare class BorderRadius extends ZacBuilder<FlutterBorderRadius> {
     static all(data: {
-        radius: FlutterRadius;
+        radius: Radius;
     }): BorderRadius;
     static circular(data: {
         radius: number | ZacBuilder<number>;
     }): BorderRadius;
     static horizontal(data?: {
-        left?: ZacBuilder<FlutterRadius>;
-        right?: ZacBuilder<FlutterRadius>;
+        left?: ZacBuilder<DartRadius>;
+        right?: ZacBuilder<DartRadius>;
     }): BorderRadius;
 }
 export declare class BorderSide extends ZacBuilder<FlutterBorderSide> {
     static new(data?: {
-        color?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
         width?: number | ZacBuilder<number>;
         style?: ZacBuilder<FlutterBorderStyle>;
     }): BorderSide;
@@ -759,10 +758,10 @@ export declare class BoxConstraints extends ZacBuilder<FlutterBoxConstraints> {
         height?: number | ZacBuilder<number>;
     }): BoxConstraints;
     static loose(data: {
-        size: ZacBuilder<FlutterSize>;
+        size: ZacBuilder<DartSize>;
     }): BoxConstraints;
     static tight(data: {
-        size: ZacBuilder<FlutterSize>;
+        size: ZacBuilder<DartSize>;
     }): BoxConstraints;
     static tightFor(data?: {
         width?: number | ZacBuilder<number>;
@@ -775,12 +774,12 @@ export declare class BoxConstraints extends ZacBuilder<FlutterBoxConstraints> {
 }
 export declare class BoxDecoration extends ZacBuilder<FlutterBoxDecoration> {
     static new(data?: {
-        color?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
         border?: ZacBuilder<FlutterBoxBorder>;
         borderRadius?: ZacBuilder<FlutterBorderRadiusGeometry>;
-        boxShadow?: Array<FlutterBoxShadow>;
+        boxShadow?: Array<BoxShadow>;
         shape?: ZacBuilder<FlutterBoxShape>;
-        backgroundBlendMode?: ZacBuilder<FlutterBlendMode>;
+        backgroundBlendMode?: ZacBuilder<DartBlendMode>;
     }): BoxDecoration;
 }
 export declare class BoxFit extends ZacBuilder<FlutterBoxFit> {
@@ -792,7 +791,7 @@ export declare class BoxFit extends ZacBuilder<FlutterBoxFit> {
     static none(): BoxFit;
     static scaleDown(): BoxFit;
 }
-export declare class BoxHeightStyle extends ZacBuilder<FlutterBoxHeightStyle> {
+export declare class BoxHeightStyle extends ZacBuilder<DartBoxHeightStyle> {
     static includeLineSpacingBottom(): BoxHeightStyle;
     static includeLineSpacingMiddle(): BoxHeightStyle;
     static includeLineSpacingTop(): BoxHeightStyle;
@@ -802,22 +801,22 @@ export declare class BoxHeightStyle extends ZacBuilder<FlutterBoxHeightStyle> {
 }
 export declare class BoxShadow extends ZacBuilder<FlutterBoxShadow> {
     static new(data?: {
-        color?: ZacBuilder<FlutterColor>;
-        offset?: ZacBuilder<FlutterOffset>;
+        color?: ZacBuilder<DartColor>;
+        offset?: ZacBuilder<DartOffset>;
         blurRadius?: number | ZacBuilder<number>;
         spreadRadius?: number | ZacBuilder<number>;
-        blurStyle?: FlutterBlurStyle;
+        blurStyle?: BlurStyle;
     }): BoxShadow;
 }
 export declare class BoxShape extends ZacBuilder<FlutterBoxShape> {
     static circle(): BoxShape;
     static rectangle(): BoxShape;
 }
-export declare class BoxWidthStyle extends ZacBuilder<FlutterBoxWidthStyle> {
+export declare class BoxWidthStyle extends ZacBuilder<DartBoxWidthStyle> {
     static max(): BoxWidthStyle;
     static tight(): BoxWidthStyle;
 }
-export declare class Brightness extends ZacBuilder<FlutterBrightness> {
+export declare class Brightness extends ZacBuilder<DartBrightness> {
     static dark(): Brightness;
     static light(): Brightness;
 }
@@ -844,13 +843,13 @@ export declare class ButtonBar extends ZacBuilder<FlutterButtonBar> {
 export declare class Card extends ZacBuilder<FlutterCard> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
-        color?: ZacBuilder<FlutterColor>;
-        shadowColor?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
+        shadowColor?: ZacBuilder<DartColor>;
         elevation?: number | ZacBuilder<number>;
         shape?: ZacBuilder<FlutterShapeBorder>;
         borderOnForeground?: boolean | ZacBuilder<boolean>;
         margin?: ZacBuilder<FlutterEdgeInsetsGeometry>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         child?: ZacBuilder<FlutterWidget>;
         semanticContainer?: boolean | ZacBuilder<boolean>;
     }): Card;
@@ -868,7 +867,7 @@ export declare class CircleBorder extends ZacBuilder<FlutterCircleBorder> {
         side?: ZacBuilder<FlutterBorderSide>;
     }): CircleBorder;
 }
-export declare class Clip extends ZacBuilder<FlutterClip> {
+export declare class Clip extends ZacBuilder<DartClip> {
     static none(): Clip;
     static antiAlias(): Clip;
     static hardEdge(): Clip;
@@ -877,17 +876,17 @@ export declare class ClipOval extends ZacBuilder<FlutterClipOval> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): ClipOval;
 }
 export declare class ClipRect extends ZacBuilder<FlutterClipRect> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): ClipRect;
 }
-export declare class Color extends ZacBuilder<FlutterColor> {
+export declare class Color extends ZacBuilder<DartColor> {
     static fromARGB(data: {
         a: number;
         r: number;
@@ -907,9 +906,9 @@ export declare class Column extends ZacBuilder<FlutterColumn> {
         mainAxisAlignment?: ZacBuilder<FlutterMainAxisAlignment>;
         mainAxisSize?: ZacBuilder<FlutterMainAxisSize>;
         crossAxisAlignment?: ZacBuilder<FlutterCrossAxisAlignment>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textDirection?: ZacBuilder<DartTextDirection>;
         verticalDirection?: ZacBuilder<FlutterVerticalDirection>;
-        textBaseline?: ZacBuilder<FlutterTextBaseline>;
+        textBaseline?: ZacBuilder<DartTextBaseline>;
         children?: ZacBuilder<Array<FlutterWidget>>;
     }): Column;
 }
@@ -924,7 +923,7 @@ export declare class Container extends ZacBuilder<FlutterContainer> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
-        color?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
         margin?: ZacBuilder<FlutterEdgeInsetsGeometry>;
         padding?: ZacBuilder<FlutterEdgeInsetsGeometry>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
@@ -941,20 +940,20 @@ export declare class CrossAxisAlignment extends ZacBuilder<FlutterCrossAxisAlign
 export declare class CustomScrollView extends ZacBuilder<FlutterCustomScrollView> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
-        scrollDirection?: FlutterAxis;
+        scrollDirection?: Axis;
         reverse?: boolean | ZacBuilder<boolean>;
         controller?: ZacBuilder<FlutterScrollController>;
         primary?: boolean | ZacBuilder<boolean>;
-        physics?: FlutterScrollPhysics;
+        physics?: ScrollPhysics;
         shrinkWrap?: boolean | ZacBuilder<boolean>;
         center?: ZacBuilder<FlutterKey>;
         anchor?: number | ZacBuilder<number>;
         cacheExtent?: number | ZacBuilder<number>;
         slivers?: ZacBuilder<Array<FlutterWidget>>;
         semanticChildCount?: number | ZacBuilder<number>;
-        keyboardDismissBehavior?: FlutterScrollViewKeyboardDismissBehavior;
+        keyboardDismissBehavior?: ScrollViewKeyboardDismissBehavior;
         restorationId?: string | ZacBuilder<string>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): CustomScrollView;
 }
 export declare class DecoratedBox extends ZacBuilder<FlutterDecoratedBox> {
@@ -973,7 +972,7 @@ export declare class DialogActions extends ZacBuilder<ZacAction> {
     static showDialog(data: {
         child: ZacBuilder<FlutterWidget>;
         barrierDismissible?: boolean | ZacBuilder<boolean>;
-        barrierColor?: ZacBuilder<FlutterColor>;
+        barrierColor?: ZacBuilder<DartColor>;
         barrierLabel?: string | ZacBuilder<string>;
         useSafeArea?: boolean | ZacBuilder<boolean>;
         useRootNavigator?: boolean | ZacBuilder<boolean>;
@@ -983,10 +982,10 @@ export declare class DialogActions extends ZacBuilder<ZacAction> {
 export declare class Dialogs extends ZacBuilder<FlutterWidget> {
     static dialog(data?: {
         key?: ZacBuilder<FlutterKey>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         elevation?: number | ZacBuilder<number>;
         insetPadding?: ZacBuilder<FlutterEdgeInsets>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         shape?: ZacBuilder<FlutterShapeBorder>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
         child?: ZacBuilder<FlutterWidget>;
@@ -1005,11 +1004,11 @@ export declare class Dialogs extends ZacBuilder<FlutterWidget> {
         actionsOverflowDirection?: ZacBuilder<FlutterVerticalDirection>;
         actionsOverflowButtonSpacing?: number | ZacBuilder<number>;
         buttonPadding?: ZacBuilder<FlutterEdgeInsetsGeometry>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         elevation?: number | ZacBuilder<number>;
         semanticLabel?: string | ZacBuilder<string>;
         insetPadding?: ZacBuilder<FlutterEdgeInsets>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         shape?: ZacBuilder<FlutterShapeBorder>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
         scrollable?: boolean | ZacBuilder<boolean>;
@@ -1021,11 +1020,11 @@ export declare class Dialogs extends ZacBuilder<FlutterWidget> {
         titlePadding?: ZacBuilder<FlutterEdgeInsetsGeometry>;
         titleTextStyle?: ZacBuilder<FlutterTextStyle>;
         contentPadding?: ZacBuilder<FlutterEdgeInsetsGeometry>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         elevation?: number | ZacBuilder<number>;
         semanticLabel?: string | ZacBuilder<string>;
         insetPadding?: ZacBuilder<FlutterEdgeInsets>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         shape?: ZacBuilder<FlutterShapeBorder>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
     }): Dialogs;
@@ -1043,13 +1042,13 @@ export declare class Divider extends ZacBuilder<FlutterDivider> {
         thickness?: number | ZacBuilder<number>;
         indent?: number | ZacBuilder<number>;
         endIndent?: number | ZacBuilder<number>;
-        color?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
     }): Divider;
 }
 export declare class Drawer extends ZacBuilder<FlutterDrawer> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         elevation?: number | ZacBuilder<number>;
         shape?: ZacBuilder<FlutterShapeBorder>;
         child?: ZacBuilder<FlutterWidget>;
@@ -1089,7 +1088,7 @@ export declare class ElevatedButton extends ZacBuilder<FlutterElevatedButton> {
         onPressed?: ZacBuilder<Array<ZacAction>>;
         onLongPress?: ZacBuilder<Array<ZacAction>>;
         autofocus?: boolean | ZacBuilder<boolean>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): ElevatedButton;
     static icon(data: {
         key?: ZacBuilder<FlutterKey>;
@@ -1098,7 +1097,7 @@ export declare class ElevatedButton extends ZacBuilder<FlutterElevatedButton> {
         onPressed?: ZacBuilder<Array<ZacAction>>;
         onLongPress?: ZacBuilder<Array<ZacAction>>;
         autofocus?: boolean | ZacBuilder<boolean>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): ElevatedButton;
 }
 export declare class Expanded extends ZacBuilder<FlutterExpanded> {
@@ -1108,7 +1107,7 @@ export declare class Expanded extends ZacBuilder<FlutterExpanded> {
         child: ZacBuilder<FlutterWidget>;
     }): Expanded;
 }
-export declare class FilterQuality extends ZacBuilder<FlutterFilterQuality> {
+export declare class FilterQuality extends ZacBuilder<DartFilterQuality> {
     static high(): FilterQuality;
     static low(): FilterQuality;
     static medium(): FilterQuality;
@@ -1119,7 +1118,7 @@ export declare class FittedBox extends ZacBuilder<FlutterFittedBox> {
         key?: ZacBuilder<FlutterKey>;
         fit?: ZacBuilder<FlutterBoxFit>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         child?: ZacBuilder<FlutterWidget>;
     }): FittedBox;
 }
@@ -1140,12 +1139,12 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
         tooltip?: string | ZacBuilder<string>;
-        foregroundColor?: ZacBuilder<FlutterColor>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
-        focusColor?: ZacBuilder<FlutterColor>;
-        hoverColor?: ZacBuilder<FlutterColor>;
-        splashColor?: ZacBuilder<FlutterColor>;
-        heroTag?: ZacBuilder<any>;
+        foregroundColor?: ZacBuilder<DartColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
+        focusColor?: ZacBuilder<DartColor>;
+        hoverColor?: ZacBuilder<DartColor>;
+        splashColor?: ZacBuilder<DartColor>;
+        heroTag?: ZacBuilder<JSONValue>;
         elevation?: number | ZacBuilder<number>;
         focusElevation?: number | ZacBuilder<number>;
         hoverElevation?: number | ZacBuilder<number>;
@@ -1155,7 +1154,7 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         mouseCursor?: ZacBuilder<FlutterMouseCursor>;
         mini?: boolean | ZacBuilder<boolean>;
         shape?: ZacBuilder<FlutterShapeBorder>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         focusNode?: ZacBuilder<FlutterFocusNode>;
         autofocus?: boolean | ZacBuilder<boolean>;
         materialTapTargetSize?: ZacBuilder<FlutterMaterialTapTargetSize>;
@@ -1165,12 +1164,12 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
     static extended(data: {
         key?: ZacBuilder<FlutterKey>;
         tooltip?: string | ZacBuilder<string>;
-        foregroundColor?: ZacBuilder<FlutterColor>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
-        focusColor?: ZacBuilder<FlutterColor>;
-        hoverColor?: ZacBuilder<FlutterColor>;
-        splashColor?: ZacBuilder<FlutterColor>;
-        heroTag?: ZacBuilder<any>;
+        foregroundColor?: ZacBuilder<DartColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
+        focusColor?: ZacBuilder<DartColor>;
+        hoverColor?: ZacBuilder<DartColor>;
+        splashColor?: ZacBuilder<DartColor>;
+        heroTag?: ZacBuilder<JSONValue>;
         elevation?: number | ZacBuilder<number>;
         focusElevation?: number | ZacBuilder<number>;
         hoverElevation?: number | ZacBuilder<number>;
@@ -1179,7 +1178,7 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         onPressed?: ZacBuilder<Array<ZacAction>>;
         mouseCursor?: ZacBuilder<FlutterMouseCursor>;
         shape?: ZacBuilder<FlutterShapeBorder>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         focusNode?: ZacBuilder<FlutterFocusNode>;
         autofocus?: boolean | ZacBuilder<boolean>;
         materialTapTargetSize?: ZacBuilder<FlutterMaterialTapTargetSize>;
@@ -1195,12 +1194,12 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
         tooltip?: string | ZacBuilder<string>;
-        foregroundColor?: ZacBuilder<FlutterColor>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
-        focusColor?: ZacBuilder<FlutterColor>;
-        hoverColor?: ZacBuilder<FlutterColor>;
-        splashColor?: ZacBuilder<FlutterColor>;
-        heroTag?: ZacBuilder<any>;
+        foregroundColor?: ZacBuilder<DartColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
+        focusColor?: ZacBuilder<DartColor>;
+        hoverColor?: ZacBuilder<DartColor>;
+        splashColor?: ZacBuilder<DartColor>;
+        heroTag?: ZacBuilder<JSONValue>;
         elevation?: number | ZacBuilder<number>;
         focusElevation?: number | ZacBuilder<number>;
         hoverElevation?: number | ZacBuilder<number>;
@@ -1209,7 +1208,7 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         onPressed?: ZacBuilder<Array<ZacAction>>;
         mouseCursor?: ZacBuilder<FlutterMouseCursor>;
         shape?: ZacBuilder<FlutterShapeBorder>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         focusNode?: ZacBuilder<FlutterFocusNode>;
         autofocus?: boolean | ZacBuilder<boolean>;
         materialTapTargetSize?: ZacBuilder<FlutterMaterialTapTargetSize>;
@@ -1219,12 +1218,12 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
         tooltip?: string | ZacBuilder<string>;
-        foregroundColor?: ZacBuilder<FlutterColor>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
-        focusColor?: ZacBuilder<FlutterColor>;
-        hoverColor?: ZacBuilder<FlutterColor>;
-        splashColor?: ZacBuilder<FlutterColor>;
-        heroTag?: ZacBuilder<any>;
+        foregroundColor?: ZacBuilder<DartColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
+        focusColor?: ZacBuilder<DartColor>;
+        hoverColor?: ZacBuilder<DartColor>;
+        splashColor?: ZacBuilder<DartColor>;
+        heroTag?: ZacBuilder<JSONValue>;
         elevation?: number | ZacBuilder<number>;
         focusElevation?: number | ZacBuilder<number>;
         hoverElevation?: number | ZacBuilder<number>;
@@ -1233,14 +1232,14 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         onPressed?: ZacBuilder<Array<ZacAction>>;
         mouseCursor?: ZacBuilder<FlutterMouseCursor>;
         shape?: ZacBuilder<FlutterShapeBorder>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         focusNode?: ZacBuilder<FlutterFocusNode>;
         autofocus?: boolean | ZacBuilder<boolean>;
         materialTapTargetSize?: ZacBuilder<FlutterMaterialTapTargetSize>;
         enableFeedback?: boolean | ZacBuilder<boolean>;
     }): FloatingActionButton;
 }
-export declare class FontFeature extends ZacBuilder<FlutterFontFeature> {
+export declare class FontFeature extends ZacBuilder<DartFontFeature> {
     static new(data: {
         feature: string;
         value?: number | ZacBuilder<number>;
@@ -1289,11 +1288,11 @@ export declare class FontFeature extends ZacBuilder<FlutterFontFeature> {
     }): FontFeature;
     static tabularFigures(): FontFeature;
 }
-export declare class FontStyle extends ZacBuilder<FlutterFontStyle> {
+export declare class FontStyle extends ZacBuilder<DartFontStyle> {
     static italic(): FontStyle;
     static normal(): FontStyle;
 }
-export declare class FontWeight extends ZacBuilder<FlutterFontWeight> {
+export declare class FontWeight extends ZacBuilder<DartFontWeight> {
     static bold(): FontWeight;
     static normal(): FontWeight;
     static w100(): FontWeight;
@@ -1316,7 +1315,7 @@ export declare class FractionalTranslation extends ZacBuilder<FlutterFractionalT
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
-        translation: FlutterOffset;
+        translation: Offset;
         transformHitTests?: boolean | ZacBuilder<boolean>;
     }): FractionalTranslation;
 }
@@ -1339,7 +1338,7 @@ export declare class GestureDetector extends ZacBuilder<FlutterGestureDetector> 
         onLongPress?: ZacBuilder<Array<ZacAction>>;
         onSecondaryLongPress?: ZacBuilder<Array<ZacAction>>;
         onTertiaryLongPress?: ZacBuilder<Array<ZacAction>>;
-        behavior?: FlutterHitTestBehavior;
+        behavior?: HitTestBehavior;
         excludeFromSemantics?: boolean | ZacBuilder<boolean>;
     }): GestureDetector;
 }
@@ -1369,7 +1368,7 @@ export declare class GridView extends ZacBuilder<FlutterGridView> {
         cacheExtent?: number | ZacBuilder<number>;
         children?: ZacBuilder<Array<FlutterWidget>>;
         semanticChildCount?: number | ZacBuilder<number>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         keyboardDismissBehavior?: ZacBuilder<FlutterScrollViewKeyboardDismissBehavior>;
         restorationId?: string | ZacBuilder<string>;
     }): GridView;
@@ -1381,12 +1380,12 @@ export declare class HitTestBehavior extends ZacBuilder<FlutterHitTestBehavior> 
 }
 export declare class Icon extends ZacBuilder<FlutterIcon> {
     static new(data: {
-        icon: FlutterIconData;
+        icon: IconData;
         key?: ZacBuilder<FlutterKey>;
         size?: number | ZacBuilder<number>;
-        color?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
         semanticLabel?: string | ZacBuilder<string>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textDirection?: ZacBuilder<DartTextDirection>;
     }): Icon;
 }
 export declare class IconData extends ZacBuilder<FlutterIconData> {
@@ -1399,7 +1398,7 @@ export declare class IconData extends ZacBuilder<FlutterIconData> {
 }
 export declare class IconThemeData extends ZacBuilder<FlutterIconThemeData> {
     static new(data?: {
-        color?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
         opacity?: number | ZacBuilder<number>;
         size?: number | ZacBuilder<number>;
     }): IconThemeData;
@@ -1421,15 +1420,15 @@ export declare class Image extends ZacBuilder<FlutterImage> {
         excludeFromSemantics?: boolean | ZacBuilder<boolean>;
         width?: number | ZacBuilder<number>;
         height?: number | ZacBuilder<number>;
-        color?: ZacBuilder<FlutterColor>;
-        colorBlendMode?: ZacBuilder<FlutterBlendMode>;
+        color?: ZacBuilder<DartColor>;
+        colorBlendMode?: ZacBuilder<DartBlendMode>;
         fit?: ZacBuilder<FlutterBoxFit>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
         repeat?: ZacBuilder<FlutterImageRepeat>;
-        centerSlice?: ZacBuilder<FlutterRect>;
+        centerSlice?: ZacBuilder<DartRect>;
         matchTextDirection?: boolean | ZacBuilder<boolean>;
         gaplessPlayback?: boolean | ZacBuilder<boolean>;
-        filterQuality?: ZacBuilder<FlutterFilterQuality>;
+        filterQuality?: ZacBuilder<DartFilterQuality>;
         isAntiAlias?: boolean | ZacBuilder<boolean>;
         headers?: Record<string, string>;
         cacheWidth?: number | ZacBuilder<number>;
@@ -1443,17 +1442,17 @@ export declare class Image extends ZacBuilder<FlutterImage> {
         scale?: number | ZacBuilder<number>;
         width?: number | ZacBuilder<number>;
         height?: number | ZacBuilder<number>;
-        color?: ZacBuilder<FlutterColor>;
-        colorBlendMode?: ZacBuilder<FlutterBlendMode>;
+        color?: ZacBuilder<DartColor>;
+        colorBlendMode?: ZacBuilder<DartBlendMode>;
         fit?: ZacBuilder<FlutterBoxFit>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
         repeat?: ZacBuilder<FlutterImageRepeat>;
-        centerSlice?: ZacBuilder<FlutterRect>;
+        centerSlice?: ZacBuilder<DartRect>;
         matchTextDirection?: boolean | ZacBuilder<boolean>;
         gaplessPlayback?: boolean | ZacBuilder<boolean>;
         isAntiAlias?: boolean | ZacBuilder<boolean>;
         package?: string | ZacBuilder<string>;
-        filterQuality?: ZacBuilder<FlutterFilterQuality>;
+        filterQuality?: ZacBuilder<DartFilterQuality>;
         cacheWidth?: number | ZacBuilder<number>;
         cacheHeight?: number | ZacBuilder<number>;
     }): Image;
@@ -1468,7 +1467,7 @@ export declare class IndexedStack extends ZacBuilder<FlutterIndexedStack> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textDirection?: ZacBuilder<DartTextDirection>;
         sizing?: ZacBuilder<FlutterStackFit>;
         index?: number | ZacBuilder<number>;
         children?: ZacBuilder<Array<FlutterWidget>>;
@@ -1477,7 +1476,7 @@ export declare class IndexedStack extends ZacBuilder<FlutterIndexedStack> {
 export declare class InputDecoration extends ZacBuilder<FlutterInputDecoration> {
     static new(data?: {
         icon?: ZacBuilder<FlutterWidget>;
-        iconColor?: ZacBuilder<FlutterColor>;
+        iconColor?: ZacBuilder<DartColor>;
         label?: ZacBuilder<FlutterWidget>;
         labelText?: string | ZacBuilder<string>;
         labelStyle?: ZacBuilder<FlutterTextStyle>;
@@ -1487,7 +1486,7 @@ export declare class InputDecoration extends ZacBuilder<FlutterInputDecoration> 
         helperMaxLines?: number | ZacBuilder<number>;
         hintText?: string | ZacBuilder<string>;
         hintStyle?: ZacBuilder<FlutterTextStyle>;
-        hintTextDirection?: ZacBuilder<FlutterTextDirection>;
+        hintTextDirection?: ZacBuilder<DartTextDirection>;
         hintMaxLines?: number | ZacBuilder<number>;
         errorText?: string | ZacBuilder<string>;
         errorStyle?: ZacBuilder<FlutterTextStyle>;
@@ -1500,20 +1499,20 @@ export declare class InputDecoration extends ZacBuilder<FlutterInputDecoration> 
         prefix?: ZacBuilder<FlutterWidget>;
         prefixText?: string | ZacBuilder<string>;
         prefixStyle?: ZacBuilder<FlutterTextStyle>;
-        prefixIconColor?: ZacBuilder<FlutterColor>;
+        prefixIconColor?: ZacBuilder<DartColor>;
         suffixIcon?: ZacBuilder<FlutterWidget>;
         suffix?: ZacBuilder<FlutterWidget>;
         suffixText?: string | ZacBuilder<string>;
         suffixStyle?: ZacBuilder<FlutterTextStyle>;
-        suffixIconColor?: ZacBuilder<FlutterColor>;
+        suffixIconColor?: ZacBuilder<DartColor>;
         suffixIconConstraints?: ZacBuilder<FlutterBoxConstraints>;
         counter?: ZacBuilder<FlutterWidget>;
         counterText?: string | ZacBuilder<string>;
         counterStyle?: ZacBuilder<FlutterTextStyle>;
         filled?: boolean | ZacBuilder<boolean>;
-        fillColor?: ZacBuilder<FlutterColor>;
-        focusColor?: ZacBuilder<FlutterColor>;
-        hoverColor?: ZacBuilder<FlutterColor>;
+        fillColor?: ZacBuilder<DartColor>;
+        focusColor?: ZacBuilder<DartColor>;
+        hoverColor?: ZacBuilder<DartColor>;
         errorBorder?: ZacBuilder<FlutterInputBorder>;
         focusedBorder?: ZacBuilder<FlutterInputBorder>;
         focusedErrorBorder?: ZacBuilder<FlutterInputBorder>;
@@ -1530,7 +1529,7 @@ export declare class InteractiveViewer extends ZacBuilder<FlutterInteractiveView
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
         child: ZacBuilder<FlutterWidget>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         alignPanAxis?: boolean | ZacBuilder<boolean>;
         boundaryMargin?: ZacBuilder<FlutterEdgeInsets>;
         constrained?: boolean | ZacBuilder<boolean>;
@@ -1573,19 +1572,19 @@ export declare class ListTile extends ZacBuilder<FlutterListTile> {
         isThreeLine?: boolean | ZacBuilder<boolean>;
         dense?: boolean | ZacBuilder<boolean>;
         shape?: ZacBuilder<FlutterShapeBorder>;
-        selectedColor?: ZacBuilder<FlutterColor>;
-        iconColor?: ZacBuilder<FlutterColor>;
-        textColor?: ZacBuilder<FlutterColor>;
+        selectedColor?: ZacBuilder<DartColor>;
+        iconColor?: ZacBuilder<DartColor>;
+        textColor?: ZacBuilder<DartColor>;
         contentPadding?: ZacBuilder<FlutterEdgeInsetsGeometry>;
         enabled?: boolean | ZacBuilder<boolean>;
         onTap?: ZacBuilder<Array<ZacAction>>;
         onLongPress?: ZacBuilder<Array<ZacAction>>;
         selected?: boolean | ZacBuilder<boolean>;
-        focusColor?: ZacBuilder<FlutterColor>;
-        hoverColor?: ZacBuilder<FlutterColor>;
+        focusColor?: ZacBuilder<DartColor>;
+        hoverColor?: ZacBuilder<DartColor>;
         autofocus?: boolean | ZacBuilder<boolean>;
-        tileColor?: ZacBuilder<FlutterColor>;
-        selectedTileColor?: ZacBuilder<FlutterColor>;
+        tileColor?: ZacBuilder<DartColor>;
+        selectedTileColor?: ZacBuilder<DartColor>;
         enableFeedback?: boolean | ZacBuilder<boolean>;
         horizontalTitleGap?: number | ZacBuilder<number>;
         minVerticalPadding?: number | ZacBuilder<number>;
@@ -1612,10 +1611,10 @@ export declare class ListView extends ZacBuilder<FlutterListView> {
         semanticChildCount?: number | ZacBuilder<number>;
         keyboardDismissBehavior?: ZacBuilder<FlutterScrollViewKeyboardDismissBehavior>;
         restorationId?: string | ZacBuilder<string>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): ListView;
 }
-export declare class Locale extends ZacBuilder<FlutterLocale> {
+export declare class Locale extends ZacBuilder<DartLocale> {
     static new(data: {
         languageCode: string;
         countryCode?: string;
@@ -1638,13 +1637,13 @@ export declare class Material extends ZacBuilder<FlutterMaterial> {
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
         elevation?: number | ZacBuilder<number>;
-        color?: ZacBuilder<FlutterColor>;
-        shadowColor?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
+        shadowColor?: ZacBuilder<DartColor>;
         textStyle?: ZacBuilder<FlutterTextStyle>;
         borderRadius?: ZacBuilder<FlutterBorderRadiusGeometry>;
         shape?: ZacBuilder<FlutterShapeBorder>;
         borderOnForeground?: boolean | ZacBuilder<boolean>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): Material;
 }
 export declare class MaterialApp extends ZacBuilder<FlutterMaterialApp> {
@@ -1654,11 +1653,11 @@ export declare class MaterialApp extends ZacBuilder<FlutterMaterialApp> {
         scaffoldMessengerKey?: ZacBuilder<FlutterGlobalKey<FlutterScaffoldMessengerState>>;
         home?: ZacBuilder<FlutterWidget>;
         initialRoute?: string | ZacBuilder<string>;
-        onGenerateRoute?: FlutterRouteFactory;
-        onUnknownRoute?: FlutterRouteFactory;
+        onGenerateRoute?: RouteFactory;
+        onUnknownRoute?: RouteFactory;
         title?: string | ZacBuilder<string>;
-        color?: ZacBuilder<FlutterColor>;
-        locale?: ZacBuilder<FlutterLocale>;
+        color?: ZacBuilder<DartColor>;
+        locale?: ZacBuilder<DartLocale>;
         debugShowMaterialGrid?: boolean | ZacBuilder<boolean>;
         showPerformanceOverlay?: boolean | ZacBuilder<boolean>;
         checkerboardRasterCacheImages?: boolean | ZacBuilder<boolean>;
@@ -1677,14 +1676,14 @@ export declare class MaterialBanner extends ZacBuilder<FlutterMaterialBanner> {
         actions: ZacBuilder<Array<FlutterWidget>>;
         elevation?: number | ZacBuilder<number>;
         leading?: ZacBuilder<FlutterWidget>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         padding?: ZacBuilder<FlutterEdgeInsetsGeometry>;
         leadingPadding?: ZacBuilder<FlutterEdgeInsetsGeometry>;
         forceActionsBelow?: boolean | ZacBuilder<boolean>;
         onVisible?: ZacBuilder<Array<ZacAction>>;
     }): MaterialBanner;
 }
-export declare class MaterialPageRoute extends ZacBuilder<FlutterRoute<any>> {
+export declare class MaterialPageRoute extends ZacBuilder<FlutterRoute<JSONValue>> {
     static new(data: {
         settings?: ZacBuilder<FlutterRouteSettings>;
         maintainState?: boolean | ZacBuilder<boolean>;
@@ -1696,20 +1695,20 @@ export declare class MaterialPageRoute extends ZacBuilder<FlutterRoute<any>> {
 export declare class Navigator extends ZacBuilder<FlutterNavigator> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
-        onGenerateRoute?: FlutterRouteFactory;
-        onUnknownRoute?: FlutterRouteFactory;
+        onGenerateRoute?: RouteFactory;
+        onUnknownRoute?: RouteFactory;
         initialRoute?: string | ZacBuilder<string>;
         requestFocus?: boolean | ZacBuilder<boolean>;
     }): Navigator;
 }
 export declare class NavigatorActions extends ZacBuilder<ZacAction> {
     static push(data: {
-        route: ZacBuilder<FlutterRoute<any>>;
+        route: ZacBuilder<FlutterRoute<JSONValue>>;
         navigatorState?: ZacBuilder<FlutterNavigatorState>;
     }): NavigatorActions;
     static pushNamed(data: {
         routeName: string | ZacBuilder<string>;
-        arguments?: any;
+        arguments?: JSONValue;
         navigatorState?: ZacBuilder<FlutterNavigatorState>;
     }): NavigatorActions;
     static pop(data?: {
@@ -1721,13 +1720,13 @@ export declare class NavigatorActions extends ZacBuilder<ZacAction> {
         navigatorState?: ZacBuilder<FlutterNavigatorState>;
     }): NavigatorActions;
     static pushReplacement(data: {
-        route: ZacBuilder<FlutterRoute<any>>;
+        route: ZacBuilder<FlutterRoute<JSONValue>>;
         result?: ZacBuilder<Array<ZacAction>>;
         navigatorState?: ZacBuilder<FlutterNavigatorState>;
     }): NavigatorActions;
     static pushReplacementNamed(data: {
         routeName: string | ZacBuilder<string>;
-        arguments?: any;
+        arguments?: JSONValue;
         navigatorState?: ZacBuilder<FlutterNavigatorState>;
         result?: ZacBuilder<Array<ZacAction>>;
     }): NavigatorActions;
@@ -1743,7 +1742,7 @@ export declare class NavigatorState extends ZacBuilder<FlutterNavigatorState> {
         value: ZacBuilder<FlutterGlobalKey<FlutterNavigatorState>>;
     }): NavigatorState;
 }
-export declare class Offset extends ZacBuilder<FlutterOffset> {
+export declare class Offset extends ZacBuilder<DartOffset> {
     static new(data: {
         dx: number | ZacBuilder<number>;
         dy: number | ZacBuilder<number>;
@@ -1782,7 +1781,7 @@ export declare class OutlinedButton extends ZacBuilder<FlutterOutlinedButton> {
         onPressed?: ZacBuilder<Array<ZacAction>>;
         onLongPress?: ZacBuilder<Array<ZacAction>>;
         autofocus?: boolean | ZacBuilder<boolean>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): OutlinedButton;
     static icon(data: {
         key?: ZacBuilder<FlutterKey>;
@@ -1791,7 +1790,7 @@ export declare class OutlinedButton extends ZacBuilder<FlutterOutlinedButton> {
         onPressed?: ZacBuilder<Array<ZacAction>>;
         onLongPress?: ZacBuilder<Array<ZacAction>>;
         autofocus?: boolean | ZacBuilder<boolean>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): OutlinedButton;
 }
 export declare class OverflowBox extends ZacBuilder<FlutterOverflowBox> {
@@ -1812,12 +1811,12 @@ export declare class Padding extends ZacBuilder<FlutterPadding> {
         child?: ZacBuilder<FlutterWidget>;
     }): Padding;
 }
-export declare class PageRouteBuilder extends ZacBuilder<FlutterRoute<any>> {
+export declare class PageRouteBuilder extends ZacBuilder<FlutterRoute<JSONValue>> {
     static new(data: {
         settings?: ZacBuilder<FlutterRouteSettings>;
         opaque?: boolean | ZacBuilder<boolean>;
         barrierDismissible?: boolean | ZacBuilder<boolean>;
-        barrierColor?: ZacBuilder<FlutterColor>;
+        barrierColor?: ZacBuilder<DartColor>;
         barrierLabel?: string | ZacBuilder<string>;
         maintainState?: boolean | ZacBuilder<boolean>;
         fullscreenDialog?: boolean | ZacBuilder<boolean>;
@@ -1838,7 +1837,7 @@ export declare class Positioned extends ZacBuilder<FlutterPositioned> {
     }): Positioned;
     static directional(data: {
         key?: ZacBuilder<FlutterKey>;
-        textDirection: ZacBuilder<FlutterTextDirection>;
+        textDirection: ZacBuilder<DartTextDirection>;
         start?: number | ZacBuilder<number>;
         top?: number | ZacBuilder<number>;
         end?: number | ZacBuilder<number>;
@@ -1860,8 +1859,8 @@ export declare class ProgressIndicator extends ZacBuilder<FlutterProgressIndicat
     static linear(data?: {
         key?: ZacBuilder<FlutterKey>;
         value?: number | ZacBuilder<number>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
-        color?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
+        color?: ZacBuilder<DartColor>;
         minHeight?: number | ZacBuilder<number>;
         semanticsLabel?: string | ZacBuilder<string>;
         semanticsValue?: string | ZacBuilder<string>;
@@ -1869,14 +1868,14 @@ export declare class ProgressIndicator extends ZacBuilder<FlutterProgressIndicat
     static circular(data?: {
         key?: ZacBuilder<FlutterKey>;
         value?: number | ZacBuilder<number>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
-        color?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
+        color?: ZacBuilder<DartColor>;
         strokeWidth?: number | ZacBuilder<number>;
         semanticsLabel?: string | ZacBuilder<string>;
         semanticsValue?: string | ZacBuilder<string>;
     }): ProgressIndicator;
 }
-export declare class Radius extends ZacBuilder<FlutterRadius> {
+export declare class Radius extends ZacBuilder<DartRadius> {
     static circular(data: {
         radius: number | ZacBuilder<number>;
     }): Radius;
@@ -1885,14 +1884,14 @@ export declare class Radius extends ZacBuilder<FlutterRadius> {
         y: number | ZacBuilder<number>;
     }): Radius;
 }
-export declare class Rect extends ZacBuilder<FlutterRect> {
+export declare class Rect extends ZacBuilder<DartRect> {
     static fromCenter(data: {
-        center: FlutterOffset;
+        center: Offset;
         width: number | ZacBuilder<number>;
         height: number | ZacBuilder<number>;
     }): Rect;
     static fromCircle(data: {
-        center: FlutterOffset;
+        center: Offset;
         radius: number | ZacBuilder<number>;
     }): Rect;
     static fromLTRB(data: {
@@ -1908,8 +1907,8 @@ export declare class Rect extends ZacBuilder<FlutterRect> {
         height: number | ZacBuilder<number>;
     }): Rect;
     static fromPoints(data: {
-        a: FlutterOffset;
-        b: FlutterOffset;
+        a: Offset;
+        b: Offset;
     }): Rect;
 }
 export declare class RefreshIndicator extends ZacBuilder<FlutterRefreshIndicator> {
@@ -1919,8 +1918,8 @@ export declare class RefreshIndicator extends ZacBuilder<FlutterRefreshIndicator
         displacement?: number | ZacBuilder<number>;
         edgeOffset?: number | ZacBuilder<number>;
         onRefresh: ZacBuilder<Array<ZacAction>>;
-        color?: ZacBuilder<FlutterColor>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         semanticsLabel?: string | ZacBuilder<string>;
         semanticsValue?: string | ZacBuilder<string>;
         strokeWidth?: number | ZacBuilder<number>;
@@ -1946,14 +1945,14 @@ export declare class RoundedRectangleBorder extends ZacBuilder<FlutterRoundedRec
 }
 export declare class RouteFactory extends ZacBuilder<FlutterRouteFactory> {
     static new(data: {
-        routes: Record<string, ZacBuilder<FlutterRoute<any>>>;
+        routes: Record<string, ZacBuilder<FlutterRoute<JSONValue>>>;
         familyNameOfArguments: Record<string, string>;
     }): RouteFactory;
 }
 export declare class RouteSettings extends ZacBuilder<FlutterRouteSettings> {
     static new(data?: {
         name?: string | ZacBuilder<string>;
-        arguments?: ZacBuilder<any>;
+        arguments?: ZacBuilder<JSONValue>;
     }): RouteSettings;
 }
 export declare class Row extends ZacBuilder<FlutterRow> {
@@ -1962,9 +1961,9 @@ export declare class Row extends ZacBuilder<FlutterRow> {
         mainAxisAlignment?: ZacBuilder<FlutterMainAxisAlignment>;
         mainAxisSize?: ZacBuilder<FlutterMainAxisSize>;
         crossAxisAlignment?: ZacBuilder<FlutterCrossAxisAlignment>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textDirection?: ZacBuilder<DartTextDirection>;
         verticalDirection?: ZacBuilder<FlutterVerticalDirection>;
-        textBaseline?: ZacBuilder<FlutterTextBaseline>;
+        textBaseline?: ZacBuilder<DartTextBaseline>;
         children?: ZacBuilder<Array<FlutterWidget>>;
     }): Row;
 }
@@ -1991,12 +1990,12 @@ export declare class Scaffold extends ZacBuilder<FlutterScaffold> {
         endDrawer?: ZacBuilder<FlutterWidget>;
         bottomNavigationBar?: ZacBuilder<FlutterWidget>;
         bottomSheet?: ZacBuilder<FlutterWidget>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         resizeToAvoidBottomInset?: boolean | ZacBuilder<boolean>;
         primary?: boolean | ZacBuilder<boolean>;
         extendBody?: boolean | ZacBuilder<boolean>;
         extendBodyBehindAppBar?: boolean | ZacBuilder<boolean>;
-        drawerScrimColor?: ZacBuilder<FlutterColor>;
+        drawerScrimColor?: ZacBuilder<DartColor>;
         drawerEdgeDragWidth?: number | ZacBuilder<number>;
         drawerEnableOpenDragGesture?: boolean | ZacBuilder<boolean>;
         endDrawerEnableOpenDragGesture?: boolean | ZacBuilder<boolean>;
@@ -2012,22 +2011,22 @@ export declare class ScaffoldActions extends ZacBuilder<ZacAction> {
     }): ScaffoldActions;
     static showBottomSheet(data: {
         child: ZacBuilder<FlutterWidget>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         elevation?: number | ZacBuilder<number>;
         shape?: ZacBuilder<FlutterShapeBorder>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
-        constraints?: FlutterBoxConstraints;
+        clipBehavior?: ZacBuilder<DartClip>;
+        constraints?: BoxConstraints;
         enableDrag?: boolean | ZacBuilder<boolean>;
     }): ScaffoldActions;
 }
 export declare class ScaffoldMessenger extends ZacBuilder<ZacAction> {
     static showSnackBar(data: {
-        snackBar: FlutterSnackBar;
+        snackBar: SnackBar;
     }): ScaffoldMessenger;
     static hideCurrentSnackBar(): ScaffoldMessenger;
     static removeCurrentSnackBar(): ScaffoldMessenger;
     static showMaterialBanner(data: {
-        materialBanner: FlutterMaterialBanner;
+        materialBanner: MaterialBanner;
     }): ScaffoldMessenger;
     static hideCurrentMaterialBanner(): ScaffoldMessenger;
     static removeCurrentMaterialBanner(): ScaffoldMessenger;
@@ -2041,13 +2040,13 @@ export declare class ScrollController extends ZacBuilder<FlutterScrollController
 }
 export declare class ScrollPhysics extends ZacBuilder<FlutterScrollPhysics> {
     static alwaysScrollable(data?: {
-        parent?: FlutterScrollPhysics;
+        parent?: ScrollPhysics;
     }): ScrollPhysics;
     static bouncingScroll(data?: {
-        parent?: FlutterScrollPhysics;
+        parent?: ScrollPhysics;
     }): ScrollPhysics;
     static clampingScrollPhysics(data?: {
-        parent?: FlutterScrollPhysics;
+        parent?: ScrollPhysics;
     }): ScrollPhysics;
 }
 export declare class ScrollViewKeyboardDismissBehavior extends ZacBuilder<FlutterScrollViewKeyboardDismissBehavior> {
@@ -2060,8 +2059,8 @@ export declare class SelectableText extends ZacBuilder<FlutterSelectableText> {
         key?: ZacBuilder<FlutterKey>;
         style?: ZacBuilder<FlutterTextStyle>;
         strutStyle?: ZacBuilder<FlutterStrutStyle>;
-        textAlign?: ZacBuilder<FlutterTextAlign>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textAlign?: ZacBuilder<DartTextAlign>;
+        textDirection?: ZacBuilder<DartTextDirection>;
         textScaleFactor?: number | ZacBuilder<number>;
         showCursor?: boolean | ZacBuilder<boolean>;
         autofocus?: boolean | ZacBuilder<boolean>;
@@ -2069,27 +2068,27 @@ export declare class SelectableText extends ZacBuilder<FlutterSelectableText> {
         maxLines?: number | ZacBuilder<number>;
         cursorWidth?: number | ZacBuilder<number>;
         cursorHeight?: number | ZacBuilder<number>;
-        cursorRadius?: ZacBuilder<FlutterRadius>;
-        cursorColor?: ZacBuilder<FlutterColor>;
+        cursorRadius?: ZacBuilder<DartRadius>;
+        cursorColor?: ZacBuilder<DartColor>;
         enableInteractiveSelection?: boolean | ZacBuilder<boolean>;
         semanticsLabel?: string | ZacBuilder<string>;
-        textHeightBehavior?: ZacBuilder<FlutterTextHeightBehavior>;
+        textHeightBehavior?: ZacBuilder<DartTextHeightBehavior>;
         textWidthBasis?: ZacBuilder<FlutterTextWidthBasis>;
     }): SelectableText;
 }
-export declare class Shadow extends ZacBuilder<FlutterShadow> {
+export declare class Shadow extends ZacBuilder<DartShadow> {
     static new(data?: {
-        color?: ZacBuilder<FlutterColor>;
-        offset?: ZacBuilder<FlutterOffset>;
+        color?: ZacBuilder<DartColor>;
+        offset?: ZacBuilder<DartOffset>;
         blurRadius?: number | ZacBuilder<number>;
     }): Shadow;
 }
 export declare class ShapeDecoration extends ZacBuilder<FlutterShapeDecoration> {
     static new(data: {
-        color?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
         image?: ZacBuilder<FlutterDecorationImage>;
         gradient?: ZacBuilder<FlutterGradient>;
-        shadows?: Array<FlutterBoxShadow>;
+        shadows?: Array<BoxShadow>;
         shape: ZacBuilder<FlutterShapeBorder>;
     }): ShapeDecoration;
 }
@@ -2102,12 +2101,12 @@ export declare class SingleChildScrollView extends ZacBuilder<FlutterSingleChild
         primary?: boolean | ZacBuilder<boolean>;
         controller?: ZacBuilder<FlutterScrollController>;
         child?: ZacBuilder<FlutterWidget>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         restorationId?: string | ZacBuilder<string>;
         keyboardDismissBehavior?: ZacBuilder<FlutterScrollViewKeyboardDismissBehavior>;
     }): SingleChildScrollView;
 }
-export declare class Size extends ZacBuilder<FlutterSize> {
+export declare class Size extends ZacBuilder<DartSize> {
     static new(data: {
         width: number | ZacBuilder<number>;
         height: number | ZacBuilder<number>;
@@ -2127,7 +2126,7 @@ export declare class SizedBox extends ZacBuilder<FlutterSizedBox> {
     static fromSize(data?: {
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
-        size?: ZacBuilder<FlutterSize>;
+        size?: ZacBuilder<DartSize>;
     }): SizedBox;
     static shrink(data?: {
         key?: ZacBuilder<FlutterKey>;
@@ -2142,7 +2141,7 @@ export declare class SizedBox extends ZacBuilder<FlutterSizedBox> {
 export declare class SizedOverflowBox extends ZacBuilder<FlutterSizedOverflowBox> {
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
-        size: ZacBuilder<FlutterSize>;
+        size: ZacBuilder<DartSize>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
         child?: ZacBuilder<FlutterWidget>;
     }): SizedOverflowBox;
@@ -2166,8 +2165,8 @@ export declare class SliverChildDelegate extends ZacBuilder<FlutterSliverChildDe
 export declare class SliverGrid extends ZacBuilder<FlutterSliverGrid> {
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
-        delegate: FlutterSliverChildDelegate;
-        gridDelegate: FlutterSliverGridDelegate;
+        delegate: SliverChildDelegate;
+        gridDelegate: SliverGridDelegate;
     }): SliverGrid;
 }
 export declare class SliverGridDelegate extends ZacBuilder<FlutterSliverGridDelegate> {
@@ -2189,7 +2188,7 @@ export declare class SliverGridDelegate extends ZacBuilder<FlutterSliverGridDele
 export declare class SliverList extends ZacBuilder<FlutterSliverList> {
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
-        delegate: FlutterSliverChildDelegate;
+        delegate: SliverChildDelegate;
     }): SliverList;
 }
 export declare class SliverPadding extends ZacBuilder<FlutterSliverPadding> {
@@ -2217,22 +2216,22 @@ export declare class SnackBar extends ZacBuilder<FlutterSnackBar> {
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
         content: ZacBuilder<FlutterWidget>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         elevation?: number | ZacBuilder<number>;
         margin?: ZacBuilder<FlutterEdgeInsetsGeometry>;
         padding?: ZacBuilder<FlutterEdgeInsetsGeometry>;
         width?: number | ZacBuilder<number>;
         shape?: ZacBuilder<FlutterShapeBorder>;
-        behavior?: FlutterSnackBarBehavior;
-        action?: FlutterSnackBarAction;
+        behavior?: SnackBarBehavior;
+        action?: SnackBarAction;
         onVisible?: ZacBuilder<Array<ZacAction>>;
     }): SnackBar;
 }
 export declare class SnackBarAction extends ZacBuilder<FlutterSnackBarAction> {
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
-        textColor?: ZacBuilder<FlutterColor>;
-        disabledTextColor?: ZacBuilder<FlutterColor>;
+        textColor?: ZacBuilder<DartColor>;
+        disabledTextColor?: ZacBuilder<DartColor>;
         label: string | ZacBuilder<string>;
         onPressed: ZacBuilder<Array<ZacAction>>;
     }): SnackBarAction;
@@ -2251,9 +2250,9 @@ export declare class Stack extends ZacBuilder<FlutterStack> {
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textDirection?: ZacBuilder<DartTextDirection>;
         fit?: ZacBuilder<FlutterStackFit>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         children?: ZacBuilder<Array<FlutterWidget>>;
     }): Stack;
 }
@@ -2268,24 +2267,24 @@ export declare class StrutStyle extends ZacBuilder<FlutterStrutStyle> {
         fontFamilyFallback?: Array<string>;
         fontSize?: number | ZacBuilder<number>;
         height?: number | ZacBuilder<number>;
-        leadingDistribution?: ZacBuilder<FlutterTextLeadingDistribution>;
+        leadingDistribution?: ZacBuilder<DartTextLeadingDistribution>;
         leading?: number | ZacBuilder<number>;
-        fontWeight?: ZacBuilder<FlutterFontWeight>;
-        fontStyle?: ZacBuilder<FlutterFontStyle>;
+        fontWeight?: ZacBuilder<DartFontWeight>;
+        fontStyle?: ZacBuilder<DartFontStyle>;
         forceStrutHeight?: boolean | ZacBuilder<boolean>;
         debugLabel?: string | ZacBuilder<string>;
         package?: string | ZacBuilder<string>;
     }): StrutStyle;
     static fromTextStyle(data: {
-        textStyle: FlutterTextStyle;
+        textStyle: TextStyle;
         fontFamily?: string | ZacBuilder<string>;
         fontFamilyFallback?: Array<string>;
         fontSize?: number | ZacBuilder<number>;
         height?: number | ZacBuilder<number>;
-        leadingDistribution?: ZacBuilder<FlutterTextLeadingDistribution>;
+        leadingDistribution?: ZacBuilder<DartTextLeadingDistribution>;
         leading?: number | ZacBuilder<number>;
-        fontWeight?: ZacBuilder<FlutterFontWeight>;
-        fontStyle?: ZacBuilder<FlutterFontStyle>;
+        fontWeight?: ZacBuilder<DartFontWeight>;
+        fontStyle?: ZacBuilder<DartFontStyle>;
         forceStrutHeight?: boolean | ZacBuilder<boolean>;
         debugLabel?: string | ZacBuilder<string>;
         package?: string | ZacBuilder<string>;
@@ -2293,13 +2292,13 @@ export declare class StrutStyle extends ZacBuilder<FlutterStrutStyle> {
 }
 export declare class SystemUiOverlayStyle extends ZacBuilder<FlutterSystemUiOverlayStyle> {
     static new(data?: {
-        systemNavigationBarColor?: ZacBuilder<FlutterColor>;
-        systemNavigationBarDividerColor?: ZacBuilder<FlutterColor>;
-        systemNavigationBarIconBrightness?: ZacBuilder<FlutterBrightness>;
+        systemNavigationBarColor?: ZacBuilder<DartColor>;
+        systemNavigationBarDividerColor?: ZacBuilder<DartColor>;
+        systemNavigationBarIconBrightness?: ZacBuilder<DartBrightness>;
         systemNavigationBarContrastEnforced?: boolean | ZacBuilder<boolean>;
-        statusBarColor?: ZacBuilder<FlutterColor>;
-        statusBarBrightness?: ZacBuilder<FlutterBrightness>;
-        statusBarIconBrightness?: ZacBuilder<FlutterBrightness>;
+        statusBarColor?: ZacBuilder<DartColor>;
+        statusBarBrightness?: ZacBuilder<DartBrightness>;
+        statusBarIconBrightness?: ZacBuilder<DartBrightness>;
         systemStatusBarContrastEnforced?: boolean | ZacBuilder<boolean>;
     }): SystemUiOverlayStyle;
 }
@@ -2309,19 +2308,19 @@ export declare class Text extends ZacBuilder<FlutterText> {
         key?: ZacBuilder<FlutterKey>;
         style?: ZacBuilder<FlutterTextStyle>;
         strutStyle?: ZacBuilder<FlutterStrutStyle>;
-        textAlign?: ZacBuilder<FlutterTextAlign>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
-        locale?: ZacBuilder<FlutterLocale>;
+        textAlign?: ZacBuilder<DartTextAlign>;
+        textDirection?: ZacBuilder<DartTextDirection>;
+        locale?: ZacBuilder<DartLocale>;
         softWrap?: boolean | ZacBuilder<boolean>;
         overflow?: ZacBuilder<FlutterTextOverflow>;
         textScaleFactor?: number | ZacBuilder<number>;
         maxLines?: number | ZacBuilder<number>;
         semanticsLabel?: string | ZacBuilder<string>;
         textWidthBasis?: ZacBuilder<FlutterTextWidthBasis>;
-        textHeightBehavior?: ZacBuilder<FlutterTextHeightBehavior>;
+        textHeightBehavior?: ZacBuilder<DartTextHeightBehavior>;
     }): Text;
 }
-export declare class TextAlign extends ZacBuilder<FlutterTextAlign> {
+export declare class TextAlign extends ZacBuilder<DartTextAlign> {
     static center(): TextAlign;
     static end(): TextAlign;
     static justify(): TextAlign;
@@ -2337,7 +2336,7 @@ export declare class TextAlignVertical extends ZacBuilder<FlutterTextAlignVertic
     static center(): TextAlignVertical;
     static top(): TextAlignVertical;
 }
-export declare class TextBaseline extends ZacBuilder<FlutterTextBaseline> {
+export declare class TextBaseline extends ZacBuilder<DartTextBaseline> {
     static alphabetic(): TextBaseline;
     static ideographic(): TextBaseline;
 }
@@ -2348,7 +2347,7 @@ export declare class TextButton extends ZacBuilder<FlutterTextButton> {
         onPressed?: ZacBuilder<Array<ZacAction>>;
         onLongPress?: ZacBuilder<Array<ZacAction>>;
         autofocus?: boolean | ZacBuilder<boolean>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): TextButton;
     static icon(data: {
         key?: ZacBuilder<FlutterKey>;
@@ -2357,7 +2356,7 @@ export declare class TextButton extends ZacBuilder<FlutterTextButton> {
         onPressed?: ZacBuilder<Array<ZacAction>>;
         onLongPress?: ZacBuilder<Array<ZacAction>>;
         autofocus?: boolean | ZacBuilder<boolean>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): TextButton;
 }
 export declare class TextCapitalization extends ZacBuilder<FlutterTextCapitalization> {
@@ -2366,20 +2365,20 @@ export declare class TextCapitalization extends ZacBuilder<FlutterTextCapitaliza
     static sentences(): TextCapitalization;
     static words(): TextCapitalization;
 }
-export declare class TextDecoration extends ZacBuilder<FlutterTextDecoration> {
+export declare class TextDecoration extends ZacBuilder<DartTextDecoration> {
     static lineThrough(): TextDecoration;
     static none(): TextDecoration;
     static overline(): TextDecoration;
     static underline(): TextDecoration;
 }
-export declare class TextDecorationStyle extends ZacBuilder<FlutterTextDecorationStyle> {
+export declare class TextDecorationStyle extends ZacBuilder<DartTextDecorationStyle> {
     static dashed(): TextDecorationStyle;
     static dotted(): TextDecorationStyle;
     static double(): TextDecorationStyle;
     static solid(): TextDecorationStyle;
     static wavy(): TextDecorationStyle;
 }
-export declare class TextDirection extends ZacBuilder<FlutterTextDirection> {
+export declare class TextDirection extends ZacBuilder<DartTextDirection> {
     static rtl(): TextDirection;
     static ltr(): TextDirection;
 }
@@ -2392,9 +2391,9 @@ export declare class TextField extends ZacBuilder<FlutterTextField> {
         textCapitalization?: ZacBuilder<FlutterTextCapitalization>;
         style?: ZacBuilder<FlutterTextStyle>;
         strutStyle?: ZacBuilder<FlutterStrutStyle>;
-        textAlign?: ZacBuilder<FlutterTextAlign>;
+        textAlign?: ZacBuilder<DartTextAlign>;
         textAlignVertical?: ZacBuilder<FlutterTextAlignVertical>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textDirection?: ZacBuilder<DartTextDirection>;
         readOnly?: boolean | ZacBuilder<boolean>;
         showCursor?: boolean | ZacBuilder<boolean>;
         autofocus?: boolean | ZacBuilder<boolean>;
@@ -2414,25 +2413,25 @@ export declare class TextField extends ZacBuilder<FlutterTextField> {
         enabled?: boolean | ZacBuilder<boolean>;
         cursorWidth?: number | ZacBuilder<number>;
         cursorHeight?: number | ZacBuilder<number>;
-        cursorRadius?: ZacBuilder<FlutterRadius>;
-        cursorColor?: ZacBuilder<FlutterColor>;
-        selectionHeightStyle?: ZacBuilder<FlutterBoxHeightStyle>;
-        selectionWidthStyle?: ZacBuilder<FlutterBoxWidthStyle>;
-        keyboardAppearance?: ZacBuilder<FlutterBrightness>;
+        cursorRadius?: ZacBuilder<DartRadius>;
+        cursorColor?: ZacBuilder<DartColor>;
+        selectionHeightStyle?: ZacBuilder<DartBoxHeightStyle>;
+        selectionWidthStyle?: ZacBuilder<DartBoxWidthStyle>;
+        keyboardAppearance?: ZacBuilder<DartBrightness>;
         scrollPadding?: ZacBuilder<FlutterEdgeInsets>;
         enableInteractiveSelection?: boolean | ZacBuilder<boolean>;
         onTap?: ZacBuilder<Array<ZacAction>>;
         scrollController?: ZacBuilder<FlutterScrollController>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         restorationId?: string | ZacBuilder<string>;
         enableIMEPersonalizedLearning?: boolean | ZacBuilder<boolean>;
     }): TextField;
 }
-export declare class TextHeightBehavior extends ZacBuilder<FlutterTextHeightBehavior> {
+export declare class TextHeightBehavior extends ZacBuilder<DartTextHeightBehavior> {
     static new(data?: {
         applyHeightToFirstAscent?: boolean | ZacBuilder<boolean>;
         applyHeightToLastDescent?: boolean | ZacBuilder<boolean>;
-        leadingDistribution?: ZacBuilder<FlutterTextLeadingDistribution>;
+        leadingDistribution?: ZacBuilder<DartTextLeadingDistribution>;
     }): TextHeightBehavior;
 }
 export declare class TextInputAction extends ZacBuilder<FlutterTextInputAction> {
@@ -2463,7 +2462,7 @@ export declare class TextInputType extends ZacBuilder<FlutterTextInputType> {
     static url(): TextInputType;
     static visiblePassword(): TextInputType;
 }
-export declare class TextLeadingDistribution extends ZacBuilder<FlutterTextLeadingDistribution> {
+export declare class TextLeadingDistribution extends ZacBuilder<DartTextLeadingDistribution> {
     static even(): TextLeadingDistribution;
     static proportional(): TextLeadingDistribution;
 }
@@ -2476,22 +2475,22 @@ export declare class TextOverflow extends ZacBuilder<FlutterTextOverflow> {
 export declare class TextStyle extends ZacBuilder<FlutterTextStyle> {
     static new(data?: {
         inherit?: boolean | ZacBuilder<boolean>;
-        color?: ZacBuilder<FlutterColor>;
-        backgroundColor?: ZacBuilder<FlutterColor>;
+        color?: ZacBuilder<DartColor>;
+        backgroundColor?: ZacBuilder<DartColor>;
         fontSize?: number | ZacBuilder<number>;
-        fontWeight?: ZacBuilder<FlutterFontWeight>;
-        fontStyle?: ZacBuilder<FlutterFontStyle>;
+        fontWeight?: ZacBuilder<DartFontWeight>;
+        fontStyle?: ZacBuilder<DartFontStyle>;
         letterSpacing?: number | ZacBuilder<number>;
         wordSpacing?: number | ZacBuilder<number>;
-        textBaseline?: ZacBuilder<FlutterTextBaseline>;
+        textBaseline?: ZacBuilder<DartTextBaseline>;
         height?: number | ZacBuilder<number>;
-        leadingDistribution?: ZacBuilder<FlutterTextLeadingDistribution>;
-        locale?: ZacBuilder<FlutterLocale>;
-        shadows?: Array<FlutterShadow>;
-        fontFeatures?: Array<FlutterFontFeature>;
-        decoration?: ZacBuilder<FlutterTextDecoration>;
-        decorationColor?: ZacBuilder<FlutterColor>;
-        decorationStyle?: ZacBuilder<FlutterTextDecorationStyle>;
+        leadingDistribution?: ZacBuilder<DartTextLeadingDistribution>;
+        locale?: ZacBuilder<DartLocale>;
+        shadows?: Array<Shadow>;
+        fontFeatures?: Array<FontFeature>;
+        decoration?: ZacBuilder<DartTextDecoration>;
+        decorationColor?: ZacBuilder<DartColor>;
+        decorationStyle?: ZacBuilder<DartTextDecorationStyle>;
         decorationThickness?: number | ZacBuilder<number>;
         debugLabel?: string | ZacBuilder<string>;
         fontFamily?: string | ZacBuilder<string>;
@@ -2508,10 +2507,10 @@ export declare class UnconstrainedBox extends ZacBuilder<FlutterUnconstrainedBox
     static new(data?: {
         key?: ZacBuilder<FlutterKey>;
         child?: ZacBuilder<FlutterWidget>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textDirection?: ZacBuilder<DartTextDirection>;
         alignment?: ZacBuilder<FlutterAlignmentGeometry>;
         constrainedAxis?: ZacBuilder<FlutterAxis>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
     }): UnconstrainedBox;
 }
 export declare class UnderlineInputBorder extends ZacBuilder<FlutterUnderlineInputBorder> {
@@ -2538,9 +2537,9 @@ export declare class Wrap extends ZacBuilder<FlutterWrap> {
         runSpacing?: number | ZacBuilder<number>;
         runAlignment?: ZacBuilder<FlutterWrapAlignment>;
         crossAxisAlignment?: ZacBuilder<FlutterWrapCrossAlignment>;
-        textDirection?: ZacBuilder<FlutterTextDirection>;
+        textDirection?: ZacBuilder<DartTextDirection>;
         verticalDirection?: ZacBuilder<FlutterVerticalDirection>;
-        clipBehavior?: ZacBuilder<FlutterClip>;
+        clipBehavior?: ZacBuilder<DartClip>;
         children?: ZacBuilder<Array<FlutterWidget>>;
     }): Wrap;
 }
@@ -2584,7 +2583,7 @@ export declare class IterableTransformer extends ZacBuilder<ZacTransform> {
         separator?: string;
     }): IterableTransformer;
     static contains(data: {
-        element: ZacBuilder<any>;
+        element: ZacBuilder<JSONValue>;
     }): IterableTransformer;
     static elementAt(data: {
         index: number;
@@ -2603,7 +2602,7 @@ export declare class JsonTransformer extends ZacBuilder<ZacTransform> {
 export declare class ListTransformer extends ZacBuilder<ZacTransform> {
     static reversed(): ListTransformer;
     static add(data: {
-        value: ZacBuilder<any>;
+        value: ZacBuilder<JSONValue>;
     }): ListTransformer;
 }
 export declare class MapTransformer extends ZacBuilder<ZacTransform> {
@@ -2614,10 +2613,10 @@ export declare class MapTransformer extends ZacBuilder<ZacTransform> {
     static isEmpty(): MapTransformer;
     static isNotEmpty(): MapTransformer;
     static containsKey(data: {
-        key: ZacBuilder<any>;
+        key: ZacBuilder<JSONValue>;
     }): MapTransformer;
     static containsValue(data: {
-        value: ZacBuilder<any>;
+        value: ZacBuilder<JSONValue>;
     }): MapTransformer;
     static mapper(data?: {
         keyTransformer?: ZacBuilder<Array<ZacTransform>>;
@@ -2630,7 +2629,7 @@ export declare class MapTransformer extends ZacBuilder<ZacTransform> {
         key: string | ZacBuilder<string>;
     }): MapTransformer;
     static setValueForKey(data: {
-        value: ZacBuilder<any>;
+        value: ZacBuilder<JSONValue>;
         key: string | ZacBuilder<string>;
     }): MapTransformer;
 }
@@ -2659,7 +2658,7 @@ export declare class ObjectTransformer extends ZacBuilder<ZacTransform> {
     static isNull(): ObjectTransformer;
     static isActionPayload(): ObjectTransformer;
     static equals(data: {
-        other: ZacBuilder<any>;
+        other: ZacBuilder<JSONValue>;
     }): ObjectTransformer;
     static toString(): ObjectTransformer;
     static runtimeType(): ObjectTransformer;
@@ -2673,6 +2672,13 @@ export declare class SharedStateActions extends ZacBuilder<ZacAction> {
         family: SharedStateFamily;
         transformer: ZacBuilder<Array<ZacTransform>>;
     }): SharedStateActions;
+}
+export declare class SharedStateConsume<T> extends ZacBuilder<T> {
+    static new<T>(data: {
+        family: SharedStateFamily;
+        consume?: SharedStateConsumeType;
+        transformer?: ZacBuilder<Array<ZacTransform>>;
+    }): SharedStateConsume<T>;
 }
 export declare class StringTransformer extends ZacBuilder<ZacTransform> {
     static length_(): StringTransformer;
@@ -2697,18 +2703,10 @@ export declare class ZacBool extends ZacBuilder<boolean> {
 }
 export declare class ZacBuiltInActions extends ZacBuilder<ZacAction> {
     static withPayload(data: {
-        payload: any;
+        payload: JSONValue;
         actions: ZacBuilder<Array<ZacAction>>;
         transformer?: ZacBuilder<Array<ZacTransform>>;
     }): ZacBuiltInActions;
-}
-export declare class ZacCompleterActions extends ZacBuilder<ZacAction> {
-    static completeVoid(data: {
-        completer: ZacBuilder<FlutterCompleter<any>>;
-    }): ZacCompleterActions;
-}
-export declare class ZacCompleterVoid extends ZacBuilder<FlutterCompleter<any>> {
-    static new(): ZacCompleterVoid;
 }
 export declare class ZacControlFlowAction extends ZacBuilder<ZacAction> {
     static ifCond(data: {
@@ -2768,9 +2766,9 @@ export declare class ZacNum extends ZacBuilder<number> {
         value: number;
     }): ZacNum;
 }
-export declare class ZacObject extends ZacBuilder<any> {
+export declare class ZacObject extends ZacBuilder<JSONValue> {
     static new(data: {
-        value: any;
+        value: JSONValue;
     }): ZacObject;
 }
 export declare class ZacSharedStateProvider extends ZacBuilder<FlutterWidget> {
@@ -2807,25 +2805,18 @@ export declare class ZacString extends ZacBuilder<string> {
 }
 export declare class ZacValueActions extends ZacBuilder<ZacAction> {
     static asPayload(data: {
-        value: ZacBuilder<any>;
+        value: ZacBuilder<JSONValue>;
         actions: ZacBuilder<Array<ZacAction>>;
     }): ZacValueActions;
 }
 export declare class ZacWidgetBuilder extends ZacBuilder<FlutterWidget> {
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
-        data: any;
+        data: JSONValue;
     }): ZacWidgetBuilder;
     static isolate(data: {
         key?: ZacBuilder<FlutterKey>;
-        data: any;
+        data: JSONValue;
         errorChild?: ZacBuilder<FlutterWidget>;
     }): ZacWidgetBuilder;
-}
-export declare class SharedStateConsume<T> extends ZacBuilder<T> {
-    static new<T>(data: {
-        family: SharedStateFamily;
-        consume?: SharedStateConsumeType;
-        transformer?: ZacBuilder<Array<ZacTransform>>;
-    }): SharedStateConsume<T>;
 }
