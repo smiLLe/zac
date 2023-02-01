@@ -4,7 +4,7 @@ import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/widget.dart';
+import 'package:zac/src/zac/build.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -46,7 +46,7 @@ Future<void> testJSON(WidgetTester tester, Map<String, dynamic> data) async {
     ProviderScope(
       child: MaterialApp(
         home: Material(
-          child: ZacWidget(data: data),
+          child: ZacBuildWidget(data: data),
         ),
       ),
     ),
@@ -57,7 +57,7 @@ Future<void> testWidgetBuilder(
     WidgetTester tester, ZacBuilder<Widget> builder) async {
   await tester.pumpWidget(
     ProviderScope(
-      child: ZacWidget(
+      child: ZacBuildWidget(
         data: FlutterMaterialApp(
           home: FlutterMaterial(child: builder),
         ),
@@ -105,7 +105,7 @@ Future<void> testWithContextsWraped(
     ProviderScope(
       child: MaterialApp(
         home: Material(
-          child: ZacWidget(
+          child: ZacBuildWidget(
             data: build(
               TestWidget(
                 (context, zacContext) {
@@ -133,7 +133,7 @@ Future<void> testFindWidget<T extends Widget>(
     ProviderScope(
       child: MaterialApp(
         home: Material(
-          child: ZacWidget(
+          child: ZacBuildWidget(
             data: build(FlutterValueKey('FIND_ME')),
           ),
         ),

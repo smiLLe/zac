@@ -4760,6 +4760,55 @@ export class ZacBool extends ZacBuilder<boolean> {
     });
   }
 }
+export class ZacBuild extends ZacBuilder<FlutterWidget> {
+  static fromJsonString(data: {
+    key?: ZacBuilder<FlutterKey>;
+    jsonString: string;
+  }) {
+    return new ZacBuild({
+      builder: "z:1:Build.fromJsonString",
+      ...data,
+    });
+  }
+  static fromBuilderMap(data: {
+    key?: ZacBuilder<FlutterKey>;
+    builderMap: Record<string, JSONValue>;
+  }) {
+    return new ZacBuild({
+      builder: "z:1:Build.fromBuilderMap",
+      ...data,
+    });
+  }
+  static fromBuilder(data: {
+    key?: ZacBuilder<FlutterKey>;
+    builderWidget: ZacBuilder<FlutterWidget>;
+  }) {
+    return new ZacBuild({
+      builder: "z:1:Build.fromBuilder",
+      ...data,
+    });
+  }
+  static isolateFromJsonString(data: {
+    key?: ZacBuilder<FlutterKey>;
+    jsonString: string;
+    errorChild?: ZacBuilder<FlutterWidget>;
+  }) {
+    return new ZacBuild({
+      builder: "z:1:Build:Isolate.fromJsonString",
+      ...data,
+    });
+  }
+  static isolateFromBuilderMap(data: {
+    key?: ZacBuilder<FlutterKey>;
+    builderMap: Record<string, JSONValue>;
+    errorChild?: ZacBuilder<FlutterWidget>;
+  }) {
+    return new ZacBuild({
+      builder: "z:1:Build:Isolate.fromBuilderMap",
+      ...data,
+    });
+  }
+}
 export class ZacBuiltInActions extends ZacBuilder<ZacAction> {
   static withPayload(data: {
     payload: JSONValue;
@@ -4936,24 +4985,6 @@ export class ZacValueActions extends ZacBuilder<ZacAction> {
   }) {
     return new ZacValueActions({
       builder: "z:1:ZacValue.asActionPayload",
-      ...data,
-    });
-  }
-}
-export class ZacWidgetBuilder extends ZacBuilder<FlutterWidget> {
-  static new(data: { key?: ZacBuilder<FlutterKey>; data: JSONValue }) {
-    return new ZacWidgetBuilder({
-      builder: "z:1:Widget",
-      ...data,
-    });
-  }
-  static isolate(data: {
-    key?: ZacBuilder<FlutterKey>;
-    data: JSONValue;
-    errorChild?: ZacBuilder<FlutterWidget>;
-  }) {
-    return new ZacWidgetBuilder({
-      builder: "z:1:Widget.isolate",
       ...data,
     });
   }

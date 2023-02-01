@@ -2701,6 +2701,30 @@ export declare class ZacBool extends ZacBuilder<boolean> {
         value: boolean;
     }): ZacBool;
 }
+export declare class ZacBuild extends ZacBuilder<FlutterWidget> {
+    static fromJsonString(data: {
+        key?: ZacBuilder<FlutterKey>;
+        jsonString: string;
+    }): ZacBuild;
+    static fromBuilderMap(data: {
+        key?: ZacBuilder<FlutterKey>;
+        builderMap: Record<string, JSONValue>;
+    }): ZacBuild;
+    static fromBuilder(data: {
+        key?: ZacBuilder<FlutterKey>;
+        builderWidget: ZacBuilder<FlutterWidget>;
+    }): ZacBuild;
+    static isolateFromJsonString(data: {
+        key?: ZacBuilder<FlutterKey>;
+        jsonString: string;
+        errorChild?: ZacBuilder<FlutterWidget>;
+    }): ZacBuild;
+    static isolateFromBuilderMap(data: {
+        key?: ZacBuilder<FlutterKey>;
+        builderMap: Record<string, JSONValue>;
+        errorChild?: ZacBuilder<FlutterWidget>;
+    }): ZacBuild;
+}
 export declare class ZacBuiltInActions extends ZacBuilder<ZacAction> {
     static withPayload(data: {
         payload: JSONValue;
@@ -2808,15 +2832,4 @@ export declare class ZacValueActions extends ZacBuilder<ZacAction> {
         value: ZacBuilder<JSONValue>;
         actions: ZacBuilder<Array<ZacAction>>;
     }): ZacValueActions;
-}
-export declare class ZacWidgetBuilder extends ZacBuilder<FlutterWidget> {
-    static new(data: {
-        key?: ZacBuilder<FlutterKey>;
-        data: JSONValue;
-    }): ZacWidgetBuilder;
-    static isolate(data: {
-        key?: ZacBuilder<FlutterKey>;
-        data: JSONValue;
-        errorChild?: ZacBuilder<FlutterWidget>;
-    }): ZacWidgetBuilder;
 }

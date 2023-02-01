@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/shared_state.dart';
-import 'package:zac/src/zac/widget.dart';
+import 'package:zac/src/zac/build.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
@@ -196,7 +196,7 @@ void main() {
         ProviderScope(
           child: MaterialApp(
             home: Material(
-              child: ZacWidget(
+              child: ZacBuildWidget(
                 data: FlutterScaffold(
                   body: FlutterBuilder(
                     child: FlutterElevatedButton(
@@ -226,7 +226,7 @@ void main() {
     testWidgets('will have access to parent shared values', (tester) async {
       await tester.pumpWidget(
         ProviderScope(
-          child: ZacWidget(
+          child: ZacBuildWidget(
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
@@ -262,7 +262,7 @@ void main() {
     testWidgets('showSnackBar() / hideCurrentSnackBar()', (tester) async {
       await tester.pumpWidget(
         ProviderScope(
-          child: ZacWidget(
+          child: ZacBuildWidget(
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
@@ -306,7 +306,7 @@ void main() {
     testWidgets('will have access to parent shared values', (tester) async {
       await tester.pumpWidget(
         ProviderScope(
-          child: ZacWidget(
+          child: ZacBuildWidget(
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
@@ -346,7 +346,7 @@ void main() {
         (tester) async {
       await tester.pumpWidget(
         ProviderScope(
-          child: ZacWidget(
+          child: ZacBuildWidget(
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
@@ -395,7 +395,7 @@ void main() {
         (tester) async {
       await tester.pumpWidget(
         ProviderScope(
-          child: ZacWidget(
+          child: ZacBuildWidget(
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
@@ -443,7 +443,7 @@ void main() {
     testWidgets('will have access to parent shared values', (tester) async {
       await tester.pumpWidget(
         ProviderScope(
-          child: ZacWidget(
+          child: ZacBuildWidget(
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(

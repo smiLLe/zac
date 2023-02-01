@@ -3,7 +3,6 @@
 /// DO NOT MODIFY BY HAND.
 ///
 
-import 'package:zac/src/flutter/completer.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/material/input_decoration.dart';
@@ -81,10 +80,10 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_padding.dart';
 import 'package:zac/src/flutter/widgets/sliver/sliver_to_box_adapter.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/build.dart';
 import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
-import 'package:zac/src/zac/widget.dart';
 import 'package:zac/src/zac/zac_value.dart';
 import 'package:zac/src/zac/registry.dart';
 
@@ -217,8 +216,6 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('f:1:Color.fromARGB', FlutterColor.fromJson)
     ..register('f:1:Color.fromRGBO', FlutterColor.fromJson)
     ..register('f:1:Column', FlutterColumn.fromJson)
-    ..register('f:1:Completer<void>', ZacCompleterVoid.fromJson)
-    ..register('f:1:Completer<void>.complete', ZacCompleterActions.fromJson)
     ..register('f:1:ConstrainedBox', FlutterConstrainedBox.fromJson)
     ..register('f:1:Container', FlutterContainer.fromJson)
     ..register(
@@ -572,6 +569,11 @@ void addZacBuilders(ZacRegistry registry) {
         'f:1:WrapCrossAlignment.start', FlutterWrapCrossAlignment.fromJson)
     ..register('f:1:showDialog', FlutterDialogActions.fromJson)
     ..register('z:1:Action.withPayload', ZacBuiltInActions.fromJson)
+    ..register('z:1:Build.fromBuilder', ZacBuild.fromJson)
+    ..register('z:1:Build.fromBuilderMap', ZacBuild.fromJson)
+    ..register('z:1:Build.fromJsonString', ZacBuild.fromJson)
+    ..register('z:1:Build:Isolate.fromBuilderMap', ZacBuild.fromJson)
+    ..register('z:1:Build:Isolate.fromJsonString', ZacBuild.fromJson)
     ..register('z:1:ControlFlowAction.if', ZacControlFlowAction.fromJson)
     ..register('z:1:DateTime', ZacDateTime.fromJson)
     ..register('z:1:ExecuteActions.listen', ZacExecuteActionsBuilder.fromJson)
@@ -674,8 +676,6 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Transformer:num.roundToDouble', NumTransformer.fromJson)
     ..register('z:1:Transformer:num.toDouble', NumTransformer.fromJson)
     ..register('z:1:Transformer:num.toInt', NumTransformer.fromJson)
-    ..register('z:1:Widget', ZacWidgetBuilder.fromJson)
-    ..register('z:1:Widget.isolate', ZacWidgetBuilder.fromJson)
     ..register('z:1:ZacValue.asActionPayload', ZacValueActions.fromJson)
     ..register('z:1:bool', ZacBool.fromJson)
     ..register('z:1:double', ZacDouble.fromJson)

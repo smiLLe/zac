@@ -2378,6 +2378,23 @@ export class ZacBool extends ZacBuilder {
         return new ZacBool(Object.assign({ builder: 'z:1:bool' }, data));
     }
 }
+export class ZacBuild extends ZacBuilder {
+    static fromJsonString(data) {
+        return new ZacBuild(Object.assign({ builder: 'z:1:Build.fromJsonString' }, data));
+    }
+    static fromBuilderMap(data) {
+        return new ZacBuild(Object.assign({ builder: 'z:1:Build.fromBuilderMap' }, data));
+    }
+    static fromBuilder(data) {
+        return new ZacBuild(Object.assign({ builder: 'z:1:Build.fromBuilder' }, data));
+    }
+    static isolateFromJsonString(data) {
+        return new ZacBuild(Object.assign({ builder: 'z:1:Build:Isolate.fromJsonString' }, data));
+    }
+    static isolateFromBuilderMap(data) {
+        return new ZacBuild(Object.assign({ builder: 'z:1:Build:Isolate.fromBuilderMap' }, data));
+    }
+}
 export class ZacBuiltInActions extends ZacBuilder {
     static withPayload(data) {
         return new ZacBuiltInActions(Object.assign({ builder: 'z:1:Action.withPayload' }, data));
@@ -2472,13 +2489,5 @@ export class ZacString extends ZacBuilder {
 export class ZacValueActions extends ZacBuilder {
     static asPayload(data) {
         return new ZacValueActions(Object.assign({ builder: 'z:1:ZacValue.asActionPayload' }, data));
-    }
-}
-export class ZacWidgetBuilder extends ZacBuilder {
-    static new(data) {
-        return new ZacWidgetBuilder(Object.assign({ builder: 'z:1:Widget' }, data));
-    }
-    static isolate(data) {
-        return new ZacWidgetBuilder(Object.assign({ builder: 'z:1:Widget.isolate' }, data));
     }
 }

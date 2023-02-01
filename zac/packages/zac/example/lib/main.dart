@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 void main() {
   runApp(
     const ProviderScope(
-      child: ZacWidget(data: <String, dynamic>{
+      child: ZacBuildWidget(data: <String, dynamic>{
         'builder': 'z:1:int.provide',
         'family': 'counter',
         'value': 0,
