@@ -81,6 +81,7 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_to_box_adapter.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/build.dart';
+import 'package:zac/src/zac/callback.dart';
 import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -590,6 +591,8 @@ void addZacBuilders(ZacRegistry registry) {
         'z:1:Navigator.popUntilRouteName', FlutterNavigatorActions.fromJson)
     ..register('z:1:NavigatorState.shared', FlutterNavigatorState.fromJson)
     ..register('z:1:Object', ZacObject.fromJson)
+    ..register('z:1:SharedCallback.consume', ZacConsumeSharedCallback.fromJson)
+    ..register('z:1:SharedCallbacks.provide', ZacCallbacksProvider.fromJson)
     ..register(
         'z:1:SharedState.transformCurrentValue', SharedStateActions.fromJson)
     ..register('z:1:SharedState.update', SharedStateActions.fromJson)

@@ -1,5 +1,4 @@
-import 'dart:typed_data';
-
+import 'package:collection/collection.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,26 +7,162 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/widgets/builder.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_state.dart';
-import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
 part 'callback.freezed.dart';
 part 'callback.g.dart';
 
-typedef ZacProviderCallback = void Function(
-    BuildContext context, ZacContext zacContext);
+typedef CallbackParamType = Object?;
+const CallbackParamType argDefaultValue = null;
+
+typedef ZacExecuteCallback = void Function(
+    BuildContext context,
+    ZacContext zacContext,
+    CallbackParamType arg1,
+    CallbackParamType arg2,
+    CallbackParamType arg3);
+
+abstract class ZacGetExecuteCallback {
+  ZacExecuteCallback getExecuteCallback();
+}
+
+extension ExecuteCallbacksHelper on List<ZacGetExecuteCallback> {
+  void Function() noParam(BuildContext context, ZacContext zacContext) {
+    return () {
+      for (var item in this) {
+        if (!context.mounted) return;
+        item.getExecuteCallback().call(context, zacContext, argDefaultValue,
+            argDefaultValue, argDefaultValue);
+      }
+    };
+  }
+
+  void Function(CallbackParamType arg) oneParam(
+      BuildContext context, ZacContext zacContext) {
+    return (CallbackParamType arg) {
+      for (var item in this) {
+        if (!context.mounted) return;
+        item
+            .getExecuteCallback()
+            .call(context, zacContext, arg, argDefaultValue, argDefaultValue);
+      }
+    };
+  }
+
+  void Function(CallbackParamType arg, CallbackParamType arg2) twoParam(
+      BuildContext context, ZacContext zacContext) {
+    return (CallbackParamType arg, CallbackParamType arg2) {
+      for (var item in this) {
+        if (!context.mounted) return;
+        item
+            .getExecuteCallback()
+            .call(context, zacContext, arg, arg2, argDefaultValue);
+      }
+    };
+  }
+
+  void Function(
+          CallbackParamType arg, CallbackParamType arg2, CallbackParamType arg3)
+      threeParam(BuildContext context, ZacContext zacContext) {
+    return (CallbackParamType arg, CallbackParamType arg2,
+        CallbackParamType arg3) {
+      for (var item in this) {
+        if (!context.mounted) return;
+        item.getExecuteCallback().call(context, zacContext, arg, arg2, arg3);
+      }
+    };
+  }
+}
 
 @freezed
-class ZacCallbackExecute with _$ZacCallbackExecute {
-  static final provider =
-      Provider.autoDispose.family<ZacProviderCallback, String>((ref, family) {
+class ZacCallback with _$ZacCallback implements ZacGetExecuteCallback {
+  ZacCallback._();
+
+  static final provider = Provider.autoDispose
+      .family<_ZacSharedCallbackProvided, String>((ref, family) {
     throw UnimplementedError('');
   }, name: 'Zac Callback');
 
-  factory ZacCallbackExecute(
-    void Function(BuildContext context, ZacContext zacContext, Ref<Object?> ref)
+  /// Will return the Arguments provider name
+  static String providerArgName(String family, int number) =>
+      '$family.arg$number';
+
+  factory ZacCallback(
+    void Function(
+            BuildContext context,
+            ZacContext zacContext,
+            CallbackParamType arg,
+            CallbackParamType arg2,
+            CallbackParamType arg3)
         execute,
   ) = _ZacCallback;
+
+  factory ZacCallback.shared(
+    void Function(
+            BuildContext context,
+            ZacContext zacContext,
+            Ref<Object?> ref,
+            CallbackParamType arg,
+            CallbackParamType arg2,
+            CallbackParamType arg3)
+        execute,
+  ) = ZacSharedCallback;
+
+  /// !! DON'T USE !!
+  /// Must never be called by other libraries but Zac.
+  /// Use the default factory instead.
+  factory ZacCallback.provided(
+    void Function(
+            BuildContext context,
+            ZacContext zacContext,
+            Ref<Object?> ref,
+            CallbackParamType arg,
+            CallbackParamType arg2,
+            CallbackParamType arg3)
+        execute,
+    Ref<Object?> ref,
+    String family,
+  ) = _ZacSharedCallbackProvided;
+
+  late final ZacExecuteCallback _executeCallback = map(
+    (obj) => obj.execute,
+    provided: (obj) => (BuildContext context,
+        ZacContext zacContext,
+        CallbackParamType arg1,
+        CallbackParamType arg2,
+        CallbackParamType arg3) {
+      if (!context.mounted) return;
+
+      [arg1, arg2, arg3].forEachIndexed((index, arg) {
+        final provider =
+            SharedState.provider(providerArgName(obj.family, index + 1));
+        context.widgetRef
+          ..invalidate(provider)
+          ..read(provider).update((_) => arg);
+      });
+
+      final provider = ZacCallback.provider(obj.family);
+
+      context.widgetRef.invalidate(provider);
+      if (!context.mounted) {
+        return;
+      }
+
+      final sharedCb = context.widgetRef.read(provider);
+      sharedCb.execute(
+          context,
+          zacContext.copyWith.call(buildIn: BuildIn.action),
+          sharedCb.ref,
+          arg1,
+          arg2,
+          arg3);
+    },
+    shared: (obj) => throw StateError(
+        '.getExecuteCallback() must not be called while in $ZacSharedCallback'),
+  );
+
+  @override
+  ZacExecuteCallback getExecuteCallback() => _executeCallback;
 }
 
 @freezedZacBuilder
@@ -38,9 +173,9 @@ class ZacCallbacksProvider
   factory ZacCallbacksProvider.fromJson(Map<String, dynamic> json) =>
       _$ZacCallbacksProviderFromJson(json);
 
-  @FreezedUnionValue('z:1:Callbacks.provide')
+  @FreezedUnionValue('z:1:SharedCallbacks.provide')
   factory ZacCallbacksProvider({
-    required Map<String, ZacBuilder<ZacCallbackExecute>> callbacks,
+    required Map<String, ZacBuilder<ZacSharedCallback>> callbacks,
     required ZacBuilder<Widget> child,
   }) = _ZacCallbacksProvider;
 
@@ -48,7 +183,7 @@ class ZacCallbacksProvider
   Widget build(BuildContext context, ZacContext zacContext) {
     return ZacCallbacksProviderWidget(
       buildChild: child.build,
-      callbacks: callbacks.entries.fold<Map<String, ZacCallbackExecute>>(
+      callbacks: callbacks.entries.fold<Map<String, ZacSharedCallback>>(
         {},
         (previousValue, entry) => {
           ...previousValue,
@@ -66,19 +201,19 @@ class ZacCallbacksProviderWidget extends HookConsumerWidget {
     super.key,
   });
 
-  final Map<String, ZacCallbackExecute> callbacks;
+  final Map<String, ZacSharedCallback> callbacks;
   final Widget Function(BuildContext context, ZacContext zacContext) buildChild;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return ZacSharedStateProviderWidget(
-      states: callbacks.entries.fold<Map<String, Object?>>(
+      states: callbacks.entries.fold<Map<String, CallbackParamType>>(
         {},
         (previousValue, entry) => {
           ...previousValue,
-          '${entry.key}.arg1': null,
-          '${entry.key}.arg2': null,
-          '${entry.key}.arg3': null,
+          ZacCallback.providerArgName(entry.key, 1): argDefaultValue,
+          ZacCallback.providerArgName(entry.key, 2): argDefaultValue,
+          ZacCallback.providerArgName(entry.key, 3): argDefaultValue,
         },
       ),
       buildChild: (_, __) => _ZacCallbacksProviderWidget(
@@ -95,21 +230,24 @@ class _ZacCallbacksProviderWidget extends HookConsumerWidget {
     required this.buildChild,
   });
 
-  final Map<String, ZacCallbackExecute> callbacks;
+  final Map<String, ZacSharedCallback> callbacks;
   final Widget Function(BuildContext context, ZacContext zacContext) buildChild;
 
   static void _autoCreateListener(
-      ZacProviderCallback? prev, ZacProviderCallback next) {}
+      _ZacSharedCallbackProvided? prev, _ZacSharedCallbackProvided next) {}
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final overrides = useMemoized<List<Override>>(() {
       return [
         ...callbacks.entries.map(
-          (entry) => ZacCallbackExecute.provider(entry.key).overrideWith(
+          (entry) => ZacCallback.provider(entry.key).overrideWith(
             (ref) {
-              return (BuildContext context, ZacContext zacContext) =>
-                  entry.value.execute(context, zacContext, ref);
+              return _ZacSharedCallbackProvided(
+                entry.value.execute,
+                ref,
+                entry.key,
+              );
             },
           ),
         )
@@ -132,8 +270,8 @@ class _ZacCallbacksProviderWidget extends HookConsumerWidget {
           for (var key in callbacks.keys) {
             /// immediately create the AutoDispose Provider and its value
             /// and keep it alive as long as possible
-            context.widgetRef.listen<ZacProviderCallback>(
-              ZacCallbackExecute.provider(key),
+            context.widgetRef.listen<_ZacSharedCallbackProvided>(
+              ZacCallback.provider(key),
               _autoCreateListener,
             );
           }
@@ -145,151 +283,21 @@ class _ZacCallbacksProviderWidget extends HookConsumerWidget {
 }
 
 @freezedZacBuilder
-class ZacCallbacks with _$ZacCallbacks {
-  ZacCallbacks._();
+class ZacConsumeSharedCallback
+    with _$ZacConsumeSharedCallback
+    implements ZacBuilder<ZacCallback> {
+  ZacConsumeSharedCallback._();
 
-  factory ZacCallbacks.fromJson(Map<String, dynamic> json) =>
-      _$ZacCallbacksFromJson(json);
+  factory ZacConsumeSharedCallback.fromJson(Map<String, dynamic> json) =>
+      _$ZacConsumeSharedCallbackFromJson(json);
 
-  @FreezedUnionValue('z:1:Callbacks.consume')
-  factory ZacCallbacks({
-    required List<String> families,
-  }) = _ZacCallbacks;
+  @FreezedUnionValue('z:1:SharedCallback.consume')
+  factory ZacConsumeSharedCallback({
+    required String family,
+  }) = _ZacConsumeSharedCallback;
 
-  void Function() noParam(BuildContext context, ZacContext zacContext) {
-    return () {
-      if (!context.mounted) return;
-      for (var family in families) {
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef.invalidate(ZacCallbackExecute.provider(family));
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(ZacCallbackExecute.provider(family))
-            .call(context, zacContext.copyWith.call(buildIn: BuildIn.action));
-      }
-    };
-  }
-
-  void Function(Object? param) oneParam(
-      BuildContext context, ZacContext zacContext) {
-    return (Object? param) {
-      if (!context.mounted) return;
-      for (var family in families) {
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(SharedState.provider('$family.arg1'))
-            .update((p0) {
-          return param;
-        });
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef.invalidate(ZacCallbackExecute.provider(family));
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(ZacCallbackExecute.provider(family))
-            .call(context, zacContext.copyWith.call(buildIn: BuildIn.action));
-      }
-    };
-  }
-
-  void Function(Object? param, Object? param2) twoParams(
-      BuildContext context, ZacContext zacContext) {
-    return (Object? param, Object? param2) {
-      if (!context.mounted) return;
-      for (var family in families) {
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(SharedState.provider('$family.arg1'))
-            .update((p0) {
-          return param;
-        });
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(SharedState.provider('$family.arg2'))
-            .update((p0) {
-          return param2;
-        });
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef.invalidate(ZacCallbackExecute.provider(family));
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(ZacCallbackExecute.provider(family))
-            .call(context, zacContext.copyWith.call(buildIn: BuildIn.action));
-      }
-    };
-  }
-
-  void Function(Object? param, Object? param2, Object? param3) threeParams(
-      BuildContext context, ZacContext zacContext) {
-    return (Object? param, Object? param2, Object? param3) {
-      if (!context.mounted) return;
-      for (var family in families) {
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(SharedState.provider('$family.arg1'))
-            .update((p0) {
-          return param;
-        });
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(SharedState.provider('$family.arg2'))
-            .update((p0) {
-          return param2;
-        });
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(SharedState.provider('$family.arg3'))
-            .update((p0) {
-          return param3;
-        });
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef.invalidate(ZacCallbackExecute.provider(family));
-        if (!context.mounted) {
-          break;
-        }
-
-        context.widgetRef
-            .read(ZacCallbackExecute.provider(family))
-            .call(context, zacContext.copyWith.call(buildIn: BuildIn.action));
-      }
-    };
+  @override
+  ZacCallback build(BuildContext context, ZacContext zacContext) {
+    return context.widgetRef.read(ZacCallback.provider(family));
   }
 }

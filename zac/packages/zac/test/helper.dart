@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
+import 'package:zac/src/zac/callback.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/build.dart';
@@ -198,6 +199,41 @@ class TestAction implements ZacBuilder<ZacAction> {
   @override
   ZacAction build(BuildContext context, ZacContext zacContext) {
     return ZacAction(cb);
+  }
+}
+
+class TestCallback implements ZacBuilder<ZacCallback> {
+  final void Function(BuildContext context, ZacContext zacContext,
+      CallbackParamType arg, CallbackParamType arg2, CallbackParamType arg3) cb;
+
+  TestCallback(this.cb);
+  factory TestCallback.noop(Map<String, dynamic> map) {
+    return TestCallback((context, zacContext, arg, arg2, arg3) {});
+  }
+
+  @override
+  ZacCallback build(BuildContext context, ZacContext zacContext) {
+    return ZacCallback(cb);
+  }
+}
+
+class TestSharedCallback implements ZacBuilder<ZacSharedCallback> {
+  final void Function(
+      BuildContext context,
+      ZacContext zacContext,
+      Ref<Object?> ref,
+      CallbackParamType arg,
+      CallbackParamType arg2,
+      CallbackParamType arg3) cb;
+
+  TestSharedCallback(this.cb);
+  factory TestSharedCallback.noop(Map<String, dynamic> map) {
+    return TestSharedCallback((context, zacContext, ref, arg, arg2, arg3) {});
+  }
+
+  @override
+  ZacSharedCallback build(BuildContext context, ZacContext zacContext) {
+    return ZacSharedCallback(cb);
   }
 }
 

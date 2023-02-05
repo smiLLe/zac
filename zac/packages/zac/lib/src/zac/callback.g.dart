@@ -16,8 +16,8 @@ _$_ZacCallbacksProvider _$$_ZacCallbacksProviderFromJson(
           callbacks: $checkedConvert(
               'callbacks',
               (v) => (v as Map<String, dynamic>).map(
-                    (k, e) => MapEntry(k,
-                        ZacBuilder<ZacCallbackExecute>.fromJson(e as Object)),
+                    (k, e) => MapEntry(
+                        k, ZacBuilder<ZacSharedCallback>.fromJson(e as Object)),
                   )),
           child: $checkedConvert(
               'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
@@ -26,14 +26,14 @@ _$_ZacCallbacksProvider _$$_ZacCallbacksProviderFromJson(
       },
     );
 
-_$_ZacCallbacks _$$_ZacCallbacksFromJson(Map<String, dynamic> json) =>
+_$_ZacConsumeSharedCallback _$$_ZacConsumeSharedCallbackFromJson(
+        Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_ZacCallbacks',
+      r'_$_ZacConsumeSharedCallback',
       json,
       ($checkedConvert) {
-        final val = _$_ZacCallbacks(
-          families: $checkedConvert('families',
-              (v) => (v as List<dynamic>).map((e) => e as String).toList()),
+        final val = _$_ZacConsumeSharedCallback(
+          family: $checkedConvert('family', (v) => v as String),
         );
         return val;
       },
