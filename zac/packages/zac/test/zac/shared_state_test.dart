@@ -267,7 +267,7 @@ void main() {
                   family: 'shared',
                   transformer: ZacListOfTransformers([
                     TestTransform(
-                      (transformValue, context, zacContext, payload) {
+                      (transformValue, context, zacContext) {
                         return (transformValue.value as DateTime)
                             .toIso8601String();
                       },
@@ -321,7 +321,7 @@ Value: 1''')));
                     family: 'shared',
                     transformer: ZacListOfTransformers([
                       TestTransform(
-                        (transformValue, context, zacContext, payload) {
+                        (transformValue, context, zacContext) {
                           return DateTime.now();
                         },
                       )
@@ -453,8 +453,7 @@ because the value is null and there are no transformers added.''')));
                       SharedStateActions.transformCurrentValue(
                         family: 'shared',
                         transformer: ZacListOfTransformers([
-                          TestTransform(
-                              (transformValue, context, zacContext, payload) {
+                          TestTransform((transformValue, context, zacContext) {
                             return '${(transformValue.value as String)} world';
                           })
                         ]),

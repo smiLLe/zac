@@ -67,10 +67,9 @@ class FlutterListTile with _$FlutterListTile implements ZacBuilder<ListTile> {
       textColor: textColor?.build(context, zacContext),
       contentPadding: contentPadding?.build(context, zacContext),
       enabled: enabled?.build(context, zacContext) ?? true,
-      onTap: onTap?.build(context, zacContext)?.createCb(context, zacContext),
-      onLongPress: onLongPress
-          ?.build(context, zacContext)
-          ?.createCb(context, zacContext),
+      onTap: onTap?.build(context, zacContext)?.callack(context, zacContext),
+      onLongPress:
+          onLongPress?.build(context, zacContext)?.callack(context, zacContext),
 // MouseCursor? mouseCursor,
       selected: selected?.build(context, zacContext) ?? false,
       focusColor: focusColor?.build(context, zacContext),

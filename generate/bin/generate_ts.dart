@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:analyzer/dart/analysis/analysis_context.dart';
 import 'package:analyzer/dart/analysis/analysis_context_collection.dart';
 import 'package:analyzer/dart/analysis/results.dart';
+import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:args/args.dart';
@@ -259,22 +260,26 @@ class UnionValueCtor {
 
   /// f:1:SizedBox etc
   late final String unionValue = () {
-    final uv = element.metadata
-        .map((e) => e.computeConstantValue())
-        .firstWhere((element) =>
-            element?.type?.getDisplayString(withNullability: false) ==
-            'FreezedUnionValue')
-        ?.getField('value')
-        ?.toStringValue();
+    final uv = getFreezedUnionValue()?.getField('value')?.toStringValue();
     if (null == uv) {
       throw StateError('UnionValue must not be null');
     }
     return uv;
   }();
 
-  bool get canUseAsTSClassCtor => !(!element.isFactory ||
-      element.name == 'fromJson' ||
-      null == element.redirectedConstructor);
+  DartObject? getFreezedUnionValue() {
+    return element.metadata
+        .map((e) => e.computeConstantValue())
+        .firstWhereOrNull((element) =>
+            element?.type?.getDisplayString(withNullability: false) ==
+            'FreezedUnionValue');
+  }
+
+  bool get canUseAsTSClassCtor =>
+      null != getFreezedUnionValue() &&
+      element.isFactory &&
+      element.name != 'fromJson' &&
+      null != element.redirectedConstructor;
 }
 
 class Template {

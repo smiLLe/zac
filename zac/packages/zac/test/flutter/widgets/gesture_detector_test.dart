@@ -3,7 +3,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../../helper.dart';
@@ -46,13 +45,10 @@ void main() {
         widget.onTertiaryLongPress?.call();
 
         verifyInOrder([
-          onTapCb(argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
-          onLongPressCb(
-              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
-          onSecondaryLongPressCb(
-              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
-          onTertiaryLongPressCb(
-              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)),
+          onTapCb(any, argThat(isZacContext)),
+          onLongPressCb(any, argThat(isZacContext)),
+          onSecondaryLongPressCb(any, argThat(isZacContext)),
+          onTertiaryLongPressCb(any, argThat(isZacContext)),
         ]);
 
         verifyNoMoreInteractions(onTapCb);
@@ -84,9 +80,7 @@ void main() {
         await tester.tap(find.byKey(const ValueKey('GestureDetector')));
         await tester.pumpAndSettle();
 
-        verify(doubleTapCb(
-                argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
-            .called(1);
+        verify(doubleTapCb(any, argThat(isZacContext))).called(1);
       },
     );
   });

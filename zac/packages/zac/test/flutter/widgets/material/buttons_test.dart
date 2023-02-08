@@ -83,12 +83,8 @@ void main() {
                   await tester.longPress(findMe);
                   await tester.pump();
 
-                  verify(onPressedCb(argThat(isA<ZacActionPayload>()), any,
-                          argThat(isZacContext)))
-                      .called(3);
-                  verify(onLongPressCb(argThat(isA<ZacActionPayload>()), any,
-                          argThat(isZacContext)))
-                      .called(3);
+                  verify(onPressedCb(any, argThat(isZacContext))).called(3);
+                  verify(onLongPressCb(any, argThat(isZacContext))).called(3);
                 },
               );
             },
@@ -211,12 +207,8 @@ void main() {
       await tester.longPress(findMe);
       await tester.pump();
 
-      verify(onPressedCb(
-              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
-          .called(3);
-      verify(onLongPressCb(
-              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
-          .called(3);
+      verify(onPressedCb(any, argThat(isZacContext))).called(3);
+      verify(onLongPressCb(any, argThat(isZacContext))).called(3);
     });
 
     testWidgets('ElevatedButton', (tester) async {

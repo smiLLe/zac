@@ -8,25 +8,6 @@ import 'package:zac/zac.dart';
 import '../helper.dart';
 
 void main() {
-  Future<void> pumpUntilFound(
-    WidgetTester tester,
-    Finder finder, {
-    int iterations = 200,
-  }) async {
-    var found = false;
-    for (int i = 1; i <= iterations; i++) {
-      found = tester.any(finder);
-      if (!found) {
-        await tester.runAsync<void>(
-            () => Future.delayed(const Duration(milliseconds: 100)));
-        await tester.pump();
-      } else {
-        return;
-      }
-    }
-    if (!found) throw Exception('did not find $finder');
-  }
-
   test('In Registry', () {
     expectInRegistry([
       'z:1:Build.fromJsonString',

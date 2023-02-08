@@ -313,32 +313,27 @@ class ZacStateMachineActions
 
   @FreezedUnionValue('z:1:StateMachine:Action.send')
   factory ZacStateMachineActions.send({
+    ZacBuilder<Widget>? widget,
     required String family,
     required String event,
   }) = _ZacStateMachineActionsSend;
 
   @FreezedUnionValue('z:1:StateMachine:Action.trySend')
   factory ZacStateMachineActions.trySend({
+    ZacBuilder<Widget>? widget,
     required String family,
     required String event,
   }) = _ZacStateMachineActionsTrySend;
 
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action =
+      ZacAction((BuildContext context, ZacContext zacContext) {
     map(
       send: (obj) {
-        final widget = payload.params is ZacBuilder<Widget>?
-            ? payload.params as ZacBuilder<Widget>?
-            : null;
         context.widgetRef
             .read(ZacStateMachine.provider(obj.family))
             .send(obj.event, widget);
       },
       trySend: (obj) {
-        final widget = payload.params is ZacBuilder<Widget>?
-            ? payload.params as ZacBuilder<Widget>?
-            : null;
-
         context.widgetRef
             .read(ZacStateMachine.provider(obj.family))
             .trySend(obj.event, widget);

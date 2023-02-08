@@ -96,6 +96,6 @@ void main() {
 
     handle.dispose();
 
-    verify(cb(const ZacActionPayload(), any, any)).called(1);
+    verify(cb(any, any)).called(1);
   });
 }

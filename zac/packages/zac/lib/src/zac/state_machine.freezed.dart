@@ -682,6 +682,7 @@ ZacStateMachineActions _$ZacStateMachineActionsFromJson(
 
 /// @nodoc
 mixin _$ZacStateMachineActions {
+  ZacBuilder<Widget>? get widget => throw _privateConstructorUsedError;
   String get family => throw _privateConstructorUsedError;
   String get event => throw _privateConstructorUsedError;
 
@@ -697,13 +698,18 @@ mixin _$ZacStateMachineActions {
 @JsonSerializable(createToJson: false)
 class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
   _$_ZacStateMachineActionsSend(
-      {required this.family, required this.event, final String? $type})
+      {this.widget,
+      required this.family,
+      required this.event,
+      final String? $type})
       : $type = $type ?? 'z:1:StateMachine:Action.send',
         super._();
 
   factory _$_ZacStateMachineActionsSend.fromJson(Map<String, dynamic> json) =>
       _$$_ZacStateMachineActionsSendFromJson(json);
 
+  @override
+  final ZacBuilder<Widget>? widget;
   @override
   final String family;
   @override
@@ -714,7 +720,7 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
 
   @override
   String toString() {
-    return 'ZacStateMachineActions.send(family: $family, event: $event)';
+    return 'ZacStateMachineActions.send(widget: $widget, family: $family, event: $event)';
   }
 
   @override
@@ -722,13 +728,14 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachineActionsSend &&
+            (identical(other.widget, widget) || other.widget == widget) &&
             (identical(other.family, family) || other.family == family) &&
             (identical(other.event, event) || other.event == event));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, family, event);
+  int get hashCode => Object.hash(runtimeType, widget, family, event);
 
   @override
   @optionalTypeArgs
@@ -742,13 +749,16 @@ class _$_ZacStateMachineActionsSend extends _ZacStateMachineActionsSend {
 
 abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
   factory _ZacStateMachineActionsSend(
-      {required final String family,
+      {final ZacBuilder<Widget>? widget,
+      required final String family,
       required final String event}) = _$_ZacStateMachineActionsSend;
   _ZacStateMachineActionsSend._() : super._();
 
   factory _ZacStateMachineActionsSend.fromJson(Map<String, dynamic> json) =
       _$_ZacStateMachineActionsSend.fromJson;
 
+  @override
+  ZacBuilder<Widget>? get widget;
   @override
   String get family;
   @override
@@ -759,7 +769,10 @@ abstract class _ZacStateMachineActionsSend extends ZacStateMachineActions {
 @JsonSerializable(createToJson: false)
 class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
   _$_ZacStateMachineActionsTrySend(
-      {required this.family, required this.event, final String? $type})
+      {this.widget,
+      required this.family,
+      required this.event,
+      final String? $type})
       : $type = $type ?? 'z:1:StateMachine:Action.trySend',
         super._();
 
@@ -767,6 +780,8 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
           Map<String, dynamic> json) =>
       _$$_ZacStateMachineActionsTrySendFromJson(json);
 
+  @override
+  final ZacBuilder<Widget>? widget;
   @override
   final String family;
   @override
@@ -777,7 +792,7 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
 
   @override
   String toString() {
-    return 'ZacStateMachineActions.trySend(family: $family, event: $event)';
+    return 'ZacStateMachineActions.trySend(widget: $widget, family: $family, event: $event)';
   }
 
   @override
@@ -785,13 +800,14 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ZacStateMachineActionsTrySend &&
+            (identical(other.widget, widget) || other.widget == widget) &&
             (identical(other.family, family) || other.family == family) &&
             (identical(other.event, event) || other.event == event));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, family, event);
+  int get hashCode => Object.hash(runtimeType, widget, family, event);
 
   @override
   @optionalTypeArgs
@@ -805,13 +821,16 @@ class _$_ZacStateMachineActionsTrySend extends _ZacStateMachineActionsTrySend {
 
 abstract class _ZacStateMachineActionsTrySend extends ZacStateMachineActions {
   factory _ZacStateMachineActionsTrySend(
-      {required final String family,
+      {final ZacBuilder<Widget>? widget,
+      required final String family,
       required final String event}) = _$_ZacStateMachineActionsTrySend;
   _ZacStateMachineActionsTrySend._() : super._();
 
   factory _ZacStateMachineActionsTrySend.fromJson(Map<String, dynamic> json) =
       _$_ZacStateMachineActionsTrySend.fromJson;
 
+  @override
+  ZacBuilder<Widget>? get widget;
   @override
   String get family;
   @override

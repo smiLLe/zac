@@ -96,18 +96,13 @@ void main() {
                 },
                 'onPressed': [
                   {
-                    'builder': 'z:1:Action.withPayload',
-                    'payload': {
+                    'builder': 'z:1:StateMachine:Action.send',
+                    'family': 'm1',
+                    'event': 'NEXT',
+                    'widget': {
                       'builder': 'f:1:Text',
                       'data': 'From Next in b',
                     },
-                    'actions': [
-                      {
-                        'builder': 'z:1:StateMachine:Action.send',
-                        'family': 'm1',
-                        'event': 'NEXT',
-                      },
-                    ]
                   },
                 ]
               },

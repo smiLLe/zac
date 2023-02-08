@@ -42,22 +42,20 @@ class FlutterGestureDetector
       behavior: behavior?.build(context, zacContext),
       excludeFromSemantics:
           excludeFromSemantics?.build(context, zacContext) ?? false,
-      onTap: onTap?.build(context, zacContext)?.createCb(context, zacContext),
+      onTap: onTap?.build(context, zacContext)?.callack(context, zacContext),
       onSecondaryTap: onSecondaryTap
           ?.build(context, zacContext)
-          ?.createCb(context, zacContext),
-      onDoubleTap: onDoubleTap
-          ?.build(context, zacContext)
-          ?.createCb(context, zacContext),
-      onLongPress: onLongPress
-          ?.build(context, zacContext)
-          ?.createCb(context, zacContext),
+          ?.callack(context, zacContext),
+      onDoubleTap:
+          onDoubleTap?.build(context, zacContext)?.callack(context, zacContext),
+      onLongPress:
+          onLongPress?.build(context, zacContext)?.callack(context, zacContext),
       onSecondaryLongPress: onSecondaryLongPress
           ?.build(context, zacContext)
-          ?.createCb(context, zacContext),
+          ?.callack(context, zacContext),
       onTertiaryLongPress: onTertiaryLongPress
           ?.build(context, zacContext)
-          ?.createCb(context, zacContext),
+          ?.callack(context, zacContext),
       child: child?.build(context, zacContext),
     );
   }

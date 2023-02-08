@@ -11,37 +11,6 @@ part 'zac_value.freezed.dart';
 part 'zac_value.g.dart';
 
 @freezedZacBuilder
-class ZacValueActions with _$ZacValueActions implements ZacBuilder<ZacAction> {
-  ZacValueActions._();
-
-  static const String unionValue = 'z:1:ZacValue.asActionPayload';
-
-  factory ZacValueActions.fromJson(Map<String, dynamic> json) =>
-      _$ZacValueActionsFromJson(json);
-
-  @FreezedUnionValue(ZacValueActions.unionValue)
-  factory ZacValueActions.asPayload({
-    required ZacBuilder<Object?> value,
-    required ZacBuilder<List<ZacAction>> actions,
-  }) = _ZacValueActionsAsPayload;
-
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
-    map(
-      asPayload: (obj) {
-        final val = obj.value.build(context, zacContext);
-        obj.actions
-            .build(context, zacContext)
-            .execute(ZacActionPayload.param(val), context, zacContext);
-      },
-    );
-  });
-
-  @override
-  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
-}
-
-@freezedZacBuilder
 class ZacNum with _$ZacNum implements ZacBuilder<num> {
   ZacNum._();
 

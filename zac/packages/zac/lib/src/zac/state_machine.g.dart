@@ -111,6 +111,10 @@ _$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(
       json,
       ($checkedConvert) {
         final val = _$_ZacStateMachineActionsSend(
+          widget: $checkedConvert(
+              'widget',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget>.fromJson(v as Object)),
           family: $checkedConvert('family', (v) => v as String),
           event: $checkedConvert('event', (v) => v as String),
           $type: $checkedConvert('builder', (v) => v as String?),
@@ -127,6 +131,10 @@ _$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
       json,
       ($checkedConvert) {
         final val = _$_ZacStateMachineActionsTrySend(
+          widget: $checkedConvert(
+              'widget',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget>.fromJson(v as Object)),
           family: $checkedConvert('family', (v) => v as String),
           event: $checkedConvert('event', (v) => v as String),
           $type: $checkedConvert('builder', (v) => v as String?),

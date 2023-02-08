@@ -43,13 +43,12 @@ void main() {
           late BuildIn buildIn;
           [
             TestTransform(
-              (transformValue, context, zacContext, payload) {
+              (transformValue, context, zacContext) {
                 buildIn = zacContext.buildIn;
                 return transformValue.value;
               },
             ).build(getContext(), getZacContext())
-          ].transform(
-              ZacTransformValue(1), getContext(), getZacContext(), null);
+          ].transform(ZacTransformValue(1), getContext(), getZacContext());
 
           expect(buildIn, BuildIn.transformer);
         },
@@ -75,7 +74,7 @@ void main() {
               IterableTransformer.map(transformer: ZacListOfTransformers([]))
                   .build(getContext(), getZacContext())
                   .transform(ZacTransformValue(['foo', 'oof']), getContext(),
-                      getZacContext(), null),
+                      getZacContext()),
               isA<Iterable<Object?>>());
 
           expect(
@@ -83,15 +82,15 @@ void main() {
                       transformer: ZacListOfTransformers([_ConcatStr('bar')]))
                   .build(getContext(), getZacContext())
                   .transform(ZacTransformValue(['foo', 'oof']), getContext(),
-                      getZacContext(), null),
+                      getZacContext()),
               ['foobar', 'oofbar']);
 
           expect(
               () => IterableTransformer.map(
                       transformer: ZacListOfTransformers([_ConcatStr('bar')]))
                   .build(getContext(), getZacContext())
-                  .transform(ZacTransformValue(55), getContext(),
-                      getZacContext(), null),
+                  .transform(
+                      ZacTransformValue(55), getContext(), getZacContext()),
               throwsA(isA<ZacTransformError>()));
         },
       );
@@ -109,14 +108,14 @@ void main() {
             IterableTransformer.first()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(['foo', 'oof']), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             'foo');
 
         expect(
             () => IterableTransformer.first()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -133,14 +132,14 @@ void main() {
             IterableTransformer.last()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(['foo', 'oof']), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             'oof');
 
         expect(
             () => IterableTransformer.first()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -156,22 +155,22 @@ void main() {
         expect(
             IterableTransformer.single()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(['foo']), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(['foo']), getContext(), getZacContext()),
             'foo');
 
         expect(
             () => IterableTransformer.single()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(['foo', 'oof']), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             throwsStateError);
 
         expect(
             () => IterableTransformer.first()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -188,14 +187,14 @@ void main() {
             IterableTransformer.length()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(['foo', 'foo', 'foo', 'foo']),
-                    getContext(), getZacContext(), null),
+                    getContext(), getZacContext()),
             4);
 
         expect(
             () => IterableTransformer.first()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -211,22 +210,22 @@ void main() {
         expect(
             IterableTransformer.isEmpty()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(['foo']), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(['foo']), getContext(), getZacContext()),
             isFalse);
 
         expect(
             IterableTransformer.isEmpty()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<dynamic>[]), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isTrue);
 
         expect(
             () => IterableTransformer.isEmpty()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -242,22 +241,22 @@ void main() {
         expect(
             IterableTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(['foo']), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(['foo']), getContext(), getZacContext()),
             isTrue);
 
         expect(
             IterableTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<dynamic>[]), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isFalse);
 
         expect(
             () => IterableTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -273,14 +272,14 @@ void main() {
             IterableTransformer.toList()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>{'foo'}), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isA<List<Object?>>());
 
         expect(
             () => IterableTransformer.toList()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -297,14 +296,14 @@ void main() {
             IterableTransformer.toSet()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo']), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isA<Set<Object?>>());
 
         expect(
             () => IterableTransformer.toSet()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -321,14 +320,14 @@ void main() {
             IterableTransformer.toString()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo']), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             equals('[foo]'));
 
         expect(
             () => IterableTransformer.toString()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -353,14 +352,14 @@ void main() {
             IterableTransformer.join()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo', 'bar']),
-                    getContext(), getZacContext(), null),
+                    getContext(), getZacContext()),
             equals('foobar'));
 
         expect(
             () => IterableTransformer.join()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -381,15 +380,15 @@ void main() {
             () =>
                 IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
                     .build(getContext(), getZacContext())
-                    .transform(ZacTransformValue(55), getContext(),
-                        getZacContext(), null),
+                    .transform(
+                        ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
 
         expect(
             IterableTransformer.contains(ZacBuilder<Object>.fromJson('foo'))
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo', 'bar']),
-                    getContext(), getZacContext(), null),
+                    getContext(), getZacContext()),
             isTrue);
       });
     });
@@ -408,14 +407,14 @@ void main() {
             IterableTransformer.elementAt(1)
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo', 'bar']),
-                    getContext(), getZacContext(), null),
+                    getContext(), getZacContext()),
             equals('bar'));
 
         expect(
             () => IterableTransformer.elementAt(1)
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -434,14 +433,14 @@ void main() {
             IterableTransformer.skip(1)
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo', 'bar']),
-                    getContext(), getZacContext(), null),
+                    getContext(), getZacContext()),
             ['bar']);
 
         expect(
             () => IterableTransformer.skip(1)
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -460,14 +459,14 @@ void main() {
             IterableTransformer.take(2)
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo', 'bar']),
-                    getContext(), getZacContext(), null),
+                    getContext(), getZacContext()),
             ['foo', 'bar']);
 
         expect(
             () => IterableTransformer.take(2)
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -486,14 +485,14 @@ void main() {
             ListTransformer.reversed()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo', 'bar']),
-                    getContext(), getZacContext(), null),
+                    getContext(), getZacContext()),
             ['bar', 'foo']);
 
         expect(
             () => ListTransformer.reversed()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -512,14 +511,14 @@ void main() {
             ListTransformer.add(ZacBuilder<Object>.fromJson('hello'))
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String>['foo', 'bar']),
-                    getContext(), getZacContext(), null),
+                    getContext(), getZacContext()),
             ['foo', 'bar', 'hello']);
 
         expect(
             () => ListTransformer.add(ZacBuilder<Object>.fromJson('hello'))
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -540,15 +539,14 @@ void main() {
                 .transform(
                     ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             [1, 2]);
 
         expect(
             () => MapTransformer.values()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -567,15 +565,14 @@ void main() {
                 .transform(
                     ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             ['foo', 'bar']);
 
         expect(
             () => MapTransformer.keys()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -594,15 +591,14 @@ void main() {
                 .transform(
                     ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isA<Iterable<MapEntry<String, dynamic>>>());
 
         expect(
             () => MapTransformer.entries()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -621,15 +617,14 @@ void main() {
                 .transform(
                     ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             2);
 
         expect(
             () => MapTransformer.length()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -648,22 +643,21 @@ void main() {
                 .transform(
                     ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isFalse);
 
         expect(
             MapTransformer.isEmpty()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String, dynamic>{}), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isTrue);
 
         expect(
             () => MapTransformer.isEmpty()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -682,22 +676,21 @@ void main() {
                 .transform(
                     ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isTrue);
 
         expect(
             MapTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String, dynamic>{}), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isFalse);
 
         expect(
             () => MapTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -715,7 +708,7 @@ void main() {
             () => MapTransformer.containsKey(ZacBuilder<Object>.fromJson('foo'))
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
 
         expect(
@@ -724,8 +717,7 @@ void main() {
                 .transform(
                     ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isTrue);
       });
     });
@@ -742,7 +734,7 @@ void main() {
             () => MapTransformer.containsValue(ZacBuilder<Object>.fromJson(2))
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
 
         expect(
@@ -751,8 +743,7 @@ void main() {
                 .transform(
                     ZacTransformValue(<String, dynamic>{'foo': 1, 'bar': 2}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isTrue);
       });
     });
@@ -785,8 +776,7 @@ void main() {
                     ZacTransformValue(
                         <String, dynamic>{'foo': 'a', 'bar': 'b'}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isA<Map<Object?, Object?>>());
 
         Object? keyExtra;
@@ -797,7 +787,7 @@ void main() {
               keyTransformer: ZacListOfTransformers([
                 _ConcatStr('cool'),
                 TestTransform(
-                  (transformValue, context, zacContext, payload) {
+                  (transformValue, context, zacContext) {
                     keyExtra = transformValue.extra1;
                     return transformValue.value;
                   },
@@ -806,7 +796,7 @@ void main() {
               valueTransformer: ZacListOfTransformers([
                 _ConcatStr('hello'),
                 TestTransform(
-                  (transformValue, context, zacContext, payload) {
+                  (transformValue, context, zacContext) {
                     valueExtra = transformValue.extra1;
                     return transformValue.value;
                   },
@@ -815,8 +805,7 @@ void main() {
             ).build(getContext(), getZacContext()).transform(
                 ZacTransformValue(<String, dynamic>{'foo': 'a', 'bar': 'b'}),
                 getContext(),
-                getZacContext(),
-                null),
+                getZacContext()),
             equals(
                 <String, dynamic>{'foocool': 'ahello', 'barcool': 'bhello'}));
         expect(keyExtra, isA<MapEntry<dynamic, dynamic>>());
@@ -829,15 +818,14 @@ void main() {
                     ZacTransformValue(
                         <String, dynamic>{'foo': 'a', 'bar': 'b'}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             equals(<String, dynamic>{'foo': 'a', 'bar': 'b'}));
 
         expect(
             () => MapTransformer.mapper()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -854,7 +842,7 @@ void main() {
             () => MapTransformer.fromObjectObject()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
 
         expect(
@@ -864,8 +852,7 @@ void main() {
                     ZacTransformValue(
                         <String, dynamic>{'foo': 'a', 'bar': 'b'}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isA<Map<Object, Object>>());
       });
     });
@@ -882,7 +869,7 @@ void main() {
             () => MapTransformer.fromStringNullObject()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
 
         expect(
@@ -892,8 +879,7 @@ void main() {
                     ZacTransformValue(
                         <String, dynamic>{'foo': 'a', 'bar': 'b'}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isA<Map<String, Object?>>());
       });
     });
@@ -910,7 +896,7 @@ void main() {
             () => MapTransformer.fromStringObject()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
 
         expect(
@@ -920,8 +906,7 @@ void main() {
                     ZacTransformValue(
                         <String, dynamic>{'foo': 'a', 'bar': 'b'}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isA<Map<String, Object>>());
       });
     });
@@ -940,7 +925,7 @@ void main() {
             () => MapTransformer.key(ZacBuilder<String>.fromJson('nameOfKey'))
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
 
         expect(
@@ -950,8 +935,7 @@ void main() {
                     ZacTransformValue(
                         <String, dynamic>{'foo': FlutterSizedBox()}),
                     getContext(),
-                    getZacContext(),
-                    null),
+                    getZacContext()),
             isA<FlutterSizedBox>());
       });
     });
@@ -975,7 +959,7 @@ void main() {
                   key: ZacBuilder<String>.fromJson('nameOfKey'),
                   value: ZacBuilder<Object>.fromJson('hello'),
                 ).build(getContext(), getZacContext()).transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
 
         expect(
@@ -985,8 +969,7 @@ void main() {
             ).build(getContext(), getZacContext()).transform(
                 ZacTransformValue(<String, dynamic>{'a': 'a'}),
                 getContext(),
-                getZacContext(),
-                null),
+                getZacContext()),
             <String, dynamic>{'a': 'a', 'nameOfKey': 'hello'});
       });
     });
@@ -1004,15 +987,15 @@ void main() {
         expect(
             ObjectTransformer.isList()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(['foo']), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(['foo']), getContext(), getZacContext()),
             isTrue);
 
         expect(
             ObjectTransformer.isList()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             isFalse);
       });
     });
@@ -1029,14 +1012,14 @@ void main() {
             ObjectTransformer.isMap()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(<String, dynamic>{}), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isTrue);
 
         expect(
             ObjectTransformer.isMap()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             isFalse);
       });
     });
@@ -1052,15 +1035,15 @@ void main() {
         expect(
             ObjectTransformer.isBool()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(true), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(true), getContext(), getZacContext()),
             isTrue);
 
         expect(
             ObjectTransformer.isBool()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             isFalse);
       });
     });
@@ -1077,14 +1060,14 @@ void main() {
             ObjectTransformer.isString()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(''), getContext(), getZacContext(), null),
+                    ZacTransformValue(''), getContext(), getZacContext()),
             isTrue);
 
         expect(
             ObjectTransformer.isString()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             isFalse);
       });
     });
@@ -1100,22 +1083,21 @@ void main() {
         expect(
             ObjectTransformer.isDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(5.6), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(5.6), getContext(), getZacContext()),
             isTrue);
 
         expect(
             ObjectTransformer.isDouble()
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             isFalse);
 
         expect(
             ObjectTransformer.isDouble()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(''), getContext(), getZacContext(), null),
+                    ZacTransformValue(''), getContext(), getZacContext()),
             isFalse);
       });
     });
@@ -1131,22 +1113,21 @@ void main() {
         expect(
             ObjectTransformer.isInt()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(5.6), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(5.6), getContext(), getZacContext()),
             isFalse);
 
         expect(
             ObjectTransformer.isInt()
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             isTrue);
 
         expect(
             ObjectTransformer.isInt()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(''), getContext(), getZacContext(), null),
+                    ZacTransformValue(''), getContext(), getZacContext()),
             isFalse);
       });
     });
@@ -1162,39 +1143,15 @@ void main() {
         expect(
             ObjectTransformer.isNull()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(null), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(null), getContext(), getZacContext()),
             isTrue);
 
         expect(
             ObjectTransformer.isNull()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(''), getContext(), getZacContext(), null),
-            isFalse);
-      });
-    });
-
-    testWidgets('.isActionPayload()', (tester) async {
-      _expectFromJson<ObjectTransformer>(
-        fromJson: ObjectTransformer.fromJson,
-        converter: 'z:1:Transformer:Object.isActionPayload',
-        equals: ObjectTransformer.isActionPayload(),
-      );
-
-      await testWithContexts(tester, (getContext, getZacContext) {
-        expect(
-            ObjectTransformer.isActionPayload()
-                .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(const ZacActionPayload()),
-                    getContext(), getZacContext(), null),
-            isTrue);
-
-        expect(
-            ObjectTransformer.isActionPayload()
-                .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(''), getContext(), getZacContext(), null),
+                    ZacTransformValue(''), getContext(), getZacContext()),
             isFalse);
       });
     });
@@ -1213,15 +1170,14 @@ void main() {
         expect(
             ObjectTransformer.equals(other: ZacInt(5))
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             isTrue);
 
         expect(
             ObjectTransformer.equals(other: ZacInt(5))
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue('foo'), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue('foo'), getContext(), getZacContext()),
             isFalse);
       });
     });
@@ -1237,8 +1193,7 @@ void main() {
         expect(
             ObjectTransformer.hashCode()
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             5.hashCode);
       });
     });
@@ -1254,15 +1209,14 @@ void main() {
         expect(
             ObjectTransformer.runtimeType()
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             5.runtimeType);
 
         expect(
             ObjectTransformer.runtimeType()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue('foo'), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue('foo'), getContext(), getZacContext()),
             'foo'.runtimeType);
       });
     });
@@ -1278,15 +1232,14 @@ void main() {
         expect(
             ObjectTransformer.toString()
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             '5');
 
         expect(
             ObjectTransformer.toString()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue('foo'), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue('foo'), getContext(), getZacContext()),
             'foo');
       });
     });
@@ -1304,15 +1257,14 @@ void main() {
         expect(
             NumTransformer.toDouble()
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             isA<double>().having((p0) => p0, 'is double', 5.0));
 
         expect(
             () => NumTransformer.toDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1328,15 +1280,15 @@ void main() {
         expect(
             NumTransformer.toInt()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(5.1), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(5.1), getContext(), getZacContext()),
             isA<int>().having((p0) => p0, 'is int', 5));
 
         expect(
             () => NumTransformer.toInt()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1351,14 +1303,14 @@ void main() {
       await testWithContexts(tester, (getContext, getZacContext) {
         expect(
             NumTransformer.abs().build(getContext(), getZacContext()).transform(
-                ZacTransformValue(-2.5), getContext(), getZacContext(), null),
+                ZacTransformValue(-2.5), getContext(), getZacContext()),
             2.5);
 
         expect(
             () => NumTransformer.abs()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1374,15 +1326,15 @@ void main() {
         expect(
             NumTransformer.ceil()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(2.5), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(2.5), getContext(), getZacContext()),
             3);
 
         expect(
             () => NumTransformer.ceil()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1398,15 +1350,15 @@ void main() {
         expect(
             NumTransformer.ceilToDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(2.5), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(2.5), getContext(), getZacContext()),
             isA<double>().having((p0) => p0, 'double', 3.0));
 
         expect(
             () => NumTransformer.ceilToDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1422,15 +1374,15 @@ void main() {
         expect(
             NumTransformer.floor()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(2.5), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(2.5), getContext(), getZacContext()),
             2);
 
         expect(
             () => NumTransformer.floor()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1445,15 +1397,15 @@ void main() {
         expect(
             NumTransformer.floorToDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(2.5), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(2.5), getContext(), getZacContext()),
             isA<double>().having((p0) => p0, 'double', 2.0));
 
         expect(
             () => NumTransformer.floorToDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1469,15 +1421,15 @@ void main() {
         expect(
             NumTransformer.round()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(2.5), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(2.5), getContext(), getZacContext()),
             isA<int>().having((p0) => p0, 'int', 3));
 
         expect(
             () => NumTransformer.round()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1493,15 +1445,15 @@ void main() {
         expect(
             NumTransformer.roundToDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(2.5), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(2.5), getContext(), getZacContext()),
             isA<double>().having((p0) => p0, 'int', 3.0));
 
         expect(
             () => NumTransformer.roundToDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1517,15 +1469,14 @@ void main() {
         expect(
             NumTransformer.isFinite()
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(1), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(1), getContext(), getZacContext()),
             isTrue);
 
         expect(
             () => NumTransformer.roundToDouble()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1541,14 +1492,14 @@ void main() {
             NumTransformer.isInfinite()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(double.infinity), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isTrue);
 
         expect(
             () => NumTransformer.isInfinite()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1564,14 +1515,14 @@ void main() {
             NumTransformer.isNan()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(double.nan), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isTrue);
 
         expect(
             () => NumTransformer.isNan()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1586,15 +1537,15 @@ void main() {
         expect(
             NumTransformer.isNegative()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(-1.0), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(-1.0), getContext(), getZacContext()),
             isTrue);
 
         expect(
             () => NumTransformer.isNegative()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1611,22 +1562,22 @@ void main() {
         expect(
             IntTransformer.parse()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue('5'), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue('5'), getContext(), getZacContext()),
             5);
 
         expect(
             () => IntTransformer.parse()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue('no no no'), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             throwsFormatException);
 
         expect(
             () => IntTransformer.parse()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1641,22 +1592,22 @@ void main() {
         expect(
             IntTransformer.tryParse()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue('5'), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue('5'), getContext(), getZacContext()),
             5);
 
         expect(
             IntTransformer.tryParse()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue('no no no'), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             isNull);
 
         expect(
             () => IntTransformer.tryParse()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1672,15 +1623,14 @@ void main() {
         expect(
             IntTransformer.incr(ZacInt(1))
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             6);
 
         expect(
             () => IntTransformer.incr(ZacInt(1))
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<StateError>()));
       });
     });
@@ -1697,15 +1647,14 @@ void main() {
         expect(
             IntTransformer.decr(ZacInt(1))
                 .build(getContext(), getZacContext())
-                .transform(
-                    ZacTransformValue(5), getContext(), getZacContext(), null),
+                .transform(ZacTransformValue(5), getContext(), getZacContext()),
             4);
 
         expect(
             () => IntTransformer.decr(ZacInt(1))
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<StateError>()));
       });
     });
@@ -1722,15 +1671,15 @@ void main() {
         expect(
             StringTransformer.length()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue('foo'), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue('foo'), getContext(), getZacContext()),
             3);
 
         expect(
             () => StringTransformer.length()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1749,16 +1698,16 @@ void main() {
         expect(
             StringTransformer.split(pattern: ZacBuilder<String>.fromJson(','))
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue('a,b'), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue('a,b'), getContext(), getZacContext()),
             ['a', 'b']);
 
         expect(
             () => StringTransformer.split(
                     pattern: ZacBuilder<String>.fromJson(','))
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1774,14 +1723,14 @@ void main() {
             StringTransformer.isEmpty()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(''), getContext(), getZacContext(), null),
+                    ZacTransformValue(''), getContext(), getZacContext()),
             isTrue);
 
         expect(
             () => StringTransformer.isEmpty()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1797,14 +1746,14 @@ void main() {
             StringTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(''), getContext(), getZacContext(), null),
+                    ZacTransformValue(''), getContext(), getZacContext()),
             isFalse);
 
         expect(
             () => StringTransformer.isNotEmpty()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1822,8 +1771,8 @@ void main() {
             StringTransformer.replaceAll(ZacBuilder<String>.fromJson('xx'),
                     ZacBuilder<String>.fromJson('yy'))
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue('fooxx'), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue('fooxx'), getContext(), getZacContext()),
             'fooyy');
 
         expect(
@@ -1831,8 +1780,8 @@ void main() {
                     ZacBuilder<String>.fromJson('xx'),
                     ZacBuilder<String>.fromJson('yy'))
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(Object()), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(Object()), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1850,7 +1799,7 @@ void main() {
             JsonTransformer.encode()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue(['foo', 'bar']), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             '["foo","bar"]');
       });
     });
@@ -1866,14 +1815,14 @@ void main() {
             JsonTransformer.decode()
                 .build(getContext(), getZacContext())
                 .transform(ZacTransformValue('["foo", "bar"]'), getContext(),
-                    getZacContext(), null),
+                    getZacContext()),
             ['foo', 'bar']);
 
         expect(
             () => JsonTransformer.decode()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1890,15 +1839,15 @@ void main() {
         expect(
             BoolTransformer.negate()
                 .build(getContext(), getZacContext())
-                .transform(ZacTransformValue(false), getContext(),
-                    getZacContext(), null),
+                .transform(
+                    ZacTransformValue(false), getContext(), getZacContext()),
             true);
 
         expect(
             () => JsonTransformer.decode()
                 .build(getContext(), getZacContext())
                 .transform(
-                    ZacTransformValue(55), getContext(), getZacContext(), null),
+                    ZacTransformValue(55), getContext(), getZacContext()),
             throwsA(isA<ZacTransformError>()));
       });
     });
@@ -1913,7 +1862,7 @@ class _ConcatStr implements ZacBuilder<ZacTransform> {
   @override
   ZacTransform build(BuildContext context, ZacContext zacContext) {
     return ZacTransform(
-      (transformValue, context, zacContext, payload) {
+      (transformValue, context, zacContext) {
         return (transformValue.value as String) + str;
       },
     );

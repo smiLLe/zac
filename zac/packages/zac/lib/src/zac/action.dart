@@ -7,7 +7,6 @@ import 'package:zac/src/base.dart';
 
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/shared_state.dart';
-import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
@@ -17,90 +16,61 @@ part 'action.g.dart';
 @freezed
 class ZacAction with _$ZacAction {
   factory ZacAction(
-    void Function(ZacActionPayload payload, BuildContext context,
-            ZacContext zacContext)
-        execute,
+    void Function(BuildContext context, ZacContext zacContext) execute,
   ) = _ZacAction;
 }
 
-@freezed
-class ZacActionPayload with _$ZacActionPayload {
-  const ZacActionPayload._();
-
-  const factory ZacActionPayload() = _ZacActionPayloadNone;
-  factory ZacActionPayload.param(Object? value) = _ZacActionPayloadParam;
-  factory ZacActionPayload.param2(Object? first, Object? second) =
-      _ZacActionPayloadParam2;
-
-  Object? get params => map(
-        (_) => null,
-        param: (obj) => obj.value,
-        param2: (obj) => [obj.first, obj.second],
-      );
-  List<Object?> get paramsAsList => map(
-        (_) => [],
-        param: (obj) => [obj.value],
-        param2: (obj) => [obj.first, obj.second],
-      );
-}
-
-@freezedZacBuilder
-class ZacActionPayloadTransformer
-    with _$ZacActionPayloadTransformer
-    implements ZacBuilder<ZacTransform> {
-  ZacActionPayloadTransformer._();
-
-  factory ZacActionPayloadTransformer.fromJson(Map<String, dynamic> json) =>
-      _$ZacActionPayloadTransformerFromJson(json);
-
-  @FreezedUnionValue('z:1:Transformer:ActionPayload.toList')
-  factory ZacActionPayloadTransformer.toList() =
-      _ZacActionPayloadTransformerToList;
-
-  @FreezedUnionValue('z:1:Transformer:ActionPayload.toObject')
-  factory ZacActionPayloadTransformer.toObject() =
-      _ZacActionPayloadTransformerToObject;
-
-  late final ZacTransform _transformer = ZacTransform(
-    (transformValue, context, zacContext, payload) {
-      final value = transformValue.value;
-      assert(value is ZacActionPayload);
-      return map(
-        toList: (obj) => (value as ZacActionPayload).paramsAsList,
-        toObject: (obj) => (value as ZacActionPayload).params,
-      );
-    },
-  );
-
-  @override
-  ZacTransform build(BuildContext context, ZacContext zacContext) =>
-      _transformer;
-}
-
 extension HandleActions on List<ZacAction> {
-  void execute(ZacActionPayload payload, BuildContext context,
-      ZacContext zacContext) async {
-    if (!context.isMounted) return;
+  void _execute(
+    BuildContext context,
+    ZacContext zacContext,
+    Object? arg1,
+    Object? arg2,
+    Object? arg3,
+  ) async {
+    if (!context.mounted) return;
+    final args = [arg1, arg2, arg3];
+    for (var i = 0; i < args.length; i++) {
+      final arg = args[i];
+      if (arg == Never) continue;
+      context.widgetRef
+          .read(SharedState.provider('actionArg.${i + 1}'))
+          .update((_) => arg);
+    }
     for (var action in this) {
-      if (!context.isMounted) {
+      if (!context.mounted) {
         break;
       }
       action.execute(
-        payload,
         context,
         zacContext.copyWith.call(buildIn: BuildIn.action),
       );
     }
+
+    for (var i = 0; i < args.length; i++) {
+      context.widgetRef.invalidate(SharedState.provider('actionArg.${i + 1}'));
+    }
   }
 
-  void Function() createCb(BuildContext context, ZacContext zacContext) {
-    return () => execute(const ZacActionPayload(), context, zacContext);
+  void Function() callack(BuildContext context, ZacContext zacContext) {
+    return () => _execute(context, zacContext, Never, Never, Never);
   }
 
-  void Function(T data) createCbParam1<T extends Object?>(
+  void Function(Object? p) callbackOneParam(
       BuildContext context, ZacContext zacContext) {
-    return (T data) =>
-        execute(ZacActionPayload.param(data), context, zacContext);
+    return (Object? p) => _execute(context, zacContext, p, Never, Never);
+  }
+
+  void Function(Object? p1, Object? p2) callbackTwoParams(
+      BuildContext context, ZacContext zacContext) {
+    return (Object? p1, Object? p2) =>
+        _execute(context, zacContext, p1, p2, Never);
+  }
+
+  void Function(Object? p1, Object? p2, Object? p3) callbackThreeParams(
+      BuildContext context, ZacContext zacContext) {
+    return (Object? p1, Object? p2, Object? p3) =>
+        _execute(context, zacContext, p1, p2, p3);
   }
 }
 
@@ -110,8 +80,8 @@ class ZacExecuteActionsBuilder
     implements ZacBuilder<Widget> {
   const ZacExecuteActionsBuilder._();
 
-  static const String unionValue = 'z:1:ExecuteActions.once';
-  static const String unionValueListen = 'z:1:ExecuteActions.listen';
+  static const String unionValue = 'z:1:ExecuteActionsOnce';
+  static const String unionValueListen = 'z:1:ExecuteActionsOnChange';
 
   factory ZacExecuteActionsBuilder.fromJson(Map<String, dynamic> json) =>
       _$ZacExecuteActionsBuilderFromJson(json);
@@ -158,12 +128,9 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext();
-    ref.listen<SharedState>(SharedState.provider(family), (previous, next) {
-      actions(context, zacContext).execute(
-          ZacActionPayload.param2(next.value, previous?.value),
-          context,
-          zacContext);
-    });
+    final buildActions = actions(context, zacContext);
+    ref.listen<SharedState>(SharedState.provider(family),
+        buildActions.callbackTwoParams(context, zacContext));
 
     return child?.call(context, zacContext) ?? const SizedBox.shrink();
   }
@@ -187,8 +154,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
       doneState.value = false;
       SchedulerBinding.instance.addPostFrameCallback((_) {
         if (!mounted) return;
-        actions(context, zacContext)
-            .execute(const ZacActionPayload(), context, zacContext);
+        actions(context, zacContext).callack(context, zacContext)();
         if (!mounted) return;
         doneState.value = true;
       });
@@ -201,84 +167,34 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 }
 
 @freezedZacBuilder
-class ZacBuiltInActions
-    with _$ZacBuiltInActions
-    implements ZacBuilder<ZacAction> {
-  ZacBuiltInActions._();
-
-  factory ZacBuiltInActions.fromJson(Map<String, dynamic> json) =>
-      _$ZacBuiltInActionsFromJson(json);
-
-  /// This will convert the payload to a ZacBuilder if given a Map
-  @FreezedUnionValue('z:1:Action.withPayload')
-  factory ZacBuiltInActions.withPayload({
-    required Object payload,
-    required ZacBuilder<List<ZacAction>> actions,
-    ZacBuilder<List<ZacTransform>>? transformer,
-  }) = _OverridePayload;
-
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
-    map(withPayload: (obj) {
-      var subPayload = ZacRegistry.ifBuilderLikeMap<Object>(
-        obj.payload,
-        cb: (map, converterName) => ZacRegistry().when<Object>(
-          name: converterName,
-          noType: (builder) => builder.call(map),
-          withType: (builder) => builder.call<Object>(map),
-        ),
-        orElse: () => obj.payload,
-      );
-
-      subPayload = transformer?.build(context, zacContext).transform(
-              ZacTransformValue(subPayload), context, zacContext, payload) ??
-          subPayload;
-
-      actions
-          .build(context, zacContext)
-          .execute(ZacActionPayload.param(subPayload), context, zacContext);
-    });
-  });
-
-  @override
-  ZacAction build(BuildContext context, ZacContext zacContext) => _action;
-}
-
-@freezedZacBuilder
 class ZacControlFlowAction
     with _$ZacControlFlowAction
     implements ZacBuilder<ZacAction> {
   ZacControlFlowAction._();
 
-  static const String unionValue = 'z:1:ControlFlowAction.if';
+  static const String unionValue = 'z:1:Action:If';
 
   factory ZacControlFlowAction.fromJson(Map<String, dynamic> json) =>
       _$ZacControlFlowActionFromJson(json);
 
   @FreezedUnionValue(ZacControlFlowAction.unionValue)
   factory ZacControlFlowAction.ifCond({
+    required ZacBuilder<Object?> conditionValue,
     required ZacBuilder<List<ZacTransform>> condition,
     required ZacBuilder<List<ZacAction>> ifTrue,
     ZacBuilder<List<ZacAction>>? ifFalse,
   }) = _ZacControlFlowActionIf;
 
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action =
+      ZacAction((BuildContext context, ZacContext zacContext) {
     map(
       ifCond: (obj) {
-        final val = payload.map(
-          (value) {
-            throw StateError(
-                'It is not possible to execute "${ZacControlFlowAction.unionValue}". The $ZacActionPayload was empty');
-          },
-          param: (obj) => obj.params,
-          param2: (obj) => obj.params,
-        );
+        final val = obj.conditionValue.build(context, zacContext);
         final trueOrFalse = condition
             .build(context, zacContext)
             .fold<bool>(true, (previousValue, zacTransformers) {
           final cond = zacTransformers.transform(
-              ZacTransformValue(val), context, zacContext, payload);
+              ZacTransformValue(val), context, zacContext);
 
           if (cond is! bool) {
             throw StateError(
@@ -290,11 +206,46 @@ class ZacControlFlowAction
 
         (trueOrFalse ? obj.ifTrue : obj.ifFalse)
             ?.build(context, zacContext)
-            .execute(payload, context, zacContext);
+            .callack(context, zacContext)();
       },
     );
   });
 
   @override
   ZacAction build(BuildContext context, ZacContext zacContext) => _action;
+}
+
+@freezedZacBuilder
+class CaptureActionArgs with _$CaptureActionArgs implements ZacBuilder<Widget> {
+  CaptureActionArgs._();
+
+  factory CaptureActionArgs.fromJson(Map<String, dynamic> json) =>
+      _$CaptureActionArgsFromJson(json);
+
+  @FreezedUnionValue('z:1:CaptureActionArgs')
+  factory CaptureActionArgs({required ZacBuilder<Widget> child}) =
+      _CaptureActionArgs;
+
+  @override
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return CaptureActionArgsWidget(
+      buildChild: child.build,
+    );
+  }
+}
+
+class CaptureActionArgsWidget extends StatelessWidget {
+  const CaptureActionArgsWidget({required this.buildChild, super.key});
+
+  final Widget Function(BuildContext context, ZacContext zacContext) buildChild;
+
+  @override
+  Widget build(BuildContext context) {
+    return ZacSharedStateProviderWidget(
+      states: {
+        for (var i = 1; i <= 3; i++) 'actionArg.$i': Never,
+      },
+      buildChild: buildChild,
+    );
+  }
 }

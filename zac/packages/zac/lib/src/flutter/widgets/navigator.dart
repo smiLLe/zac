@@ -327,8 +327,8 @@ class FlutterNavigatorActions
         Navigator.maybeOf(context);
   }
 
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action =
+      ZacAction((BuildContext context, ZacContext zacContext) {
     map(
       push: (obj) {
         final state = _getState(context, zacContext);
@@ -336,11 +336,7 @@ class FlutterNavigatorActions
         state.push(obj.route.build(context, zacContext)).then((value) {
           if (!context.isMounted) return;
           if (value is List<ZacAction>) {
-            value.execute(
-              const ZacActionPayload(),
-              context,
-              zacContext,
-            );
+            value.callack(context, zacContext)();
           }
         });
       },
@@ -355,7 +351,7 @@ class FlutterNavigatorActions
             .then((value) {
           if (!context.isMounted) return;
           if (value is List<ZacAction>) {
-            value.execute(const ZacActionPayload(), context, zacContext);
+            value.callack(context, zacContext)();
           }
         });
       },
@@ -380,7 +376,7 @@ class FlutterNavigatorActions
             .then((value) {
           if (!context.isMounted) return;
           if (value is List<ZacAction>) {
-            value.execute(const ZacActionPayload(), context, zacContext);
+            value.callack(context, zacContext)();
           }
         });
       },
@@ -396,7 +392,7 @@ class FlutterNavigatorActions
             .then((value) {
           if (!context.isMounted) return;
           if (value is List<ZacAction>) {
-            value.execute(const ZacActionPayload(), context, zacContext);
+            value.callack(context, zacContext)();
           }
         });
       },

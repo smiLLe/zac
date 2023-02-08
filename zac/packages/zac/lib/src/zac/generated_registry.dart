@@ -81,8 +81,8 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_to_box_adapter.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/build.dart';
-import 'package:zac/src/zac/callback.dart';
 import 'package:zac/src/zac/shared_state.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -573,16 +573,16 @@ void addZacBuilders(ZacRegistry registry) {
     ..register(
         'f:1:WrapCrossAlignment.start', FlutterWrapCrossAlignment.fromJson)
     ..register('f:1:showDialog', FlutterDialogActions.fromJson)
-    ..register('z:1:Action.withPayload', ZacBuiltInActions.fromJson)
+    ..register('z:1:Action:If', ZacControlFlowAction.fromJson)
     ..register('z:1:Build.fromBuilder', ZacBuild.fromJson)
     ..register('z:1:Build.fromBuilderMap', ZacBuild.fromJson)
     ..register('z:1:Build.fromJsonString', ZacBuild.fromJson)
     ..register('z:1:Build:Isolate.fromBuilderMap', ZacBuild.fromJson)
     ..register('z:1:Build:Isolate.fromJsonString', ZacBuild.fromJson)
-    ..register('z:1:ControlFlowAction.if', ZacControlFlowAction.fromJson)
+    ..register('z:1:CaptureActionArgs', CaptureActionArgs.fromJson)
     ..register('z:1:DateTime', ZacDateTime.fromJson)
-    ..register('z:1:ExecuteActions.listen', ZacExecuteActionsBuilder.fromJson)
-    ..register('z:1:ExecuteActions.once', ZacExecuteActionsBuilder.fromJson)
+    ..register('z:1:ExecuteActionsOnChange', ZacExecuteActionsBuilder.fromJson)
+    ..register('z:1:ExecuteActionsOnce', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:List<Widget>', ZacListOfWidgets.fromJson)
     ..register('z:1:List<ZacAction>', ZacListOfActions.fromJson)
     ..register('z:1:List<ZacTransform>', ZacListOfTransformers.fromJson)
@@ -591,8 +591,8 @@ void addZacBuilders(ZacRegistry registry) {
         'z:1:Navigator.popUntilRouteName', FlutterNavigatorActions.fromJson)
     ..register('z:1:NavigatorState.shared', FlutterNavigatorState.fromJson)
     ..register('z:1:Object', ZacObject.fromJson)
-    ..register('z:1:SharedCallback.consume', ZacConsumeSharedCallback.fromJson)
-    ..register('z:1:SharedCallbacks.provide', ZacCallbacksProvider.fromJson)
+    ..register('z:1:Provide:State', ZacStateProvide.fromJson)
+    ..register('z:1:Provide:States', ZacStatesProvider.fromJson)
     ..register(
         'z:1:SharedState.transformCurrentValue', SharedStateActions.fromJson)
     ..register('z:1:SharedState.update', SharedStateActions.fromJson)
@@ -603,10 +603,6 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:StateMachine:Build', ZacStateMachineBuild.fromJson)
     ..register('z:1:StateMachines.provide', ZacStateMachineProvider.fromJson)
     ..register('z:1:String', ZacString.fromJson)
-    ..register('z:1:Transformer:ActionPayload.toList',
-        ZacActionPayloadTransformer.fromJson)
-    ..register('z:1:Transformer:ActionPayload.toObject',
-        ZacActionPayloadTransformer.fromJson)
     ..register('z:1:Transformer:Bool.negate', BoolTransformer.fromJson)
     ..register(
         'z:1:Transformer:Iterable.contains', IterableTransformer.fromJson)
@@ -650,8 +646,6 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Transformer:Map[key]', MapTransformer.fromJson)
     ..register('z:1:Transformer:Object.equals', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.hashCode', ObjectTransformer.fromJson)
-    ..register(
-        'z:1:Transformer:Object.isActionPayload', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.isBool', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.isDouble', ObjectTransformer.fromJson)
     ..register('z:1:Transformer:Object.isInt', ObjectTransformer.fromJson)
@@ -683,7 +677,6 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Transformer:num.roundToDouble', NumTransformer.fromJson)
     ..register('z:1:Transformer:num.toDouble', NumTransformer.fromJson)
     ..register('z:1:Transformer:num.toInt', NumTransformer.fromJson)
-    ..register('z:1:ZacValue.asActionPayload', ZacValueActions.fromJson)
     ..register('z:1:bool', ZacBool.fromJson)
     ..register('z:1:double', ZacDouble.fromJson)
     ..register('z:1:int', ZacInt.fromJson)

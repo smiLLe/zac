@@ -534,20 +534,6 @@ _$_ObjectIsNull _$$_ObjectIsNullFromJson(Map<String, dynamic> json) =>
       fieldKeyMap: const {r'$type': 'builder'},
     );
 
-_$_ObjectIsActionPayload _$$_ObjectIsActionPayloadFromJson(
-        Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_ObjectIsActionPayload',
-      json,
-      ($checkedConvert) {
-        final val = _$_ObjectIsActionPayload(
-          $type: $checkedConvert('builder', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {r'$type': 'builder'},
-    );
-
 _$_ObjectEquals _$$_ObjectEqualsFromJson(Map<String, dynamic> json) =>
     $checkedCreate(
       r'_$_ObjectEquals',

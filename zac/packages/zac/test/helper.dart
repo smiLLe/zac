@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/callback.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/build.dart';
@@ -13,6 +12,25 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+
+Future<void> pumpUntilFound(
+  WidgetTester tester,
+  Finder finder, {
+  int iterations = 200,
+}) async {
+  var found = false;
+  for (int i = 1; i <= iterations; i++) {
+    found = tester.any(finder);
+    if (!found) {
+      await tester.runAsync<void>(
+          () => Future.delayed(const Duration(milliseconds: 100)));
+      await tester.pump();
+    } else {
+      return;
+    }
+  }
+  if (!found) throw Exception('did not find $finder');
+}
 
 void expectInRegistry(Object obj, Object fn) {
   if (obj is! String && obj is! List<String>) throw Error();
@@ -155,11 +173,11 @@ Future<void> testFindWidget<T extends Widget>(
 
 class TestTransform implements ZacBuilder<ZacTransform> {
   final Object? Function(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext, ZacActionPayload? payload) cb;
+      ZacContext zacContext) cb;
 
   TestTransform(this.cb);
   factory TestTransform.noop(Map<String, dynamic> map) {
-    return TestTransform((transformValue, context, zacContext, payload) {
+    return TestTransform((transformValue, context, zacContext) {
       return null;
     });
   }
@@ -173,7 +191,7 @@ class TestTransform implements ZacBuilder<ZacTransform> {
 @GenerateMocks([TestTransformExecute])
 class TestTransformExecute extends Mock {
   Object? call(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext, ZacActionPayload? payload);
+      ZacContext zacContext);
 }
 
 class TestWidget implements ZacBuilder<Widget> {
@@ -188,12 +206,11 @@ class TestWidget implements ZacBuilder<Widget> {
 }
 
 class TestAction implements ZacBuilder<ZacAction> {
-  final void Function(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) cb;
+  final void Function(BuildContext context, ZacContext zacContext) cb;
 
   TestAction(this.cb);
   factory TestAction.noop(Map<String, dynamic> map) {
-    return TestAction((payload, context, zacContext) {});
+    return TestAction((context, zacContext) {});
   }
 
   @override
@@ -202,45 +219,9 @@ class TestAction implements ZacBuilder<ZacAction> {
   }
 }
 
-class TestCallback implements ZacBuilder<ZacCallback> {
-  final void Function(BuildContext context, ZacContext zacContext,
-      CallbackParamType arg, CallbackParamType arg2, CallbackParamType arg3) cb;
-
-  TestCallback(this.cb);
-  factory TestCallback.noop(Map<String, dynamic> map) {
-    return TestCallback((context, zacContext, arg, arg2, arg3) {});
-  }
-
-  @override
-  ZacCallback build(BuildContext context, ZacContext zacContext) {
-    return ZacCallback(cb);
-  }
-}
-
-class TestSharedCallback implements ZacBuilder<ZacSharedCallback> {
-  final void Function(
-      BuildContext context,
-      ZacContext zacContext,
-      Ref<Object?> ref,
-      CallbackParamType arg,
-      CallbackParamType arg2,
-      CallbackParamType arg3) cb;
-
-  TestSharedCallback(this.cb);
-  factory TestSharedCallback.noop(Map<String, dynamic> map) {
-    return TestSharedCallback((context, zacContext, ref, arg, arg2, arg3) {});
-  }
-
-  @override
-  ZacSharedCallback build(BuildContext context, ZacContext zacContext) {
-    return ZacSharedCallback(cb);
-  }
-}
-
 @GenerateMocks([TestActionExecute])
 class TestActionExecute extends Mock {
-  void call(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext);
+  void call(BuildContext context, ZacContext zacContext);
 }
 
 TypeMatcher<ZacContext> isZacContext = isA<ZacContext>();

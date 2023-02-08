@@ -3,7 +3,6 @@ export 'src/zac/zac_builder.dart';
 export 'src/zac/registry.dart';
 export 'src/zac/context.dart';
 export 'src/zac/action.dart';
-export 'src/zac/callback.dart';
 export 'src/zac/state_machine.dart';
 export 'src/zac/zac_value.dart';
 export 'src/zac/build.dart';

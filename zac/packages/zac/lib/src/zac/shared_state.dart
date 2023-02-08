@@ -38,7 +38,7 @@ Could not find a $SharedState for family "$family".'''),
           ? context.widgetRef.watch<SharedStateType>(
               SharedState.provider(family).select<SharedStateType>((state) {
               return obj.select!.build(context, zacContext).transform(
-                  ZacTransformValue(state.value), context, zacContext, null);
+                  ZacTransformValue(state.value), context, zacContext);
             }))
           : context.widgetRef
               .watch<SharedState>(SharedState.provider(family))
@@ -271,7 +271,7 @@ Value: $value''');
     }
 
     final transformedVal = buildTransformer.transform(
-        ZacTransformValue(value), context, zacContext, null);
+        ZacTransformValue(value), context, zacContext);
     if (transformedVal is! T) {
       final transformerErr = buildTransformer.map((e) => e.runtimeType);
 
@@ -311,8 +311,8 @@ class SharedStateActions
     required ZacBuilder<List<ZacTransform>> transformer,
   }) = _SharedStateActionsTransformCurrentValue;
 
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action =
+      ZacAction((BuildContext context, ZacContext zacContext) {
     map(
       update: (obj) {
         for (var entry in obj.states.entries) {
@@ -331,8 +331,7 @@ class SharedStateActions
             .update((current) {
           final nextValue = obj.transformer
               .build(context, zacContext)
-              .transform(
-                  ZacTransformValue(current), context, zacContext, payload);
+              .transform(ZacTransformValue(current), context, zacContext);
           return nextValue;
         });
       },

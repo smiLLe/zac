@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:isolate';
 
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -112,7 +113,6 @@ class ZacBuildWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext();
     final zacBuilder = useMemoized<ZacBuilder<Widget>>(() {
       if (data is ZacBuilder<Widget>) return data as ZacBuilder<Widget>;
 
@@ -135,7 +135,9 @@ class ZacBuildWidget extends HookConsumerWidget {
       return ZacBuilder<Widget>.fromJson(map);
     }, [data]);
 
-    return zacBuilder.build(context, zacContext);
+    return CaptureActionArgsWidget(
+      buildChild: zacBuilder.build,
+    );
   }
 }
 
@@ -205,7 +207,9 @@ class ZacBuildIsolatedWidget extends HookConsumerWidget {
         builder: (context, ref, ___) {
           final zacContext = useZacContext();
           return ref.watch(provider).map<Widget>(
-                data: (obj) => obj.value.build(context, zacContext),
+                data: (obj) => CaptureActionArgsWidget(
+                  buildChild: obj.value.build,
+                ),
                 error: (obj) {
                   Widget error = errorChild?.build(context, zacContext) ??
                       const SizedBox.shrink();
