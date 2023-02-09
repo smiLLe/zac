@@ -1,7 +1,9 @@
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/zac_builder.dart';
@@ -40,11 +42,21 @@ extension HandleTransformer on List<ZacTransform> {
     BuildContext context,
     ZacContext zacContext,
   ) {
+    final container = ProviderContainer(
+      parent: zacContext.consume.map(
+        (value) => ProviderScope.containerOf(context, listen: false),
+        manual: (obj) => obj.container,
+      ),
+      overrides: [],
+    );
+
     return fold<ZacTransformValue>(value, (previousValue, element) {
       final obj = element.transform(
         previousValue,
         context,
-        zacContext.copyWith.call(buildIn: BuildIn.transformer),
+        zacContext.copyWith.call(
+          consume: ZacContextConsume.manual(container: container),
+        ),
       );
       return previousValue.copyWith.call(value: obj);
     }).value;

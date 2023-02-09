@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
@@ -25,108 +26,50 @@ void main() {
         ZacExecuteActionsBuilder.fromJson);
   });
 
-  group('List of Actions', () {
-    testWidgets('BuldIn has correct value', (tester) async {
-      await testWithContexts(
-        tester,
-        (getContext, getZacContext) {
-          late BuildIn buildIn;
-          [
-            TestAction((buildContext, zacContext) {
-              buildIn = zacContext.buildIn;
-            }).build(getContext(), getZacContext())
-          ].callack(getContext(), getZacContext())();
-
-          expect(buildIn, BuildIn.action);
-        },
-      );
-    });
-  });
-
-  group('Args', () {
-    testWidgets('can be captured by using ZacBuild', (tester) async {
-      await tester.pumpWidget(ProviderScope(
-        child: ZacBuildWidget(data: FlutterSizedBox()),
-      ));
-      expect(find.byType(CaptureActionArgsWidget), findsOneWidget);
-
-      await tester.pumpWidget(const SizedBox());
-
-      await tester.pumpWidget(const ProviderScope(
-        child: ZacBuildIsolatedWidget.fromBuilderMap(
-            map: <String, dynamic>{'builder': 'f:1:SizedBox'}),
-      ));
-      await pumpUntilFound(tester, find.byType(CaptureActionArgsWidget));
-      expect(find.byType(CaptureActionArgsWidget), findsOneWidget);
-    });
-
-    testWidgets('will be captured and are available through shared state',
+  group('List of Actions:', () {
+    testWidgets(
+        'Allow to pass arguments in execute and share them through state',
         (tester) async {
-      ZacRegistry().register<ZacAction>(
-          'test:action',
-          (map) => TestAction(
-                (context, zacContext) {},
-              ));
       final a1 = expectAsync1((p0) => expect(p0, 1));
       final a2 = expectAsync1((p0) => expect(p0, 2));
-      final a3 = expectAsync1((p0) => expect(p0, Never));
-      await testWithContextsWraped(
-          tester, (child) => CaptureActionArgs(child: child),
-          (getContext, getZacContext) {
-        [
-          TestAction(
-            (context, zacContext) {
-              a1(SharedState.consume(
-                context: context,
-                zacContext: zacContext,
-                consume: const SharedStateConsumeType.read(),
-                family: 'actionArg.1',
-              ));
 
-              a2(SharedState.consume(
-                context: context,
-                zacContext: zacContext,
-                consume: const SharedStateConsumeType.read(),
-                family: 'actionArg.2',
-              ));
+      ZacRegistry().register<Widget>(
+        'test:widget',
+        (map) => TestWidget(
+          (context, zacContext) {
+            return ElevatedButton(
+              key: const ValueKey('BUTTON'),
+              onPressed: () {
+                [
+                  ZacAction(
+                    (context, zacContext) {
+                      a1(SharedState.consume(
+                        context: context,
+                        zacContext: zacContext,
+                        family: 'actionArg.1',
+                      ));
 
-              a3(SharedState.consume(
-                context: context,
-                zacContext: zacContext,
-                consume: const SharedStateConsumeType.read(),
-                family: 'actionArg.3',
-              ));
-            },
-          ).build(getContext(), getZacContext())
-        ].callbackTwoParams(getContext(), getZacContext())(1, 2);
+                      a2(SharedState.consume(
+                        context: context,
+                        zacContext: zacContext,
+                        family: 'actionArg.2',
+                      ));
+                    },
+                  )
+                ].callbackTwoParams(context, zacContext)(1, 2);
+              },
+              child: const SizedBox(),
+            );
+          },
+        ),
+      );
 
-        expect(
-            SharedState.consume(
-              context: getContext(),
-              zacContext: getZacContext(),
-              consume: const SharedStateConsumeType.read(),
-              family: 'actionArg.1',
-            ),
-            Never);
-
-        expect(
-            SharedState.consume(
-              context: getContext(),
-              zacContext: getZacContext(),
-              consume: const SharedStateConsumeType.read(),
-              family: 'actionArg.2',
-            ),
-            Never);
-
-        expect(
-            SharedState.consume(
-              context: getContext(),
-              zacContext: getZacContext(),
-              consume: const SharedStateConsumeType.read(),
-              family: 'actionArg.3',
-            ),
-            Never);
+      await testJSON(tester, <String, dynamic>{
+        'builder': 'test:widget',
       });
+      await tester.tap(find.byKey(const ValueKey('BUTTON')));
+
+      ZacRegistry().remove('test:widget');
     });
   });
 

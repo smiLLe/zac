@@ -21,56 +21,62 @@ class ZacAction with _$ZacAction {
 }
 
 extension HandleActions on List<ZacAction> {
-  void _execute(
+  void execute(
     BuildContext context,
     ZacContext zacContext,
-    Object? arg1,
-    Object? arg2,
-    Object? arg3,
+    List<Object?> args,
   ) async {
     if (!context.mounted) return;
-    final args = [arg1, arg2, arg3];
-    for (var i = 0; i < args.length; i++) {
-      final arg = args[i];
-      if (arg == Never) continue;
-      context.widgetRef
-          .read(SharedState.provider('actionArg.${i + 1}'))
-          .update((_) => arg);
-    }
+
+    final container = ProviderContainer(
+      parent: zacContext.consume.map(
+        (value) => ProviderScope.containerOf(context, listen: false),
+        manual: (obj) => obj.container,
+      ),
+      overrides: [
+        for (var i = 0; i < args.length; i++)
+          SharedState.provider('actionArg.${i + 1}')
+              .overrideWithValue(SharedState(
+            value: args[i],
+            family: 'actionArg.${i + 1}',
+            update: (cb) => throw StateError('Not Allowed'),
+          ))
+      ],
+    );
+
     for (var action in this) {
       if (!context.mounted) {
         break;
       }
       action.execute(
         context,
-        zacContext.copyWith.call(buildIn: BuildIn.action),
+        zacContext.copyWith.call(
+          consume: ZacContextConsume.manual(container: container),
+        ),
       );
     }
 
-    for (var i = 0; i < args.length; i++) {
-      context.widgetRef.invalidate(SharedState.provider('actionArg.${i + 1}'));
-    }
+    container.dispose();
   }
 
   void Function() callack(BuildContext context, ZacContext zacContext) {
-    return () => _execute(context, zacContext, Never, Never, Never);
+    return () => execute(context, zacContext, []);
   }
 
   void Function(Object? p) callbackOneParam(
       BuildContext context, ZacContext zacContext) {
-    return (Object? p) => _execute(context, zacContext, p, Never, Never);
+    return (Object? p) => execute(context, zacContext, [p]);
   }
 
   void Function(Object? p1, Object? p2) callbackTwoParams(
       BuildContext context, ZacContext zacContext) {
-    return (Object? p1, Object? p2) =>
-        _execute(context, zacContext, p1, p2, Never);
+    return (Object? p1, Object? p2) => execute(context, zacContext, [p1, p2]);
   }
 
   void Function(Object? p1, Object? p2, Object? p3) callbackThreeParams(
       BuildContext context, ZacContext zacContext) {
     return (Object? p1, Object? p2, Object? p3) =>
-        _execute(context, zacContext, p1, p2, p3);
+        execute(context, zacContext, [p1, p2, p3]);
   }
 }
 
@@ -127,7 +133,7 @@ class ZacExecuteActionsListen extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext();
+    final zacContext = useZacContext(ref);
     final buildActions = actions(context, zacContext);
     ref.listen<SharedState>(SharedState.provider(family),
         buildActions.callbackTwoParams(context, zacContext));
@@ -147,7 +153,7 @@ class ZacExecuteActionsOnce extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext();
+    final zacContext = useZacContext(ref);
     final doneState = useState(false);
     useEffect(() {
       var mounted = true;

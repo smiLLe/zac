@@ -1,26 +1,14 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:zac/src/zac/context.dart';
 
 import '../helper.dart';
 
 void main() {
-  testWidgets('useZacContext() will return correct value for BuildIn',
-      (tester) async {
-    late BuildIn buildIn;
-    await tester.pumpWidget(HookBuilder(
-      builder: (context) {
-        buildIn = useZacContext().buildIn;
-        return const SizedBox();
-      },
-    ));
-    expect(buildIn, BuildIn.widget);
-  });
-
   group('UpdateContext', () {
     testWidgets('Unmount Callback', (tester) async {
       await testWithContextsWraped(

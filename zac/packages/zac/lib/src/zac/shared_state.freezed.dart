@@ -84,6 +84,423 @@ abstract class _SharedStateFamily implements SharedState {
   void Function(Object? Function(Object?)) get update;
 }
 
+/// @nodoc
+mixin _$ZacSharedState {
+  String get family => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String family, Object? Function(ProviderRef<Object?>) create)
+        $default, {
+    required TResult Function(
+            String family, Object? value, ZacSharedStateUpdate udpate)
+        provided,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String family, Object? Function(ProviderRef<Object?>) create)?
+        $default, {
+    TResult? Function(
+            String family, Object? value, ZacSharedStateUpdate udpate)?
+        provided,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String family, Object? Function(ProviderRef<Object?>) create)?
+        $default, {
+    TResult Function(String family, Object? value, ZacSharedStateUpdate udpate)?
+        provided,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ZacSharedStateCreate value) $default, {
+    required TResult Function(ZacSharedStateProvided value) provided,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ZacSharedStateCreate value)? $default, {
+    TResult? Function(ZacSharedStateProvided value)? provided,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ZacSharedStateCreate value)? $default, {
+    TResult Function(ZacSharedStateProvided value)? provided,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $ZacSharedStateCopyWith<ZacSharedState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $ZacSharedStateCopyWith<$Res> {
+  factory $ZacSharedStateCopyWith(
+          ZacSharedState value, $Res Function(ZacSharedState) then) =
+      _$ZacSharedStateCopyWithImpl<$Res, ZacSharedState>;
+  @useResult
+  $Res call({String family});
+}
+
+/// @nodoc
+class _$ZacSharedStateCopyWithImpl<$Res, $Val extends ZacSharedState>
+    implements $ZacSharedStateCopyWith<$Res> {
+  _$ZacSharedStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? family = null,
+  }) {
+    return _then(_value.copyWith(
+      family: null == family
+          ? _value.family
+          : family // ignore: cast_nullable_to_non_nullable
+              as String,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$ZacSharedStateCreateCopyWith<$Res>
+    implements $ZacSharedStateCopyWith<$Res> {
+  factory _$$ZacSharedStateCreateCopyWith(_$ZacSharedStateCreate value,
+          $Res Function(_$ZacSharedStateCreate) then) =
+      __$$ZacSharedStateCreateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String family, Object? Function(ProviderRef<Object?>) create});
+}
+
+/// @nodoc
+class __$$ZacSharedStateCreateCopyWithImpl<$Res>
+    extends _$ZacSharedStateCopyWithImpl<$Res, _$ZacSharedStateCreate>
+    implements _$$ZacSharedStateCreateCopyWith<$Res> {
+  __$$ZacSharedStateCreateCopyWithImpl(_$ZacSharedStateCreate _value,
+      $Res Function(_$ZacSharedStateCreate) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? family = null,
+    Object? create = null,
+  }) {
+    return _then(_$ZacSharedStateCreate(
+      null == family
+          ? _value.family
+          : family // ignore: cast_nullable_to_non_nullable
+              as String,
+      null == create
+          ? _value.create
+          : create // ignore: cast_nullable_to_non_nullable
+              as Object? Function(ProviderRef<Object?>),
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ZacSharedStateCreate implements ZacSharedStateCreate {
+  _$ZacSharedStateCreate(this.family, this.create);
+
+  @override
+  final String family;
+  @override
+  final Object? Function(ProviderRef<Object?>) create;
+
+  @override
+  String toString() {
+    return 'ZacSharedState(family: $family, create: $create)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ZacSharedStateCreate &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.create, create) || other.create == create));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, family, create);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ZacSharedStateCreateCopyWith<_$ZacSharedStateCreate> get copyWith =>
+      __$$ZacSharedStateCreateCopyWithImpl<_$ZacSharedStateCreate>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String family, Object? Function(ProviderRef<Object?>) create)
+        $default, {
+    required TResult Function(
+            String family, Object? value, ZacSharedStateUpdate udpate)
+        provided,
+  }) {
+    return $default(family, create);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String family, Object? Function(ProviderRef<Object?>) create)?
+        $default, {
+    TResult? Function(
+            String family, Object? value, ZacSharedStateUpdate udpate)?
+        provided,
+  }) {
+    return $default?.call(family, create);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String family, Object? Function(ProviderRef<Object?>) create)?
+        $default, {
+    TResult Function(String family, Object? value, ZacSharedStateUpdate udpate)?
+        provided,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(family, create);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ZacSharedStateCreate value) $default, {
+    required TResult Function(ZacSharedStateProvided value) provided,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ZacSharedStateCreate value)? $default, {
+    TResult? Function(ZacSharedStateProvided value)? provided,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ZacSharedStateCreate value)? $default, {
+    TResult Function(ZacSharedStateProvided value)? provided,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ZacSharedStateCreate implements ZacSharedState {
+  factory ZacSharedStateCreate(final String family,
+          final Object? Function(ProviderRef<Object?>) create) =
+      _$ZacSharedStateCreate;
+
+  @override
+  String get family;
+  Object? Function(ProviderRef<Object?>) get create;
+  @override
+  @JsonKey(ignore: true)
+  _$$ZacSharedStateCreateCopyWith<_$ZacSharedStateCreate> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ZacSharedStateProvidedCopyWith<$Res>
+    implements $ZacSharedStateCopyWith<$Res> {
+  factory _$$ZacSharedStateProvidedCopyWith(_$ZacSharedStateProvided value,
+          $Res Function(_$ZacSharedStateProvided) then) =
+      __$$ZacSharedStateProvidedCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String family, Object? value, ZacSharedStateUpdate udpate});
+}
+
+/// @nodoc
+class __$$ZacSharedStateProvidedCopyWithImpl<$Res>
+    extends _$ZacSharedStateCopyWithImpl<$Res, _$ZacSharedStateProvided>
+    implements _$$ZacSharedStateProvidedCopyWith<$Res> {
+  __$$ZacSharedStateProvidedCopyWithImpl(_$ZacSharedStateProvided _value,
+      $Res Function(_$ZacSharedStateProvided) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? family = null,
+    Object? value = freezed,
+    Object? udpate = null,
+  }) {
+    return _then(_$ZacSharedStateProvided(
+      null == family
+          ? _value.family
+          : family // ignore: cast_nullable_to_non_nullable
+              as String,
+      freezed == value ? _value.value : value,
+      null == udpate
+          ? _value.udpate
+          : udpate // ignore: cast_nullable_to_non_nullable
+              as ZacSharedStateUpdate,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ZacSharedStateProvided implements ZacSharedStateProvided {
+  _$ZacSharedStateProvided(this.family, this.value, this.udpate);
+
+  @override
+  final String family;
+  @override
+  final Object? value;
+  @override
+  final ZacSharedStateUpdate udpate;
+
+  @override
+  String toString() {
+    return 'ZacSharedState.provided(family: $family, value: $value, udpate: $udpate)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ZacSharedStateProvided &&
+            (identical(other.family, family) || other.family == family) &&
+            const DeepCollectionEquality().equals(other.value, value) &&
+            (identical(other.udpate, udpate) || other.udpate == udpate));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, family, const DeepCollectionEquality().hash(value), udpate);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ZacSharedStateProvidedCopyWith<_$ZacSharedStateProvided> get copyWith =>
+      __$$ZacSharedStateProvidedCopyWithImpl<_$ZacSharedStateProvided>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function(
+            String family, Object? Function(ProviderRef<Object?>) create)
+        $default, {
+    required TResult Function(
+            String family, Object? value, ZacSharedStateUpdate udpate)
+        provided,
+  }) {
+    return provided(family, value, udpate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function(
+            String family, Object? Function(ProviderRef<Object?>) create)?
+        $default, {
+    TResult? Function(
+            String family, Object? value, ZacSharedStateUpdate udpate)?
+        provided,
+  }) {
+    return provided?.call(family, value, udpate);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function(
+            String family, Object? Function(ProviderRef<Object?>) create)?
+        $default, {
+    TResult Function(String family, Object? value, ZacSharedStateUpdate udpate)?
+        provided,
+    required TResult orElse(),
+  }) {
+    if (provided != null) {
+      return provided(family, value, udpate);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(ZacSharedStateCreate value) $default, {
+    required TResult Function(ZacSharedStateProvided value) provided,
+  }) {
+    return provided(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(ZacSharedStateCreate value)? $default, {
+    TResult? Function(ZacSharedStateProvided value)? provided,
+  }) {
+    return provided?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(ZacSharedStateCreate value)? $default, {
+    TResult Function(ZacSharedStateProvided value)? provided,
+    required TResult orElse(),
+  }) {
+    if (provided != null) {
+      return provided(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class ZacSharedStateProvided implements ZacSharedState {
+  factory ZacSharedStateProvided(final String family, final Object? value,
+      final ZacSharedStateUpdate udpate) = _$ZacSharedStateProvided;
+
+  @override
+  String get family;
+  Object? get value;
+  ZacSharedStateUpdate get udpate;
+  @override
+  @JsonKey(ignore: true)
+  _$$ZacSharedStateProvidedCopyWith<_$ZacSharedStateProvided> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
 SharedStateConsumeType _$SharedStateConsumeTypeFromJson(
     Map<String, dynamic> json) {
   switch (json['builder']) {

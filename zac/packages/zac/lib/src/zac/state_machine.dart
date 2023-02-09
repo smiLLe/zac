@@ -297,7 +297,7 @@ class ZacStateMachineBuildWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final stateMachineWidget = ref.watch(
         ZacStateMachine.provider(family).select((machine) => machine.widget));
-    final zacContext = useZacContext();
+    final zacContext = useZacContext(ref);
     return stateMachineWidget.build(context, zacContext);
   }
 }

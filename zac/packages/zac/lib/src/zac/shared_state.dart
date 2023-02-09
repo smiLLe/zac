@@ -14,11 +14,14 @@ part 'shared_state.g.dart';
 
 typedef SharedStateFamily = String;
 typedef SharedStateType = Object?;
+typedef ZacSharedStateUpdateReducer = SharedStateType Function(
+    SharedStateType current);
+typedef ZacSharedStateUpdate = void Function(
+    ZacSharedStateUpdateReducer reduce);
 
 @freezedZacDefaults
 class SharedState with _$SharedState {
-  static final provider =
-      Provider.family.autoDispose<SharedState, SharedStateFamily>(
+  static final provider = Provider.family<SharedState, SharedStateFamily>(
     (_, family) => throw StateError('''
 Could not find a $SharedState for family "$family".'''),
     name: 'Zac $SharedState',
@@ -27,23 +30,31 @@ Could not find a $SharedState for family "$family".'''),
   static SharedStateType consume({
     required BuildContext context,
     required ZacContext zacContext,
-    required SharedStateConsumeType consume,
     required SharedStateFamily family,
   }) {
-    final consumedValue = consume.map<SharedStateType>(
-      read: (_) => context.widgetRef
-          .read<SharedState>(SharedState.provider(family))
-          .value,
-      watch: (obj) => null != obj.select
-          ? context.widgetRef.watch<SharedStateType>(
-              SharedState.provider(family).select<SharedStateType>((state) {
-              return obj.select!.build(context, zacContext).transform(
-                  ZacTransformValue(state.value), context, zacContext);
-            }))
-          : context.widgetRef
-              .watch<SharedState>(SharedState.provider(family))
-              .value,
+    final consumedValue = zacContext.consume.map(
+      (obj) {
+        return obj.ref.watch(SharedState.provider(family)).value;
+      },
+      manual: (obj) {
+        return obj.container.read(SharedState.provider(family)).value;
+      },
     );
+
+    // final consumedValue = consume.map<SharedStateType>(
+    //   read: (_) => context.widgetRef
+    //       .read<SharedState>(SharedState.provider(family))
+    //       .value,
+    //   watch: (obj) => null != obj.select
+    //       ? context.widgetRef.watch<SharedStateType>(
+    //           SharedState.provider(family).select<SharedStateType>((state) {
+    //           return obj.select!.build(context, zacContext).transform(
+    //               ZacTransformValue(state.value), context, zacContext);
+    //         }))
+    //       : context.widgetRef
+    //           .watch<SharedState>(SharedState.provider(family))
+    //           .value,
+    // );
 
     return consumedValue is ZacBuilder<Object>
         ? consumedValue.build(context, zacContext)
@@ -56,6 +67,25 @@ Could not find a $SharedState for family "$family".'''),
     required void Function(SharedStateType Function(SharedStateType current) cb)
         update,
   }) = _SharedStateFamily;
+}
+
+@freezed
+class ZacSharedState with _$ZacSharedState {
+  static final provider =
+      Provider.family<ZacSharedStateProvided, SharedStateFamily>((ref, family) {
+    throw UnimplementedError();
+  });
+
+  factory ZacSharedState(
+    SharedStateFamily family,
+    SharedStateType Function(ProviderRef<Object?> ref) create,
+  ) = ZacSharedStateCreate;
+
+  factory ZacSharedState.provided(
+    SharedStateFamily family,
+    SharedStateType value,
+    ZacSharedStateUpdate udpate,
+  ) = ZacSharedStateProvided;
 }
 
 @freezedZacBuilder
@@ -73,18 +103,6 @@ class SharedStateConsumeType with _$SharedStateConsumeType {
 
   @FreezedUnionValue(SharedStateConsumeType.unionValueRead)
   const factory SharedStateConsumeType.read() = _Read;
-}
-
-extension SharedStateOnBuildIn on BuildIn {
-  SharedStateConsumeType get consumeDefault {
-    switch (this) {
-      case BuildIn.widget:
-        return const SharedStateConsumeType.watch();
-      case BuildIn.transformer:
-      case BuildIn.action:
-        return const SharedStateConsumeType.read();
-    }
-  }
 }
 
 @freezedZacBuilder
@@ -152,7 +170,7 @@ class ZacSharedStateProviderWidget extends HookWidget {
   final Map<String, Object?> states;
 
   void Function(SharedStateType Function(SharedStateType current) cb)
-      _getUpdate(AutoDisposeProviderRef<SharedState> ref) {
+      _getUpdate(ProviderRef<SharedState> ref) {
     return (cb) {
       ref.state = SharedState(
         family: ref.state.family,
@@ -161,8 +179,6 @@ class ZacSharedStateProviderWidget extends HookWidget {
       );
     };
   }
-
-  static void _autoCreateListener(SharedState? prev, SharedState next) {}
 
   @override
   Widget build(BuildContext context) {
@@ -196,19 +212,7 @@ class ZacSharedStateProviderWidget extends HookWidget {
 
     return UncontrolledProviderScope(
       container: container,
-      child: ZacFlutterBuilder(
-        builder: (context, zacContext) {
-          for (var key in states.keys) {
-            /// immediately create the AutoDispose Provider and its value
-            /// and keep it alive as long as possible
-            context.widgetRef.listen<SharedState>(
-              SharedState.provider(key),
-              _autoCreateListener,
-            );
-          }
-          return buildChild(context, zacContext);
-        },
-      ),
+      child: ZacFlutterBuilder(builder: buildChild),
     );
   }
 }
@@ -241,7 +245,6 @@ class SharedStateConsume<T>
     final value = SharedState.consume(
       context: context,
       zacContext: zacContext,
-      consume: consume ?? zacContext.buildIn.consumeDefault,
       family: family,
     );
 

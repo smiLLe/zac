@@ -40,7 +40,7 @@ class ZacFlutterBuilder extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext();
+    final zacContext = useZacContext(ref);
     return builder(context, zacContext);
   }
 }

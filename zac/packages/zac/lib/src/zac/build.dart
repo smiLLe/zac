@@ -113,6 +113,7 @@ class ZacBuildWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final zacContext = useZacContext(ref);
     final zacBuilder = useMemoized<ZacBuilder<Widget>>(() {
       if (data is ZacBuilder<Widget>) return data as ZacBuilder<Widget>;
 
@@ -135,9 +136,7 @@ class ZacBuildWidget extends HookConsumerWidget {
       return ZacBuilder<Widget>.fromJson(map);
     }, [data]);
 
-    return CaptureActionArgsWidget(
-      buildChild: zacBuilder.build,
-    );
+    return zacBuilder.build(context, zacContext);
   }
 }
 
@@ -205,11 +204,9 @@ class ZacBuildIsolatedWidget extends HookConsumerWidget {
       ],
       child: HookConsumer(
         builder: (context, ref, ___) {
-          final zacContext = useZacContext();
+          final zacContext = useZacContext(ref);
           return ref.watch(provider).map<Widget>(
-                data: (obj) => CaptureActionArgsWidget(
-                  buildChild: obj.value.build,
-                ),
+                data: (obj) => obj.value.build(context, zacContext),
                 error: (obj) {
                   Widget error = errorChild?.build(context, zacContext) ??
                       const SizedBox.shrink();
