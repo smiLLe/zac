@@ -1,6 +1,6 @@
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_state.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
@@ -48,19 +48,12 @@ class FlutterMaterialPageRoute
     required String familyName,
     required Object? arguments,
   }) {
-    late final ZacSharedStateProvide sharedArgs;
-    if (arguments is ZacBuilder<Object>) {
-      sharedArgs = ZacSharedStateProvide.builder(arguments);
-    } else if (null == arguments) {
-      sharedArgs = ZacSharedStateProvide.n();
-    } else {
-      sharedArgs = ZacSharedStateProvide.value(arguments);
-    }
-
     return MaterialPageRoute<Object?>(
-      builder: (_) => ZacSharedStateProviderWidget(
-        states: {familyName: sharedArgs},
-        buildChild: child.build,
+      builder: (_) => ZacStatesProviderWidget(
+        builder: ZacStatesProvider(
+          states: [ZacStateProvide(family: familyName, value: arguments)],
+          child: child,
+        ),
       ),
       settings: settings?.build(context, zacContext),
       fullscreenDialog: fullscreenDialog?.build(context, zacContext) ?? false,
@@ -132,19 +125,12 @@ class FlutterPageRouteBuilder
     required String familyName,
     required Object? arguments,
   }) {
-    late final ZacSharedStateProvide sharedArgs;
-    if (arguments is ZacBuilder<Object>) {
-      sharedArgs = ZacSharedStateProvide.builder(arguments);
-    } else if (null == arguments) {
-      sharedArgs = ZacSharedStateProvide.n();
-    } else {
-      sharedArgs = ZacSharedStateProvide.value(arguments);
-    }
-
     return PageRouteBuilder<ZacBuilder<List<ZacAction>>?>(
-      pageBuilder: (_, __, ___) => ZacSharedStateProviderWidget(
-        states: {familyName: sharedArgs},
-        buildChild: child.build,
+      pageBuilder: (_, __, ___) => ZacStatesProviderWidget(
+        builder: ZacStatesProvider(
+          states: [ZacStateProvide(family: familyName, value: arguments)],
+          child: child,
+        ),
       ),
       settings: settings?.build(context, zacContext),
       opaque: opaque?.build(context, zacContext) ?? true,

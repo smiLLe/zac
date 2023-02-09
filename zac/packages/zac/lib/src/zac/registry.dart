@@ -1,6 +1,5 @@
 import 'package:collection/collection.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
@@ -13,8 +12,6 @@ typedef CreateBuilderFromSingleType = ZacBuilder<T> Function<T>(
 class ZacRegistry extends DelegatingMap<String, Object> {
   static final ZacRegistry _singleton = () {
     final register = ZacRegistry._()
-      ..registerGeneric(
-          SharedStateConsume.unionValue, SharedStateConsume.fromRegister)
       ..registerGeneric(ZacStateConsume.union, ZacStateConsume.fromRegister);
 
     addZacBuilders(register);

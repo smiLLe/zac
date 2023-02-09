@@ -81,7 +81,6 @@ import 'package:zac/src/flutter/widgets/sliver/sliver_to_box_adapter.dart';
 import 'package:zac/src/flutter/widgets/text.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/build.dart';
-import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/state_machine.dart';
 import 'package:zac/src/zac/transformers.dart';
@@ -579,7 +578,6 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Build.fromJsonString', ZacBuild.fromJson)
     ..register('z:1:Build:Isolate.fromBuilderMap', ZacBuild.fromJson)
     ..register('z:1:Build:Isolate.fromJsonString', ZacBuild.fromJson)
-    ..register('z:1:CaptureActionArgs', CaptureActionArgs.fromJson)
     ..register('z:1:DateTime', ZacDateTime.fromJson)
     ..register('z:1:ExecuteActionsOnChange', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:ExecuteActionsOnce', ZacExecuteActionsBuilder.fromJson)
@@ -591,18 +589,15 @@ void addZacBuilders(ZacRegistry registry) {
         'z:1:Navigator.popUntilRouteName', FlutterNavigatorActions.fromJson)
     ..register('z:1:NavigatorState.shared', FlutterNavigatorState.fromJson)
     ..register('z:1:Object', ZacObject.fromJson)
-    ..register(
-        'z:1:SharedState.transformCurrentValue', SharedStateActions.fromJson)
-    ..register('z:1:SharedState.update', SharedStateActions.fromJson)
-    ..register('z:1:SharedStates.provide', ZacSharedStateProvider.fromJson)
-    ..register('z:1:State:Provide', ZacStateProvide.fromJson)
-    ..register('z:1:State:Update', StateActions.fromJson)
+    ..register('z:1:State.provide', ZacStateProvide.fromJson)
+    ..register('z:1:State.update', ZacStateActions.fromJson)
+    ..register('z:1:State:OnChange.executeActions', ZacOnStateChange.fromJson)
     ..register('z:1:StateMachine:Action.send', ZacStateMachineActions.fromJson)
     ..register(
         'z:1:StateMachine:Action.trySend', ZacStateMachineActions.fromJson)
     ..register('z:1:StateMachine:Build', ZacStateMachineBuild.fromJson)
     ..register('z:1:StateMachines.provide', ZacStateMachineProvider.fromJson)
-    ..register('z:1:States:Provide', ZacStatesProvider.fromJson)
+    ..register('z:1:States.provide', ZacStatesProvider.fromJson)
     ..register('z:1:String', ZacString.fromJson)
     ..register('z:1:Transformer:Bool.negate', BoolTransformer.fromJson)
     ..register(

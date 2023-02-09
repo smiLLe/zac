@@ -61,16 +61,35 @@ _$_ZacStateConsume<T> _$$_ZacStateConsumeFromJson<T>(
       },
     );
 
-_$_StateActionsUpdate _$$_StateActionsUpdateFromJson(
+_$_ZacStateActionsUpdate _$$_ZacStateActionsUpdateFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_StateActionsUpdate',
+      r'_$_ZacStateActionsUpdate',
       json,
       ($checkedConvert) {
-        final val = _$_StateActionsUpdate(
+        final val = _$_ZacStateActionsUpdate(
           family: $checkedConvert('family', (v) => v as String),
           withValue: $checkedConvert(
               'withValue', (v) => ZacBuilder<Object?>.fromJson(v as Object)),
+        );
+        return val;
+      },
+    );
+
+_$_ZacOnStateChangeExecActions _$$_ZacOnStateChangeExecActionsFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_ZacOnStateChangeExecActions',
+      json,
+      ($checkedConvert) {
+        final val = _$_ZacOnStateChangeExecActions(
+          actions: $checkedConvert('actions',
+              (v) => ZacBuilder<List<ZacAction>>.fromJson(v as Object)),
+          family: $checkedConvert('family', (v) => v as String),
+          child: $checkedConvert(
+              'child',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget>.fromJson(v as Object)),
         );
         return val;
       },

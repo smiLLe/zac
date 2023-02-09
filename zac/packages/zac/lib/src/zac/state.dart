@@ -30,10 +30,13 @@ class ZacState with _$ZacState {
     ZacStateValue Function(ProviderRef<Object?> ref) create,
   ) = ZacStateCreate;
 
+  /// DO NOT USE
+  /// Must only be used by Zac
+  @internal
   factory ZacState.provided(
     ZacStateFamily family,
     ZacStateValue value,
-    ZacStateUpdate udpate,
+    ZacStateUpdate update,
   ) = ZacStateProvided;
 }
 
@@ -43,7 +46,7 @@ class ZacStateProvide with _$ZacStateProvide implements ZacBuilder<ZacState> {
   factory ZacStateProvide.fromJson(Map<String, dynamic> json) =>
       _$ZacStateProvideFromJson(json);
 
-  @FreezedUnionValue('z:1:State:Provide')
+  @FreezedUnionValue('z:1:State.provide')
   factory ZacStateProvide({
     required ZacStateFamily family,
     Object? value,
@@ -89,7 +92,7 @@ class ZacStatesProvider with _$ZacStatesProvider implements ZacBuilder<Widget> {
   factory ZacStatesProvider.fromJson(Map<String, dynamic> json) =>
       _$ZacStatesProviderFromJson(json);
 
-  @FreezedUnionValue('z:1:States:Provide')
+  @FreezedUnionValue('z:1:States.provide')
   factory ZacStatesProvider({
     required List<ZacBuilder<ZacState>> states,
     required ZacBuilder<Widget> child,
@@ -97,43 +100,41 @@ class ZacStatesProvider with _$ZacStatesProvider implements ZacBuilder<Widget> {
 
   @override
   Widget build(BuildContext context, ZacContext zacContext) {
-    return ZacStatesProviderWidget(
-      states: states.map((state) {
-        assert(state.build(context, zacContext) is ZacStateCreate);
-        return state.build(context, zacContext) as ZacStateCreate;
-      }),
-      buildChild: child.build,
-    );
+    return ZacStatesProviderWidget(builder: this);
   }
 }
 
 class ZacStatesProviderWidget extends HookConsumerWidget {
   const ZacStatesProviderWidget({
-    required this.states,
-    required this.buildChild,
+    required this.builder,
     super.key,
   });
 
-  final Iterable<ZacStateCreate> states;
-  final Widget Function(BuildContext context, ZacContext zacContext) buildChild;
+  final ZacStatesProvider builder;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final zacContext = useZacContext(ref);
     final overrides = useMemoized<List<Override>>(() {
       return [
-        ...states.map(
+        ...builder.states.map((state) {
+          assert(state.build(context, zacContext) is ZacStateCreate);
+          return state.build(context, zacContext) as ZacStateCreate;
+        }).map(
           (state) => ZacState.provider(state.family).overrideWith(
             (ref) => ZacStateProvided(
               state.family,
               state.create(ref),
-              (reduce) => ref.state.copyWith.call(
-                value: reduce(ref.state.value),
-              ),
+              (reduce) {
+                ref.state = ref.state.copyWith.call(
+                  value: reduce(ref.state.value),
+                );
+              },
             ),
           ),
         )
       ];
-    }, [states]);
+    }, [builder]);
 
     final parentContainer = ProviderScope.containerOf(context);
     final container = useMemoized(() {
@@ -146,7 +147,7 @@ class ZacStatesProviderWidget extends HookConsumerWidget {
     useEffect(() => container.dispose, [container]);
     return UncontrolledProviderScope(
       container: container,
-      child: ZacFlutterBuilder(builder: buildChild),
+      child: ZacFlutterBuilder(builder: builder.child.build),
     );
   }
 }
@@ -155,7 +156,7 @@ class ZacStatesProviderWidget extends HookConsumerWidget {
 class ZacStateConsume<T> with _$ZacStateConsume<T> implements ZacBuilder<T> {
   ZacStateConsume._();
 
-  static const String union = 'z:1:State:Consume';
+  static const String union = 'z:1:State.consume';
 
   static ZacStateValue consumeValue({
     required BuildContext context,
@@ -263,17 +264,17 @@ Value after: $transformedVal''');
 }
 
 @freezedZacBuilder
-class StateActions with _$StateActions implements ZacBuilder<ZacAction> {
-  StateActions._();
+class ZacStateActions with _$ZacStateActions implements ZacBuilder<ZacAction> {
+  ZacStateActions._();
 
-  factory StateActions.fromJson(Map<String, dynamic> json) =>
-      _$StateActionsFromJson(json);
+  factory ZacStateActions.fromJson(Map<String, dynamic> json) =>
+      _$ZacStateActionsFromJson(json);
 
-  @FreezedUnionValue('z:1:State:Update')
-  factory StateActions.update({
+  @FreezedUnionValue('z:1:State.update')
+  factory ZacStateActions.update({
     required String family,
     required ZacBuilder<Object?> withValue,
-  }) = _StateActionsUpdate;
+  }) = _ZacStateActionsUpdate;
 
   late final ZacAction _action =
       ZacAction((BuildContext context, ZacContext zacContext) {
@@ -285,11 +286,51 @@ class StateActions with _$StateActions implements ZacBuilder<ZacAction> {
               (obj) => obj.ref.read(ZacState.provider(family)),
               manual: (obj) => obj.container.read(ZacState.provider(family)),
             )
-            .udpate((_) => val);
+            .update((_) => val);
       },
     );
   });
 
   @override
   ZacAction build(BuildContext context, ZacContext zacContext) => _action;
+}
+
+/// This is useful for showing modals or other imperative logic.
+@freezedZacBuilder
+class ZacOnStateChange with _$ZacOnStateChange implements ZacBuilder<Widget> {
+  ZacOnStateChange._();
+
+  factory ZacOnStateChange.fromJson(Map<String, dynamic> json) =>
+      _$ZacOnStateChangeFromJson(json);
+
+  @FreezedUnionValue('z:1:State:OnChange.executeActions')
+  factory ZacOnStateChange.executeActions({
+    required ZacBuilder<List<ZacAction>> actions,
+    required ZacStateFamily family,
+    ZacBuilder<Widget>? child,
+  }) = _ZacOnStateChangeExecActions;
+
+  @override
+  Widget build(BuildContext context, ZacContext zacContext) {
+    return ZacOnStateChangeWidget(builder: this);
+  }
+}
+
+class ZacOnStateChangeWidget extends HookConsumerWidget {
+  const ZacOnStateChangeWidget({required this.builder, super.key});
+
+  final ZacOnStateChange builder;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final zacContext = useZacContext(ref);
+    final actions = builder.actions.build(context, zacContext);
+    ref.listen<ZacStateProvided>(
+      ZacState.provider(builder.family),
+      (previous, next) => actions.callbackTwoParams(context, zacContext)(
+          next.value, previous?.value),
+    );
+
+    return builder.child?.build(context, zacContext) ?? const SizedBox.shrink();
+  }
 }

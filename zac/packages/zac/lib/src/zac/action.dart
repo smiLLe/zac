@@ -4,9 +4,8 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
-
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_state.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
@@ -35,11 +34,11 @@ extension HandleActions on List<ZacAction> {
       ),
       overrides: [
         for (var i = 0; i < args.length; i++)
-          SharedState.provider('actionArg.${i + 1}')
-              .overrideWithValue(SharedState(
-            value: args[i],
-            family: 'actionArg.${i + 1}',
-            update: (cb) => throw StateError('Not Allowed'),
+          ZacState.provider('actionArg.${i + 1}')
+              .overrideWithValue(ZacStateProvided(
+            'actionArg.${i + 1}',
+            args[i],
+            (cb) => throw StateError('Not Allowed'),
           ))
       ],
     );
@@ -87,7 +86,6 @@ class ZacExecuteActionsBuilder
   const ZacExecuteActionsBuilder._();
 
   static const String unionValue = 'z:1:ExecuteActionsOnce';
-  static const String unionValueListen = 'z:1:ExecuteActionsOnChange';
 
   factory ZacExecuteActionsBuilder.fromJson(Map<String, dynamic> json) =>
       _$ZacExecuteActionsBuilderFromJson(json);
@@ -98,13 +96,6 @@ class ZacExecuteActionsBuilder
     ZacBuilder<Widget>? child,
   }) = _ZacExecuteActionsBuilderOnce;
 
-  @FreezedUnionValue(ZacExecuteActionsBuilder.unionValueListen)
-  factory ZacExecuteActionsBuilder.listen({
-    required ZacBuilder<List<ZacAction>> actions,
-    required SharedStateFamily family,
-    ZacBuilder<Widget>? child,
-  }) = _ZacExecuteActionsBuilderListen;
-
   @override
   Widget build(BuildContext context, ZacContext zacContext) {
     return map(
@@ -112,33 +103,7 @@ class ZacExecuteActionsBuilder
         actions: obj.actions.build,
         child: obj.child?.build,
       ),
-      listen: (obj) => ZacExecuteActionsListen(
-        actions: obj.actions.build,
-        family: obj.family,
-        child: obj.child?.build,
-      ),
     );
-  }
-}
-
-class ZacExecuteActionsListen extends HookConsumerWidget {
-  const ZacExecuteActionsListen(
-      {required this.actions, required this.family, this.child, Key? key})
-      : super(key: key);
-
-  final List<ZacAction> Function(BuildContext context, ZacContext zacContext)
-      actions;
-  final SharedStateFamily family;
-  final Widget Function(BuildContext context, ZacContext zacContext)? child;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext(ref);
-    final buildActions = actions(context, zacContext);
-    ref.listen<SharedState>(SharedState.provider(family),
-        buildActions.callbackTwoParams(context, zacContext));
-
-    return child?.call(context, zacContext) ?? const SizedBox.shrink();
   }
 }
 
@@ -219,39 +184,4 @@ class ZacControlFlowAction
 
   @override
   ZacAction build(BuildContext context, ZacContext zacContext) => _action;
-}
-
-@freezedZacBuilder
-class CaptureActionArgs with _$CaptureActionArgs implements ZacBuilder<Widget> {
-  CaptureActionArgs._();
-
-  factory CaptureActionArgs.fromJson(Map<String, dynamic> json) =>
-      _$CaptureActionArgsFromJson(json);
-
-  @FreezedUnionValue('z:1:CaptureActionArgs')
-  factory CaptureActionArgs({required ZacBuilder<Widget> child}) =
-      _CaptureActionArgs;
-
-  @override
-  Widget build(BuildContext context, ZacContext zacContext) {
-    return CaptureActionArgsWidget(
-      buildChild: child.build,
-    );
-  }
-}
-
-class CaptureActionArgsWidget extends StatelessWidget {
-  const CaptureActionArgsWidget({required this.buildChild, super.key});
-
-  final Widget Function(BuildContext context, ZacContext zacContext) buildChild;
-
-  @override
-  Widget build(BuildContext context) {
-    return ZacSharedStateProviderWidget(
-      states: {
-        for (var i = 1; i <= 3; i++) 'actionArg.$i': Never,
-      },
-      buildChild: buildChild,
-    );
-  }
 }

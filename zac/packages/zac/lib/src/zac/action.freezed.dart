@@ -133,19 +133,7 @@ abstract class _ZacAction implements ZacAction {
 
 ZacExecuteActionsBuilder _$ZacExecuteActionsBuilderFromJson(
     Map<String, dynamic> json) {
-  switch (json['builder']) {
-    case 'z:1:ExecuteActionsOnce':
-      return _ZacExecuteActionsBuilderOnce.fromJson(json);
-    case 'z:1:ExecuteActionsOnChange':
-      return _ZacExecuteActionsBuilderListen.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(
-          json,
-          'builder',
-          'ZacExecuteActionsBuilder',
-          'Invalid union type "${json['builder']}"!');
-  }
+  return _ZacExecuteActionsBuilderOnce.fromJson(json);
 }
 
 /// @nodoc
@@ -156,7 +144,6 @@ mixin _$ZacExecuteActionsBuilder {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacExecuteActionsBuilderOnce value) once,
-    required TResult Function(_ZacExecuteActionsBuilderListen value) listen,
   }) =>
       throw _privateConstructorUsedError;
 }
@@ -164,10 +151,8 @@ mixin _$ZacExecuteActionsBuilder {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
-  _$_ZacExecuteActionsBuilderOnce(
-      {required this.actions, this.child, final String? $type})
-      : $type = $type ?? 'z:1:ExecuteActionsOnce',
-        super._();
+  _$_ZacExecuteActionsBuilderOnce({required this.actions, this.child})
+      : super._();
 
   factory _$_ZacExecuteActionsBuilderOnce.fromJson(Map<String, dynamic> json) =>
       _$$_ZacExecuteActionsBuilderOnceFromJson(json);
@@ -176,9 +161,6 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
   final ZacBuilder<List<ZacAction>> actions;
   @override
   final ZacBuilder<Widget>? child;
-
-  @JsonKey(name: 'builder')
-  final String $type;
 
   @override
   String toString() {
@@ -202,7 +184,6 @@ class _$_ZacExecuteActionsBuilderOnce extends _ZacExecuteActionsBuilderOnce {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ZacExecuteActionsBuilderOnce value) once,
-    required TResult Function(_ZacExecuteActionsBuilderListen value) listen,
   }) {
     return once(this);
   }
@@ -219,79 +200,6 @@ abstract class _ZacExecuteActionsBuilderOnce extends ZacExecuteActionsBuilder {
 
   @override
   ZacBuilder<List<ZacAction>> get actions;
-  @override
-  ZacBuilder<Widget>? get child;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacExecuteActionsBuilderListen
-    extends _ZacExecuteActionsBuilderListen {
-  _$_ZacExecuteActionsBuilderListen(
-      {required this.actions,
-      required this.family,
-      this.child,
-      final String? $type})
-      : $type = $type ?? 'z:1:ExecuteActionsOnChange',
-        super._();
-
-  factory _$_ZacExecuteActionsBuilderListen.fromJson(
-          Map<String, dynamic> json) =>
-      _$$_ZacExecuteActionsBuilderListenFromJson(json);
-
-  @override
-  final ZacBuilder<List<ZacAction>> actions;
-  @override
-  final String family;
-  @override
-  final ZacBuilder<Widget>? child;
-
-  @JsonKey(name: 'builder')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacExecuteActionsBuilder.listen(actions: $actions, family: $family, child: $child)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacExecuteActionsBuilderListen &&
-            (identical(other.actions, actions) || other.actions == actions) &&
-            (identical(other.family, family) || other.family == family) &&
-            (identical(other.child, child) || other.child == child));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, actions, family, child);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacExecuteActionsBuilderOnce value) once,
-    required TResult Function(_ZacExecuteActionsBuilderListen value) listen,
-  }) {
-    return listen(this);
-  }
-}
-
-abstract class _ZacExecuteActionsBuilderListen
-    extends ZacExecuteActionsBuilder {
-  factory _ZacExecuteActionsBuilderListen(
-      {required final ZacBuilder<List<ZacAction>> actions,
-      required final String family,
-      final ZacBuilder<Widget>? child}) = _$_ZacExecuteActionsBuilderListen;
-  _ZacExecuteActionsBuilderListen._() : super._();
-
-  factory _ZacExecuteActionsBuilderListen.fromJson(Map<String, dynamic> json) =
-      _$_ZacExecuteActionsBuilderListen.fromJson;
-
-  @override
-  ZacBuilder<List<ZacAction>> get actions;
-  String get family;
   @override
   ZacBuilder<Widget>? get child;
 }
@@ -389,68 +297,4 @@ abstract class _ZacControlFlowActionIf extends ZacControlFlowAction {
   ZacBuilder<List<ZacAction>> get ifTrue;
   @override
   ZacBuilder<List<ZacAction>>? get ifFalse;
-}
-
-CaptureActionArgs _$CaptureActionArgsFromJson(Map<String, dynamic> json) {
-  return _CaptureActionArgs.fromJson(json);
-}
-
-/// @nodoc
-mixin _$CaptureActionArgs {
-  ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
-
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_CaptureActionArgs value) $default,
-  ) =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_CaptureActionArgs extends _CaptureActionArgs {
-  _$_CaptureActionArgs({required this.child}) : super._();
-
-  factory _$_CaptureActionArgs.fromJson(Map<String, dynamic> json) =>
-      _$$_CaptureActionArgsFromJson(json);
-
-  @override
-  final ZacBuilder<Widget> child;
-
-  @override
-  String toString() {
-    return 'CaptureActionArgs(child: $child)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_CaptureActionArgs &&
-            (identical(other.child, child) || other.child == child));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, child);
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_CaptureActionArgs value) $default,
-  ) {
-    return $default(this);
-  }
-}
-
-abstract class _CaptureActionArgs extends CaptureActionArgs {
-  factory _CaptureActionArgs({required final ZacBuilder<Widget> child}) =
-      _$_CaptureActionArgs;
-  _CaptureActionArgs._() : super._();
-
-  factory _CaptureActionArgs.fromJson(Map<String, dynamic> json) =
-      _$_CaptureActionArgs.fromJson;
-
-  @override
-  ZacBuilder<Widget> get child;
 }

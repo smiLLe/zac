@@ -23,7 +23,7 @@ mixin _$ZacState {
             String family, Object? Function(ProviderRef<Object?>) create)
         $default, {
     required TResult Function(
-            String family, Object? value, ZacStateUpdate udpate)
+            String family, Object? value, ZacStateUpdate update)
         provided,
   }) =>
       throw _privateConstructorUsedError;
@@ -32,7 +32,7 @@ mixin _$ZacState {
     TResult? Function(
             String family, Object? Function(ProviderRef<Object?>) create)?
         $default, {
-    TResult? Function(String family, Object? value, ZacStateUpdate udpate)?
+    TResult? Function(String family, Object? value, ZacStateUpdate update)?
         provided,
   }) =>
       throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ mixin _$ZacState {
     TResult Function(
             String family, Object? Function(ProviderRef<Object?>) create)?
         $default, {
-    TResult Function(String family, Object? value, ZacStateUpdate udpate)?
+    TResult Function(String family, Object? value, ZacStateUpdate update)?
         provided,
     required TResult orElse(),
   }) =>
@@ -181,7 +181,7 @@ class _$ZacStateCreate implements ZacStateCreate {
             String family, Object? Function(ProviderRef<Object?>) create)
         $default, {
     required TResult Function(
-            String family, Object? value, ZacStateUpdate udpate)
+            String family, Object? value, ZacStateUpdate update)
         provided,
   }) {
     return $default(family, create);
@@ -193,7 +193,7 @@ class _$ZacStateCreate implements ZacStateCreate {
     TResult? Function(
             String family, Object? Function(ProviderRef<Object?>) create)?
         $default, {
-    TResult? Function(String family, Object? value, ZacStateUpdate udpate)?
+    TResult? Function(String family, Object? value, ZacStateUpdate update)?
         provided,
   }) {
     return $default?.call(family, create);
@@ -205,7 +205,7 @@ class _$ZacStateCreate implements ZacStateCreate {
     TResult Function(
             String family, Object? Function(ProviderRef<Object?>) create)?
         $default, {
-    TResult Function(String family, Object? value, ZacStateUpdate udpate)?
+    TResult Function(String family, Object? value, ZacStateUpdate update)?
         provided,
     required TResult orElse(),
   }) {
@@ -268,7 +268,7 @@ abstract class _$$ZacStateProvidedCopyWith<$Res>
       __$$ZacStateProvidedCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String family, Object? value, ZacStateUpdate udpate});
+  $Res call({String family, Object? value, ZacStateUpdate update});
 }
 
 /// @nodoc
@@ -284,7 +284,7 @@ class __$$ZacStateProvidedCopyWithImpl<$Res>
   $Res call({
     Object? family = null,
     Object? value = freezed,
-    Object? udpate = null,
+    Object? update = null,
   }) {
     return _then(_$ZacStateProvided(
       null == family
@@ -292,9 +292,9 @@ class __$$ZacStateProvidedCopyWithImpl<$Res>
           : family // ignore: cast_nullable_to_non_nullable
               as String,
       freezed == value ? _value.value : value,
-      null == udpate
-          ? _value.udpate
-          : udpate // ignore: cast_nullable_to_non_nullable
+      null == update
+          ? _value.update
+          : update // ignore: cast_nullable_to_non_nullable
               as ZacStateUpdate,
     ));
   }
@@ -302,19 +302,20 @@ class __$$ZacStateProvidedCopyWithImpl<$Res>
 
 /// @nodoc
 
+@internal
 class _$ZacStateProvided implements ZacStateProvided {
-  _$ZacStateProvided(this.family, this.value, this.udpate);
+  _$ZacStateProvided(this.family, this.value, this.update);
 
   @override
   final String family;
   @override
   final Object? value;
   @override
-  final ZacStateUpdate udpate;
+  final ZacStateUpdate update;
 
   @override
   String toString() {
-    return 'ZacState.provided(family: $family, value: $value, udpate: $udpate)';
+    return 'ZacState.provided(family: $family, value: $value, update: $update)';
   }
 
   @override
@@ -324,12 +325,12 @@ class _$ZacStateProvided implements ZacStateProvided {
             other is _$ZacStateProvided &&
             (identical(other.family, family) || other.family == family) &&
             const DeepCollectionEquality().equals(other.value, value) &&
-            (identical(other.udpate, udpate) || other.udpate == udpate));
+            (identical(other.update, update) || other.update == update));
   }
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, family, const DeepCollectionEquality().hash(value), udpate);
+      runtimeType, family, const DeepCollectionEquality().hash(value), update);
 
   @JsonKey(ignore: true)
   @override
@@ -344,10 +345,10 @@ class _$ZacStateProvided implements ZacStateProvided {
             String family, Object? Function(ProviderRef<Object?>) create)
         $default, {
     required TResult Function(
-            String family, Object? value, ZacStateUpdate udpate)
+            String family, Object? value, ZacStateUpdate update)
         provided,
   }) {
-    return provided(family, value, udpate);
+    return provided(family, value, update);
   }
 
   @override
@@ -356,10 +357,10 @@ class _$ZacStateProvided implements ZacStateProvided {
     TResult? Function(
             String family, Object? Function(ProviderRef<Object?>) create)?
         $default, {
-    TResult? Function(String family, Object? value, ZacStateUpdate udpate)?
+    TResult? Function(String family, Object? value, ZacStateUpdate update)?
         provided,
   }) {
-    return provided?.call(family, value, udpate);
+    return provided?.call(family, value, update);
   }
 
   @override
@@ -368,12 +369,12 @@ class _$ZacStateProvided implements ZacStateProvided {
     TResult Function(
             String family, Object? Function(ProviderRef<Object?>) create)?
         $default, {
-    TResult Function(String family, Object? value, ZacStateUpdate udpate)?
+    TResult Function(String family, Object? value, ZacStateUpdate update)?
         provided,
     required TResult orElse(),
   }) {
     if (provided != null) {
-      return provided(family, value, udpate);
+      return provided(family, value, update);
     }
     return orElse();
   }
@@ -412,12 +413,12 @@ class _$ZacStateProvided implements ZacStateProvided {
 
 abstract class ZacStateProvided implements ZacState {
   factory ZacStateProvided(final String family, final Object? value,
-      final ZacStateUpdate udpate) = _$ZacStateProvided;
+      final ZacStateUpdate update) = _$ZacStateProvided;
 
   @override
   String get family;
   Object? get value;
-  ZacStateUpdate get udpate;
+  ZacStateUpdate get update;
   @override
   @JsonKey(ignore: true)
   _$$ZacStateProvidedCopyWith<_$ZacStateProvided> get copyWith =>
@@ -690,30 +691,30 @@ abstract class _ZacStateConsume<T> extends ZacStateConsume<T> {
   ZacBuilder<List<ZacTransform>?>? get transformer;
 }
 
-StateActions _$StateActionsFromJson(Map<String, dynamic> json) {
-  return _StateActionsUpdate.fromJson(json);
+ZacStateActions _$ZacStateActionsFromJson(Map<String, dynamic> json) {
+  return _ZacStateActionsUpdate.fromJson(json);
 }
 
 /// @nodoc
-mixin _$StateActions {
+mixin _$ZacStateActions {
   String get family => throw _privateConstructorUsedError;
   ZacBuilder<Object?> get withValue => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateActionsUpdate value) update,
+    required TResult Function(_ZacStateActionsUpdate value) update,
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_StateActionsUpdate extends _StateActionsUpdate {
-  _$_StateActionsUpdate({required this.family, required this.withValue})
+class _$_ZacStateActionsUpdate extends _ZacStateActionsUpdate {
+  _$_ZacStateActionsUpdate({required this.family, required this.withValue})
       : super._();
 
-  factory _$_StateActionsUpdate.fromJson(Map<String, dynamic> json) =>
-      _$$_StateActionsUpdateFromJson(json);
+  factory _$_ZacStateActionsUpdate.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateActionsUpdateFromJson(json);
 
   @override
   final String family;
@@ -722,14 +723,14 @@ class _$_StateActionsUpdate extends _StateActionsUpdate {
 
   @override
   String toString() {
-    return 'StateActions.update(family: $family, withValue: $withValue)';
+    return 'ZacStateActions.update(family: $family, withValue: $withValue)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_StateActionsUpdate &&
+            other is _$_ZacStateActionsUpdate &&
             (identical(other.family, family) || other.family == family) &&
             (identical(other.withValue, withValue) ||
                 other.withValue == withValue));
@@ -742,23 +743,105 @@ class _$_StateActionsUpdate extends _StateActionsUpdate {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_StateActionsUpdate value) update,
+    required TResult Function(_ZacStateActionsUpdate value) update,
   }) {
     return update(this);
   }
 }
 
-abstract class _StateActionsUpdate extends StateActions {
-  factory _StateActionsUpdate(
+abstract class _ZacStateActionsUpdate extends ZacStateActions {
+  factory _ZacStateActionsUpdate(
       {required final String family,
-      required final ZacBuilder<Object?> withValue}) = _$_StateActionsUpdate;
-  _StateActionsUpdate._() : super._();
+      required final ZacBuilder<Object?> withValue}) = _$_ZacStateActionsUpdate;
+  _ZacStateActionsUpdate._() : super._();
 
-  factory _StateActionsUpdate.fromJson(Map<String, dynamic> json) =
-      _$_StateActionsUpdate.fromJson;
+  factory _ZacStateActionsUpdate.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateActionsUpdate.fromJson;
 
   @override
   String get family;
   @override
   ZacBuilder<Object?> get withValue;
+}
+
+ZacOnStateChange _$ZacOnStateChangeFromJson(Map<String, dynamic> json) {
+  return _ZacOnStateChangeExecActions.fromJson(json);
+}
+
+/// @nodoc
+mixin _$ZacOnStateChange {
+  ZacBuilder<List<ZacAction>> get actions => throw _privateConstructorUsedError;
+  String get family => throw _privateConstructorUsedError;
+  ZacBuilder<Widget>? get child => throw _privateConstructorUsedError;
+
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacOnStateChangeExecActions value)
+        executeActions,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacOnStateChangeExecActions extends _ZacOnStateChangeExecActions {
+  _$_ZacOnStateChangeExecActions(
+      {required this.actions, required this.family, this.child})
+      : super._();
+
+  factory _$_ZacOnStateChangeExecActions.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacOnStateChangeExecActionsFromJson(json);
+
+  @override
+  final ZacBuilder<List<ZacAction>> actions;
+  @override
+  final String family;
+  @override
+  final ZacBuilder<Widget>? child;
+
+  @override
+  String toString() {
+    return 'ZacOnStateChange.executeActions(actions: $actions, family: $family, child: $child)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacOnStateChangeExecActions &&
+            (identical(other.actions, actions) || other.actions == actions) &&
+            (identical(other.family, family) || other.family == family) &&
+            (identical(other.child, child) || other.child == child));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, actions, family, child);
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacOnStateChangeExecActions value)
+        executeActions,
+  }) {
+    return executeActions(this);
+  }
+}
+
+abstract class _ZacOnStateChangeExecActions extends ZacOnStateChange {
+  factory _ZacOnStateChangeExecActions(
+      {required final ZacBuilder<List<ZacAction>> actions,
+      required final String family,
+      final ZacBuilder<Widget>? child}) = _$_ZacOnStateChangeExecActions;
+  _ZacOnStateChangeExecActions._() : super._();
+
+  factory _ZacOnStateChangeExecActions.fromJson(Map<String, dynamic> json) =
+      _$_ZacOnStateChangeExecActions.fromJson;
+
+  @override
+  ZacBuilder<List<ZacAction>> get actions;
+  @override
+  String get family;
+  @override
+  ZacBuilder<Widget>? get child;
 }

@@ -1,16 +1,12 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/build.dart';
 import 'package:zac/src/zac/context.dart';
 import 'package:zac/src/zac/registry.dart';
-import 'package:zac/src/zac/shared_state.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -20,7 +16,6 @@ import '../helper.mocks.dart';
 
 void main() {
   test('In Registry', () {
-    expectInRegistry('z:1:CaptureActionArgs', CaptureActionArgs.fromJson);
     expectInRegistry('z:1:Action:If', ZacControlFlowAction.fromJson);
     expectInRegistry(['z:1:ExecuteActionsOnce', 'z:1:ExecuteActionsOnChange'],
         ZacExecuteActionsBuilder.fromJson);
@@ -43,13 +38,13 @@ void main() {
                 [
                   ZacAction(
                     (context, zacContext) {
-                      a1(SharedState.consume(
+                      a1(ZacStateConsume.consumeValue(
                         context: context,
                         zacContext: zacContext,
                         family: 'actionArg.1',
                       ));
 
-                      a2(SharedState.consume(
+                      a2(ZacStateConsume.consumeValue(
                         context: context,
                         zacContext: zacContext,
                         family: 'actionArg.2',
@@ -198,39 +193,6 @@ void main() {
       await tester.pump();
 
       verifyNoMoreInteractions(executeCb);
-    });
-  });
-
-  group('ZacExecuteActionsListen', () {
-    testWidgets('execute interactions', (tester) async {
-      final cb = MockTestActionExecute();
-      await testWithContextsWraped(
-        tester,
-        (child) => ZacSharedStateProvider(
-          states: {'shared': ZacSharedStateProvide.value(1)},
-          child: ZacExecuteActionsBuilder.listen(
-            actions: ZacListOfActions([TestAction(cb)]),
-            family: 'shared',
-            child: FlutterSizedBox(
-              key: FlutterValueKey('child'),
-              child: child,
-            ),
-          ),
-        ),
-        (getContext, getZacContext) async {
-          verifyZeroInteractions(cb);
-
-          getContext()
-              .widgetRef
-              .read(SharedState.provider('shared'))
-              .update((_) => 2);
-
-          await tester.pumpAndSettle();
-
-          verify(cb(any, any)).called(1);
-          verifyNoMoreInteractions(cb);
-        },
-      );
     });
   });
 }
