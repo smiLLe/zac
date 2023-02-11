@@ -1,8 +1,8 @@
 import 'package:collection/collection.dart';
 import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/state.dart';
+import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
-
 import 'package:zac/src/zac/generated_registry.dart';
 
 typedef CreateBuilder<T> = ZacBuilder<T> Function(Map<String, dynamic> map);
@@ -12,6 +12,10 @@ typedef CreateBuilderFromSingleType = ZacBuilder<T> Function<T>(
 class ZacRegistry extends DelegatingMap<String, Object> {
   static final ZacRegistry _singleton = () {
     final register = ZacRegistry._()
+      ..registerGeneric(
+          ZacTransformValue.unionCurrent, ZacTransformValue.fromRegister)
+      ..registerGeneric(
+          ZacTransformValue.unionInitial, ZacTransformValue.fromRegister)
       ..registerGeneric(ZacStateConsume.union, ZacStateConsume.fromRegister);
 
     addZacBuilders(register);

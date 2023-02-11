@@ -17,8 +17,8 @@ import '../helper.mocks.dart';
 void main() {
   test('In Registry', () {
     expectInRegistry('z:1:Action:If', ZacControlFlowAction.fromJson);
-    expectInRegistry(['z:1:ExecuteActionsOnce', 'z:1:ExecuteActionsOnChange'],
-        ZacExecuteActionsBuilder.fromJson);
+    expectInRegistry(
+        'z:1:ExecuteActionsOnce', ZacExecuteActionsBuilder.fromJson);
   });
 
   group('List of Actions:', () {
@@ -80,9 +80,8 @@ void main() {
             [
               ZacControlFlowAction.ifCond(
                 conditionValue: ZacString('hello'),
-                condition: ZacListOfTransformers([
-                  TestTransform((transformValue, context, zacContext) => true)
-                ]),
+                condition: ZacListOfTransformers(
+                    [TestTransform((context, zacContext) => true)]),
                 ifTrue: ZacListOfActions([TestAction(trueCb)]),
                 ifFalse: ZacListOfActions([TestAction(falseCb)]),
               ).build(getContext(), getZacContext())
@@ -103,8 +102,12 @@ void main() {
             [
               ZacControlFlowAction.ifCond(
                 conditionValue: ZacString('hello'),
-                condition: ZacListOfTransformers(
-                    [ObjectTransformer.equals(other: ZacString('world'))]),
+                condition: ZacListOfTransformers([
+                  ObjectTransformer.equals(
+                    object: ZacTransformValue<Object?>.current(),
+                    other: ZacString('world'),
+                  )
+                ]),
                 ifTrue: ZacListOfActions([TestAction(trueCb)]),
                 ifFalse: ZacListOfActions([TestAction(falseCb)]),
               ).build(getContext(), getZacContext())
@@ -126,9 +129,18 @@ void main() {
             ZacControlFlowAction.ifCond(
               conditionValue: ZacString('hello'),
               condition: ZacListOfTransformers([
-                ObjectTransformer.equals(other: ZacString('hello')),
-                ObjectTransformer.equals(other: ZacString('THAT IS FALSE')),
-                ObjectTransformer.equals(other: ZacString('hello')),
+                ObjectTransformer.equals(
+                  object: ZacTransformValue<Object?>.current(),
+                  other: ZacString('hello'),
+                ),
+                ObjectTransformer.equals(
+                  object: ZacTransformValue<Object?>.current(),
+                  other: ZacString('THAT IS FALSE'),
+                ),
+                ObjectTransformer.equals(
+                  object: ZacTransformValue<Object?>.current(),
+                  other: ZacString('hello'),
+                ),
               ]),
               ifTrue: ZacListOfActions([TestAction(trueCb)]),
               ifFalse: ZacListOfActions([TestAction(falseCb)]),
@@ -147,8 +159,11 @@ void main() {
               () => [
                     ZacControlFlowAction.ifCond(
                       conditionValue: ZacString('hello'),
-                      condition:
-                          ZacListOfTransformers([ObjectTransformer.toString()]),
+                      condition: ZacListOfTransformers([
+                        ObjectTransformer.toString(
+                          ZacTransformValue<Object?>.current(),
+                        )
+                      ]),
                       ifTrue: ZacListOfActions(
                           [TestAction.noop(<String, dynamic>{})]),
                     ).build(getContext(), getZacContext())

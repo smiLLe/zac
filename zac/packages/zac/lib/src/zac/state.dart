@@ -244,8 +244,8 @@ The value of type ${value.runtimeType} was expected to be transformed.
 Value: $value''');
     }
 
-    final transformedVal = buildTransformer.transform(
-        ZacTransformValue(value), context, zacContext);
+    final transformedVal =
+        buildTransformer.transform(context, zacContext, value);
     if (transformedVal is! T) {
       final transformerErr = buildTransformer.map((e) => e.runtimeType);
 

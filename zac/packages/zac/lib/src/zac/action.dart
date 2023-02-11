@@ -163,9 +163,8 @@ class ZacControlFlowAction
         final val = obj.conditionValue.build(context, zacContext);
         final trueOrFalse = condition
             .build(context, zacContext)
-            .fold<bool>(true, (previousValue, zacTransformers) {
-          final cond = zacTransformers.transform(
-              ZacTransformValue(val), context, zacContext);
+            .fold<bool>(true, (previousValue, zacTransformer) {
+          final cond = [zacTransformer].transform(context, zacContext, val);
 
           if (cond is! bool) {
             throw StateError(

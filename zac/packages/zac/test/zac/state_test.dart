@@ -142,7 +142,7 @@ void main() {
   testWidgets('integration simple #2', (tester) async {
     ZacRegistry().register<ZacTransform>(
       'test:transform',
-      (map) => TestTransform((transformValue, context, zacContext) {
+      (map) => TestTransform((context, zacContext) {
         return 'hello from transformer';
       }),
     );
@@ -330,7 +330,7 @@ Value: 1''')));
                     family: 'shared',
                     transformer: ZacListOfTransformers([
                       TestTransform(
-                        (transformValue, context, zacContext) {
+                        (context, zacContext) {
                           return DateTime.now();
                         },
                       )

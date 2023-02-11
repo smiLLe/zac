@@ -32,7 +32,7 @@ class MockTestTransformExecute extends _i1.Mock
 
   @override
   Object? call(
-    _i3.ZacTransformValue? transformValue,
+    _i3.ZacTransformValue<dynamic>? transformValue,
     _i4.BuildContext? context,
     _i5.ZacContext? zacContext,
   ) =>

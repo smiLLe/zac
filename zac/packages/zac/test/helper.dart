@@ -172,12 +172,11 @@ Future<void> testFindWidget<T extends Widget>(
 }
 
 class TestTransform implements ZacBuilder<ZacTransform> {
-  final Object? Function(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext) cb;
+  final Object? Function(BuildContext context, ZacContext zacContext) cb;
 
   TestTransform(this.cb);
   factory TestTransform.noop(Map<String, dynamic> map) {
-    return TestTransform((transformValue, context, zacContext) {
+    return TestTransform((context, zacContext) {
       return null;
     });
   }

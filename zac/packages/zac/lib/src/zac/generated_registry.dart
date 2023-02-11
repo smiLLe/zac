@@ -579,7 +579,6 @@ void addZacBuilders(ZacRegistry registry) {
     ..register('z:1:Build:Isolate.fromBuilderMap', ZacBuild.fromJson)
     ..register('z:1:Build:Isolate.fromJsonString', ZacBuild.fromJson)
     ..register('z:1:DateTime', ZacDateTime.fromJson)
-    ..register('z:1:ExecuteActionsOnChange', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:ExecuteActionsOnce', ZacExecuteActionsBuilder.fromJson)
     ..register('z:1:List<Widget>', ZacListOfWidgets.fromJson)
     ..register('z:1:List<ZacAction>', ZacListOfActions.fromJson)
