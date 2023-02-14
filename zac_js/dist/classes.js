@@ -2353,8 +2353,11 @@ export class ZacStateMachineProvider extends ZacBuilder {
     }
 }
 export class ZacStateProvide extends ZacBuilder {
-    static new(data) {
-        return new ZacStateProvide(Object.assign({ builder: 'z:1:State.provide' }, data));
+    static builder(data) {
+        return new ZacStateProvide(Object.assign({ builder: 'z:1:State.provideBuilder' }, data));
+    }
+    static builtIn(data) {
+        return new ZacStateProvide(Object.assign({ builder: 'z:1:State.provideBuiltIn' }, data));
     }
 }
 export class ZacStatesProvider extends ZacBuilder {

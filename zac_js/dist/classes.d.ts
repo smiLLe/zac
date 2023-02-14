@@ -2918,11 +2918,13 @@ export declare class ZacStateMachineProvider extends ZacBuilder<FlutterWidget> {
     }): ZacStateMachineProvider;
 }
 export declare class ZacStateProvide extends ZacBuilder<ZacState> {
-    static new(data: {
+    static builder(data: {
+        family: string;
+        value: ZacBuilder<unknown>;
+    }): ZacStateProvide;
+    static builtIn(data: {
         family: string;
         value?: JSONValue;
-        mayConvertToBuilder?: boolean;
-        mayBuildBuilder?: boolean;
     }): ZacStateProvide;
 }
 export declare class ZacStatesProvider extends ZacBuilder<FlutterWidget> {

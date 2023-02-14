@@ -3,7 +3,6 @@ import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/build.dart';
 import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/zac_value.dart';
@@ -251,7 +250,10 @@ void main() {
                 child: FlutterScaffold(
                   body: ZacStatesProvider(
                     states: [
-                      ZacStateProvide(family: 'shared', value: 'hello world'),
+                      ZacStateProvide.builtIn(
+                        family: 'shared',
+                        value: 'hello world',
+                      ),
                     ],
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),

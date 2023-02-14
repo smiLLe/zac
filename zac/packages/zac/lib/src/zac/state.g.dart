@@ -6,21 +6,37 @@ part of 'state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacStateProvide _$$_ZacStateProvideFromJson(Map<String, dynamic> json) =>
+_$_ZacStateProvideBuilder _$$_ZacStateProvideBuilderFromJson(
+        Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_ZacStateProvide',
+      r'_$_ZacStateProvideBuilder',
       json,
       ($checkedConvert) {
-        final val = _$_ZacStateProvide(
+        final val = _$_ZacStateProvideBuilder(
           family: $checkedConvert('family', (v) => v as String),
-          value: $checkedConvert('value', (v) => v),
-          mayConvertToBuilder:
-              $checkedConvert('mayConvertToBuilder', (v) => v as bool? ?? true),
-          mayBuildBuilder:
-              $checkedConvert('mayBuildBuilder', (v) => v as bool? ?? false),
+          value: $checkedConvert(
+              'value', (v) => ZacBuilder<Object>.fromJson(v as Object)),
+          $type: $checkedConvert('builder', (v) => v as String?),
         );
         return val;
       },
+      fieldKeyMap: const {r'$type': 'builder'},
+    );
+
+_$_ZacStateProvideBuiltIn _$$_ZacStateProvideBuiltInFromJson(
+        Map<String, dynamic> json) =>
+    $checkedCreate(
+      r'_$_ZacStateProvideBuiltIn',
+      json,
+      ($checkedConvert) {
+        final val = _$_ZacStateProvideBuiltIn(
+          family: $checkedConvert('family', (v) => v as String),
+          value: $checkedConvert('value', (v) => v),
+          $type: $checkedConvert('builder', (v) => v as String?),
+        );
+        return val;
+      },
+      fieldKeyMap: const {r'$type': 'builder'},
     );
 
 _$_ZacStatesProvider _$$_ZacStatesProviderFromJson(Map<String, dynamic> json) =>

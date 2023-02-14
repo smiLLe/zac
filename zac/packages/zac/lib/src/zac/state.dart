@@ -43,43 +43,32 @@ class ZacState with _$ZacState {
 @freezedZacBuilder
 class ZacStateProvide with _$ZacStateProvide implements ZacBuilder<ZacState> {
   ZacStateProvide._();
+
+  static const union = 'z:1:State.provideBuilder';
+  static const unionBuiltIn = 'z:1:State.provideBuiltIn';
+
   factory ZacStateProvide.fromJson(Map<String, dynamic> json) =>
       _$ZacStateProvideFromJson(json);
 
-  @FreezedUnionValue('z:1:State.provide')
-  factory ZacStateProvide({
+  @FreezedUnionValue(ZacStateProvide.union)
+  factory ZacStateProvide.builder({
+    required ZacStateFamily family,
+    required ZacBuilder<Object> value,
+  }) = _ZacStateProvideBuilder;
+
+  @FreezedUnionValue(ZacStateProvide.unionBuiltIn)
+  factory ZacStateProvide.builtIn({
     required ZacStateFamily family,
     Object? value,
-    @Default(true) bool mayConvertToBuilder,
-    @Default(false) bool mayBuildBuilder,
-  }) = _ZacStateProvide;
+  }) = _ZacStateProvideBuiltIn;
+
+  late final ZacState _state = map<ZacState>(
+    builtIn: (obj) => ZacState(obj.family, (_) => obj.value),
+    builder: (obj) => ZacState(obj.family, (_) => obj.value),
+  );
 
   @override
-  ZacState build(BuildContext context, ZacContext zacContext) {
-    return ZacState(
-      family,
-      (_) => map(
-        (obj) {
-          final val = obj.value;
-          if (null == val) return null;
-
-          return obj.mayConvertToBuilder
-              ? val.maybeBuilder(
-                  cb: (converterName, map) {
-                    final builder = ZacRegistry()
-                        .createBuilder<Object?>(converterName, map);
-
-                    return mayBuildBuilder
-                        ? builder.build(context, zacContext)
-                        : builder;
-                  },
-                  orElse: () => val,
-                )
-              : val;
-        },
-      ),
-    );
-  }
+  ZacState build(BuildContext context, ZacContext zacContext) => _state;
 }
 
 @freezedZacBuilder

@@ -5,6 +5,7 @@ import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/base.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:zac/src/zac/zac_value.dart';
 part 'navigator.freezed.dart';
 part 'navigator.g.dart';
 
@@ -51,7 +52,12 @@ class FlutterMaterialPageRoute
     return MaterialPageRoute<Object?>(
       builder: (_) => ZacStatesProviderWidget(
         builder: ZacStatesProvider(
-          states: [ZacStateProvide(family: familyName, value: arguments)],
+          states: [
+            ZacStateProvide.builtIn(
+              family: familyName,
+              value: arguments,
+            )
+          ],
           child: child,
         ),
       ),
@@ -128,7 +134,12 @@ class FlutterPageRouteBuilder
     return PageRouteBuilder<ZacBuilder<List<ZacAction>>?>(
       pageBuilder: (_, __, ___) => ZacStatesProviderWidget(
         builder: ZacStatesProvider(
-          states: [ZacStateProvide(family: familyName, value: arguments)],
+          states: [
+            ZacStateProvide.builtIn(
+              family: familyName,
+              value: arguments,
+            )
+          ],
           child: child,
         ),
       ),

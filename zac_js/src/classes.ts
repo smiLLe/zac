@@ -5021,14 +5021,15 @@ export class ZacStateMachineProvider extends ZacBuilder<FlutterWidget> {
   }
 }
 export class ZacStateProvide extends ZacBuilder<ZacState> {
-  static new(data: {
-    family: string;
-    value?: JSONValue;
-    mayConvertToBuilder?: boolean;
-    mayBuildBuilder?: boolean;
-  }) {
+  static builder(data: { family: string; value: ZacBuilder<unknown> }) {
     return new ZacStateProvide({
-      builder: "z:1:State.provide",
+      builder: "z:1:State.provideBuilder",
+      ...data,
+    });
+  }
+  static builtIn(data: { family: string; value?: JSONValue }) {
+    return new ZacStateProvide({
+      builder: "z:1:State.provideBuiltIn",
       ...data,
     });
   }

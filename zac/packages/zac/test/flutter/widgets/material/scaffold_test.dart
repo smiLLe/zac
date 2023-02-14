@@ -232,7 +232,10 @@ void main() {
                 child: FlutterScaffold(
                     body: ZacStatesProvider(
                   states: [
-                    ZacStateProvide(family: 'shared', value: 'hello world'),
+                    ZacStateProvide.builtIn(
+                      family: 'shared',
+                      value: 'hello world',
+                    ),
                   ],
                   child: FlutterElevatedButton(
                     key: FlutterValueKey('button'),
@@ -312,7 +315,10 @@ void main() {
                 child: FlutterScaffold(
                   body: ZacStatesProvider(
                     states: [
-                      ZacStateProvide(family: 'shared', value: 'hello world')
+                      ZacStateProvide.builtIn(
+                        family: 'shared',
+                        value: 'hello world',
+                      )
                     ],
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
@@ -449,7 +455,10 @@ void main() {
                 child: FlutterScaffold(
                   body: ZacStatesProvider(
                     states: [
-                      ZacStateProvide(family: 'shared', value: 'hello world')
+                      ZacStateProvide.builtIn(
+                        family: 'shared',
+                        value: 'hello world',
+                      )
                     ],
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
