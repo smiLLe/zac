@@ -13,29 +13,6 @@ export class ZacBuilder extends ZacConvertable {
         return this._doNotUse;
     }
 }
-export class SharedStateConsumeType extends ZacConvertable {
-    static watch(data) {
-        return new SharedStateConsumeType(Object.assign({ builder: 'z:1:SharedState.watch' }, data));
-    }
-    static read() {
-        return new SharedStateConsumeType({
-            builder: 'z:1:SharedState.read'
-        });
-    }
-}
-export class ZacSharedStateProvide extends ZacConvertable {
-    static value(data) {
-        return new ZacSharedStateProvide(Object.assign({ builder: 'z:1:SharedStateType:Value' }, data));
-    }
-    static builder(data) {
-        return new ZacSharedStateProvide(Object.assign({ builder: 'z:1:SharedStateType:Builder' }, data));
-    }
-    static n() {
-        return new ZacSharedStateProvide({
-            builder: 'z:1:SharedStateType:Null'
-        });
-    }
-}
 export class ZacStateMachineConfig extends ZacConvertable {
     static new(data) {
         return new ZacStateMachineConfig(Object.assign({ builder: 'z:1:StateMachine' }, data));
@@ -52,10 +29,8 @@ export class ZacStateMachineTransition extends ZacConvertable {
     }
 }
 export class BoolTransformer extends ZacBuilder {
-    static negate() {
-        return new BoolTransformer({
-            builder: 'z:1:Transformer:Bool.negate'
-        });
+    static negate(data) {
+        return new BoolTransformer(Object.assign({ builder: 'z:1:Transformer:Bool.negate' }, data));
     }
 }
 export class Align extends ZacBuilder {
@@ -1266,6 +1241,28 @@ export class PageRouteBuilder extends ZacBuilder {
         return new PageRouteBuilder(Object.assign({ builder: 'f:1:PageRouteBuilder' }, data));
     }
 }
+export class PanAxis extends ZacBuilder {
+    static horizontal() {
+        return new PanAxis({
+            builder: 'f:1:PanAxis.horizontal'
+        });
+    }
+    static vertical() {
+        return new PanAxis({
+            builder: 'f:1:PanAxis.vertical'
+        });
+    }
+    static aligned() {
+        return new PanAxis({
+            builder: 'f:1:PanAxis.aligned'
+        });
+    }
+    static free() {
+        return new PanAxis({
+            builder: 'f:1:PanAxis.free'
+        });
+    }
+}
 export class Positioned extends ZacBuilder {
     static new(data) {
         return new Positioned(Object.assign({ builder: 'f:1:Positioned' }, data));
@@ -2032,15 +2029,11 @@ export class WrapCrossAlignment extends ZacBuilder {
     }
 }
 export class IntTransformer extends ZacBuilder {
-    static parse() {
-        return new IntTransformer({
-            builder: 'z:1:Transformer:int.parse'
-        });
+    static parse(data) {
+        return new IntTransformer(Object.assign({ builder: 'z:1:Transformer:int.parse' }, data));
     }
-    static tryParse() {
-        return new IntTransformer({
-            builder: 'z:1:Transformer:int.tryParse'
-        });
+    static tryParse(data) {
+        return new IntTransformer(Object.assign({ builder: 'z:1:Transformer:int.tryParse' }, data));
     }
     static incr(data) {
         return new IntTransformer(Object.assign({ builder: 'z:1:Transformer:int.incr' }, data));
@@ -2053,50 +2046,32 @@ export class IterableTransformer extends ZacBuilder {
     static map(data) {
         return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.map' }, data));
     }
-    static single() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.single'
-        });
+    static single(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.single' }, data));
     }
-    static first() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.first'
-        });
+    static first(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.first' }, data));
     }
-    static last() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.last'
-        });
+    static last(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.last' }, data));
     }
-    static length_() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.length'
-        });
+    static length_(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.length' }, data));
     }
-    static isEmpty() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.isEmpty'
-        });
+    static isEmpty(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.isEmpty' }, data));
     }
-    static isNotEmpty() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.isNotEmpty'
-        });
+    static isNotEmpty(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.isNotEmpty' }, data));
     }
-    static toList() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.toList'
-        });
+    static toList(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.toList' }, data));
     }
-    static toSet() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.toSet'
-        });
+    static toSet(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.toSet' }, data));
     }
-    static toString() {
-        return new IterableTransformer({
-            builder: 'z:1:Transformer:Iterable.toString'
-        });
+    static toString(data) {
+        return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.toString' }, data));
     }
     static join(data) {
         return new IterableTransformer(Object.assign({ builder: 'z:1:Transformer:Iterable.join' }, data));
@@ -2115,57 +2090,39 @@ export class IterableTransformer extends ZacBuilder {
     }
 }
 export class JsonTransformer extends ZacBuilder {
-    static encode() {
-        return new JsonTransformer({
-            builder: 'z:1:Transformer:Json.encode'
-        });
+    static encode(data) {
+        return new JsonTransformer(Object.assign({ builder: 'z:1:Transformer:Json.encode' }, data));
     }
-    static decode() {
-        return new JsonTransformer({
-            builder: 'z:1:Transformer:Json.decode'
-        });
+    static decode(data) {
+        return new JsonTransformer(Object.assign({ builder: 'z:1:Transformer:Json.decode' }, data));
     }
 }
 export class ListTransformer extends ZacBuilder {
-    static reversed() {
-        return new ListTransformer({
-            builder: 'z:1:Transformer:List.reversed'
-        });
+    static reversed(data) {
+        return new ListTransformer(Object.assign({ builder: 'z:1:Transformer:List.reversed' }, data));
     }
     static add(data) {
         return new ListTransformer(Object.assign({ builder: 'z:1:Transformer:List.add' }, data));
     }
 }
 export class MapTransformer extends ZacBuilder {
-    static values() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map.values'
-        });
+    static values(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map.values' }, data));
     }
-    static keys() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map.keys'
-        });
+    static keys(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map.keys' }, data));
     }
-    static entries() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map.entries'
-        });
+    static entries(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map.entries' }, data));
     }
-    static length_() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map.length'
-        });
+    static length_(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map.length' }, data));
     }
-    static isEmpty() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map.isEmpty'
-        });
+    static isEmpty(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map.isEmpty' }, data));
     }
-    static isNotEmpty() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map.isNotEmpty'
-        });
+    static isNotEmpty(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map.isNotEmpty' }, data));
     }
     static containsKey(data) {
         return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map.containsKey' }, data));
@@ -2176,20 +2133,14 @@ export class MapTransformer extends ZacBuilder {
     static mapper(data) {
         return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map.map' }, data));
     }
-    static fromObjectObject() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map<Object, Object>.from'
-        });
+    static fromObjectObject(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map<Object, Object>.from' }, data));
     }
-    static fromStringObject() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map<String, Object>.from'
-        });
+    static fromStringObject(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map<String, Object>.from' }, data));
     }
-    static fromStringNullObject() {
-        return new MapTransformer({
-            builder: 'z:1:Transformer:Map<String, Object?>.from'
-        });
+    static fromStringNullObject(data) {
+        return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map<String, Object?>.from' }, data));
     }
     static key(data) {
         return new MapTransformer(Object.assign({ builder: 'z:1:Transformer:Map[key]' }, data));
@@ -2199,178 +2150,96 @@ export class MapTransformer extends ZacBuilder {
     }
 }
 export class NumTransformer extends ZacBuilder {
-    static toDouble() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.toDouble'
-        });
+    static toDouble(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.toDouble' }, data));
     }
-    static toInt() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.toInt'
-        });
+    static toInt(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.toInt' }, data));
     }
-    static abs() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.abs'
-        });
+    static abs(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.abs' }, data));
     }
-    static ceil() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.ceil'
-        });
+    static ceil(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.ceil' }, data));
     }
-    static ceilToDouble() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.ceilToDouble'
-        });
+    static ceilToDouble(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.ceilToDouble' }, data));
     }
-    static floor() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.floor'
-        });
+    static floor(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.floor' }, data));
     }
-    static floorToDouble() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.floorToDouble'
-        });
+    static floorToDouble(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.floorToDouble' }, data));
     }
-    static round() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.round'
-        });
+    static round(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.round' }, data));
     }
-    static roundToDouble() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.roundToDouble'
-        });
+    static roundToDouble(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.roundToDouble' }, data));
     }
-    static isFinite() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.isFinite'
-        });
+    static isFinite(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.isFinite' }, data));
     }
-    static isInfinite() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.isInfinite'
-        });
+    static isInfinite(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.isInfinite' }, data));
     }
-    static isNan() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.isNan'
-        });
+    static isNan(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.isNan' }, data));
     }
-    static isNegative() {
-        return new NumTransformer({
-            builder: 'z:1:Transformer:num.isNegative'
-        });
+    static isNegative(data) {
+        return new NumTransformer(Object.assign({ builder: 'z:1:Transformer:num.isNegative' }, data));
     }
 }
 export class ObjectTransformer extends ZacBuilder {
-    static isList() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.isList'
-        });
+    static isList(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.isList' }, data));
     }
-    static isMap() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.isMap'
-        });
+    static isMap(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.isMap' }, data));
     }
-    static isBool() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.isBool'
-        });
+    static isBool(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.isBool' }, data));
     }
-    static isString() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.isString'
-        });
+    static isString(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.isString' }, data));
     }
-    static isDouble() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.isDouble'
-        });
+    static isDouble(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.isDouble' }, data));
     }
-    static isInt() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.isInt'
-        });
+    static isInt(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.isInt' }, data));
     }
-    static isNull() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.isNull'
-        });
-    }
-    static isActionPayload() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.isActionPayload'
-        });
+    static isNull(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.isNull' }, data));
     }
     static equals(data) {
         return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.equals' }, data));
     }
-    static toString() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.toString'
-        });
+    static toString(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.toString' }, data));
     }
-    static runtimeType() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.runtimeType'
-        });
+    static runtimeType(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.runtimeType' }, data));
     }
-    static hashCode() {
-        return new ObjectTransformer({
-            builder: 'z:1:Transformer:Object.hashCode'
-        });
-    }
-}
-export class SharedStateActions extends ZacBuilder {
-    static update(data) {
-        return new SharedStateActions(Object.assign({ builder: 'z:1:SharedState.update' }, data));
-    }
-    static transformCurrentValue(data) {
-        return new SharedStateActions(Object.assign({ builder: 'z:1:SharedState.transformCurrentValue' }, data));
-    }
-}
-export class SharedStateConsume extends ZacBuilder {
-    static new(data) {
-        return new SharedStateConsume(Object.assign({ builder: 'z:1:SharedState.consume' }, data));
+    static hashCode(data) {
+        return new ObjectTransformer(Object.assign({ builder: 'z:1:Transformer:Object.hashCode' }, data));
     }
 }
 export class StringTransformer extends ZacBuilder {
-    static length_() {
-        return new StringTransformer({
-            builder: 'z:1:Transformer:String.length'
-        });
+    static length_(data) {
+        return new StringTransformer(Object.assign({ builder: 'z:1:Transformer:String.length' }, data));
     }
     static split(data) {
         return new StringTransformer(Object.assign({ builder: 'z:1:Transformer:String.split' }, data));
     }
-    static isEmpty() {
-        return new StringTransformer({
-            builder: 'z:1:Transformer:String.isEmpty'
-        });
+    static isEmpty(data) {
+        return new StringTransformer(Object.assign({ builder: 'z:1:Transformer:String.isEmpty' }, data));
     }
-    static isNotEmpty() {
-        return new StringTransformer({
-            builder: 'z:1:Transformer:String.isNotEmpty'
-        });
+    static isNotEmpty(data) {
+        return new StringTransformer(Object.assign({ builder: 'z:1:Transformer:String.isNotEmpty' }, data));
     }
     static replaceAll(data) {
         return new StringTransformer(Object.assign({ builder: 'z:1:Transformer:String.replaceAll' }, data));
-    }
-}
-export class ZacActionPayloadTransformer extends ZacBuilder {
-    static toList() {
-        return new ZacActionPayloadTransformer({
-            builder: 'z:1:Transformer:ActionPayload.toList'
-        });
-    }
-    static toObject() {
-        return new ZacActionPayloadTransformer({
-            builder: 'z:1:Transformer:ActionPayload.toObject'
-        });
     }
 }
 export class ZacBool extends ZacBuilder {
@@ -2395,14 +2264,9 @@ export class ZacBuild extends ZacBuilder {
         return new ZacBuild(Object.assign({ builder: 'z:1:Build:Isolate.fromBuilderMap' }, data));
     }
 }
-export class ZacBuiltInActions extends ZacBuilder {
-    static withPayload(data) {
-        return new ZacBuiltInActions(Object.assign({ builder: 'z:1:Action.withPayload' }, data));
-    }
-}
 export class ZacControlFlowAction extends ZacBuilder {
     static ifCond(data) {
-        return new ZacControlFlowAction(Object.assign({ builder: 'z:1:ControlFlowAction.if' }, data));
+        return new ZacControlFlowAction(Object.assign({ builder: 'z:1:Action:If' }, data));
     }
 }
 export class ZacDateTime extends ZacBuilder {
@@ -2417,10 +2281,7 @@ export class ZacDouble extends ZacBuilder {
 }
 export class ZacExecuteActionsBuilder extends ZacBuilder {
     static once(data) {
-        return new ZacExecuteActionsBuilder(Object.assign({ builder: 'z:1:ExecuteActions.once' }, data));
-    }
-    static listen(data) {
-        return new ZacExecuteActionsBuilder(Object.assign({ builder: 'z:1:ExecuteActions.listen' }, data));
+        return new ZacExecuteActionsBuilder(Object.assign({ builder: 'z:1:ExecuteActionsOnce' }, data));
     }
 }
 export class ZacInt extends ZacBuilder {
@@ -2458,9 +2319,19 @@ export class ZacObject extends ZacBuilder {
         return new ZacObject(Object.assign({ builder: 'z:1:Object' }, data));
     }
 }
-export class ZacSharedStateProvider extends ZacBuilder {
+export class ZacOnStateChange extends ZacBuilder {
+    static executeActions(data) {
+        return new ZacOnStateChange(Object.assign({ builder: 'z:1:State:OnChange.executeActions' }, data));
+    }
+}
+export class ZacStateActions extends ZacBuilder {
+    static update(data) {
+        return new ZacStateActions(Object.assign({ builder: 'z:1:State.update' }, data));
+    }
+}
+export class ZacStateConsume extends ZacBuilder {
     static new(data) {
-        return new ZacSharedStateProvider(Object.assign({ builder: 'z:1:SharedStates.provide' }, data));
+        return new ZacStateConsume(Object.assign({ builder: 'z:1:State.consume' }, data));
     }
 }
 export class ZacStateMachineActions extends ZacBuilder {
@@ -2481,13 +2352,30 @@ export class ZacStateMachineProvider extends ZacBuilder {
         return new ZacStateMachineProvider(Object.assign({ builder: 'z:1:StateMachines.provide' }, data));
     }
 }
+export class ZacStateProvide extends ZacBuilder {
+    static new(data) {
+        return new ZacStateProvide(Object.assign({ builder: 'z:1:State.provide' }, data));
+    }
+}
+export class ZacStatesProvider extends ZacBuilder {
+    static new(data) {
+        return new ZacStatesProvider(Object.assign({ builder: 'z:1:States.provide' }, data));
+    }
+}
 export class ZacString extends ZacBuilder {
     static new(data) {
         return new ZacString(Object.assign({ builder: 'z:1:String' }, data));
     }
 }
-export class ZacValueActions extends ZacBuilder {
-    static asPayload(data) {
-        return new ZacValueActions(Object.assign({ builder: 'z:1:ZacValue.asActionPayload' }, data));
+export class ZacTransformValue extends ZacBuilder {
+    static current() {
+        return new ZacTransformValue({
+            builder: 'z:1:TransformValue.current'
+        });
+    }
+    static initial() {
+        return new ZacTransformValue({
+            builder: 'z:1:TransformValue.initial'
+        });
     }
 }

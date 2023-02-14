@@ -360,6 +360,9 @@ export interface FlutterOverflowBox extends FlutterWidget {
 export interface FlutterPadding extends FlutterWidget {
     _FlutterPadding: unknown;
 }
+export interface FlutterPanAxis {
+    _FlutterPanAxis: unknown;
+}
 export interface FlutterPositioned extends FlutterWidget {
     _FlutterPositioned: unknown;
 }
@@ -537,32 +540,17 @@ export interface FlutterWrapAlignment {
 export interface FlutterWrapCrossAlignment {
     _FlutterWrapCrossAlignment: unknown;
 }
-export interface SharedStateFamily {
-    _SharedStateFamily: unknown;
-}
 export interface ZacAction {
     _ZacAction: unknown;
+}
+export interface ZacState {
+    _ZacState: unknown;
 }
 export interface ZacStateMachineBuildWidget extends FlutterWidget {
     _ZacStateMachineBuildWidget: unknown;
 }
 export interface ZacTransform {
     _ZacTransform: unknown;
-}
-export declare class SharedStateConsumeType extends ZacConvertable {
-    static watch(data?: {
-        select?: ZacBuilder<Array<ZacTransform>>;
-    }): SharedStateConsumeType;
-    static read(): SharedStateConsumeType;
-}
-export declare class ZacSharedStateProvide extends ZacConvertable {
-    static value(data: {
-        value: JSONValue;
-    }): ZacSharedStateProvide;
-    static builder(data: {
-        value: ZacBuilder<JSONValue>;
-    }): ZacSharedStateProvide;
-    static n(): ZacSharedStateProvide;
 }
 export declare class ZacStateMachineConfig extends ZacConvertable {
     static new(data: {
@@ -584,7 +572,9 @@ export declare class ZacStateMachineTransition extends ZacConvertable {
     }): ZacStateMachineTransition;
 }
 export declare class BoolTransformer extends ZacBuilder<ZacTransform> {
-    static negate(): BoolTransformer;
+    static negate(data: {
+        boolean: boolean | ZacBuilder<boolean>;
+    }): BoolTransformer;
 }
 export declare class Align extends ZacBuilder<FlutterAlign> {
     static new(data?: {
@@ -1144,7 +1134,7 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         focusColor?: ZacBuilder<DartColor>;
         hoverColor?: ZacBuilder<DartColor>;
         splashColor?: ZacBuilder<DartColor>;
-        heroTag?: ZacBuilder<JSONValue>;
+        heroTag?: ZacBuilder<unknown>;
         elevation?: number | ZacBuilder<number>;
         focusElevation?: number | ZacBuilder<number>;
         hoverElevation?: number | ZacBuilder<number>;
@@ -1169,7 +1159,7 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         focusColor?: ZacBuilder<DartColor>;
         hoverColor?: ZacBuilder<DartColor>;
         splashColor?: ZacBuilder<DartColor>;
-        heroTag?: ZacBuilder<JSONValue>;
+        heroTag?: ZacBuilder<unknown>;
         elevation?: number | ZacBuilder<number>;
         focusElevation?: number | ZacBuilder<number>;
         hoverElevation?: number | ZacBuilder<number>;
@@ -1199,7 +1189,7 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         focusColor?: ZacBuilder<DartColor>;
         hoverColor?: ZacBuilder<DartColor>;
         splashColor?: ZacBuilder<DartColor>;
-        heroTag?: ZacBuilder<JSONValue>;
+        heroTag?: ZacBuilder<unknown>;
         elevation?: number | ZacBuilder<number>;
         focusElevation?: number | ZacBuilder<number>;
         hoverElevation?: number | ZacBuilder<number>;
@@ -1223,7 +1213,7 @@ export declare class FloatingActionButton extends ZacBuilder<FlutterFloatingActi
         focusColor?: ZacBuilder<DartColor>;
         hoverColor?: ZacBuilder<DartColor>;
         splashColor?: ZacBuilder<DartColor>;
-        heroTag?: ZacBuilder<JSONValue>;
+        heroTag?: ZacBuilder<unknown>;
         elevation?: number | ZacBuilder<number>;
         focusElevation?: number | ZacBuilder<number>;
         hoverElevation?: number | ZacBuilder<number>;
@@ -1530,7 +1520,7 @@ export declare class InteractiveViewer extends ZacBuilder<FlutterInteractiveView
         key?: ZacBuilder<FlutterKey>;
         child: ZacBuilder<FlutterWidget>;
         clipBehavior?: ZacBuilder<DartClip>;
-        alignPanAxis?: boolean | ZacBuilder<boolean>;
+        panAxis?: ZacBuilder<FlutterPanAxis>;
         boundaryMargin?: ZacBuilder<FlutterEdgeInsets>;
         constrained?: boolean | ZacBuilder<boolean>;
         maxScale?: number | ZacBuilder<number>;
@@ -1824,6 +1814,12 @@ export declare class PageRouteBuilder extends ZacBuilder<FlutterRoute<JSONValue>
         nameOfSharedArguments?: string | ZacBuilder<string>;
     }): PageRouteBuilder;
 }
+export declare class PanAxis extends ZacBuilder<FlutterPanAxis> {
+    static horizontal(): PanAxis;
+    static vertical(): PanAxis;
+    static aligned(): PanAxis;
+    static free(): PanAxis;
+}
 export declare class Positioned extends ZacBuilder<FlutterPositioned> {
     static new(data: {
         key?: ZacBuilder<FlutterKey>;
@@ -1952,7 +1948,7 @@ export declare class RouteFactory extends ZacBuilder<FlutterRouteFactory> {
 export declare class RouteSettings extends ZacBuilder<FlutterRouteSettings> {
     static new(data?: {
         name?: string | ZacBuilder<string>;
-        arguments?: ZacBuilder<JSONValue>;
+        arguments?: ZacBuilder<unknown>;
     }): RouteSettings;
 }
 export declare class Row extends ZacBuilder<FlutterRow> {
@@ -2557,144 +2553,238 @@ export declare class WrapCrossAlignment extends ZacBuilder<FlutterWrapCrossAlign
     static start(): WrapCrossAlignment;
 }
 export declare class IntTransformer extends ZacBuilder<ZacTransform> {
-    static parse(): IntTransformer;
-    static tryParse(): IntTransformer;
+    static parse(data: {
+        number: string | ZacBuilder<string>;
+    }): IntTransformer;
+    static tryParse(data: {
+        number: string | ZacBuilder<string>;
+    }): IntTransformer;
     static incr(data: {
+        number: number | ZacBuilder<number>;
         by: number | ZacBuilder<number>;
     }): IntTransformer;
     static decr(data: {
+        number: number | ZacBuilder<number>;
         by: number | ZacBuilder<number>;
     }): IntTransformer;
 }
 export declare class IterableTransformer extends ZacBuilder<ZacTransform> {
     static map(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
         transformer: ZacBuilder<Array<ZacTransform>>;
     }): IterableTransformer;
-    static single(): IterableTransformer;
-    static first(): IterableTransformer;
-    static last(): IterableTransformer;
-    static length_(): IterableTransformer;
-    static isEmpty(): IterableTransformer;
-    static isNotEmpty(): IterableTransformer;
-    static toList(): IterableTransformer;
-    static toSet(): IterableTransformer;
-    static toString(): IterableTransformer;
-    static join(data?: {
+    static single(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static first(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static last(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static length_(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static isEmpty(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static isNotEmpty(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static toList(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static toSet(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static toString(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
+    }): IterableTransformer;
+    static join(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
         separator?: string;
     }): IterableTransformer;
     static contains(data: {
-        element: ZacBuilder<JSONValue>;
+        iterable: ZacBuilder<Array<JSONValue>>;
+        element: ZacBuilder<unknown>;
     }): IterableTransformer;
     static elementAt(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
         index: number;
     }): IterableTransformer;
     static skip(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
         count: number;
     }): IterableTransformer;
     static take(data: {
+        iterable: ZacBuilder<Array<JSONValue>>;
         count: number;
     }): IterableTransformer;
 }
 export declare class JsonTransformer extends ZacBuilder<ZacTransform> {
-    static encode(): JsonTransformer;
-    static decode(): JsonTransformer;
+    static encode(data: {
+        object: ZacBuilder<unknown>;
+    }): JsonTransformer;
+    static decode(data: {
+        jsonString: string | ZacBuilder<string>;
+    }): JsonTransformer;
 }
 export declare class ListTransformer extends ZacBuilder<ZacTransform> {
-    static reversed(): ListTransformer;
+    static reversed(data: {
+        list: ZacBuilder<Array<JSONValue>>;
+    }): ListTransformer;
     static add(data: {
-        value: ZacBuilder<JSONValue>;
+        list: ZacBuilder<Array<JSONValue>>;
+        value: ZacBuilder<unknown>;
     }): ListTransformer;
 }
 export declare class MapTransformer extends ZacBuilder<ZacTransform> {
-    static values(): MapTransformer;
-    static keys(): MapTransformer;
-    static entries(): MapTransformer;
-    static length_(): MapTransformer;
-    static isEmpty(): MapTransformer;
-    static isNotEmpty(): MapTransformer;
+    static values(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
+    static keys(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
+    static entries(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
+    static length_(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
+    static isEmpty(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
+    static isNotEmpty(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
     static containsKey(data: {
-        key: ZacBuilder<JSONValue>;
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+        key: ZacBuilder<unknown>;
     }): MapTransformer;
     static containsValue(data: {
-        value: ZacBuilder<JSONValue>;
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+        value: ZacBuilder<unknown>;
     }): MapTransformer;
-    static mapper(data?: {
+    static mapper(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
         keyTransformer?: ZacBuilder<Array<ZacTransform>>;
         valueTransformer?: ZacBuilder<Array<ZacTransform>>;
     }): MapTransformer;
-    static fromObjectObject(): MapTransformer;
-    static fromStringObject(): MapTransformer;
-    static fromStringNullObject(): MapTransformer;
+    static fromObjectObject(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
+    static fromStringObject(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
+    static fromStringNullObject(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+    }): MapTransformer;
     static key(data: {
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
         key: string | ZacBuilder<string>;
     }): MapTransformer;
     static setValueForKey(data: {
-        value: ZacBuilder<JSONValue>;
+        fromMap: ZacBuilder<Record<string, JSONValue>>;
+        value: ZacBuilder<unknown>;
         key: string | ZacBuilder<string>;
     }): MapTransformer;
 }
 export declare class NumTransformer extends ZacBuilder<ZacTransform> {
-    static toDouble(): NumTransformer;
-    static toInt(): NumTransformer;
-    static abs(): NumTransformer;
-    static ceil(): NumTransformer;
-    static ceilToDouble(): NumTransformer;
-    static floor(): NumTransformer;
-    static floorToDouble(): NumTransformer;
-    static round(): NumTransformer;
-    static roundToDouble(): NumTransformer;
-    static isFinite(): NumTransformer;
-    static isInfinite(): NumTransformer;
-    static isNan(): NumTransformer;
-    static isNegative(): NumTransformer;
+    static toDouble(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static toInt(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static abs(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static ceil(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static ceilToDouble(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static floor(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static floorToDouble(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static round(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static roundToDouble(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static isFinite(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static isInfinite(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static isNan(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
+    static isNegative(data: {
+        number: number | ZacBuilder<number>;
+    }): NumTransformer;
 }
 export declare class ObjectTransformer extends ZacBuilder<ZacTransform> {
-    static isList(): ObjectTransformer;
-    static isMap(): ObjectTransformer;
-    static isBool(): ObjectTransformer;
-    static isString(): ObjectTransformer;
-    static isDouble(): ObjectTransformer;
-    static isInt(): ObjectTransformer;
-    static isNull(): ObjectTransformer;
-    static isActionPayload(): ObjectTransformer;
-    static equals(data: {
-        other: ZacBuilder<JSONValue>;
+    static isList(data: {
+        object: ZacBuilder<unknown>;
     }): ObjectTransformer;
-    static toString(): ObjectTransformer;
-    static runtimeType(): ObjectTransformer;
-    static hashCode(): ObjectTransformer;
-}
-export declare class SharedStateActions extends ZacBuilder<ZacAction> {
-    static update(data: {
-        states: Record<string, ZacSharedStateProvide>;
-    }): SharedStateActions;
-    static transformCurrentValue(data: {
-        family: SharedStateFamily;
-        transformer: ZacBuilder<Array<ZacTransform>>;
-    }): SharedStateActions;
-}
-export declare class SharedStateConsume<T> extends ZacBuilder<T> {
-    static new<T>(data: {
-        family: SharedStateFamily;
-        consume?: SharedStateConsumeType;
-        transformer?: ZacBuilder<Array<ZacTransform>>;
-    }): SharedStateConsume<T>;
+    static isMap(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static isBool(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static isString(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static isDouble(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static isInt(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static isNull(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static equals(data: {
+        object: ZacBuilder<unknown>;
+        other: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static toString(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static runtimeType(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
+    static hashCode(data: {
+        object: ZacBuilder<unknown>;
+    }): ObjectTransformer;
 }
 export declare class StringTransformer extends ZacBuilder<ZacTransform> {
-    static length_(): StringTransformer;
+    static length_(data: {
+        string: string | ZacBuilder<string>;
+    }): StringTransformer;
     static split(data: {
+        string: string | ZacBuilder<string>;
         pattern: string | ZacBuilder<string>;
     }): StringTransformer;
-    static isEmpty(): StringTransformer;
-    static isNotEmpty(): StringTransformer;
+    static isEmpty(data: {
+        string: string | ZacBuilder<string>;
+    }): StringTransformer;
+    static isNotEmpty(data: {
+        string: string | ZacBuilder<string>;
+    }): StringTransformer;
     static replaceAll(data: {
+        string: string | ZacBuilder<string>;
         from: string | ZacBuilder<string>;
         replace: string | ZacBuilder<string>;
     }): StringTransformer;
-}
-export declare class ZacActionPayloadTransformer extends ZacBuilder<ZacTransform> {
-    static toList(): ZacActionPayloadTransformer;
-    static toObject(): ZacActionPayloadTransformer;
 }
 export declare class ZacBool extends ZacBuilder<boolean> {
     static new(data: {
@@ -2725,15 +2815,9 @@ export declare class ZacBuild extends ZacBuilder<FlutterWidget> {
         errorChild?: ZacBuilder<FlutterWidget>;
     }): ZacBuild;
 }
-export declare class ZacBuiltInActions extends ZacBuilder<ZacAction> {
-    static withPayload(data: {
-        payload: JSONValue;
-        actions: ZacBuilder<Array<ZacAction>>;
-        transformer?: ZacBuilder<Array<ZacTransform>>;
-    }): ZacBuiltInActions;
-}
 export declare class ZacControlFlowAction extends ZacBuilder<ZacAction> {
     static ifCond(data: {
+        conditionValue: ZacBuilder<unknown>;
         condition: ZacBuilder<Array<ZacTransform>>;
         ifTrue: ZacBuilder<Array<ZacAction>>;
         ifFalse?: ZacBuilder<Array<ZacAction>>;
@@ -2752,11 +2836,6 @@ export declare class ZacDouble extends ZacBuilder<number> {
 export declare class ZacExecuteActionsBuilder extends ZacBuilder<FlutterWidget> {
     static once(data: {
         actions: ZacBuilder<Array<ZacAction>>;
-        child?: ZacBuilder<FlutterWidget>;
-    }): ZacExecuteActionsBuilder;
-    static listen(data: {
-        actions: ZacBuilder<Array<ZacAction>>;
-        family: SharedStateFamily;
         child?: ZacBuilder<FlutterWidget>;
     }): ZacExecuteActionsBuilder;
 }
@@ -2795,18 +2874,34 @@ export declare class ZacObject extends ZacBuilder<JSONValue> {
         value: JSONValue;
     }): ZacObject;
 }
-export declare class ZacSharedStateProvider extends ZacBuilder<FlutterWidget> {
-    static new(data: {
-        states: Record<string, ZacSharedStateProvide>;
-        child: ZacBuilder<FlutterWidget>;
-    }): ZacSharedStateProvider;
+export declare class ZacOnStateChange extends ZacBuilder<FlutterWidget> {
+    static executeActions(data: {
+        actions: ZacBuilder<Array<ZacAction>>;
+        family: string;
+        child?: ZacBuilder<FlutterWidget>;
+    }): ZacOnStateChange;
+}
+export declare class ZacStateActions extends ZacBuilder<ZacAction> {
+    static update(data: {
+        family: string;
+        withValue: ZacBuilder<unknown>;
+    }): ZacStateActions;
+}
+export declare class ZacStateConsume<T> extends ZacBuilder<T> {
+    static new<T>(data: {
+        family: string;
+        mayBuildBuilder?: boolean;
+        transformer?: ZacBuilder<Array<ZacTransform>>;
+    }): ZacStateConsume<T>;
 }
 export declare class ZacStateMachineActions extends ZacBuilder<ZacAction> {
     static send(data: {
+        widget?: ZacBuilder<FlutterWidget>;
         family: string;
         event: string;
     }): ZacStateMachineActions;
     static trySend(data: {
+        widget?: ZacBuilder<FlutterWidget>;
         family: string;
         event: string;
     }): ZacStateMachineActions;
@@ -2822,14 +2917,26 @@ export declare class ZacStateMachineProvider extends ZacBuilder<FlutterWidget> {
         child: ZacBuilder<FlutterWidget>;
     }): ZacStateMachineProvider;
 }
+export declare class ZacStateProvide extends ZacBuilder<ZacState> {
+    static new(data: {
+        family: string;
+        value?: JSONValue;
+        mayConvertToBuilder?: boolean;
+        mayBuildBuilder?: boolean;
+    }): ZacStateProvide;
+}
+export declare class ZacStatesProvider extends ZacBuilder<FlutterWidget> {
+    static new(data: {
+        states: Array<ZacBuilder<ZacState>>;
+        child: ZacBuilder<FlutterWidget>;
+    }): ZacStatesProvider;
+}
 export declare class ZacString extends ZacBuilder<string> {
     static new(data: {
         value: string;
     }): ZacString;
 }
-export declare class ZacValueActions extends ZacBuilder<ZacAction> {
-    static asPayload(data: {
-        value: ZacBuilder<JSONValue>;
-        actions: ZacBuilder<Array<ZacAction>>;
-    }): ZacValueActions;
+export declare class ZacTransformValue<T> extends ZacBuilder<T> {
+    static current<T>(): ZacTransformValue<T>;
+    static initial<T>(): ZacTransformValue<T>;
 }
