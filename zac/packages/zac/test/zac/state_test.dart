@@ -30,7 +30,7 @@ void main() {
 
     final nullValue = expectAsync1((p0) => expect(p0, isNull));
 
-    ZacRegistry().register<Widget>(
+    ZacRegistry().register(
       'test:widget',
       (map) {
         return TestWidget((context, zacContext) {
@@ -140,7 +140,7 @@ void main() {
   });
 
   testWidgets('integration simple #2', (tester) async {
-    ZacRegistry().register<ZacTransform>(
+    ZacRegistry().register(
       'test:transform',
       (map) => TestTransform((context, zacContext) {
         return 'hello from transformer';
@@ -376,7 +376,7 @@ because the value is null and there are no transformers added.''')));
 
   testWidgets('Execute Actions on State change', (tester) async {
     final cb = MockTestActionExecute();
-    ZacRegistry().register<ZacAction>(
+    ZacRegistry().register(
       'test:action',
       (map) => TestAction(cb),
     );

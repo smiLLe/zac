@@ -10,7 +10,7 @@ import '../helper.dart';
 
 void main() {
   group('Default Button', () {
-    ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
+    ZacRegistry().register('test.action', TestAction.noop);
     Future<Widget> testButton(WidgetTester tester, String rt) async {
       await testJSON(
         tester,
@@ -123,7 +123,7 @@ void main() {
   });
 
   group('Button.icon', () {
-    ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
+    ZacRegistry().register('test.action', TestAction.noop);
     Future<Widget> testButton(WidgetTester tester, String rt) async {
       await testJSON(
         tester,

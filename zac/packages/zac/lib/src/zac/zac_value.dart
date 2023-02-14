@@ -16,9 +16,8 @@ class ZacNum with _$ZacNum implements ZacBuilder<num> {
 
   static const String unionValue = 'z:1:num';
 
-  factory ZacNum.fromJson(Object data) => ZacRegistry.ifBuilderLikeMap<ZacNum>(
-        data,
-        cb: (map, converterName) => _$ZacNumFromJson(map),
+  factory ZacNum.fromJson(Object data) => data.maybeBuilder<ZacNum>(
+        cb: (converterName, map) => _$ZacNumFromJson(map),
         orElse: () => _$ZacNumFromJson(<String, dynamic>{
           'builder': ZacNum.unionValue,
           'value': data,
@@ -40,9 +39,8 @@ class ZacInt with _$ZacInt implements ZacBuilder<int> {
 
   static const String unionValue = 'z:1:int';
 
-  factory ZacInt.fromJson(Object data) => ZacRegistry.ifBuilderLikeMap<ZacInt>(
-        data,
-        cb: (map, converterName) => _$ZacIntFromJson(map),
+  factory ZacInt.fromJson(Object data) => data.maybeBuilder<ZacInt>(
+        cb: (converterName, map) => _$ZacIntFromJson(map),
         orElse: () => _$ZacIntFromJson(<String, dynamic>{
           'builder': ZacInt.unionValue,
           'value': data,
@@ -64,10 +62,8 @@ class ZacDouble with _$ZacDouble implements ZacBuilder<double> {
 
   static const String unionValue = 'z:1:double';
 
-  factory ZacDouble.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacDouble>(
-        data,
-        cb: (map, converterName) => _$ZacDoubleFromJson(map),
+  factory ZacDouble.fromJson(Object data) => data.maybeBuilder<ZacDouble>(
+        cb: (converterName, map) => _$ZacDoubleFromJson(map),
         orElse: () => _$ZacDoubleFromJson(<String, dynamic>{
           'builder': ZacDouble.unionValue,
           'value': data,
@@ -89,10 +85,8 @@ class ZacString with _$ZacString implements ZacBuilder<String> {
 
   static const String unionValue = 'z:1:String';
 
-  factory ZacString.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacString>(
-        data,
-        cb: (map, converterName) => _$ZacStringFromJson(map),
+  factory ZacString.fromJson(Object data) => data.maybeBuilder<ZacString>(
+        cb: (converterName, map) => _$ZacStringFromJson(map),
         orElse: () => _$ZacStringFromJson(<String, dynamic>{
           'builder': ZacString.unionValue,
           'value': data,
@@ -114,10 +108,8 @@ class ZacBool with _$ZacBool implements ZacBuilder<bool> {
 
   static const String unionValue = 'z:1:bool';
 
-  factory ZacBool.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacBool>(
-        data,
-        cb: (map, converterName) => _$ZacBoolFromJson(map),
+  factory ZacBool.fromJson(Object data) => data.maybeBuilder<ZacBool>(
+        cb: (converterName, map) => _$ZacBoolFromJson(map),
         orElse: () => _$ZacBoolFromJson(<String, dynamic>{
           'builder': ZacBool.unionValue,
           'value': data,
@@ -139,10 +131,8 @@ class ZacObject with _$ZacObject implements ZacBuilder<Object> {
 
   static const String unionValue = 'z:1:Object';
 
-  factory ZacObject.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacObject>(
-        data,
-        cb: (map, converterName) => _$ZacObjectFromJson(map),
+  factory ZacObject.fromJson(Object data) => data.maybeBuilder<ZacObject>(
+        cb: (converterName, map) => _$ZacObjectFromJson(map),
         orElse: () => _$ZacObjectFromJson(<String, dynamic>{
           'builder': ZacObject.unionValue,
           'value': data,
@@ -164,10 +154,8 @@ class ZacDateTime with _$ZacDateTime implements ZacBuilder<DateTime> {
 
   static const String unionValue = 'z:1:DateTime';
 
-  factory ZacDateTime.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacDateTime>(
-        data,
-        cb: (map, converterName) => _$ZacDateTimeFromJson(map),
+  factory ZacDateTime.fromJson(Object data) => data.maybeBuilder<ZacDateTime>(
+        cb: (converterName, map) => _$ZacDateTimeFromJson(map),
         orElse: () => _$ZacDateTimeFromJson(<String, dynamic>{
           'builder': ZacDateTime.unionValue,
           'value': data,
@@ -192,9 +180,8 @@ class ZacListOfWidgets
   static const String unionValue = 'z:1:List<Widget>';
 
   factory ZacListOfWidgets.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacListOfWidgets>(
-        data,
-        cb: (map, converterName) => _$ZacListOfWidgetsFromJson(map),
+      data.maybeBuilder<ZacListOfWidgets>(
+        cb: (converterName, map) => _$ZacListOfWidgetsFromJson(map),
         orElse: () => _$ZacListOfWidgetsFromJson(<String, dynamic>{
           'builder': ZacListOfWidgets.unionValue,
           'value': data,
@@ -219,9 +206,8 @@ class ZacMapOfWidgets
   static const String unionValue = 'z:1:Map<String, Widget>';
 
   factory ZacMapOfWidgets.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacMapOfWidgets>(
-        data,
-        cb: (map, converterName) => _$ZacMapOfWidgetsFromJson(map),
+      data.maybeBuilder<ZacMapOfWidgets>(
+        cb: (converterName, map) => _$ZacMapOfWidgetsFromJson(map),
         orElse: () => _$ZacMapOfWidgetsFromJson(<String, dynamic>{
           'builder': ZacMapOfWidgets.unionValue,
           'value': data,
@@ -250,9 +236,8 @@ class ZacListOfActions
   static const String unionValue = 'z:1:List<ZacAction>';
 
   factory ZacListOfActions.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacListOfActions>(
-        data,
-        cb: (map, converterName) => _$ZacListOfActionsFromJson(map),
+      data.maybeBuilder<ZacListOfActions>(
+        cb: (converterName, map) => _$ZacListOfActionsFromJson(map),
         orElse: () => _$ZacListOfActionsFromJson(<String, dynamic>{
           'builder': ZacListOfActions.unionValue,
           'value': data,
@@ -278,9 +263,8 @@ class ZacListOfTransformers
   static const String unionValue = 'z:1:List<ZacTransform>';
 
   factory ZacListOfTransformers.fromJson(Object data) =>
-      ZacRegistry.ifBuilderLikeMap<ZacListOfTransformers>(
-        data,
-        cb: (map, converterName) => _$ZacListOfTransformersFromJson(map),
+      data.maybeBuilder<ZacListOfTransformers>(
+        cb: (converterName, map) => _$ZacListOfTransformersFromJson(map),
         orElse: () => _$ZacListOfTransformersFromJson(<String, dynamic>{
           'builder': ZacListOfTransformers.unionValue,
           'value': data,

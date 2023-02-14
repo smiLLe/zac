@@ -5,7 +5,7 @@ import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 import 'package:zac/src/zac/generated_registry.dart';
 
-typedef CreateBuilder<T> = ZacBuilder<T> Function(Map<String, dynamic> map);
+typedef CreateBuilder = ZacBuilder<Object?> Function(Map<String, dynamic> map);
 typedef CreateBuilderFromSingleType = ZacBuilder<T> Function<T>(
     Map<String, dynamic> map);
 
@@ -28,75 +28,48 @@ class ZacRegistry extends DelegatingMap<String, Object> {
 
   ZacRegistry._() : super(<String, Object>{});
 
-  T _get<T>(String name) {
+  ZacBuilder<T> createBuilder<T>(String name, Map<String, dynamic> map) {
     assert(containsKey(name));
-
-    final builder = this[name];
-    if (builder is! T) {
-      throw StateError('''
-It was not possible to return a registered builder from $ZacRegistry
-with name: $name
-The builder was expected to be of type $T but instead we got:
-$builder''');
-    }
-
-    return builder;
+    assert(this[name] is CreateBuilder ||
+        this[name] is CreateBuilderFromSingleType);
+    final anyBuilder = this[name];
+    final builder = anyBuilder is CreateBuilder
+        ? anyBuilder(map)
+        : (anyBuilder as CreateBuilderFromSingleType)<T>(map);
+    assert(
+        builder is ZacBuilder<T>, 'Expected ${ZacBuilder<T>} but got $builder');
+    return builder as ZacBuilder<T>;
   }
 
-  CreateBuilder<T> getRegistered<T>(String name) =>
-      _get<CreateBuilder<T>>(name);
-
-  CreateBuilderFromSingleType getRegisteredGeneric(String name) =>
-      _get<CreateBuilderFromSingleType>(name);
-
-  static T ifBuilderLikeMap<T>(
-    Object data, {
-    required T Function(Map<String, dynamic> map, String converterName) cb,
-    required T Function() orElse,
-  }) {
-    if (data is Map<String, dynamic> &&
-        data.containsKey(builderKey) &&
-        data[builderKey] is String &&
-        (data[builderKey] as String).isNotEmpty) {
-      final name = data[builderKey] as String;
-      assert(ZacRegistry().containsKey(name),
-          '$ZacRegistry does not contain builder with name $name');
-      return cb(data, name);
-    }
-
-    return orElse();
-  }
-
-  ZacBuilder<T> when<T>({
-    required String name,
-    required ZacBuilder<T> Function(CreateBuilder<T> builder) noType,
-    required ZacBuilder<T> Function(CreateBuilderFromSingleType builder)
-        withType,
-    ZacBuilder<T> Function()? orElse,
-  }) {
-    assert(containsKey(name),
-        '$ZacRegistry does not contain builder with name $name');
-
-    final builder = this[name];
-
-    if (builder is CreateBuilder) {
-      return noType(getRegistered<T>(name));
-    } else if (builder is CreateBuilderFromSingleType) {
-      return withType(getRegisteredGeneric(name));
-    } else if (null != orElse) {
-      return orElse();
-    }
-    throw StateError('''
-It was not possible to return a ${ZacBuilder<T>} from $ZacRegistry.when
-because the found builder did not match $T.
-Builder: $builder''');
-  }
-
-  void register<T>(String name, CreateBuilder<T> cb) {
+  void register(String name, CreateBuilder cb) {
     putIfAbsent(name, () => cb);
   }
 
   void registerGeneric(String name, CreateBuilderFromSingleType cb) {
     putIfAbsent(name, () => cb);
+  }
+}
+
+extension ZacRegistryX on Object {
+  T maybeBuilder<T>({
+    required T Function(String converterName, Map<String, dynamic> map) cb,
+    required T Function() orElse,
+  }) {
+    if (this is! Map<String, dynamic>) {
+      return orElse();
+    }
+    final map = this as Map<String, dynamic>;
+    if (!map.containsKey(builderKey)) {
+      return orElse();
+    }
+    final Object? key = map[builderKey];
+    if (key is! String) {
+      return orElse();
+    }
+
+    assert(ZacRegistry().containsKey(key),
+        '$ZacRegistry does not contain builder with name "$key"');
+
+    return cb(key, map);
   }
 }

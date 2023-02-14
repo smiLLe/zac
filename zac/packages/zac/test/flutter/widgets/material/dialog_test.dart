@@ -179,7 +179,7 @@ void main() {
 
   group('SimpleDialogOption', () {
     testWidgets('SimpleDialogOption*', (tester) async {
-      ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
+      ZacRegistry().register('test.action', TestAction.noop);
       await testJSON(
         tester,
         <String, dynamic>{

@@ -64,14 +64,10 @@ class ZacStateProvide with _$ZacStateProvide implements ZacBuilder<ZacState> {
           if (null == val) return null;
 
           return obj.mayConvertToBuilder
-              ? ZacRegistry.ifBuilderLikeMap<Object?>(
-                  val,
-                  cb: (map, converterName) {
-                    final builder = ZacRegistry().when<Object?>(
-                      name: converterName,
-                      noType: (builder) => builder.call(map),
-                      withType: (builder) => builder.call<Object?>(map),
-                    );
+              ? val.maybeBuilder(
+                  cb: (converterName, map) {
+                    final builder = ZacRegistry()
+                        .createBuilder<Object?>(converterName, map);
 
                     return mayBuildBuilder
                         ? builder.build(context, zacContext)

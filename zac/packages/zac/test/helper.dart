@@ -49,8 +49,9 @@ Future<void> testBuilder<T>(
   Map<String, dynamic>? props,
   required TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
 }) async {
-  final builder = ZacRegistry().getRegistered<Object>(name)(
+  final builder = ZacRegistry().createBuilder<Object>(name,
       <String, dynamic>{'builder': name, ...(props ?? <String, dynamic>{})});
+
   expect(builder, isA<ZacBuilder<T>>());
 
   await testWithContexts(tester, (getContext, getZacContext) {

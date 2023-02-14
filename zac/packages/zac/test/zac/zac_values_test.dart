@@ -84,7 +84,7 @@ void main() {
   });
 
   test('ZacListOfActions', () {
-    ZacRegistry().register<ZacAction>('test:TestAction', TestAction.noop);
+    ZacRegistry().register('test:TestAction', TestAction.noop);
     expectInRegistry(ZacListOfActions.unionValue, ZacListOfActions.fromJson);
     expect(
         ZacBuilder<List<ZacAction>>.fromJson([
@@ -105,8 +105,7 @@ void main() {
   });
 
   test('ZacListOfTransformers', () {
-    ZacRegistry()
-        .register<ZacTransform>('test:TestTransform', TestTransform.noop);
+    ZacRegistry().register('test:TestTransform', TestTransform.noop);
     expectInRegistry(
         ZacListOfTransformers.unionValue, ZacListOfTransformers.fromJson);
     expect(

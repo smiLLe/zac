@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/all.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
@@ -28,7 +26,7 @@ void main() {
       final a1 = expectAsync1((p0) => expect(p0, 1));
       final a2 = expectAsync1((p0) => expect(p0, 2));
 
-      ZacRegistry().register<Widget>(
+      ZacRegistry().register(
         'test:widget',
         (map) => TestWidget(
           (context, zacContext) {

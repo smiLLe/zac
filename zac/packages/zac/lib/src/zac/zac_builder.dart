@@ -9,13 +9,9 @@ bool _isType<T, Y>() => T == Y;
 
 abstract class ZacBuilder<T> {
   factory ZacBuilder.fromJson(Object data) {
-    return ZacRegistry.ifBuilderLikeMap<ZacBuilder<T>>(
-      data,
-      cb: (map, converterName) => ZacRegistry().when<T>(
-        name: converterName,
-        noType: (builder) => builder.call(map),
-        withType: (builder) => builder.call<T>(map),
-      ),
+    return data.maybeBuilder(
+      cb: (converterName, map) =>
+          ZacRegistry().createBuilder<T>(converterName, map),
       orElse: () {
         if (_isType<T, Object>() || _isType<T, Object?>()) {
           return ZacObject.fromJson(data) as ZacBuilder<T>;
