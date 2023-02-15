@@ -249,12 +249,9 @@ void main() {
               home: FlutterMaterial(
                 child: FlutterScaffold(
                   body: ZacStatesProvider(
-                    states: [
-                      ZacStateProvide.builtIn(
-                        family: 'shared',
-                        value: 'hello world',
-                      ),
-                    ],
+                    states: {
+                      'shared': ZacStateProvide.builtIn(value: 'hello world'),
+                    },
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
                       onPressed: ZacListOfActions([

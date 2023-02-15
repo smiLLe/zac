@@ -64,7 +64,7 @@ class ZacTransformValue<T>
   }
 }
 
-/// Will be provided as a [ZacState].
+/// Will be provided as a [ZacStateCreate].
 /// The property [transformValue] will hold the current transformed value
 /// during the transformation of [ZacTransformer].
 @internal
@@ -86,8 +86,8 @@ extension HandleTransformer on List<ZacTransform> {
     Object? inputValue, {
     /// Other values that might be used during transformation that may be
     /// of interest. Can be consumed via [ZacStateConsume].
-    /// The key will become the [ZacState] family.
-    /// The value will become the [ZacState]
+    /// The key will become the [ZacStateCreate] family.
+    /// The value will become the [ZacStateCreate]
     Map<String, Object?> otherValues = const {},
   }) {
     final container = ProviderContainer(
@@ -104,8 +104,7 @@ extension HandleTransformer on List<ZacTransform> {
         /// f.e. while transforming a [ZacStateConsume].
         ZacState.provider(HandleTransformer.currentValueName)
             .overrideWith((ref) {
-          return ZacStateProvided(
-            HandleTransformer.currentValueName,
+          return ZacState(
             TransformValueWrapper(inputValue),
             (reduce) {
               /// Never update ref.state
@@ -117,16 +116,14 @@ extension HandleTransformer on List<ZacTransform> {
           );
         }),
         ZacState.provider(HandleTransformer.initialValueName)
-            .overrideWithValue(ZacStateProvided(
-          HandleTransformer.initialValueName,
+            .overrideWithValue(ZacState(
           inputValue,
-          (cb) => throw StateError('Not Allowed'),
+          (reduce) => throw StateError('Not Allowed'),
         )),
         for (var entry in otherValues.entries)
-          ZacState.provider(entry.key).overrideWithValue(ZacStateProvided(
-            entry.key,
+          ZacState.provider(entry.key).overrideWithValue(ZacState(
             entry.value,
-            (cb) => throw StateError('Not Allowed'),
+            (reduce) => throw StateError('Not Allowed'),
           )),
       ],
     );

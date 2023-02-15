@@ -13,7 +13,6 @@ _$_ZacStateProvideBuilder _$$_ZacStateProvideBuilderFromJson(
       json,
       ($checkedConvert) {
         final val = _$_ZacStateProvideBuilder(
-          family: $checkedConvert('family', (v) => v as String),
           value: $checkedConvert(
               'value', (v) => ZacBuilder<Object>.fromJson(v as Object)),
           $type: $checkedConvert('builder', (v) => v as String?),
@@ -30,7 +29,6 @@ _$_ZacStateProvideBuiltIn _$$_ZacStateProvideBuiltInFromJson(
       json,
       ($checkedConvert) {
         final val = _$_ZacStateProvideBuiltIn(
-          family: $checkedConvert('family', (v) => v as String),
           value: $checkedConvert('value', (v) => v),
           $type: $checkedConvert('builder', (v) => v as String?),
         );
@@ -47,9 +45,10 @@ _$_ZacStatesProvider _$$_ZacStatesProviderFromJson(Map<String, dynamic> json) =>
         final val = _$_ZacStatesProvider(
           states: $checkedConvert(
               'states',
-              (v) => (v as List<dynamic>)
-                  .map((e) => ZacBuilder<ZacState>.fromJson(e as Object))
-                  .toList()),
+              (v) => (v as Map<String, dynamic>).map(
+                    (k, e) => MapEntry(
+                        k, ZacBuilder<ZacStateCreate>.fromJson(e as Object)),
+                  )),
           child: $checkedConvert(
               'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
         );

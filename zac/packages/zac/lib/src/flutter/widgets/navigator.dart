@@ -51,12 +51,7 @@ class FlutterMaterialPageRoute
     return MaterialPageRoute<Object?>(
       builder: (_) => ZacStatesProviderWidget(
         builder: ZacStatesProvider(
-          states: [
-            ZacStateProvide.builtIn(
-              family: familyName,
-              value: arguments,
-            )
-          ],
+          states: {familyName: ZacStateProvide.builtIn(value: arguments)},
           child: child,
         ),
       ),
@@ -133,12 +128,7 @@ class FlutterPageRouteBuilder
     return PageRouteBuilder<ZacBuilder<List<ZacAction>>?>(
       pageBuilder: (_, __, ___) => ZacStatesProviderWidget(
         builder: ZacStatesProvider(
-          states: [
-            ZacStateProvide.builtIn(
-              family: familyName,
-              value: arguments,
-            )
-          ],
+          states: {familyName: ZacStateProvide.builtIn(value: arguments)},
           child: child,
         ),
       ),

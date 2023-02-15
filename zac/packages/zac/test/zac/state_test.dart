@@ -57,18 +57,16 @@ void main() {
 
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:States.provide',
-      'states': [
+      'states': {
         /// simple string which will be turned into ZacObject
-        {
+        'shared1': {
           'builder': 'z:1:State.provideBuiltIn',
-          'family': 'shared1',
           'value': 'shared1',
         },
 
         /// Text Widget
-        {
+        'shared2': {
           'builder': 'z:1:State.provideBuilder',
-          'family': 'shared2',
           'value': {
             'builder': 'f:1:Text',
             'data': 'shared2',
@@ -76,9 +74,8 @@ void main() {
         },
 
         /// ZacString
-        {
+        'shared3': {
           'builder': 'z:1:State.provideBuilder',
-          'family': 'shared3',
           'value': {
             'builder': 'z:1:String',
             'value': 'shared3',
@@ -86,11 +83,10 @@ void main() {
         },
 
         /// null
-        {
+        'shared4': {
           'builder': 'z:1:State.provideBuiltIn',
-          'family': 'shared4',
         },
-      ],
+      },
       'child': {
         'builder': 'test:widget',
       },
@@ -102,13 +98,12 @@ void main() {
   testWidgets('integration simple', (tester) async {
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:States.provide',
-      'states': [
-        {
+      'states': {
+        'shared1': {
           'builder': 'z:1:State.provideBuiltIn',
-          'family': 'shared1',
           'value': 'shared1',
         },
-      ],
+      },
       'child': {
         'builder': 'f:1:Column',
         'children': [
@@ -154,13 +149,12 @@ void main() {
 
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:States.provide',
-      'states': [
-        {
+      'states': {
+        'shared1': {
           'builder': 'z:1:State.provideBuiltIn',
-          'family': 'shared1',
           'value': 'shared1',
         },
-      ],
+      },
       'child': {
         'builder': 'f:1:Column',
         'children': [
@@ -189,18 +183,16 @@ void main() {
   testWidgets('integration nested provider', (tester) async {
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:States.provide',
-      'states': [
-        {
+      'states': {
+        'shared1': {
           'builder': 'z:1:State.provideBuiltIn',
-          'family': 'shared1',
           'value': 'shared1',
         },
-        {
+        'shared2': {
           'builder': 'z:1:State.provideBuiltIn',
-          'family': 'shared2',
           'value': 'shared2',
         },
-      ],
+      },
       'child': {
         'builder': 'f:1:Column',
         'children': [
@@ -236,13 +228,12 @@ void main() {
           /// PROVIDE NESTED
           {
             'builder': 'z:1:States.provide',
-            'states': [
-              {
+            'states': {
+              'shared1': {
                 'builder': 'z:1:State.provideBuiltIn',
-                'family': 'shared1',
                 'value': 'nested shared1',
               },
-            ],
+            },
             'child': {
               'builder': 'f:1:Column',
               'children': [
@@ -301,12 +292,9 @@ void main() {
           child: MaterialApp(
             home: ZacStatesProviderWidget(
               builder: ZacStatesProvider(
-                states: [
-                  ZacStateProvide.builtIn(
-                    family: 'shared',
-                    value: 1,
-                  ),
-                ],
+                states: {
+                  'shared': ZacStateProvide.builtIn(value: 1),
+                },
                 child: FlutterText(
                   ZacStateConsume<String>(family: 'shared'),
                 ),
@@ -318,7 +306,7 @@ void main() {
 
       expect(tester.takeException(),
           isA<StateError>().having((p0) => p0.message, 'error', contains('''
-It was not possible to return a $ZacState of type String from ZacStateConsume<String>.build()
+It was not possible to return a ZacState of type String from ZacStateConsume<String>.build()
 because there were no transformer.
 The value of type int was expected to be transformed.
 Value: 1''')));
@@ -330,12 +318,9 @@ Value: 1''')));
           child: MaterialApp(
             home: ZacStatesProviderWidget(
               builder: ZacStatesProvider(
-                states: [
-                  ZacStateProvide.builtIn(
-                    family: 'shared',
-                    value: 1,
-                  ),
-                ],
+                states: {
+                  'shared': ZacStateProvide.builtIn(value: 1),
+                },
                 child: FlutterText(
                   ZacStateConsume<String>(
                     family: 'shared',
@@ -366,9 +351,9 @@ after transformers were applied.''')));
           child: MaterialApp(
             home: ZacStatesProviderWidget(
               builder: ZacStatesProvider(
-                states: [
-                  ZacStateProvide.builtIn(family: 'shared'),
-                ],
+                states: {
+                  'shared': ZacStateProvide.builtIn(),
+                },
                 child: FlutterText(
                   ZacStateConsume<String>(family: 'shared'),
                 ),
@@ -394,18 +379,16 @@ because the value is null and there are no transformers added.''')));
 
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:States.provide',
-      'states': [
-        {
+      'states': {
+        'shared1': {
           'builder': 'z:1:State.provideBuiltIn',
-          'family': 'shared1',
           'value': 'shared1',
         },
-        {
+        'shared2': {
           'builder': 'z:1:State.provideBuiltIn',
-          'family': 'shared2',
           'value': 'shared2',
         },
-      ],
+      },
       'child': {
         'builder': 'f:1:Column',
         'children': [

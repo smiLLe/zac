@@ -34,11 +34,9 @@ extension HandleActions on List<ZacAction> {
       ),
       overrides: [
         for (var i = 0; i < args.length; i++)
-          ZacState.provider('actionArg.${i + 1}')
-              .overrideWithValue(ZacStateProvided(
-            'actionArg.${i + 1}',
+          ZacState.provider('actionArg.${i + 1}').overrideWithValue(ZacState(
             args[i],
-            (cb) => throw StateError('Not Allowed'),
+            (reduce) => throw StateError('Not Allowed'),
           ))
       ],
     );

@@ -18,29 +18,31 @@ typedef ZacStateUpdateReducer = ZacStateValue Function(ZacStateValue current);
 typedef ZacStateUpdate = void Function(ZacStateUpdateReducer reduce);
 
 @freezed
+class ZacStateCreate with _$ZacStateCreate {
+  factory ZacStateCreate(
+    ZacState Function(
+            AutoDisposeProviderRef<ZacState> ref, ZacStateFamily family)
+        create,
+  ) = _ZacStateCreate;
+}
+
+@freezed
 class ZacState with _$ZacState {
   static final provider =
-      Provider.family<ZacStateProvided, ZacStateFamily>((ref, family) {
+      Provider.autoDispose.family<ZacState, ZacStateFamily>((ref, family) {
     throw UnimplementedError();
   });
 
   factory ZacState(
-    ZacStateFamily family,
-    ZacStateValue Function(ProviderRef<Object?> ref) create,
-  ) = ZacStateCreate;
-
-  /// DO NOT USE
-  /// Must only be used by Zac
-  @internal
-  factory ZacState.provided(
-    ZacStateFamily family,
     ZacStateValue value,
     ZacStateUpdate update,
-  ) = ZacStateProvided;
+  ) = _ZacState;
 }
 
 @freezedZacBuilder
-class ZacStateProvide with _$ZacStateProvide implements ZacBuilder<ZacState> {
+class ZacStateProvide
+    with _$ZacStateProvide
+    implements ZacBuilder<ZacStateCreate> {
   ZacStateProvide._();
 
   static const union = 'z:1:State.provideBuilder';
@@ -51,23 +53,30 @@ class ZacStateProvide with _$ZacStateProvide implements ZacBuilder<ZacState> {
 
   @FreezedUnionValue(ZacStateProvide.union)
   factory ZacStateProvide.builder({
-    required ZacStateFamily family,
     required ZacBuilder<Object> value,
   }) = _ZacStateProvideBuilder;
 
   @FreezedUnionValue(ZacStateProvide.unionBuiltIn)
   factory ZacStateProvide.builtIn({
-    required ZacStateFamily family,
     Object? value,
   }) = _ZacStateProvideBuiltIn;
 
-  late final ZacState _state = map<ZacState>(
-    builtIn: (obj) => ZacState(obj.family, (_) => obj.value),
-    builder: (obj) => ZacState(obj.family, (_) => obj.value),
+  late final ZacStateCreate _state = ZacStateCreate(
+    (ref, family) {
+      ref.keepAlive();
+      return ZacState(
+        value,
+        (reduce) {
+          ref.state = ref.state.copyWith.call(
+            value: reduce(ref.state.value),
+          );
+        },
+      );
+    },
   );
 
   @override
-  ZacState build(BuildContext context, ZacContext zacContext) => _state;
+  ZacStateCreate build(BuildContext context, ZacContext zacContext) => _state;
 }
 
 @freezedZacBuilder
@@ -78,7 +87,7 @@ class ZacStatesProvider with _$ZacStatesProvider implements ZacBuilder<Widget> {
 
   @FreezedUnionValue('z:1:States.provide')
   factory ZacStatesProvider({
-    required List<ZacBuilder<ZacState>> states,
+    required Map<String, ZacBuilder<ZacStateCreate>> states,
     required ZacBuilder<Widget> child,
   }) = _ZacStatesProvider;
 
@@ -101,21 +110,14 @@ class ZacStatesProviderWidget extends HookConsumerWidget {
     final zacContext = useZacContext(ref);
     final overrides = useMemoized<List<Override>>(() {
       return [
-        ...builder.states.map((state) {
-          assert(state.build(context, zacContext) is ZacStateCreate);
-          return state.build(context, zacContext) as ZacStateCreate;
-        }).map(
-          (state) => ZacState.provider(state.family).overrideWith(
-            (ref) => ZacStateProvided(
-              state.family,
-              state.create(ref),
-              (reduce) {
-                ref.state = ref.state.copyWith.call(
-                  value: reduce(ref.state.value),
-                );
-              },
-            ),
-          ),
+        ...builder.states.entries.map(
+          (entry) {
+            final zacStateCreate = entry.value.build(context, zacContext);
+            final family = entry.key;
+            return ZacState.provider(family).overrideWith(
+              (ref) => zacStateCreate.create(ref, family),
+            );
+          },
         )
       ];
     }, [builder]);
@@ -155,21 +157,6 @@ class ZacStateConsume<T> with _$ZacStateConsume<T> implements ZacBuilder<T> {
         return obj.container.read(ZacState.provider(family)).value;
       },
     );
-
-    // return consume.map<ZacStateValue>(
-    //   read: (_) => context.widgetRef
-    //       .read<ZacStateProvided>(ZacState.provider(family))
-    //       .value,
-    //   watch: (obj) => null != obj.select
-    //       ? context.widgetRef.watch<ZacStateValue>(
-    //           ZacState.provider(family).select<ZacStateValue>((state) {
-    //           return obj.select!.build(context, zacContext).transform(
-    //               ZacTransformValue(state.value), context, zacContext);
-    //         }))
-    //       : context.widgetRef
-    //           .watch<ZacStateProvided>(ZacState.provider(family))
-    //           .value,
-    // );
   }
 
   static ZacStateConsume<T> fromRegister<T extends Object?>(
@@ -309,7 +296,7 @@ class ZacOnStateChangeWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final zacContext = useZacContext(ref);
     final actions = builder.actions.build(context, zacContext);
-    ref.listen<ZacStateProvided>(
+    ref.listen<ZacState>(
       ZacState.provider(builder.family),
       (previous, next) => actions.callbackTwoParams(context, zacContext)(
           next.value, previous?.value),
