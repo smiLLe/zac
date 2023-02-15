@@ -171,9 +171,9 @@ because there was already a transition.''');
       };
     }
 
-//     ref.onDispose(() {
-//       sessionId = -1;
-//     });
+    ref.onDispose(() {
+      sessionId = -1;
+    });
 
     return ZacStateMachine(
       family: family,
