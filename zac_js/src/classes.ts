@@ -568,8 +568,8 @@ export interface FlutterWrapCrossAlignment {
 export interface ZacAction {
   _ZacAction: unknown;
 }
-export interface ZacState {
-  _ZacState: unknown;
+export interface ZacStateCreate {
+  _ZacStateCreate: unknown;
 }
 export interface ZacStateMachineBuildWidget extends FlutterWidget {
   _ZacStateMachineBuildWidget: unknown;
@@ -577,14 +577,14 @@ export interface ZacStateMachineBuildWidget extends FlutterWidget {
 export interface ZacTransform {
   _ZacTransform: unknown;
 }
-export class ZacStateMachineConfig extends ZacConvertable {
+export class ZacStateMachineProvide extends ZacConvertable {
   static new(data: {
     states: Record<string, ZacStateMachineStateConfig>;
     initialState: string;
     initialWidget?: ZacBuilder<FlutterWidget>;
   }) {
-    return new ZacStateMachineConfig({
-      builder: "z:1:StateMachine",
+    return new ZacStateMachineProvide({
+      builder: "z:1:StateMachine.provide",
       ...data,
     });
   }
@@ -5011,7 +5011,7 @@ export class ZacStateMachineBuild extends ZacBuilder<ZacStateMachineBuildWidget>
 }
 export class ZacStateMachineProvider extends ZacBuilder<FlutterWidget> {
   static new(data: {
-    machines: Record<string, ZacStateMachineConfig>;
+    machines: Record<string, ZacStateMachineProvide>;
     child: ZacBuilder<FlutterWidget>;
   }) {
     return new ZacStateMachineProvider({
@@ -5020,14 +5020,14 @@ export class ZacStateMachineProvider extends ZacBuilder<FlutterWidget> {
     });
   }
 }
-export class ZacStateProvide extends ZacBuilder<ZacState> {
-  static builder(data: { family: string; value: ZacBuilder<unknown> }) {
+export class ZacStateProvide extends ZacBuilder<ZacStateCreate> {
+  static builder(data: { value: ZacBuilder<unknown> }) {
     return new ZacStateProvide({
       builder: "z:1:State.provideBuilder",
       ...data,
     });
   }
-  static builtIn(data: { family: string; value?: JSONValue }) {
+  static builtIn(data?: { value?: JSONValue }) {
     return new ZacStateProvide({
       builder: "z:1:State.provideBuiltIn",
       ...data,
@@ -5036,7 +5036,7 @@ export class ZacStateProvide extends ZacBuilder<ZacState> {
 }
 export class ZacStatesProvider extends ZacBuilder<FlutterWidget> {
   static new(data: {
-    states: Array<ZacBuilder<ZacState>>;
+    states: Record<string, ZacBuilder<ZacStateCreate>>;
     child: ZacBuilder<FlutterWidget>;
   }) {
     return new ZacStatesProvider({

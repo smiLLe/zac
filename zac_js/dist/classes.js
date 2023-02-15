@@ -13,9 +13,9 @@ export class ZacBuilder extends ZacConvertable {
         return this._doNotUse;
     }
 }
-export class ZacStateMachineConfig extends ZacConvertable {
+export class ZacStateMachineProvide extends ZacConvertable {
     static new(data) {
-        return new ZacStateMachineConfig(Object.assign({ builder: 'z:1:StateMachine' }, data));
+        return new ZacStateMachineProvide(Object.assign({ builder: 'z:1:StateMachine.provide' }, data));
     }
 }
 export class ZacStateMachineStateConfig extends ZacConvertable {

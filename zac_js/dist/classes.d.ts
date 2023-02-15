@@ -543,8 +543,8 @@ export interface FlutterWrapCrossAlignment {
 export interface ZacAction {
     _ZacAction: unknown;
 }
-export interface ZacState {
-    _ZacState: unknown;
+export interface ZacStateCreate {
+    _ZacStateCreate: unknown;
 }
 export interface ZacStateMachineBuildWidget extends FlutterWidget {
     _ZacStateMachineBuildWidget: unknown;
@@ -552,12 +552,12 @@ export interface ZacStateMachineBuildWidget extends FlutterWidget {
 export interface ZacTransform {
     _ZacTransform: unknown;
 }
-export declare class ZacStateMachineConfig extends ZacConvertable {
+export declare class ZacStateMachineProvide extends ZacConvertable {
     static new(data: {
         states: Record<string, ZacStateMachineStateConfig>;
         initialState: string;
         initialWidget?: ZacBuilder<FlutterWidget>;
-    }): ZacStateMachineConfig;
+    }): ZacStateMachineProvide;
 }
 export declare class ZacStateMachineStateConfig extends ZacConvertable {
     static new(data?: {
@@ -2913,23 +2913,21 @@ export declare class ZacStateMachineBuild extends ZacBuilder<ZacStateMachineBuil
 }
 export declare class ZacStateMachineProvider extends ZacBuilder<FlutterWidget> {
     static new(data: {
-        machines: Record<string, ZacStateMachineConfig>;
+        machines: Record<string, ZacStateMachineProvide>;
         child: ZacBuilder<FlutterWidget>;
     }): ZacStateMachineProvider;
 }
-export declare class ZacStateProvide extends ZacBuilder<ZacState> {
+export declare class ZacStateProvide extends ZacBuilder<ZacStateCreate> {
     static builder(data: {
-        family: string;
         value: ZacBuilder<unknown>;
     }): ZacStateProvide;
-    static builtIn(data: {
-        family: string;
+    static builtIn(data?: {
         value?: JSONValue;
     }): ZacStateProvide;
 }
 export declare class ZacStatesProvider extends ZacBuilder<FlutterWidget> {
     static new(data: {
-        states: Array<ZacBuilder<ZacState>>;
+        states: Record<string, ZacBuilder<ZacStateCreate>>;
         child: ZacBuilder<FlutterWidget>;
     }): ZacStatesProvider;
 }
