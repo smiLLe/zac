@@ -6,6 +6,7 @@ import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/widgets/builder.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 

@@ -44,14 +44,13 @@ _$_ZacStateMachineStateConfig _$$_ZacStateMachineStateConfigFromJson(
       },
     );
 
-_$_ZacStateMachineProvide _$$_ZacStateMachineProvideFromJson(
+_$_ZacStateMachineConfig _$$_ZacStateMachineConfigFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_ZacStateMachineProvide',
+      r'_$_ZacStateMachineConfig',
       json,
       ($checkedConvert) {
-        final val = _$_ZacStateMachineProvide(
-          family: $checkedConvert('family', (v) => v as String),
+        final val = _$_ZacStateMachineConfig(
           states: $checkedConvert(
               'states',
               (v) => (v as Map<String, dynamic>).map(
@@ -79,10 +78,12 @@ _$_ZacStateMachineProvider _$$_ZacStateMachineProviderFromJson(
         final val = _$_ZacStateMachineProvider(
           machines: $checkedConvert(
               'machines',
-              (v) => (v as List<dynamic>)
-                  .map((e) => ZacStateMachineProvide.fromJson(
-                      e as Map<String, dynamic>))
-                  .toList()),
+              (v) => (v as Map<String, dynamic>).map(
+                    (k, e) => MapEntry(
+                        k,
+                        ZacStateMachineConfig.fromJson(
+                            e as Map<String, dynamic>)),
+                  )),
           child: $checkedConvert(
               'child', (v) => ZacBuilder<Widget>.fromJson(v as Object)),
         );

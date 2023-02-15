@@ -19,9 +19,8 @@ void main() {
 
   test('Create ZacStateMachineConfig from JSON', () {
     expect(
-        ZacStateMachineProvide.fromJson(<String, dynamic>{
-          'builder': 'z:1:StateMachine.provide',
-          'family': 'm1',
+        ZacStateMachineConfig.fromJson(<String, dynamic>{
+          'builder': 'z:1:StateMachine',
           'initialState': 'a',
           'states': {
             'a': {
@@ -39,7 +38,7 @@ void main() {
             }
           }
         }),
-        ZacStateMachineProvide(family: 'm1', initialState: 'a', states: {
+        ZacStateMachineConfig(initialState: 'a', states: {
           'a': ZacStateMachineStateConfig(
             on: [
               ZacStateMachineTransition(event: 'NEXT', target: 'b'),
@@ -67,10 +66,9 @@ void main() {
 
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:StateMachines.provide',
-      'machines': [
-        {
-          'builder': 'z:1:StateMachine.provide',
-          'family': 'm1',
+      'machines': {
+        'm1': {
+          'builder': 'z:1:StateMachine',
           'initialState': 'a',
           'states': {
             'a': {
@@ -81,7 +79,7 @@ void main() {
             },
           }
         }
-      ],
+      },
       'child': {
         'builder': 'z:1:StateMachine:Build',
         'family': 'm1',
@@ -118,10 +116,9 @@ because there was already a transition.'''))));
 
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:StateMachines.provide',
-      'machines': [
-        {
-          'builder': 'z:1:StateMachine.provide',
-          'family': 'm1',
+      'machines': {
+        'm1': {
+          'builder': 'z:1:StateMachine',
           'initialState': 'a',
           'states': {
             'a': {
@@ -145,7 +142,7 @@ because there was already a transition.'''))));
             },
           }
         }
-      ],
+      },
       'child': {
         'builder': 'z:1:StateMachine:Build',
         'family': 'm1',
@@ -166,10 +163,9 @@ because there was already a transition.'''))));
   testWidgets('integration', (tester) async {
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:StateMachines.provide',
-      'machines': [
-        {
-          'builder': 'z:1:StateMachine.provide',
-          'family': 'm1',
+      'machines': {
+        'm1': {
+          'builder': 'z:1:StateMachine',
           'initialState': 'a',
           'states': {
             'a': {
@@ -229,7 +225,7 @@ because there was already a transition.'''))));
             },
           }
         }
-      ],
+      },
       'child': {
         'builder': 'z:1:StateMachine:Build',
         'family': 'm1',
@@ -251,58 +247,13 @@ because there was already a transition.'''))));
     expect(find.text('From Next in b'), findsOneWidget);
   });
 
-  testWidgets('Build a shared machine as child of another ', (tester) async {
-    await testJSON(tester, <String, dynamic>{
-      'builder': 'z:1:StateMachines.provide',
-      'machines': [
-        {
-          'builder': 'z:1:StateMachine.provide',
-          'family': 'm1',
-          'initialState': 'm1.a',
-          'states': {
-            'm1.a': {
-              'builder': 'z:1:StateMachine:StateConfig',
-              'widget': {
-                'builder': 'z:1:StateMachine:Build',
-
-                /// build m2 as child of m1.a
-                'family': 'm2',
-              },
-            },
-          }
-        },
-        {
-          'builder': 'z:1:StateMachine.provide',
-          'family': 'm2',
-          'initialState': 'm2.a',
-          'states': {
-            'm2.a': {
-              'builder': 'z:1:StateMachine:StateConfig',
-              'widget': {
-                'builder': 'f:1:Text',
-                'data': 'm2.a',
-              },
-            },
-          }
-        }
-      ],
-      'child': {
-        'builder': 'z:1:StateMachine:Build',
-        'family': 'm1',
-      },
-    });
-
-    expect(find.text('m2.a'), findsOneWidget);
-  });
-
   testWidgets('Throw exception if no initial widget is configured',
       (tester) async {
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:StateMachines.provide',
-      'machines': [
-        {
-          'builder': 'z:1:StateMachine.provide',
-          'family': 'm1',
+      'machines': {
+        'm1': {
+          'builder': 'z:1:StateMachine',
           'initialState': 'a',
           'states': {
             'a': {
@@ -310,7 +261,7 @@ because there was already a transition.'''))));
             },
           },
         },
-      ],
+      },
       'child': {
         'builder': 'z:1:StateMachine:Build',
         'family': 'm1',
@@ -331,10 +282,9 @@ or configure a widget for state "a".''')));
       (tester) async {
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:StateMachines.provide',
-      'machines': [
-        {
-          'builder': 'z:1:StateMachine.provide',
-          'family': 'm1',
+      'machines': {
+        'm1': {
+          'builder': 'z:1:StateMachine',
           'initialState': 'a',
           'states': {
             'a': {
@@ -366,7 +316,7 @@ or configure a widget for state "a".''')));
             }
           },
         },
-      ],
+      },
       'child': {
         'builder': 'z:1:StateMachine:Build',
         'family': 'm1',
