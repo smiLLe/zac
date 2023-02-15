@@ -170,13 +170,14 @@ abstract class _ZacStateMachineStateConfig extends ZacStateMachineStateConfig {
   ZacBuilder<Widget>? get widget;
 }
 
-ZacStateMachineConfig _$ZacStateMachineConfigFromJson(
+ZacStateMachineProvide _$ZacStateMachineProvideFromJson(
     Map<String, dynamic> json) {
-  return _ZacStateMachineConfig.fromJson(json);
+  return _ZacStateMachineProvide.fromJson(json);
 }
 
 /// @nodoc
-mixin _$ZacStateMachineConfig {
+mixin _$ZacStateMachineProvide {
+  String get family => throw _privateConstructorUsedError;
   Map<String, ZacStateMachineStateConfig> get states =>
       throw _privateConstructorUsedError;
   String get initialState => throw _privateConstructorUsedError;
@@ -184,24 +185,27 @@ mixin _$ZacStateMachineConfig {
 
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacStateMachineConfig value) $default,
+    TResult Function(_ZacStateMachineProvide value) $default,
   ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacStateMachineConfig extends _ZacStateMachineConfig {
-  _$_ZacStateMachineConfig(
-      {required final Map<String, ZacStateMachineStateConfig> states,
+class _$_ZacStateMachineProvide extends _ZacStateMachineProvide {
+  _$_ZacStateMachineProvide(
+      {required this.family,
+      required final Map<String, ZacStateMachineStateConfig> states,
       required this.initialState,
       this.initialWidget})
       : _states = states,
         super._();
 
-  factory _$_ZacStateMachineConfig.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacStateMachineConfigFromJson(json);
+  factory _$_ZacStateMachineProvide.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateMachineProvideFromJson(json);
 
+  @override
+  final String family;
   final Map<String, ZacStateMachineStateConfig> _states;
   @override
   Map<String, ZacStateMachineStateConfig> get states {
@@ -217,14 +221,15 @@ class _$_ZacStateMachineConfig extends _ZacStateMachineConfig {
 
   @override
   String toString() {
-    return 'ZacStateMachineConfig(states: $states, initialState: $initialState, initialWidget: $initialWidget)';
+    return 'ZacStateMachineProvide(family: $family, states: $states, initialState: $initialState, initialWidget: $initialWidget)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacStateMachineConfig &&
+            other is _$_ZacStateMachineProvide &&
+            (identical(other.family, family) || other.family == family) &&
             const DeepCollectionEquality().equals(other._states, _states) &&
             (identical(other.initialState, initialState) ||
                 other.initialState == initialState) &&
@@ -236,6 +241,7 @@ class _$_ZacStateMachineConfig extends _ZacStateMachineConfig {
   @override
   int get hashCode => Object.hash(
       runtimeType,
+      family,
       const DeepCollectionEquality().hash(_states),
       initialState,
       initialWidget);
@@ -243,22 +249,25 @@ class _$_ZacStateMachineConfig extends _ZacStateMachineConfig {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
-    TResult Function(_ZacStateMachineConfig value) $default,
+    TResult Function(_ZacStateMachineProvide value) $default,
   ) {
     return $default(this);
   }
 }
 
-abstract class _ZacStateMachineConfig extends ZacStateMachineConfig {
-  factory _ZacStateMachineConfig(
-      {required final Map<String, ZacStateMachineStateConfig> states,
+abstract class _ZacStateMachineProvide extends ZacStateMachineProvide {
+  factory _ZacStateMachineProvide(
+      {required final String family,
+      required final Map<String, ZacStateMachineStateConfig> states,
       required final String initialState,
-      final ZacBuilder<Widget>? initialWidget}) = _$_ZacStateMachineConfig;
-  _ZacStateMachineConfig._() : super._();
+      final ZacBuilder<Widget>? initialWidget}) = _$_ZacStateMachineProvide;
+  _ZacStateMachineProvide._() : super._();
 
-  factory _ZacStateMachineConfig.fromJson(Map<String, dynamic> json) =
-      _$_ZacStateMachineConfig.fromJson;
+  factory _ZacStateMachineProvide.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateMachineProvide.fromJson;
 
+  @override
+  String get family;
   @override
   Map<String, ZacStateMachineStateConfig> get states;
   @override
@@ -525,7 +534,7 @@ ZacStateMachineProvider _$ZacStateMachineProviderFromJson(
 
 /// @nodoc
 mixin _$ZacStateMachineProvider {
-  Map<String, ZacStateMachineConfig> get machines =>
+  List<ZacStateMachineProvide> get machines =>
       throw _privateConstructorUsedError;
   ZacBuilder<Widget> get child => throw _privateConstructorUsedError;
 
@@ -540,7 +549,7 @@ mixin _$ZacStateMachineProvider {
 @JsonSerializable(createToJson: false)
 class _$_ZacStateMachineProvider extends _ZacStateMachineProvider {
   _$_ZacStateMachineProvider(
-      {required final Map<String, ZacStateMachineConfig> machines,
+      {required final List<ZacStateMachineProvide> machines,
       required this.child})
       : _machines = machines,
         super._();
@@ -548,12 +557,12 @@ class _$_ZacStateMachineProvider extends _ZacStateMachineProvider {
   factory _$_ZacStateMachineProvider.fromJson(Map<String, dynamic> json) =>
       _$$_ZacStateMachineProviderFromJson(json);
 
-  final Map<String, ZacStateMachineConfig> _machines;
+  final List<ZacStateMachineProvide> _machines;
   @override
-  Map<String, ZacStateMachineConfig> get machines {
-    if (_machines is EqualUnmodifiableMapView) return _machines;
+  List<ZacStateMachineProvide> get machines {
+    if (_machines is EqualUnmodifiableListView) return _machines;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_machines);
+    return EqualUnmodifiableListView(_machines);
   }
 
   @override
@@ -589,7 +598,7 @@ class _$_ZacStateMachineProvider extends _ZacStateMachineProvider {
 
 abstract class _ZacStateMachineProvider extends ZacStateMachineProvider {
   factory _ZacStateMachineProvider(
-      {required final Map<String, ZacStateMachineConfig> machines,
+      {required final List<ZacStateMachineProvide> machines,
       required final ZacBuilder<Widget> child}) = _$_ZacStateMachineProvider;
   _ZacStateMachineProvider._() : super._();
 
@@ -597,7 +606,7 @@ abstract class _ZacStateMachineProvider extends ZacStateMachineProvider {
       _$_ZacStateMachineProvider.fromJson;
 
   @override
-  Map<String, ZacStateMachineConfig> get machines;
+  List<ZacStateMachineProvide> get machines;
   @override
   ZacBuilder<Widget> get child;
 }

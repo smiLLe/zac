@@ -39,18 +39,19 @@ class ZacStateMachineStateConfig with _$ZacStateMachineStateConfig {
 }
 
 @freezedZacBuilder
-class ZacStateMachineConfig with _$ZacStateMachineConfig {
-  ZacStateMachineConfig._();
+class ZacStateMachineProvide with _$ZacStateMachineProvide {
+  ZacStateMachineProvide._();
 
-  factory ZacStateMachineConfig.fromJson(Map<String, dynamic> json) =>
-      _$ZacStateMachineConfigFromJson(json);
+  factory ZacStateMachineProvide.fromJson(Map<String, dynamic> json) =>
+      _$ZacStateMachineProvideFromJson(json);
 
-  @FreezedUnionValue('z:1:StateMachine')
-  factory ZacStateMachineConfig({
+  @FreezedUnionValue('z:1:StateMachine.provide')
+  factory ZacStateMachineProvide({
+    required String family,
     required Map<String, ZacStateMachineStateConfig> states,
     required String initialState,
     ZacBuilder<Widget>? initialWidget,
-  }) = _ZacStateMachineConfig;
+  }) = _ZacStateMachineProvide;
 
   late final Idle idle = () {
     final endlichStateConfigs = states.map((stateName, stateConfig) {
@@ -126,7 +127,7 @@ payload of type ${ZacBuilder<Widget>} for event "$event".''');
 class ZacStateMachine with _$ZacStateMachine {
   ZacStateMachine._();
 
-  static final provider = Provider.autoDispose.family<ZacStateMachine, String>(
+  static final provider = Provider.family<ZacStateMachine, String>(
     (_, family) {
       throw StateError(
           'Could not find a $ZacStateMachine for family "$family".');
@@ -135,7 +136,7 @@ class ZacStateMachine with _$ZacStateMachine {
   );
 
   static ZacStateMachine _create({
-    required AutoDisposeProviderRef<ZacStateMachine> ref,
+    required ProviderRef<ZacStateMachine> ref,
     required Idle idle,
     required String family,
   }) {
@@ -213,7 +214,7 @@ class ZacStateMachineProvider
 
   @FreezedUnionValue('z:1:StateMachines.provide')
   factory ZacStateMachineProvider({
-    required Map<String, ZacStateMachineConfig> machines,
+    required List<ZacStateMachineProvide> machines,
     required ZacBuilder<Widget> child,
   }) = _ZacStateMachineProvider;
 
@@ -231,18 +232,18 @@ class ZacStateMachineProviderWidget extends HookWidget {
       {required this.buildChild, required this.machines, super.key});
 
   final Widget Function(BuildContext context, ZacContext zacContext) buildChild;
-  final Map<String, ZacStateMachineConfig> machines;
+  final List<ZacStateMachineProvide> machines;
 
   @override
   Widget build(BuildContext context) {
     final overrides = useMemoized<List<Override>>(() {
       return [
-        ...machines.entries.map((entry) {
-          return ZacStateMachine.provider(entry.key).overrideWith((ref) {
+        ...machines.map((config) {
+          return ZacStateMachine.provider(config.family).overrideWith((ref) {
             return ZacStateMachine._create(
               ref: ref,
-              idle: entry.value.idle,
-              family: entry.key,
+              idle: config.idle,
+              family: config.family,
             );
           });
         })
@@ -282,9 +283,7 @@ class ZacStateMachineBuild
   @override
   ZacStateMachineBuildWidget build(
       BuildContext context, ZacContext zacContext) {
-    return ZacStateMachineBuildWidget(
-      family: family,
-    );
+    return ZacStateMachineBuildWidget(family: family);
   }
 }
 
