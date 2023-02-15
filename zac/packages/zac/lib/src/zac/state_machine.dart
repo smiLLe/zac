@@ -39,18 +39,18 @@ class ZacStateMachineStateConfig with _$ZacStateMachineStateConfig {
 }
 
 @freezedZacBuilder
-class ZacStateMachineConfig with _$ZacStateMachineConfig {
-  ZacStateMachineConfig._();
+class ZacStateMachineProvide with _$ZacStateMachineProvide {
+  ZacStateMachineProvide._();
 
-  factory ZacStateMachineConfig.fromJson(Map<String, dynamic> json) =>
-      _$ZacStateMachineConfigFromJson(json);
+  factory ZacStateMachineProvide.fromJson(Map<String, dynamic> json) =>
+      _$ZacStateMachineProvideFromJson(json);
 
-  @FreezedUnionValue('z:1:StateMachine')
-  factory ZacStateMachineConfig({
+  @FreezedUnionValue('z:1:StateMachine.provide')
+  factory ZacStateMachineProvide({
     required Map<String, ZacStateMachineStateConfig> states,
     required String initialState,
     ZacBuilder<Widget>? initialWidget,
-  }) = _ZacStateMachineConfig;
+  }) = _ZacStateMachineProvide;
 
   late final Idle idle = () {
     final endlichStateConfigs = states.map((stateName, stateConfig) {
@@ -213,7 +213,7 @@ class ZacStateMachineProvider
 
   @FreezedUnionValue('z:1:StateMachines.provide')
   factory ZacStateMachineProvider({
-    required Map<String, ZacStateMachineConfig> machines,
+    required Map<String, ZacStateMachineProvide> machines,
     required ZacBuilder<Widget> child,
   }) = _ZacStateMachineProvider;
 
@@ -231,7 +231,7 @@ class ZacStateMachineProviderWidget extends HookWidget {
       {required this.buildChild, required this.machines, super.key});
 
   final Widget Function(BuildContext context, ZacContext zacContext) buildChild;
-  final Map<String, ZacStateMachineConfig> machines;
+  final Map<String, ZacStateMachineProvide> machines;
 
   @override
   Widget build(BuildContext context) {

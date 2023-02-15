@@ -19,8 +19,8 @@ void main() {
 
   test('Create ZacStateMachineConfig from JSON', () {
     expect(
-        ZacStateMachineConfig.fromJson(<String, dynamic>{
-          'builder': 'z:1:StateMachine',
+        ZacStateMachineProvide.fromJson(<String, dynamic>{
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
@@ -38,7 +38,7 @@ void main() {
             }
           }
         }),
-        ZacStateMachineConfig(initialState: 'a', states: {
+        ZacStateMachineProvide(initialState: 'a', states: {
           'a': ZacStateMachineStateConfig(
             on: [
               ZacStateMachineTransition(event: 'NEXT', target: 'b'),
@@ -68,7 +68,7 @@ void main() {
       'builder': 'z:1:StateMachines.provide',
       'machines': {
         'm1': {
-          'builder': 'z:1:StateMachine',
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
@@ -118,7 +118,7 @@ because there was already a transition.'''))));
       'builder': 'z:1:StateMachines.provide',
       'machines': {
         'm1': {
-          'builder': 'z:1:StateMachine',
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
@@ -165,7 +165,7 @@ because there was already a transition.'''))));
       'builder': 'z:1:StateMachines.provide',
       'machines': {
         'm1': {
-          'builder': 'z:1:StateMachine',
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
@@ -253,7 +253,7 @@ because there was already a transition.'''))));
       'builder': 'z:1:StateMachines.provide',
       'machines': {
         'm1': {
-          'builder': 'z:1:StateMachine',
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
@@ -284,7 +284,7 @@ or configure a widget for state "a".''')));
       'builder': 'z:1:StateMachines.provide',
       'machines': {
         'm1': {
-          'builder': 'z:1:StateMachine',
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
