@@ -695,14 +695,6 @@ class IntTransformer with _$IntTransformer implements ZacBuilder<ZacTransform> {
       },
       tryParse: (obj) {
         final value = obj.number.build(context, zacContext);
-        if (value is! String) {
-          throw StateError('''
-There was an error while trying to parse an int in ${obj.runtimeType}
-for converter "${IntTransformer.unionValueTryParse}".
-The value to transform was not of type String but instead is ${value.runtimeType}.
-Value: $value
-''');
-        }
         return int.tryParse(value);
       },
       incr: (obj) {

@@ -7,5 +7,5 @@ export 'src/zac/state_machine.dart';
 export 'src/zac/zac_value.dart';
 export 'src/zac/build.dart';
 export 'src/zac/state.dart';
-export 'src/zac/transformers.dart';
+export 'src/zac/transformers.dart' hide TransformValueWrapper;
 export 'src/flutter/all.dart';
