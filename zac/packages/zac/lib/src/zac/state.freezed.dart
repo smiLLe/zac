@@ -264,139 +264,68 @@ abstract class _ZacState implements ZacState {
 }
 
 ZacStateProvide _$ZacStateProvideFromJson(Map<String, dynamic> json) {
-  switch (json['builder']) {
-    case 'z:1:State.provideBuilder':
-      return _ZacStateProvideBuilder.fromJson(json);
-    case 'z:1:State.provideBuiltIn':
-      return _ZacStateProvideBuiltIn.fromJson(json);
-
-    default:
-      throw CheckedFromJsonException(json, 'builder', 'ZacStateProvide',
-          'Invalid union type "${json['builder']}"!');
-  }
+  return _ZacStateProvide.fromJson(json);
 }
 
 /// @nodoc
 mixin _$ZacStateProvide {
-  Object? get value => throw _privateConstructorUsedError;
+  ZacBuilderOr get builderOr => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacStateProvideBuilder value) builder,
-    required TResult Function(_ZacStateProvideBuiltIn value) builtIn,
-  }) =>
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacStateProvide value) $default,
+  ) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
-class _$_ZacStateProvideBuilder extends _ZacStateProvideBuilder {
-  _$_ZacStateProvideBuilder({required this.value, final String? $type})
-      : $type = $type ?? 'z:1:State.provideBuilder',
-        super._();
+class _$_ZacStateProvide extends _ZacStateProvide {
+  _$_ZacStateProvide({required this.builderOr}) : super._();
 
-  factory _$_ZacStateProvideBuilder.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacStateProvideBuilderFromJson(json);
+  factory _$_ZacStateProvide.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacStateProvideFromJson(json);
 
   @override
-  final ZacBuilder<Object> value;
-
-  @JsonKey(name: 'builder')
-  final String $type;
+  final ZacBuilderOr builderOr;
 
   @override
   String toString() {
-    return 'ZacStateProvide.builder(value: $value)';
+    return 'ZacStateProvide(builderOr: $builderOr)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ZacStateProvideBuilder &&
-            (identical(other.value, value) || other.value == value));
+            other is _$_ZacStateProvide &&
+            (identical(other.builderOr, builderOr) ||
+                other.builderOr == builderOr));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, builderOr);
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacStateProvideBuilder value) builder,
-    required TResult Function(_ZacStateProvideBuiltIn value) builtIn,
-  }) {
-    return builder(this);
+  TResult map<TResult extends Object?>(
+    TResult Function(_ZacStateProvide value) $default,
+  ) {
+    return $default(this);
   }
 }
 
-abstract class _ZacStateProvideBuilder extends ZacStateProvide {
-  factory _ZacStateProvideBuilder({required final ZacBuilder<Object> value}) =
-      _$_ZacStateProvideBuilder;
-  _ZacStateProvideBuilder._() : super._();
+abstract class _ZacStateProvide extends ZacStateProvide {
+  factory _ZacStateProvide({required final ZacBuilderOr builderOr}) =
+      _$_ZacStateProvide;
+  _ZacStateProvide._() : super._();
 
-  factory _ZacStateProvideBuilder.fromJson(Map<String, dynamic> json) =
-      _$_ZacStateProvideBuilder.fromJson;
-
-  @override
-  ZacBuilder<Object> get value;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ZacStateProvideBuiltIn extends _ZacStateProvideBuiltIn {
-  _$_ZacStateProvideBuiltIn({this.value, final String? $type})
-      : $type = $type ?? 'z:1:State.provideBuiltIn',
-        super._();
-
-  factory _$_ZacStateProvideBuiltIn.fromJson(Map<String, dynamic> json) =>
-      _$$_ZacStateProvideBuiltInFromJson(json);
+  factory _ZacStateProvide.fromJson(Map<String, dynamic> json) =
+      _$_ZacStateProvide.fromJson;
 
   @override
-  final Object? value;
-
-  @JsonKey(name: 'builder')
-  final String $type;
-
-  @override
-  String toString() {
-    return 'ZacStateProvide.builtIn(value: $value)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacStateProvideBuiltIn &&
-            const DeepCollectionEquality().equals(other.value, value));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(value));
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ZacStateProvideBuilder value) builder,
-    required TResult Function(_ZacStateProvideBuiltIn value) builtIn,
-  }) {
-    return builtIn(this);
-  }
-}
-
-abstract class _ZacStateProvideBuiltIn extends ZacStateProvide {
-  factory _ZacStateProvideBuiltIn({final Object? value}) =
-      _$_ZacStateProvideBuiltIn;
-  _ZacStateProvideBuiltIn._() : super._();
-
-  factory _ZacStateProvideBuiltIn.fromJson(Map<String, dynamic> json) =
-      _$_ZacStateProvideBuiltIn.fromJson;
-
-  @override
-  Object? get value;
+  ZacBuilderOr get builderOr;
 }
 
 ZacStatesProvider _$ZacStatesProviderFromJson(Map<String, dynamic> json) {

@@ -45,27 +45,21 @@ class ZacStateProvide
     implements ZacBuilder<ZacStateCreate> {
   ZacStateProvide._();
 
-  static const union = 'z:1:State.provideBuilder';
-  static const unionBuiltIn = 'z:1:State.provideBuiltIn';
+  static const union = 'z:1:State.provide';
 
   factory ZacStateProvide.fromJson(Map<String, dynamic> json) =>
       _$ZacStateProvideFromJson(json);
 
   @FreezedUnionValue(ZacStateProvide.union)
-  factory ZacStateProvide.builder({
-    required ZacBuilder<Object> value,
-  }) = _ZacStateProvideBuilder;
-
-  @FreezedUnionValue(ZacStateProvide.unionBuiltIn)
-  factory ZacStateProvide.builtIn({
-    Object? value,
-  }) = _ZacStateProvideBuiltIn;
+  factory ZacStateProvide({
+    required ZacBuilderOr builderOr,
+  }) = _ZacStateProvide;
 
   late final ZacStateCreate _state = ZacStateCreate(
     (ref, family) {
       ref.keepAlive();
       return ZacState(
-        value,
+        builderOr.value,
         (reduce) {
           ref.state = ref.state.copyWith.call(
             value: reduce(ref.state.value),

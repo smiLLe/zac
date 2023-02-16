@@ -3,6 +3,7 @@
 /// DO NOT MODIFY BY HAND.
 ///
 
+import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/dart_ui.dart';
 import 'package:zac/src/flutter/foundation.dart';
 import 'package:zac/src/flutter/material/input_decoration.dart';
@@ -516,6 +517,8 @@ void addZacBuilders(ZacRegistry registry) {
     'z:1:Build.fromJsonString': ZacBuild.fromJson,
     'z:1:Build:Isolate.fromBuilderMap': ZacBuild.fromJson,
     'z:1:Build:Isolate.fromJsonString': ZacBuild.fromJson,
+    'z:1:BuilderOr': ZacBuilderOr.fromJson,
+    'z:1:BuilderOr.builtin': ZacBuilderOr.fromJson,
     'z:1:DateTime': ZacDateTime.fromJson,
     'z:1:ExecuteActionsOnce': ZacExecuteActionsBuilder.fromJson,
     'z:1:List<Widget>': ZacListOfWidgets.fromJson,
@@ -525,13 +528,15 @@ void addZacBuilders(ZacRegistry registry) {
     'z:1:Navigator.popUntilRouteName': FlutterNavigatorActions.fromJson,
     'z:1:NavigatorState.shared': FlutterNavigatorState.fromJson,
     'z:1:Object': ZacObject.fromJson,
-    'z:1:State.provideBuilder': ZacStateProvide.fromJson,
-    'z:1:State.provideBuiltIn': ZacStateProvide.fromJson,
+    'z:1:State.provide': ZacStateProvide.fromJson,
     'z:1:State.update': ZacStateActions.fromJson,
     'z:1:State:OnChange.executeActions': ZacOnStateChange.fromJson,
+    'z:1:StateMachine.provide': ZacStateMachineProvide.fromJson,
     'z:1:StateMachine:Action.send': ZacStateMachineActions.fromJson,
     'z:1:StateMachine:Action.trySend': ZacStateMachineActions.fromJson,
     'z:1:StateMachine:Build': ZacStateMachineBuild.fromJson,
+    'z:1:StateMachine:StateConfig': ZacStateMachineStateConfig.fromJson,
+    'z:1:StateMachine:Transition': ZacStateMachineTransition.fromJson,
     'z:1:StateMachines.provide': ZacStateMachineProvider.fromJson,
     'z:1:States.provide': ZacStatesProvider.fromJson,
     'z:1:String': ZacString.fromJson,

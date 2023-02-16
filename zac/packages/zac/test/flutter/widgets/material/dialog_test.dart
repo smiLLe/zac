@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
@@ -250,7 +251,8 @@ void main() {
                 child: FlutterScaffold(
                   body: ZacStatesProvider(
                     states: {
-                      'shared': ZacStateProvide.builtIn(value: 'hello world'),
+                      'shared': ZacStateProvide(
+                          builderOr: ZacBuilderOr.builtIn('hello world')),
                     },
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),

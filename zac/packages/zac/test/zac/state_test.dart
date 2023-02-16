@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/mockito.dart';
+import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/state.dart';
@@ -15,8 +16,7 @@ void main() {
     expectInRegistry('z:1:States.provide', ZacStatesProvider.fromJson);
     expectInRegistry('z:1:State.consume', ZacStateConsume.fromRegister);
     expectInRegistry('z:1:State.update', ZacStateActions.fromJson);
-    expectInRegistry(['z:1:State.provideBuilder', 'z:1:State.provideBuiltIn'],
-        ZacStateProvide.fromJson);
+    expectInRegistry('z:1:State.provide', ZacStateProvide.fromJson);
   });
 
   testWidgets('Provide different kind of values', (tester) async {
@@ -60,14 +60,14 @@ void main() {
       'states': {
         /// simple string which will be turned into ZacObject
         'shared1': {
-          'builder': 'z:1:State.provideBuiltIn',
-          'value': 'shared1',
+          'builder': 'z:1:State.provide',
+          'builderOr': 'shared1',
         },
 
         /// Text Widget
         'shared2': {
-          'builder': 'z:1:State.provideBuilder',
-          'value': {
+          'builder': 'z:1:State.provide',
+          'builderOr': {
             'builder': 'f:1:Text',
             'data': 'shared2',
           },
@@ -75,8 +75,8 @@ void main() {
 
         /// ZacString
         'shared3': {
-          'builder': 'z:1:State.provideBuilder',
-          'value': {
+          'builder': 'z:1:State.provide',
+          'builderOr': {
             'builder': 'z:1:String',
             'value': 'shared3',
           },
@@ -84,7 +84,10 @@ void main() {
 
         /// null
         'shared4': {
-          'builder': 'z:1:State.provideBuiltIn',
+          'builder': 'z:1:State.provide',
+          'builderOr': {
+            'builder': 'z:1:BuilderOr.builtin',
+          },
         },
       },
       'child': {
@@ -100,8 +103,8 @@ void main() {
       'builder': 'z:1:States.provide',
       'states': {
         'shared1': {
-          'builder': 'z:1:State.provideBuiltIn',
-          'value': 'shared1',
+          'builder': 'z:1:State.provide',
+          'builderOr': 'shared1',
         },
       },
       'child': {
@@ -151,8 +154,8 @@ void main() {
       'builder': 'z:1:States.provide',
       'states': {
         'shared1': {
-          'builder': 'z:1:State.provideBuiltIn',
-          'value': 'shared1',
+          'builder': 'z:1:State.provide',
+          'builderOr': 'shared1',
         },
       },
       'child': {
@@ -185,12 +188,12 @@ void main() {
       'builder': 'z:1:States.provide',
       'states': {
         'shared1': {
-          'builder': 'z:1:State.provideBuiltIn',
-          'value': 'shared1',
+          'builder': 'z:1:State.provide',
+          'builderOr': 'shared1',
         },
         'shared2': {
-          'builder': 'z:1:State.provideBuiltIn',
-          'value': 'shared2',
+          'builder': 'z:1:State.provide',
+          'builderOr': 'shared2',
         },
       },
       'child': {
@@ -230,8 +233,8 @@ void main() {
             'builder': 'z:1:States.provide',
             'states': {
               'shared1': {
-                'builder': 'z:1:State.provideBuiltIn',
-                'value': 'nested shared1',
+                'builder': 'z:1:State.provide',
+                'builderOr': 'nested shared1',
               },
             },
             'child': {
@@ -285,6 +288,43 @@ void main() {
     expect(find.text('nested hello world'), findsOneWidget);
   });
 
+  testWidgets('Dispose the state when Container disposes', (tester) async {
+    final cb = MockDisposeCb();
+    ZacRegistry().register(
+      'test:state',
+      (map) => TestState(
+        (ref, family) {
+          ref.keepAlive();
+          ref.onDispose(cb);
+          return ZacState(FlutterSizedBox(), (reduce) {});
+        },
+      ),
+    );
+
+    await testJSON(tester, <String, dynamic>{
+      'builder': 'z:1:States.provide',
+      'states': {
+        /// simple string which will be turned into ZacObject
+        'shared1': {
+          'builder': 'test:state',
+          'builderOr': 'shared1',
+        },
+      },
+      'child': {
+        'builder': 'z:1:State.consume',
+        'family': 'shared1',
+      },
+    });
+
+    verifyZeroInteractions(cb);
+
+    await tester.pumpWidget(const SizedBox());
+
+    verify(cb()).called(1);
+
+    ZacRegistry().remove('test:widget');
+  });
+
   group('Errors:', () {
     testWidgets('No transformers and unwanted type', (tester) async {
       await tester.pumpWidget(
@@ -293,7 +333,7 @@ void main() {
             home: ZacStatesProviderWidget(
               builder: ZacStatesProvider(
                 states: {
-                  'shared': ZacStateProvide.builtIn(value: 1),
+                  'shared': ZacStateProvide(builderOr: ZacBuilderOr.builtIn(1)),
                 },
                 child: FlutterText(
                   ZacStateConsume<String>(family: 'shared'),
@@ -319,7 +359,7 @@ Value: 1''')));
             home: ZacStatesProviderWidget(
               builder: ZacStatesProvider(
                 states: {
-                  'shared': ZacStateProvide.builtIn(value: 1),
+                  'shared': ZacStateProvide(builderOr: ZacBuilderOr.builtIn(1)),
                 },
                 child: FlutterText(
                   ZacStateConsume<String>(
@@ -352,7 +392,8 @@ after transformers were applied.''')));
             home: ZacStatesProviderWidget(
               builder: ZacStatesProvider(
                 states: {
-                  'shared': ZacStateProvide.builtIn(),
+                  'shared':
+                      ZacStateProvide(builderOr: ZacBuilderOr.builtIn(null)),
                 },
                 child: FlutterText(
                   ZacStateConsume<String>(family: 'shared'),
@@ -381,12 +422,12 @@ because the value is null and there are no transformers added.''')));
       'builder': 'z:1:States.provide',
       'states': {
         'shared1': {
-          'builder': 'z:1:State.provideBuiltIn',
-          'value': 'shared1',
+          'builder': 'z:1:State.provide',
+          'builderOr': 'shared1',
         },
         'shared2': {
-          'builder': 'z:1:State.provideBuiltIn',
-          'value': 'shared2',
+          'builder': 'z:1:State.provide',
+          'builderOr': 'shared2',
         },
       },
       'child': {
@@ -441,4 +482,8 @@ because the value is null and there are no transformers added.''')));
 
     ZacRegistry().remove('test:action');
   });
+}
+
+class MockDisposeCb extends Mock {
+  void call();
 }

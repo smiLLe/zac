@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/build.dart';
 import 'package:zac/src/zac/registry.dart';
@@ -222,6 +223,17 @@ class TestAction implements ZacBuilder<ZacAction> {
 @GenerateMocks([TestActionExecute])
 class TestActionExecute extends Mock {
   void call(BuildContext context, ZacContext zacContext);
+}
+
+class TestState implements ZacBuilder<ZacStateCreate> {
+  final ZacState Function(AutoDisposeProviderRef<ZacState> ref, String family)
+      create;
+
+  TestState(this.create);
+  @override
+  ZacStateCreate build(BuildContext context, ZacContext zacContext) {
+    return ZacStateCreate(create);
+  }
 }
 
 TypeMatcher<ZacContext> isZacContext = isA<ZacContext>();
