@@ -124,9 +124,12 @@ class OneFile {
 
   Iterable<BuilderClass> getZacBuilderClasses() {
     return _filteredClasses
-        .where((cls) => cls.allSupertypes.any((element) => element
-            .getDisplayString(withNullability: false)
-            .startsWith('ZacBuilder')))
+        .where((cls) {
+          return cls.metadata.checkHasClassAnnotation() ||
+              cls.allSupertypes.any((element) => element
+                  .getDisplayString(withNullability: false)
+                  .startsWith('ZacBuilder'));
+        })
         .where((cls) => cls.constructors.checkHasValidBuilder())
         .map(BuilderClass.new);
   }
