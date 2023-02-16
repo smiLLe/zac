@@ -126,7 +126,7 @@ payload of type ${ZacBuilder<Widget>} for event "$event".''');
 class ZacStateMachine with _$ZacStateMachine {
   ZacStateMachine._();
 
-  static final provider = Provider.autoDispose.family<ZacStateMachine, String>(
+  static final provider = Provider.family<ZacStateMachine, String>(
     (_, family) {
       throw StateError(
           'Could not find a $ZacStateMachine for family "$family".');
@@ -135,7 +135,7 @@ class ZacStateMachine with _$ZacStateMachine {
   );
 
   static ZacStateMachine _create({
-    required AutoDisposeProviderRef<ZacStateMachine> ref,
+    required ProviderRef<ZacStateMachine> ref,
     required Idle idle,
     required String family,
   }) {
