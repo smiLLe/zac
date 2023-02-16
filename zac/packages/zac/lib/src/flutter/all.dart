@@ -56,6 +56,7 @@ export 'widgets/material/material.dart';
 export 'widgets/material/progress_indicator.dart';
 export 'widgets/material/scaffold.dart';
 export 'widgets/material/selectable_text.dart';
+export 'widgets/material/dropdown.dart';
 export 'widgets/navigator.dart';
 export 'widgets/clip_oval.dart';
 export 'widgets/clip_rect.dart';

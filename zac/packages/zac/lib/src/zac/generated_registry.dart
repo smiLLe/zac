@@ -58,6 +58,7 @@ import 'package:zac/src/flutter/widgets/material/card.dart';
 import 'package:zac/src/flutter/widgets/material/dialog.dart';
 import 'package:zac/src/flutter/widgets/material/divider.dart';
 import 'package:zac/src/flutter/widgets/material/drawer.dart';
+import 'package:zac/src/flutter/widgets/material/dropdown.dart';
 import 'package:zac/src/flutter/widgets/material/floating_action_button.dart';
 import 'package:zac/src/flutter/widgets/material/list_tile.dart';
 import 'package:zac/src/flutter/widgets/material/material.dart';
@@ -221,6 +222,8 @@ void addZacBuilders(ZacRegistry registry) {
     'f:1:Dialog': FlutterDialogs.fromJson,
     'f:1:Divider': FlutterDivider.fromJson,
     'f:1:Drawer': FlutterDrawer.fromJson,
+    'f:1:DropdownButton': FlutterDropdownButton.fromJson,
+    'f:1:DropdownMenuItem': FlutterDropdownMenuItem.fromJson,
     'f:1:EdgeInsets.all': FlutterEdgeInsets.fromJson,
     'f:1:EdgeInsets.only': FlutterEdgeInsets.fromJson,
     'f:1:EdgeInsets.symmetric': FlutterEdgeInsets.fromJson,
