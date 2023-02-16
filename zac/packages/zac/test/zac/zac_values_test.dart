@@ -84,7 +84,7 @@ void main() {
   });
 
   test('ZacListOfActions', () {
-    ZacRegistry().register<ZacAction>('test:TestAction', TestAction.noop);
+    ZacRegistry().register('test:TestAction', TestAction.noop);
     expectInRegistry(ZacListOfActions.unionValue, ZacListOfActions.fromJson);
     expect(
         ZacBuilder<List<ZacAction>>.fromJson([
@@ -105,8 +105,7 @@ void main() {
   });
 
   test('ZacListOfTransformers', () {
-    ZacRegistry()
-        .register<ZacTransform>('test:TestTransform', TestTransform.noop);
+    ZacRegistry().register('test:TestTransform', TestTransform.noop);
     expectInRegistry(
         ZacListOfTransformers.unionValue, ZacListOfTransformers.fromJson);
     expect(
@@ -125,30 +124,5 @@ void main() {
           {'builder': 'test:TestTransform'}
         ]),
         isA<ZacListOfTransformers>());
-  });
-
-  testWidgets('Pick a ZacValue and pass it to new actions as payload',
-      (tester) async {
-    late ZacActionPayload payload;
-    await testWidgetBuilder(
-      tester,
-      ZacExecuteActionsBuilder.once(
-        actions: ZacListOfActions([
-          ZacValueActions.asPayload(
-            value: ZacBuilder<Object>.fromJson('hello'),
-            actions: ZacListOfActions([
-              TestAction(
-                (p, context, zacContext) {
-                  payload = p;
-                },
-              )
-            ]),
-          ),
-        ]),
-        child: FlutterSizedBox(),
-      ),
-    );
-
-    expect(payload, ZacActionPayload.param('hello'));
   });
 }

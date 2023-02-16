@@ -1,11 +1,11 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:zac/src/base.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/all.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:zac/src/zac/action.dart';
-import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/build.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
@@ -179,7 +179,7 @@ void main() {
 
   group('SimpleDialogOption', () {
     testWidgets('SimpleDialogOption*', (tester) async {
-      ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
+      ZacRegistry().register('test.action', TestAction.noop);
       await testJSON(
         tester,
         <String, dynamic>{
@@ -249,16 +249,17 @@ void main() {
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
-                  body: ZacSharedStateProvider(
+                  body: ZacStatesProvider(
                     states: {
-                      'shared': ZacSharedStateProvide.value('hello world'),
+                      'shared': ZacStateProvide(
+                          builderOr: ZacBuilderOr.builtIn('hello world')),
                     },
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
                       onPressed: ZacListOfActions([
                         FlutterDialogActions.showDialog(
                           child: FlutterText(
-                            SharedStateConsume<String>(family: 'shared'),
+                            ZacStateConsume<String>(family: 'shared'),
                           ),
                         ),
                       ]),

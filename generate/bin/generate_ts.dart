@@ -6,6 +6,7 @@ import 'dart:io';
 import 'package:analyzer/dart/analysis/analysis_context.dart';
 import 'package:analyzer/dart/analysis/analysis_context_collection.dart';
 import 'package:analyzer/dart/analysis/results.dart';
+import 'package:analyzer/dart/constant/value.dart';
 import 'package:analyzer/dart/element/element.dart';
 import 'package:analyzer/dart/element/type.dart';
 import 'package:args/args.dart';
@@ -259,22 +260,26 @@ class UnionValueCtor {
 
   /// f:1:SizedBox etc
   late final String unionValue = () {
-    final uv = element.metadata
-        .map((e) => e.computeConstantValue())
-        .firstWhere((element) =>
-            element?.type?.getDisplayString(withNullability: false) ==
-            'FreezedUnionValue')
-        ?.getField('value')
-        ?.toStringValue();
+    final uv = getFreezedUnionValue()?.getField('value')?.toStringValue();
     if (null == uv) {
       throw StateError('UnionValue must not be null');
     }
     return uv;
   }();
 
-  bool get canUseAsTSClassCtor => !(!element.isFactory ||
-      element.name == 'fromJson' ||
-      null == element.redirectedConstructor);
+  DartObject? getFreezedUnionValue() {
+    return element.metadata
+        .map((e) => e.computeConstantValue())
+        .firstWhereOrNull((element) =>
+            element?.type?.getDisplayString(withNullability: false) ==
+            'FreezedUnionValue');
+  }
+
+  bool get canUseAsTSClassCtor =>
+      null != getFreezedUnionValue() &&
+      element.isFactory &&
+      element.name != 'fromJson' &&
+      null != element.redirectedConstructor;
 }
 
 class Template {
@@ -412,6 +417,15 @@ ${_builderTmpl().join('\n')}''';
 
 String mapDartTypeToTypescript(DartType type, [int depth = 0]) {
   if (null != type.alias) {
+    final alias = type.alias!;
+
+    /// f.e. String
+    if (alias.element.aliasedType is InterfaceType) {
+      final aliasedType = alias.element.aliasedType as InterfaceType;
+      return mapDartTypeToTypescript(aliasedType);
+    }
+
+    /// f.e. RouteFactory
     return getDisplayName(type.alias!.element);
   }
 
@@ -433,13 +447,18 @@ String mapDartTypeToTypescript(DartType type, [int depth = 0]) {
 
   String opt() {
     if (depth == 0) return '';
-    return type.getDisplayString(withNullability: true).endsWith('?')
-        ? ' | null'
-        : '';
+    return '';
+    // return type.getDisplayString(withNullability: true).endsWith('?')
+    //     ? ' | null'
+    //     : '';
   }
 
   if (type.element.displayName == 'ZacBuilder') {
-    final mappedName = mapDartTypeToTypescript(type.typeArguments.first);
+    final firstTypeArg = type.typeArguments.first;
+    if (firstTypeArg.isDartCoreObject) {
+      return 'ZacBuilder<unknown>';
+    }
+    final mappedName = mapDartTypeToTypescript(firstTypeArg, depth + 1);
     final def = 'ZacBuilder<$mappedName>${opt()}';
 
     switch (mappedName) {
@@ -520,7 +539,7 @@ class GenerateInterfaceType {
   GenerateInterfaceType(this.type, this.name);
 }
 
-/// [type] should be the type arg used in ZacBuilder<Type>.
+/// [type] should be the type arg used in ZacBuilder<[type]>.
 /// It will return a Map including the Type and all the supertypes.
 /// This will allow to create TS interface types like:
 /// interface Alignment extends AlignmentGeometry {}
@@ -553,8 +572,20 @@ Map<GenerateInterfaceType, GenerateInterfaceType?> createInterfaceTypes(
       type is TypeParameterType) {
     return map;
   } else if (null != type.alias) {
-    addTypeToMap(
-        GenerateInterfaceType(type, getDisplayName(type.alias!.element)), null);
+    final alias = type.alias!;
+
+    /// f.e. String
+    /// Dont create an Interface. Use it as String in generated code.
+    if (alias.element.aliasedType is InterfaceType) {
+      return map;
+    }
+
+    /// f.e. RouteFactory
+    else {
+      addTypeToMap(
+          GenerateInterfaceType(type, getDisplayName(type.alias!.element)),
+          null);
+    }
   } else if (type is InterfaceType) {
     final widget = type.allSupertypes.firstWhereOrNull((element) {
       return element.getDisplayString(withNullability: false) == 'Widget';

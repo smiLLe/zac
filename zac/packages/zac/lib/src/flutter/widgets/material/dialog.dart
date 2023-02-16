@@ -152,7 +152,7 @@ class FlutterDialogs with _$FlutterDialogs implements ZacBuilder<Widget> {
         padding: value.padding?.build(context, zacContext),
         onPressed: value.onPressed
             ?.build(context, zacContext)
-            ?.createCb(context, zacContext),
+            ?.callack(context, zacContext),
         child: value.child?.build(context, zacContext),
       ),
     );
@@ -186,8 +186,8 @@ class FlutterDialogActions
     ZacBuilder<RouteSettings?>? routeSettings,
   }) = _FlutterDialogActionsShowDialog;
 
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action =
+      ZacAction((BuildContext context, ZacContext zacContext) {
     map(
       showDialog: (value) {
         showDialog<ZacBuilder<List<ZacAction>>?>(

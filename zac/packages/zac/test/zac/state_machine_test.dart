@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/zac/state_machine.dart';
 
 import '../helper.dart';
@@ -18,8 +19,8 @@ void main() {
 
   test('Create ZacStateMachineConfig from JSON', () {
     expect(
-        ZacStateMachineConfig.fromJson(<String, dynamic>{
-          'builder': 'z:1:StateMachine',
+        ZacStateMachineProvide.fromJson(<String, dynamic>{
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
@@ -37,7 +38,7 @@ void main() {
             }
           }
         }),
-        ZacStateMachineConfig(initialState: 'a', states: {
+        ZacStateMachineProvide(initialState: 'a', states: {
           'a': ZacStateMachineStateConfig(
             on: [
               ZacStateMachineTransition(event: 'NEXT', target: 'b'),
@@ -47,12 +48,124 @@ void main() {
         }));
   });
 
+  testWidgets('throw when trying to send an event after machine was disposed',
+      (tester) async {
+    late final ZacStateMachine m1;
+    ZacRegistry().register(
+      'test:widget',
+      (map) {
+        return TestWidget(
+          (context, zacContext) {
+            m1 = zacContext.consume.mapOrNull(
+                (obj) => obj.ref.read(ZacStateMachine.provider('m1')))!;
+            return const SizedBox();
+          },
+        );
+      },
+    );
+
+    await testJSON(tester, <String, dynamic>{
+      'builder': 'z:1:StateMachines.provide',
+      'machines': {
+        'm1': {
+          'builder': 'z:1:StateMachine.provide',
+          'initialState': 'a',
+          'states': {
+            'a': {
+              'builder': 'z:1:StateMachine:StateConfig',
+              'widget': {
+                'builder': 'test:widget',
+              },
+            },
+          }
+        }
+      },
+      'child': {
+        'builder': 'z:1:StateMachine:Build',
+        'family': 'm1',
+      },
+    });
+
+    await tester.pumpWidget(const SizedBox());
+
+    expect(
+        () => m1.send('SOME_EVENT', null),
+        throwsA(isA<StateError>()
+            .having((p0) => p0.message, 'error message', contains('''
+It was no longer possible to send event "SOME_EVENT" to ZacStateMachine.
+It is no longer possible to transition away from the current ZacStateMachine 
+because there was already a transition.'''))));
+
+    ZacRegistry().remove('test:widget');
+  });
+
+  testWidgets('Check wheter a state is still active or not', (tester) async {
+    late final m = <ZacStateMachine>[];
+    ZacRegistry().register(
+      'test:widget',
+      (map) {
+        return TestWidget(
+          (context, zacContext) {
+            m.add(zacContext.consume.mapOrNull(
+                (obj) => obj.ref.read(ZacStateMachine.provider('m1')))!);
+            return const SizedBox();
+          },
+        );
+      },
+    );
+
+    await testJSON(tester, <String, dynamic>{
+      'builder': 'z:1:StateMachines.provide',
+      'machines': {
+        'm1': {
+          'builder': 'z:1:StateMachine.provide',
+          'initialState': 'a',
+          'states': {
+            'a': {
+              'builder': 'z:1:StateMachine:StateConfig',
+              'on': [
+                {
+                  'builder': 'z:1:StateMachine:Transition',
+                  'event': 'NEXT',
+                  'target': 'b'
+                }
+              ],
+              'widget': {
+                'builder': 'test:widget',
+              },
+            },
+            'b': {
+              'builder': 'z:1:StateMachine:StateConfig',
+              'widget': {
+                'builder': 'test:widget',
+              },
+            },
+          }
+        }
+      },
+      'child': {
+        'builder': 'z:1:StateMachine:Build',
+        'family': 'm1',
+      },
+    });
+
+    expect(m[0].isActive(), isTrue);
+    m[0].send('NEXT', null);
+    await tester.pump();
+    expect(m[0].isActive(), isFalse);
+    expect(m[1].isActive(), isTrue);
+    await tester.pumpWidget(const SizedBox());
+    expect(m[1].isActive(), isFalse);
+
+    ZacRegistry().remove('test:widget');
+  });
+
   testWidgets('integration', (tester) async {
     await testJSON(tester, <String, dynamic>{
       'builder': 'z:1:StateMachines.provide',
       'machines': {
         'm1': {
-          'builder': 'z:1:StateMachine',
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
@@ -96,18 +209,13 @@ void main() {
                 },
                 'onPressed': [
                   {
-                    'builder': 'z:1:Action.withPayload',
-                    'payload': {
+                    'builder': 'z:1:StateMachine:Action.send',
+                    'family': 'm1',
+                    'event': 'NEXT',
+                    'widget': {
                       'builder': 'f:1:Text',
                       'data': 'From Next in b',
                     },
-                    'actions': [
-                      {
-                        'builder': 'z:1:StateMachine:Action.send',
-                        'family': 'm1',
-                        'event': 'NEXT',
-                      },
-                    ]
                   },
                 ]
               },
@@ -145,7 +253,7 @@ void main() {
       'builder': 'z:1:StateMachines.provide',
       'machines': {
         'm1': {
-          'builder': 'z:1:StateMachine',
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {
@@ -176,7 +284,7 @@ or configure a widget for state "a".''')));
       'builder': 'z:1:StateMachines.provide',
       'machines': {
         'm1': {
-          'builder': 'z:1:StateMachine',
+          'builder': 'z:1:StateMachine.provide',
           'initialState': 'a',
           'states': {
             'a': {

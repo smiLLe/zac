@@ -1,11 +1,10 @@
-import 'package:zac/src/base.dart';
-import 'package:zac/src/flutter/all.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
-import 'package:zac/src/zac/shared_state.dart';
+import 'package:zac/src/zac/registry.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
@@ -14,74 +13,56 @@ import '../helper.dart';
 import '../helper.mocks.dart';
 
 void main() {
-  group('List of Actions', () {
-    testWidgets('BuldIn has correct value', (tester) async {
-      await testWithContexts(
-        tester,
-        (getContext, getZacContext) {
-          late BuildIn buildIn;
-          [
-            TestAction((payload, buildContext, zacContext) {
-              buildIn = zacContext.buildIn;
-            }).build(getContext(), getZacContext())
-          ].execute(const ZacActionPayload(), getContext(), getZacContext());
-
-          expect(buildIn, BuildIn.action);
-        },
-      );
-    });
+  test('In Registry', () {
+    expectInRegistry('z:1:Action:If', ZacControlFlowAction.fromJson);
+    expectInRegistry(
+        'z:1:ExecuteActionsOnce', ZacExecuteActionsBuilder.fromJson);
   });
 
-  group('BuiltInActions', () {
-    testWidgets('.withPayload', (tester) async {
-      await testWithContexts(tester, (getContext, getZacContext) {
-        final cb = MockTestActionExecute();
-        ZacBuiltInActions.withPayload(
-          payload: 'hello',
-          actions: ZacListOfActions([TestAction(cb)]),
-        ).build(getContext(), getZacContext()).execute(
-            ZacActionPayload.param('IGNORED'), getContext(), getZacContext());
+  group('List of Actions:', () {
+    testWidgets(
+        'Allow to pass arguments in execute and share them through state',
+        (tester) async {
+      final a1 = expectAsync1((p0) => expect(p0, 1));
+      final a2 = expectAsync1((p0) => expect(p0, 2));
 
-        verify(cb(
-          argThat(isA<ZacActionPayload>()
-              .having((p0) => p0.params, 'payload params', 'hello')),
-          any,
-          any,
-        )).called(1);
+      ZacRegistry().register(
+        'test:widget',
+        (map) => TestWidget(
+          (context, zacContext) {
+            return ElevatedButton(
+              key: const ValueKey('BUTTON'),
+              onPressed: () {
+                [
+                  ZacAction(
+                    (context, zacContext) {
+                      a1(ZacStateConsume.consumeValue(
+                        context: context,
+                        zacContext: zacContext,
+                        family: 'actionArg.1',
+                      ));
 
-        ZacBuiltInActions.withPayload(
-          payload: <String, dynamic>{'builder': 'f:1:SizedBox'},
-          actions: ZacListOfActions([TestAction(cb)]),
-        ).build(getContext(), getZacContext()).execute(
-            ZacActionPayload.param('IGNORED'), getContext(), getZacContext());
+                      a2(ZacStateConsume.consumeValue(
+                        context: context,
+                        zacContext: zacContext,
+                        family: 'actionArg.2',
+                      ));
+                    },
+                  )
+                ].callbackTwoParams(context, zacContext)(1, 2);
+              },
+              child: const SizedBox(),
+            );
+          },
+        ),
+      );
 
-        verify(cb(
-          argThat(isA<ZacActionPayload>()
-              .having((p0) => p0.params, 'payload params', FlutterSizedBox())),
-          any,
-          any,
-        )).called(1);
-
-        ZacBuiltInActions.withPayload(
-          payload: 'hello',
-          actions: ZacListOfActions([TestAction(cb)]),
-          transformer: ZacListOfTransformers([
-            TestTransform((transformValue, context, zacContext, payload) {
-              return 1;
-            })
-          ]),
-        ).build(getContext(), getZacContext()).execute(
-            ZacActionPayload.param('IGNORED'), getContext(), getZacContext());
-
-        verify(cb(
-          argThat(isA<ZacActionPayload>()
-              .having((p0) => p0.params, 'payload params', 1)),
-          any,
-          any,
-        )).called(1);
-
-        verifyNoMoreInteractions(cb);
+      await testJSON(tester, <String, dynamic>{
+        'builder': 'test:widget',
       });
+      await tester.tap(find.byKey(const ValueKey('BUTTON')));
+
+      ZacRegistry().remove('test:widget');
     });
   });
 
@@ -94,20 +75,17 @@ void main() {
             final trueCb = MockTestActionExecute();
             final falseCb = MockTestActionExecute();
 
-            ZacControlFlowAction.ifCond(
-              condition: ZacListOfTransformers(
-                  [ObjectTransformer.equals(other: ZacString('hello'))]),
-              ifTrue: ZacListOfActions([TestAction(trueCb)]),
-              ifFalse: ZacListOfActions([TestAction(falseCb)]),
-            ).build(getContext(), getZacContext()).execute(
-                ZacActionPayload.param('hello'), getContext(), getZacContext());
+            [
+              ZacControlFlowAction.ifCond(
+                conditionValue: ZacString('hello'),
+                condition: ZacListOfTransformers(
+                    [TestTransform((context, zacContext) => true)]),
+                ifTrue: ZacListOfActions([TestAction(trueCb)]),
+                ifFalse: ZacListOfActions([TestAction(falseCb)]),
+              ).build(getContext(), getZacContext())
+            ].callack(getContext(), getZacContext())();
 
-            verify(trueCb(
-                    argThat(isA<ZacActionPayload>()
-                        .having((p0) => p0.params, 'payload params', 'hello')),
-                    any,
-                    argThat(isA<ZacContext>())))
-                .called(1);
+            verify(trueCb(any, argThat(isA<ZacContext>()))).called(1);
             verifyZeroInteractions(falseCb);
           },
         );
@@ -119,20 +97,21 @@ void main() {
           (getContext, getZacContext) {
             final trueCb = MockTestActionExecute();
             final falseCb = MockTestActionExecute();
-            ZacControlFlowAction.ifCond(
-              condition: ZacListOfTransformers(
-                  [ObjectTransformer.equals(other: ZacString('world'))]),
-              ifTrue: ZacListOfActions([TestAction(trueCb)]),
-              ifFalse: ZacListOfActions([TestAction(falseCb)]),
-            ).build(getContext(), getZacContext()).execute(
-                ZacActionPayload.param('hello'), getContext(), getZacContext());
+            [
+              ZacControlFlowAction.ifCond(
+                conditionValue: ZacString('hello'),
+                condition: ZacListOfTransformers([
+                  ObjectTransformer.equals(
+                    object: ZacTransformValue<Object?>.current(),
+                    other: ZacString('world'),
+                  )
+                ]),
+                ifTrue: ZacListOfActions([TestAction(trueCb)]),
+                ifFalse: ZacListOfActions([TestAction(falseCb)]),
+              ).build(getContext(), getZacContext())
+            ].callack(getContext(), getZacContext())();
 
-            verify(falseCb(
-                    argThat(isA<ZacActionPayload>()
-                        .having((p0) => p0.params, 'payload params', 'hello')),
-                    any,
-                    argThat(isA<ZacContext>())))
-                .called(1);
+            verify(falseCb(any, argThat(isA<ZacContext>()))).called(1);
             verifyZeroInteractions(trueCb);
           },
         );
@@ -144,40 +123,30 @@ void main() {
         await testWithContexts(tester, (getContext, getZacContext) {
           final trueCb = MockTestActionExecute();
           final falseCb = MockTestActionExecute();
-          ZacControlFlowAction.ifCond(
-            condition: ZacListOfTransformers([
-              ObjectTransformer.equals(other: ZacString('hello')),
-              ObjectTransformer.equals(other: ZacString('THAT IS FALSE')),
-              ObjectTransformer.equals(other: ZacString('hello')),
-            ]),
-            ifTrue: ZacListOfActions([TestAction(trueCb)]),
-            ifFalse: ZacListOfActions([TestAction(falseCb)]),
-          ).build(getContext(), getZacContext()).execute(
-              ZacActionPayload.param('hello'), getContext(), getZacContext());
+          [
+            ZacControlFlowAction.ifCond(
+              conditionValue: ZacString('hello'),
+              condition: ZacListOfTransformers([
+                ObjectTransformer.equals(
+                  object: ZacTransformValue<Object?>.current(),
+                  other: ZacString('hello'),
+                ),
+                ObjectTransformer.equals(
+                  object: ZacTransformValue<Object?>.current(),
+                  other: ZacString('THAT IS FALSE'),
+                ),
+                ObjectTransformer.equals(
+                  object: ZacTransformValue<Object?>.current(),
+                  other: ZacString('hello'),
+                ),
+              ]),
+              ifTrue: ZacListOfActions([TestAction(trueCb)]),
+              ifFalse: ZacListOfActions([TestAction(falseCb)]),
+            ).build(getContext(), getZacContext())
+          ].callack(getContext(), getZacContext())();
 
-          verify(falseCb(
-                  argThat(isA<ZacActionPayload>()
-                      .having((p0) => p0.params, 'payload params', 'hello')),
-                  any,
-                  argThat(isA<ZacContext>())))
-              .called(1);
+          verify(falseCb(any, argThat(isA<ZacContext>()))).called(1);
           verifyZeroInteractions(trueCb);
-        });
-      });
-
-      testWidgets('will throw an error if payload is empty', (tester) async {
-        await testWithContexts(tester, (getContext, getZacContext) {
-          expect(
-              () => ZacControlFlowAction.ifCond(
-                    condition: ZacListOfTransformers([]),
-                    ifTrue: ZacListOfActions([]),
-                  ).build(getContext(), getZacContext()).execute(
-                      const ZacActionPayload(), getContext(), getZacContext()),
-              throwsA(isA<StateError>().having(
-                  (p0) => p0.message,
-                  'error message',
-                  contains(
-                      'It is not possible to execute "z:1:ControlFlowAction.if". The ZacActionPayload was empty'))));
         });
       });
 
@@ -185,36 +154,31 @@ void main() {
           (tester) async {
         await testWithContexts(tester, (getContext, getZacContext) {
           expect(
-              () => ZacControlFlowAction.ifCond(
-                    condition:
-                        ZacListOfTransformers([ObjectTransformer.toString()]),
-                    ifTrue: ZacListOfActions(
-                        [TestAction.noop(<String, dynamic>{})]),
-                  ).build(getContext(), getZacContext()).execute(
-                      ZacActionPayload.param('hello'),
-                      getContext(),
-                      getZacContext()),
+              () => [
+                    ZacControlFlowAction.ifCond(
+                      conditionValue: ZacString('hello'),
+                      condition: ZacListOfTransformers([
+                        ObjectTransformer.toString(
+                          ZacTransformValue<Object?>.current(),
+                        )
+                      ]),
+                      ifTrue: ZacListOfActions(
+                          [TestAction.noop(<String, dynamic>{})]),
+                    ).build(getContext(), getZacContext())
+                  ].callack(getContext(), getZacContext())(),
               throwsA(isA<StateError>().having(
                   (p0) => p0.message,
                   'error message',
                   contains(
-                      'It is not possible to execute "z:1:ControlFlowAction.if". The ZacTransform condition did not result in a bool but "hello"'))));
+                      'It is not possible to execute "z:1:Action:If". The ZacTransform condition did not result in a bool but "hello"'))));
         });
       });
     });
   });
-
-  test('ActionPayload can expose the values as list', () {
-    expect(const ZacActionPayload().paramsAsList, <Object?>[]);
-    expect(ZacActionPayload.param('foo').paramsAsList, <Object?>['foo']);
-    expect(ZacActionPayload.param2('foo', 'bar').paramsAsList,
-        <Object?>['foo', 'bar']);
-  });
-
   group('ZacExecuteActionsOnce', () {
     testWidgets('can be converted', (tester) async {
       await testJSON(tester, <String, dynamic>{
-        'builder': 'z:1:ExecuteActions.once',
+        'builder': 'z:1:ExecuteActionsOnce',
         'actions': [
           {'builder': 'f:1:showDialog', 'child': ChildModel.getSizedBox()}
         ],
@@ -236,112 +200,12 @@ void main() {
           ZacExecuteActionsBuilder.once(
             actions: ZacListOfActions([TestAction(executeCb)]),
           ));
-      verify(executeCb(
-              argThat(isA<ZacActionPayload>()), any, argThat(isZacContext)))
-          .called(1);
+      verify(executeCb(any, argThat(isZacContext))).called(1);
       await tester.pump();
       await tester.pump();
       await tester.pump();
 
       verifyNoMoreInteractions(executeCb);
-    });
-  });
-
-  group('ZacExecuteActionsListen', () {
-    testWidgets('execute interactions', (tester) async {
-      final cb = MockTestActionExecute();
-      await testWithContextsWraped(
-        tester,
-        (child) => ZacSharedStateProvider(
-          states: {'shared': ZacSharedStateProvide.value(1)},
-          child: ZacExecuteActionsBuilder.listen(
-            actions: ZacListOfActions([TestAction(cb)]),
-            family: 'shared',
-            child: FlutterSizedBox(
-              key: FlutterValueKey('child'),
-              child: child,
-            ),
-          ),
-        ),
-        (getContext, getZacContext) async {
-          verifyZeroInteractions(cb);
-
-          getContext()
-              .widgetRef
-              .read(SharedState.provider('shared'))
-              .update((_) => 2);
-
-          await tester.pumpAndSettle();
-
-          verify(cb(
-                  argThat(isA<ZacActionPayload>()
-                      .having((p0) => p0.params, 'param', [2, 1])),
-                  any,
-                  any))
-              .called(1);
-          verifyNoMoreInteractions(cb);
-        },
-      );
-    });
-  });
-
-  group('ZacActionPayloadTransformer', () {
-    testWidgets('toList', (tester) async {
-      expectInRegistry('z:1:Transformer:ActionPayload.toList',
-          ZacActionPayloadTransformer.fromJson);
-
-      await testWithContexts(
-        tester,
-        (getContext, getZacContext) {
-          expect(
-              ZacActionPayloadTransformer.toList()
-                  .build(getContext(), getZacContext())
-                  .transform(ZacTransformValue(const ZacActionPayload()),
-                      getContext(), getZacContext(), null),
-              <Object>[]);
-
-          expect(
-              ZacActionPayloadTransformer.toList()
-                  .build(getContext(), getZacContext())
-                  .transform(ZacTransformValue(ZacActionPayload.param('foo')),
-                      getContext(), getZacContext(), null),
-              <Object>['foo']);
-        },
-      );
-    });
-
-    testWidgets('toObject', (tester) async {
-      expectInRegistry('z:1:Transformer:ActionPayload.toObject',
-          ZacActionPayloadTransformer.fromJson);
-
-      await testWithContexts(
-        tester,
-        (getContext, getZacContext) {
-          expect(
-              ZacActionPayloadTransformer.toObject()
-                  .build(getContext(), getZacContext())
-                  .transform(ZacTransformValue(const ZacActionPayload()),
-                      getContext(), getZacContext(), null),
-              isNull);
-
-          expect(
-              ZacActionPayloadTransformer.toObject()
-                  .build(getContext(), getZacContext())
-                  .transform(ZacTransformValue(ZacActionPayload.param('foo')),
-                      getContext(), getZacContext(), null),
-              'foo');
-
-          expect(
-              ZacActionPayloadTransformer.toObject()
-                  .build(getContext(), getZacContext())
-                  .transform(
-                      ZacTransformValue(ZacActionPayload.param2('foo', 'bar')),
-                      getContext(),
-                      getZacContext(),
-                      null),
-              ['foo', 'bar']);
-        },
-      );
     });
   });
 }

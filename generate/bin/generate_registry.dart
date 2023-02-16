@@ -29,7 +29,7 @@ void main(List<String> args) async {
   final allFiles = AllFiles(await filesToCreate(ctx, Uri.directory(path)));
 
   final zacBuilder = allFiles.zacBuilderCtors.map<String>((ctor) {
-    return '..register(\'${ctor.ctorElement.freezedUnionValue}\', ${ctor.parent.name}.fromJson)';
+    return '\'${ctor.ctorElement.freezedUnionValue}\': ${ctor.parent.name}.fromJson';
   });
 
   final allImports = allFiles.imports.map((import) => 'import \'$import\';');
@@ -46,7 +46,9 @@ ${allImports.join('\n')}
 import 'package:zac/src/zac/registry.dart';
 
 void addZacBuilders(ZacRegistry registry) {
-registry${zacBuilder.join('\n')};
+  registry.addAll(const <String, Object>{
+    ${zacBuilder.join(',\n')}
+  });
 }''');
 
   await Process.run(
@@ -122,9 +124,12 @@ class OneFile {
 
   Iterable<BuilderClass> getZacBuilderClasses() {
     return _filteredClasses
-        .where((cls) => cls.allSupertypes.any((element) => element
-            .getDisplayString(withNullability: false)
-            .startsWith('ZacBuilder')))
+        .where((cls) {
+          return cls.metadata.checkHasClassAnnotation() ||
+              cls.allSupertypes.any((element) => element
+                  .getDisplayString(withNullability: false)
+                  .startsWith('ZacBuilder'));
+        })
         .where((cls) => cls.constructors.checkHasValidBuilder())
         .map(BuilderClass.new);
   }

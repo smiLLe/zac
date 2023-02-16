@@ -6,35 +6,6 @@ part of 'action.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacActionPayloadTransformerToList
-    _$$_ZacActionPayloadTransformerToListFromJson(Map<String, dynamic> json) =>
-        $checkedCreate(
-          r'_$_ZacActionPayloadTransformerToList',
-          json,
-          ($checkedConvert) {
-            final val = _$_ZacActionPayloadTransformerToList(
-              $type: $checkedConvert('builder', (v) => v as String?),
-            );
-            return val;
-          },
-          fieldKeyMap: const {r'$type': 'builder'},
-        );
-
-_$_ZacActionPayloadTransformerToObject
-    _$$_ZacActionPayloadTransformerToObjectFromJson(
-            Map<String, dynamic> json) =>
-        $checkedCreate(
-          r'_$_ZacActionPayloadTransformerToObject',
-          json,
-          ($checkedConvert) {
-            final val = _$_ZacActionPayloadTransformerToObject(
-              $type: $checkedConvert('builder', (v) => v as String?),
-            );
-            return val;
-          },
-          fieldKeyMap: const {r'$type': 'builder'},
-        );
-
 _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
@@ -48,48 +19,6 @@ _$_ZacExecuteActionsBuilderOnce _$$_ZacExecuteActionsBuilderOnceFromJson(
               'child',
               (v) =>
                   v == null ? null : ZacBuilder<Widget>.fromJson(v as Object)),
-          $type: $checkedConvert('builder', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {r'$type': 'builder'},
-    );
-
-_$_ZacExecuteActionsBuilderListen _$$_ZacExecuteActionsBuilderListenFromJson(
-        Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_ZacExecuteActionsBuilderListen',
-      json,
-      ($checkedConvert) {
-        final val = _$_ZacExecuteActionsBuilderListen(
-          actions: $checkedConvert('actions',
-              (v) => ZacBuilder<List<ZacAction>>.fromJson(v as Object)),
-          family: $checkedConvert('family', (v) => v as String),
-          child: $checkedConvert(
-              'child',
-              (v) =>
-                  v == null ? null : ZacBuilder<Widget>.fromJson(v as Object)),
-          $type: $checkedConvert('builder', (v) => v as String?),
-        );
-        return val;
-      },
-      fieldKeyMap: const {r'$type': 'builder'},
-    );
-
-_$_OverridePayload _$$_OverridePayloadFromJson(Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_OverridePayload',
-      json,
-      ($checkedConvert) {
-        final val = _$_OverridePayload(
-          payload: $checkedConvert('payload', (v) => v as Object),
-          actions: $checkedConvert('actions',
-              (v) => ZacBuilder<List<ZacAction>>.fromJson(v as Object)),
-          transformer: $checkedConvert(
-              'transformer',
-              (v) => v == null
-                  ? null
-                  : ZacBuilder<List<ZacTransform>>.fromJson(v as Object)),
         );
         return val;
       },
@@ -102,6 +31,8 @@ _$_ZacControlFlowActionIf _$$_ZacControlFlowActionIfFromJson(
       json,
       ($checkedConvert) {
         final val = _$_ZacControlFlowActionIf(
+          conditionValue: $checkedConvert('conditionValue',
+              (v) => ZacBuilder<Object?>.fromJson(v as Object)),
           condition: $checkedConvert('condition',
               (v) => ZacBuilder<List<ZacTransform>>.fromJson(v as Object)),
           ifTrue: $checkedConvert('ifTrue',

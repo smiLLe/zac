@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:zac/src/flutter/all.dart';
 import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/transformers.dart';
 import 'package:zac/src/zac/build.dart';
 import 'package:zac/src/zac/registry.dart';
@@ -12,6 +13,25 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:zac/src/zac/zac_builder.dart';
+
+Future<void> pumpUntilFound(
+  WidgetTester tester,
+  Finder finder, {
+  int iterations = 200,
+}) async {
+  var found = false;
+  for (int i = 1; i <= iterations; i++) {
+    found = tester.any(finder);
+    if (!found) {
+      await tester.runAsync<void>(
+          () => Future.delayed(const Duration(milliseconds: 100)));
+      await tester.pump();
+    } else {
+      return;
+    }
+  }
+  if (!found) throw Exception('did not find $finder');
+}
 
 void expectInRegistry(Object obj, Object fn) {
   if (obj is! String && obj is! List<String>) throw Error();
@@ -30,8 +50,9 @@ Future<void> testBuilder<T>(
   Map<String, dynamic>? props,
   required TypeMatcher<T> Function(TypeMatcher<T> matcher) matcher,
 }) async {
-  final builder = ZacRegistry().getRegistered<Object>(name)(
+  final builder = ZacRegistry().createBuilder<Object>(name,
       <String, dynamic>{'builder': name, ...(props ?? <String, dynamic>{})});
+
   expect(builder, isA<ZacBuilder<T>>());
 
   await testWithContexts(tester, (getContext, getZacContext) {
@@ -153,12 +174,11 @@ Future<void> testFindWidget<T extends Widget>(
 }
 
 class TestTransform implements ZacBuilder<ZacTransform> {
-  final Object? Function(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext, ZacActionPayload? payload) cb;
+  final Object? Function(BuildContext context, ZacContext zacContext) cb;
 
   TestTransform(this.cb);
   factory TestTransform.noop(Map<String, dynamic> map) {
-    return TestTransform((transformValue, context, zacContext, payload) {
+    return TestTransform((context, zacContext) {
       return null;
     });
   }
@@ -172,7 +192,7 @@ class TestTransform implements ZacBuilder<ZacTransform> {
 @GenerateMocks([TestTransformExecute])
 class TestTransformExecute extends Mock {
   Object? call(ZacTransformValue transformValue, BuildContext context,
-      ZacContext zacContext, ZacActionPayload? payload);
+      ZacContext zacContext);
 }
 
 class TestWidget implements ZacBuilder<Widget> {
@@ -187,12 +207,11 @@ class TestWidget implements ZacBuilder<Widget> {
 }
 
 class TestAction implements ZacBuilder<ZacAction> {
-  final void Function(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext) cb;
+  final void Function(BuildContext context, ZacContext zacContext) cb;
 
   TestAction(this.cb);
   factory TestAction.noop(Map<String, dynamic> map) {
-    return TestAction((payload, context, zacContext) {});
+    return TestAction((context, zacContext) {});
   }
 
   @override
@@ -203,8 +222,18 @@ class TestAction implements ZacBuilder<ZacAction> {
 
 @GenerateMocks([TestActionExecute])
 class TestActionExecute extends Mock {
-  void call(
-      ZacActionPayload payload, BuildContext context, ZacContext zacContext);
+  void call(BuildContext context, ZacContext zacContext);
+}
+
+class TestState implements ZacBuilder<ZacStateCreate> {
+  final ZacState Function(AutoDisposeProviderRef<ZacState> ref, String family)
+      create;
+
+  TestState(this.create);
+  @override
+  ZacStateCreate build(BuildContext context, ZacContext zacContext) {
+    return ZacStateCreate(create);
+  }
 }
 
 TypeMatcher<ZacContext> isZacContext = isA<ZacContext>();

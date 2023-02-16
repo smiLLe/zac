@@ -39,9 +39,7 @@ class FlutterRefreshIndicator
   RefreshIndicator _buildWidget(BuildContext context, ZacContext zacContext) {
     return RefreshIndicator(
       onRefresh: () async {
-        onRefresh
-            .build(context, zacContext)
-            .execute(const ZacActionPayload(), context, zacContext);
+        onRefresh.build(context, zacContext).callack(context, zacContext)();
         return Future.value(null);
       },
       displacement: displacement?.build(context, zacContext) ?? 40.0,

@@ -1,56 +1,152 @@
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:zac/src/base.dart';
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/context.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/zac_builder.dart';
 
 part 'transformers.freezed.dart';
 part 'transformers.g.dart';
 
-class ZacTransformError extends StateError {
-  ZacTransformError(super.message);
-}
-
-@freezed
-class ZacTransformValue with _$ZacTransformValue {
-  ZacTransformValue._();
-
-  factory ZacTransformValue(
-    Object? value, [
-    @Default(null) Object? extra1,
-    @Default(null) Object? extra2,
-    @Default(null) Object? extra3,
-  ]) = _ZacTransformValue;
-}
-
 @freezed
 class ZacTransform with _$ZacTransform {
   factory ZacTransform(
-    Object? Function(ZacTransformValue transformValue, BuildContext context,
-            ZacContext zacContext, ZacActionPayload? payload)
-        transform,
+    Object? Function(BuildContext context, ZacContext zacContext) transform,
   ) = _ZacTransform;
 }
 
+@freezedZacBuilder
+class ZacTransformValue<T>
+    with _$ZacTransformValue<T>
+    implements ZacBuilder<T> {
+  ZacTransformValue._();
+
+  static const String unionCurrent = 'z:1:TransformValue.current';
+  static const String unionInitial = 'z:1:TransformValue.initial';
+
+  static ZacTransformValue<T> fromRegister<T extends Object?>(
+      Map<String, dynamic> map) {
+    return ZacTransformValue<T>.fromJson(map);
+  }
+
+  factory ZacTransformValue.fromJson(Map<String, dynamic> json) =>
+      _$ZacTransformValueFromJson<T>(json);
+
+  /// Will return the current transformed value of a transformation
+  @FreezedUnionValue(ZacTransformValue.unionCurrent)
+  factory ZacTransformValue.current() = _ZacTransformValueCurrent<T>;
+
+  /// Will return the initial value before any transformation occurred.
+  @FreezedUnionValue(ZacTransformValue.unionInitial)
+  factory ZacTransformValue.initial() = _ZacTransformValueInitial<T>;
+
+  @override
+  T build(BuildContext context, ZacContext zacContext) {
+    return map<T>(
+      current: (obj) {
+        final val = ZacStateConsume<TransformValueWrapper>(
+          family: HandleTransformer.currentValueName,
+          mayBuildBuilder: true,
+        ).build(context, zacContext);
+
+        return val.transformValue as T;
+      },
+      initial: (obj) {
+        return ZacStateConsume<T>(
+          family: HandleTransformer.initialValueName,
+          mayBuildBuilder: true,
+        ).build(context, zacContext);
+      },
+    );
+  }
+}
+
+/// Will be provided as a [ZacStateCreate].
+/// The property [transformValue] will hold the current transformed value
+/// during the transformation of [ZacTransformer].
+@internal
+class TransformValueWrapper {
+  TransformValueWrapper(this.transformValue);
+  Object? transformValue;
+}
+
 extension HandleTransformer on List<ZacTransform> {
+  static const String currentValueName = 'transformCurrentValue';
+  static const String initialValueName = 'transformInitialValue';
+
   Object? transform(
-    ZacTransformValue value,
     BuildContext context,
     ZacContext zacContext,
-    ZacActionPayload? payload,
-  ) {
-    return fold<ZacTransformValue>(value, (previousValue, element) {
-      final obj = element.transform(
-        previousValue,
-        context,
-        zacContext.copyWith.call(buildIn: BuildIn.transformer),
-        payload,
-      );
-      return previousValue.copyWith.call(value: obj);
-    }).value;
+
+    /// Initial value of the transformation which will be consumeable through
+    /// [ZacTransformValue.current]
+    Object? inputValue, {
+    /// Other values that might be used during transformation that may be
+    /// of interest. Can be consumed via [ZacStateConsume].
+    /// The key will become the [ZacStateCreate] family.
+    /// The value will become the [ZacStateCreate]
+    Map<String, Object?> otherValues = const {},
+  }) {
+    final container = ProviderContainer(
+      parent: zacContext.consume.map(
+        (value) => ProviderScope.containerOf(context, listen: false),
+        manual: (obj) => obj.container,
+      ),
+      overrides: [
+        /// The transformer value must be wrapped into a calss and become mutable.
+        /// This provider must never be updated because changing the ref.state
+        /// will trigger a provider to rebuild and will result in a Exception thrown
+        /// by the Provider.
+        /// This will only happen during Widget.build()
+        /// f.e. while transforming a [ZacStateConsume].
+        ZacState.provider(HandleTransformer.currentValueName)
+            .overrideWith((ref) {
+          return ZacState(
+            TransformValueWrapper(inputValue),
+            (reduce) {
+              /// Never update ref.state
+              /// but always update the [TransformValueWrapper].transformValue
+              assert(ref.state.value is TransformValueWrapper);
+              final val = ref.state.value as TransformValueWrapper;
+              val.transformValue = reduce(val.transformValue);
+            },
+          );
+        }),
+        ZacState.provider(HandleTransformer.initialValueName)
+            .overrideWithValue(ZacState(
+          inputValue,
+          (reduce) => throw StateError('Not Allowed'),
+        )),
+        for (var entry in otherValues.entries)
+          ZacState.provider(entry.key).overrideWithValue(ZacState(
+            entry.value,
+            (reduce) => throw StateError('Not Allowed'),
+          )),
+      ],
+    );
+
+    for (var transformer in this) {
+      container
+          .read(ZacState.provider(HandleTransformer.currentValueName))
+          .update((current) => transformer.transform(
+                context,
+                zacContext.copyWith.call(
+                  consume: ZacContextConsume.manual(container: container),
+                ),
+              ));
+    }
+
+    final state =
+        container.read(ZacState.provider(HandleTransformer.currentValueName));
+    assert(state.value is TransformValueWrapper);
+    final val = state.value as TransformValueWrapper;
+
+    container.dispose();
+
+    return val.transformValue;
   }
 }
 
@@ -81,121 +177,140 @@ class MapTransformer with _$MapTransformer implements ZacBuilder<ZacTransform> {
       _$MapTransformerFromJson(json);
 
   @FreezedUnionValue(MapTransformer.unionValue)
-  factory MapTransformer.values() = _MapValues;
+  factory MapTransformer.values(ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _MapValues;
 
   @FreezedUnionValue(MapTransformer.unionValueKeys)
-  factory MapTransformer.keys() = _MapKeys;
+  factory MapTransformer.keys(ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _MapKeys;
 
   @FreezedUnionValue(MapTransformer.unionValueEntries)
-  factory MapTransformer.entries() = _MapEntries;
+  factory MapTransformer.entries(ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _MapEntries;
 
   @FreezedUnionValue(MapTransformer.unionValueLength)
-  factory MapTransformer.length() = _MapLength;
+  factory MapTransformer.length(ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _MapLength;
 
   @FreezedUnionValue(MapTransformer.unionValueIsEmpty)
-  factory MapTransformer.isEmpty() = _MapIsEmpty;
+  factory MapTransformer.isEmpty(ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _MapIsEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueIsNotEmpty)
-  factory MapTransformer.isNotEmpty() = _MapIsNotEmpty;
+  factory MapTransformer.isNotEmpty(ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _MapIsNotEmpty;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsKey)
-  factory MapTransformer.containsKey(ZacBuilder<Object?>? key) =
+  factory MapTransformer.containsKey(
+          ZacBuilder<Map<Object?, Object?>> fromMap, ZacBuilder<Object?>? key) =
       _MapContainsKey;
 
   @FreezedUnionValue(MapTransformer.unionValueContainsValue)
-  factory MapTransformer.containsValue(ZacBuilder<Object?>? value) =
-      _MapContainsValue;
+  factory MapTransformer.containsValue(
+      ZacBuilder<Map<Object?, Object?>> fromMap,
+      ZacBuilder<Object?>? value) = _MapContainsValue;
 
   /// Will return a Map<dynamic, dynamic>
   @FreezedUnionValue(MapTransformer.unionValueMap)
   factory MapTransformer.mapper({
+    required ZacBuilder<Map<Object?, Object?>> fromMap,
     ZacBuilder<List<ZacTransform>?>? keyTransformer,
     ZacBuilder<List<ZacTransform>?>? valueTransformer,
   }) = _MapMapper;
 
   @FreezedUnionValue(MapTransformer.unionValueFromObjectObject)
-  factory MapTransformer.fromObjectObject() = _MapFromObjectObject;
+  factory MapTransformer.fromObjectObject(
+      ZacBuilder<Map<Object?, Object?>> fromMap) = _MapFromObjectObject;
 
   @FreezedUnionValue(MapTransformer.unionValueFromStringObject)
-  factory MapTransformer.fromStringObject() = _MapFromStringObject;
+  factory MapTransformer.fromStringObject(
+      ZacBuilder<Map<Object?, Object?>> fromMap) = _MapFromStringObject;
 
   @FreezedUnionValue(MapTransformer.unionValueFromStringNullObject)
-  factory MapTransformer.fromStringNullObject() = _MapFromStringNullObject;
+  factory MapTransformer.fromStringNullObject(
+      ZacBuilder<Map<Object?, Object?>> fromMap) = _MapFromStringNullObject;
 
   @FreezedUnionValue(MapTransformer.unionValueKey)
-  factory MapTransformer.key(ZacBuilder<String> key) = _MapKey;
+  factory MapTransformer.key(
+          ZacBuilder<Map<Object?, Object?>> fromMap, ZacBuilder<String> key) =
+      _MapKey;
 
   @FreezedUnionValue(MapTransformer.unionValueSetValueForKey)
   factory MapTransformer.setValueForKey({
+    required ZacBuilder<Map<Object?, Object?>> fromMap,
     required ZacBuilder<Object> value,
     required ZacBuilder<String> key,
   }) = _MapSetValueForKey;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final theMap = transformValue.value;
-    if (theMap is! Map) {
-      throw ZacTransformError('''
-There was an error while trying to transform a value in $runtimeType.
-The value was expected to be a type of Map but instead we got a "${theMap.runtimeType}".
-The value: $theMap
-''');
-    }
-
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
-      values: (_) => theMap.values,
-      keys: (_) => theMap.keys,
-      entries: (_) => theMap.entries,
-      isEmpty: (_) => theMap.isEmpty,
-      isNotEmpty: (_) => theMap.isNotEmpty,
-      length: (_) => theMap.length,
-      containsKey: (obj) =>
-          theMap.containsKey(obj.key?.build(context, zacContext)),
-      containsValue: (obj) =>
-          theMap.containsValue(obj.value?.build(context, zacContext)),
+      values: (obj) => obj.fromMap.build(context, zacContext).values,
+      keys: (obj) => obj.fromMap.build(context, zacContext).keys,
+      entries: (obj) => obj.fromMap.build(context, zacContext).entries,
+      isEmpty: (obj) => obj.fromMap.build(context, zacContext).isEmpty,
+      isNotEmpty: (obj) => obj.fromMap.build(context, zacContext).isNotEmpty,
+      length: (obj) => obj.fromMap.build(context, zacContext).length,
+      containsKey: (obj) => obj.fromMap
+          .build(context, zacContext)
+          .containsKey(obj.key?.build(context, zacContext)),
+      containsValue: (obj) => obj.fromMap
+          .build(context, zacContext)
+          .containsValue(obj.value?.build(context, zacContext)),
       mapper: (obj) {
-        return Map<dynamic, dynamic>.fromEntries(
-            theMap.entries.map<MapEntry<dynamic, dynamic>>((entry) {
-          dynamic updatedKey = entry.key;
-          dynamic updatedValue = entry.value;
+        final map = obj.fromMap.build(context, zacContext);
+        return Map<Object?, Object?>.fromEntries(
+            map.entries.map<MapEntry<Object?, Object?>>((entry) {
+          Object? updatedKey = entry.key;
+          Object? updatedValue = entry.value;
           final keyT = obj.keyTransformer?.build(context, zacContext);
           final valueT = obj.valueTransformer?.build(context, zacContext);
           if (true == keyT?.isNotEmpty) {
-            updatedKey = keyT!.transform(ZacTransformValue(updatedKey, entry),
-                context, zacContext, payload);
+            updatedKey = keyT!.transform(
+              context,
+              zacContext,
+              updatedKey,
+              otherValues: {
+                'MapTransformer.mapper.value': entry.value,
+              },
+            );
           }
           if (true == valueT?.isNotEmpty) {
             updatedValue = valueT!.transform(
-                ZacTransformValue(updatedValue, entry),
-                context,
-                zacContext,
-                payload);
+              context,
+              zacContext,
+              updatedValue,
+              otherValues: {
+                'MapTransformer.mapper.key': entry.key,
+              },
+            );
           }
 
-          return MapEntry<dynamic, dynamic>(updatedKey, updatedValue);
+          return MapEntry<Object?, Object?>(updatedKey, updatedValue);
         }));
       },
-      fromObjectObject: (_) {
-        return Map<Object, Object>.from(theMap);
+      fromObjectObject: (obj) {
+        return Map<Object, Object>.from(obj.fromMap.build(context, zacContext));
       },
-      fromStringNullObject: (_) {
-        return Map<String, Object?>.from(theMap);
+      fromStringNullObject: (obj) {
+        return Map<String, Object?>.from(
+            obj.fromMap.build(context, zacContext));
       },
-      fromStringObject: (_) {
-        return Map<String, Object>.from(theMap);
+      fromStringObject: (obj) {
+        return Map<String, Object>.from(obj.fromMap.build(context, zacContext));
       },
       key: (obj) {
         final key = obj.key.build(context, zacContext);
-        return theMap[key];
+        return obj.fromMap.build(context, zacContext)[key];
       },
       setValueForKey: (obj) {
         final value = obj.value.build(context, zacContext);
 
         final key = obj.key.build(context, zacContext);
 
-        theMap[key] = value;
-        return theMap;
+        final map = obj.fromMap.build(context, zacContext);
+        map[key] = value;
+        return map;
       },
     );
   });
@@ -233,85 +348,93 @@ class IterableTransformer
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValue)
   factory IterableTransformer.map({
+    required ZacBuilder<Iterable<Object?>> iterable,
     required ZacBuilder<List<ZacTransform>> transformer,
   }) = _IterableMap;
 
   @FreezedUnionValue(IterableTransformer.unionValueSingle)
-  factory IterableTransformer.single() = _IterableSingle;
+  factory IterableTransformer.single(ZacBuilder<Iterable<Object?>> iterable) =
+      _IterableSingle;
 
   @FreezedUnionValue(IterableTransformer.unionValueFirst)
-  factory IterableTransformer.first() = _IterableFirst;
+  factory IterableTransformer.first(ZacBuilder<Iterable<Object?>> iterable) =
+      _IterableFirst;
 
   @FreezedUnionValue(IterableTransformer.unionValueLast)
-  factory IterableTransformer.last() = _IterableLast;
+  factory IterableTransformer.last(ZacBuilder<Iterable<Object?>> iterable) =
+      _IterableLast;
 
   @FreezedUnionValue(IterableTransformer.unionValueLength)
-  factory IterableTransformer.length() = _IterableLength;
+  factory IterableTransformer.length(ZacBuilder<Iterable<Object?>> iterable) =
+      _IterableLength;
 
   @FreezedUnionValue(IterableTransformer.unionValueIsEmpty)
-  factory IterableTransformer.isEmpty() = _IterableIsEmpty;
+  factory IterableTransformer.isEmpty(ZacBuilder<Iterable<Object?>> iterable) =
+      _IterableIsEmpty;
 
   @FreezedUnionValue(IterableTransformer.unionValueIsNotEmpty)
-  factory IterableTransformer.isNotEmpty() = _IterableIsNotEmpty;
+  factory IterableTransformer.isNotEmpty(
+      ZacBuilder<Iterable<Object?>> iterable) = _IterableIsNotEmpty;
 
   /// Will return a List<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValueToList)
-  factory IterableTransformer.toList() = _IterableToList;
+  factory IterableTransformer.toList(ZacBuilder<Iterable<Object?>> iterable) =
+      _IterableToList;
 
   /// Will return a Set<dynamic>
   @FreezedUnionValue(IterableTransformer.unionValueToSet)
-  factory IterableTransformer.toSet() = _IterableToSet;
+  factory IterableTransformer.toSet(ZacBuilder<Iterable<Object?>> iterable) =
+      _IterableToSet;
 
   @FreezedUnionValue(IterableTransformer.unionValueToString)
-  factory IterableTransformer.toString() = _IterableToString;
+  factory IterableTransformer.toString(ZacBuilder<Iterable<Object?>> iterable) =
+      _IterableToString;
 
   @FreezedUnionValue(IterableTransformer.unionValueJoin)
-  factory IterableTransformer.join({String? separator}) = _IterableJoin;
+  factory IterableTransformer.join(ZacBuilder<Iterable<Object?>> iterable,
+      {String? separator}) = _IterableJoin;
 
   @FreezedUnionValue(IterableTransformer.unionValueContains)
-  factory IterableTransformer.contains(ZacBuilder<Object?>? element) =
-      _IterableContains;
+  factory IterableTransformer.contains(ZacBuilder<Iterable<Object?>> iterable,
+      ZacBuilder<Object?>? element) = _IterableContains;
 
   @FreezedUnionValue(IterableTransformer.unionValueElementAt)
-  factory IterableTransformer.elementAt(int index) = _IterableElementAt;
+  factory IterableTransformer.elementAt(
+      ZacBuilder<Iterable<Object?>> iterable, int index) = _IterableElementAt;
 
   @FreezedUnionValue(IterableTransformer.unionValueSkip)
-  factory IterableTransformer.skip(int count) = _IterableSkip;
+  factory IterableTransformer.skip(
+      ZacBuilder<Iterable<Object?>> iterable, int count) = _IterableSkip;
 
   @FreezedUnionValue(IterableTransformer.unionValueTake)
-  factory IterableTransformer.take(int count) = _IterableTake;
+  factory IterableTransformer.take(
+      ZacBuilder<Iterable<Object?>> iterable, int count) = _IterableTake;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final value = transformValue.value;
-    if (value is! Iterable) {
-      throw ZacTransformError('''
-There was an error while trying to transform a value in $runtimeType.
-The value was expected to be a type of Iterable but instead we got a "${value.runtimeType}".
-The value: $value
-''');
-    }
-
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
-      map: (obj) => value.map((dynamic e) => obj.transformer
+      map: (obj) => obj.iterable.build(context, zacContext).map((dynamic e) =>
+          obj.transformer
+              .build(context, zacContext)
+              .transform(context, zacContext, e)),
+      first: (obj) => obj.iterable.build(context, zacContext).first,
+      last: (obj) => obj.iterable.build(context, zacContext).last,
+      single: (obj) => obj.iterable.build(context, zacContext).single,
+      length: (obj) => obj.iterable.build(context, zacContext).length,
+      isEmpty: (obj) => obj.iterable.build(context, zacContext).isEmpty,
+      isNotEmpty: (obj) => obj.iterable.build(context, zacContext).isNotEmpty,
+      toList: (obj) => obj.iterable.build(context, zacContext).toList(),
+      toSet: (obj) => obj.iterable.build(context, zacContext).toSet(),
+      toString: (obj) => obj.iterable.build(context, zacContext).toString(),
+      join: (obj) =>
+          obj.iterable.build(context, zacContext).join(obj.separator ?? ""),
+      contains: (obj) => obj.iterable
           .build(context, zacContext)
-          .transform(ZacTransformValue(e), context, zacContext, payload)),
-      first: (_) => value.first,
-      last: (_) => value.last,
-      single: (_) => value.single,
-      length: (_) => value.length,
-      isEmpty: (_) => value.isEmpty,
-      isNotEmpty: (_) => value.isNotEmpty,
-      toList: (_) => value.toList(),
-      toSet: (_) => value.toSet(),
-      toString: (_) => value.toString(),
-      join: (obj) => value.join(obj.separator ?? ""),
-      contains: (obj) =>
-          value.contains(obj.element?.build(context, zacContext)),
-      elementAt: (obj) => value.elementAt(obj.index),
-      skip: (obj) => value.skip(obj.count),
-      take: (obj) => value.take(obj.count),
+          .contains(obj.element?.build(context, zacContext)),
+      elementAt: (obj) =>
+          obj.iterable.build(context, zacContext).elementAt(obj.index),
+      skip: (obj) => obj.iterable.build(context, zacContext).skip(obj.count),
+      take: (obj) => obj.iterable.build(context, zacContext).take(obj.count),
     );
   });
 
@@ -332,29 +455,21 @@ class ListTransformer
 
   /// Will return a Iterable<dynamic>
   @FreezedUnionValue(ListTransformer.unionValue)
-  factory ListTransformer.reversed() = _ListReversed;
+  factory ListTransformer.reversed(ZacBuilder<List<Object?>> list) =
+      _ListReversed;
 
   @FreezedUnionValue(ListTransformer.unionValueAdd)
-  factory ListTransformer.add(ZacBuilder<Object> value) = _ListAdd;
+  factory ListTransformer.add(
+      ZacBuilder<List<Object?>> list, ZacBuilder<Object?> value) = _ListAdd;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final value = transformValue.value;
-    if (value is! List) {
-      throw ZacTransformError('''
-There was an error while trying to transform a value in $runtimeType.
-The value was expected to be a type of List but instead we got a "${value.runtimeType}".
-The value: $value
-''');
-    }
-
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
-      reversed: (_) => value.reversed.toList(),
+      reversed: (obj) => obj.list.build(context, zacContext).reversed.toList(),
       add: (obj) {
-        value.add(obj.value.build(context, zacContext));
-
-        return value;
+        final list = obj.list.build(context, zacContext);
+        list.add(obj.value.build(context, zacContext));
+        return list;
       },
     );
   });
@@ -390,59 +505,61 @@ class ObjectTransformer
       _$ObjectTransformerFromJson(json);
 
   @FreezedUnionValue(ObjectTransformer.unionValue)
-  factory ObjectTransformer.isList() = _ObjectIsList;
+  factory ObjectTransformer.isList(ZacBuilder<Object?> object) = _ObjectIsList;
 
   @FreezedUnionValue(ObjectTransformer.unionValueIsMap)
-  factory ObjectTransformer.isMap() = _ObjectIsMap;
+  factory ObjectTransformer.isMap(ZacBuilder<Object?> object) = _ObjectIsMap;
 
   @FreezedUnionValue(ObjectTransformer.unionValueIsBool)
-  factory ObjectTransformer.isBool() = _ObjectIsBool;
+  factory ObjectTransformer.isBool(ZacBuilder<Object?> object) = _ObjectIsBool;
 
   @FreezedUnionValue(ObjectTransformer.unionValueIsString)
-  factory ObjectTransformer.isString() = _ObjectIsString;
+  factory ObjectTransformer.isString(ZacBuilder<Object?> object) =
+      _ObjectIsString;
 
   @FreezedUnionValue(ObjectTransformer.unionValueIsDouble)
-  factory ObjectTransformer.isDouble() = _ObjectIsDouble;
+  factory ObjectTransformer.isDouble(ZacBuilder<Object?> object) =
+      _ObjectIsDouble;
 
   @FreezedUnionValue(ObjectTransformer.unionValueIsInt)
-  factory ObjectTransformer.isInt() = _ObjectIsInt;
+  factory ObjectTransformer.isInt(ZacBuilder<Object?> object) = _ObjectIsInt;
 
   @FreezedUnionValue(ObjectTransformer.unionValueIsNull)
-  factory ObjectTransformer.isNull() = _ObjectIsNull;
-
-  @FreezedUnionValue('z:1:Transformer:Object.isActionPayload')
-  factory ObjectTransformer.isActionPayload() = _ObjectIsActionPayload;
+  factory ObjectTransformer.isNull(ZacBuilder<Object?> object) = _ObjectIsNull;
 
   @FreezedUnionValue(ObjectTransformer.unionValueEquals)
-  factory ObjectTransformer.equals({required ZacBuilder<Object?> other}) =
-      _ObjectEquals;
+  factory ObjectTransformer.equals(
+      {required ZacBuilder<Object?> object,
+      required ZacBuilder<Object?> other}) = _ObjectEquals;
 
   @FreezedUnionValue(ObjectTransformer.unionValueToString)
-  factory ObjectTransformer.toString() = _ObjectToString;
+  factory ObjectTransformer.toString(ZacBuilder<Object?> object) =
+      _ObjectToString;
 
   @FreezedUnionValue(ObjectTransformer.unionValueRuntimeType)
-  factory ObjectTransformer.runtimeType() = _ObjectRuntimeType;
+  factory ObjectTransformer.runtimeType(ZacBuilder<Object?> object) =
+      _ObjectRuntimeType;
 
   @FreezedUnionValue(ObjectTransformer.unionValueHashCode)
-  factory ObjectTransformer.hashCode() = _ObjectHashCode;
+  factory ObjectTransformer.hashCode(ZacBuilder<Object?> object) =
+      _ObjectHashCode;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final value = transformValue.value;
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
-      isList: (_) => value is List,
-      isMap: (_) => value is Map,
-      isBool: (_) => value is bool,
-      isString: (_) => value is String,
-      isInt: (_) => value is int,
-      isDouble: (_) => value is double,
-      isNull: (_) => null == value,
-      isActionPayload: (_) => value is ZacActionPayload,
-      equals: (obj) => obj.other.build(context, zacContext) == value,
-      hashCode: (_) => value.hashCode,
-      runtimeType: (_) => value.runtimeType,
-      toString: (_) => value.toString(),
+      isList: (obj) => obj.object.build(context, zacContext) is List,
+      isMap: (obj) => obj.object.build(context, zacContext) is Map,
+      isBool: (obj) => obj.object.build(context, zacContext) is bool,
+      isString: (obj) => obj.object.build(context, zacContext) is String,
+      isInt: (obj) => obj.object.build(context, zacContext) is int,
+      isDouble: (obj) => obj.object.build(context, zacContext) is double,
+      isNull: (obj) => obj.object.build(context, zacContext) == null,
+      equals: (obj) =>
+          obj.object.build(context, zacContext) ==
+          obj.other.build(context, zacContext),
+      hashCode: (obj) => obj.object.build(context, zacContext).hashCode,
+      runtimeType: (obj) => obj.object.build(context, zacContext).runtimeType,
+      toString: (obj) => obj.object.build(context, zacContext).toString(),
     );
   });
 
@@ -474,70 +591,66 @@ class NumTransformer with _$NumTransformer implements ZacBuilder<ZacTransform> {
       _$NumTransformerFromJson(json);
 
   @FreezedUnionValue(NumTransformer.unionValue)
-  factory NumTransformer.toDouble() = _NumToDouble;
+  factory NumTransformer.toDouble(ZacBuilder<num> number) = _NumToDouble;
 
   @FreezedUnionValue(NumTransformer.unionValueToInt)
-  factory NumTransformer.toInt() = _NumToInt;
+  factory NumTransformer.toInt(ZacBuilder<num> number) = _NumToInt;
 
   @FreezedUnionValue(NumTransformer.unionValueAbs)
-  factory NumTransformer.abs() = _NumAbs;
+  factory NumTransformer.abs(ZacBuilder<num> number) = _NumAbs;
 
   @FreezedUnionValue(NumTransformer.unionValueCeil)
-  factory NumTransformer.ceil() = _NumCeil;
+  factory NumTransformer.ceil(ZacBuilder<num> number) = _NumCeil;
 
   @FreezedUnionValue(NumTransformer.unionValueCeilToDouble)
-  factory NumTransformer.ceilToDouble() = _NumCeilToDouble;
+  factory NumTransformer.ceilToDouble(ZacBuilder<num> number) =
+      _NumCeilToDouble;
 
   @FreezedUnionValue(NumTransformer.unionValueFloor)
-  factory NumTransformer.floor() = _NumFloor;
+  factory NumTransformer.floor(ZacBuilder<num> number) = _NumFloor;
 
   @FreezedUnionValue(NumTransformer.unionValueFloorToDouble)
-  factory NumTransformer.floorToDouble() = _NumFloorToDouble;
+  factory NumTransformer.floorToDouble(ZacBuilder<num> number) =
+      _NumFloorToDouble;
 
   @FreezedUnionValue(NumTransformer.unionValueRound)
-  factory NumTransformer.round() = _NumRound;
+  factory NumTransformer.round(ZacBuilder<num> number) = _NumRound;
 
   @FreezedUnionValue(NumTransformer.unionValueRoundToDouble)
-  factory NumTransformer.roundToDouble() = _NumRoundToDouble;
+  factory NumTransformer.roundToDouble(ZacBuilder<num> number) =
+      _NumRoundToDouble;
 
   @FreezedUnionValue(NumTransformer.unionValueIsFinite)
-  factory NumTransformer.isFinite() = _NumIsFinite;
+  factory NumTransformer.isFinite(ZacBuilder<num> number) = _NumIsFinite;
 
   @FreezedUnionValue(NumTransformer.unionValueIsInfinite)
-  factory NumTransformer.isInfinite() = _NumIsInfinite;
+  factory NumTransformer.isInfinite(ZacBuilder<num> number) = _NumIsInfinite;
 
   @FreezedUnionValue(NumTransformer.unionValueIsNan)
-  factory NumTransformer.isNan() = _NumIsNan;
+  factory NumTransformer.isNan(ZacBuilder<num> number) = _NumIsNan;
 
   @FreezedUnionValue(NumTransformer.unionValueIsNegative)
-  factory NumTransformer.isNegative() = _NumIsNegative;
+  factory NumTransformer.isNegative(ZacBuilder<num> number) = _NumIsNegative;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final value = transformValue.value;
-    if (value is! num) {
-      throw ZacTransformError('''
-There was an error while trying to transform a value in $runtimeType.
-The value was expected to be a type of num but instead we got a "${value.runtimeType}".
-The value: $value
-''');
-    }
-
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
-      toDouble: (_) => value.toDouble(),
-      toInt: (_) => value.toInt(),
-      abs: (_) => value.abs(),
-      ceil: (_) => value.ceil(),
-      ceilToDouble: (_) => value.ceilToDouble(),
-      floor: (_) => value.floor(),
-      floorToDouble: (_) => value.floorToDouble(),
-      round: (_) => value.round(),
-      roundToDouble: (_) => value.roundToDouble(),
-      isFinite: (_) => value.isFinite,
-      isInfinite: (_) => value.isInfinite,
-      isNan: (_) => value.isNaN,
-      isNegative: (_) => value.isNegative,
+      toDouble: (obj) => obj.number.build(context, zacContext).toDouble(),
+      toInt: (obj) => obj.number.build(context, zacContext).toInt(),
+      abs: (obj) => obj.number.build(context, zacContext).abs(),
+      ceil: (obj) => obj.number.build(context, zacContext).ceil(),
+      ceilToDouble: (obj) =>
+          obj.number.build(context, zacContext).ceilToDouble(),
+      floor: (obj) => obj.number.build(context, zacContext).floor(),
+      floorToDouble: (obj) =>
+          obj.number.build(context, zacContext).floorToDouble(),
+      round: (obj) => obj.number.build(context, zacContext).round(),
+      roundToDouble: (obj) =>
+          obj.number.build(context, zacContext).roundToDouble(),
+      isFinite: (obj) => obj.number.build(context, zacContext).isFinite,
+      isInfinite: (obj) => obj.number.build(context, zacContext).isInfinite,
+      isNan: (obj) => obj.number.build(context, zacContext).isNaN,
+      isNegative: (obj) => obj.number.build(context, zacContext).isNegative,
     );
   });
 
@@ -557,57 +670,37 @@ class IntTransformer with _$IntTransformer implements ZacBuilder<ZacTransform> {
       _$IntTransformerFromJson(json);
 
   @FreezedUnionValue(IntTransformer.unionValue)
-  factory IntTransformer.parse() = _IntParse;
+  factory IntTransformer.parse(ZacBuilder<String> number) = _IntParse;
 
   @FreezedUnionValue(IntTransformer.unionValueTryParse)
-  factory IntTransformer.tryParse() = _IntTryParse;
+  factory IntTransformer.tryParse(ZacBuilder<String> number) = _IntTryParse;
 
   @FreezedUnionValue(IntTransformer.unionValueIncrementBy)
-  factory IntTransformer.incr(ZacBuilder<int> by) = _IntIncr;
+  factory IntTransformer.incr(ZacBuilder<int> number, ZacBuilder<int> by) =
+      _IntIncr;
 
   @FreezedUnionValue(IntTransformer.unionValueDecrementBy)
-  factory IntTransformer.decr(ZacBuilder<int> by) = _IntDecr;
+  factory IntTransformer.decr(ZacBuilder<int> number, ZacBuilder<int> by) =
+      _IntDecr;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final value = transformValue.value;
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
       parse: (obj) {
-        if (value is! String) {
-          throw ZacTransformError('''
-There was an error while trying to parse an int in ${obj.runtimeType}
-for converter "${IntTransformer.unionValue}".
-The value to transform was not of type String but instead is ${value.runtimeType}.
-Value: $value
-''');
-        }
+        final value = obj.number.build(context, zacContext);
         return int.parse(value);
       },
       tryParse: (obj) {
-        if (value is! String) {
-          throw ZacTransformError('''
-There was an error while trying to parse an int in ${obj.runtimeType}
-for converter "${IntTransformer.unionValueTryParse}".
-The value to transform was not of type String but instead is ${value.runtimeType}.
-Value: $value
-''');
-        }
+        final value = obj.number.build(context, zacContext);
         return int.tryParse(value);
       },
       incr: (obj) {
-        if (value is! int) {
-          throw StateError(
-              'Expected value to be int in $IntTransformer(${IntTransformer.unionValueIncrementBy}): $value');
-        }
-        return value + obj.by.build(context, zacContext);
+        return obj.number.build(context, zacContext) +
+            obj.by.build(context, zacContext);
       },
       decr: (obj) {
-        if (value is! int) {
-          throw StateError(
-              'Expected value to be int in $IntTransformer(${IntTransformer.unionValueDecrementBy}): $value');
-        }
-        return value - obj.by.build(context, zacContext);
+        return obj.number.build(context, zacContext) -
+            obj.by.build(context, zacContext);
       },
     );
   });
@@ -633,40 +726,34 @@ class StringTransformer
       _$StringTransformerFromJson(json);
 
   @FreezedUnionValue(StringTransformer.unionValue)
-  factory StringTransformer.length() = _StringLength;
+  factory StringTransformer.length(ZacBuilder<String> string) = _StringLength;
 
   @FreezedUnionValue(StringTransformer.unionValueSplit)
-  factory StringTransformer.split({required ZacBuilder<String> pattern}) =
-      _StringSplit;
+  factory StringTransformer.split(
+      {required ZacBuilder<String> string,
+      required ZacBuilder<String> pattern}) = _StringSplit;
 
   @FreezedUnionValue(StringTransformer.unionValueIsEmpty)
-  factory StringTransformer.isEmpty() = _StringIsEmpty;
+  factory StringTransformer.isEmpty(ZacBuilder<String> string) = _StringIsEmpty;
 
   @FreezedUnionValue(StringTransformer.unionValueIsNotEmpty)
-  factory StringTransformer.isNotEmpty() = _StringIsNotEmpty;
+  factory StringTransformer.isNotEmpty(ZacBuilder<String> string) =
+      _StringIsNotEmpty;
 
   @FreezedUnionValue(StringTransformer.unionValueReplaceAll)
-  factory StringTransformer.replaceAll(
+  factory StringTransformer.replaceAll(ZacBuilder<String> string,
       ZacBuilder<String> from, ZacBuilder<String> replace) = _StringReplaceAll;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final value = transformValue.value;
-    if (value is! String) {
-      throw ZacTransformError('''
-There was an error while trying to transform a value in $runtimeType.
-The value was expected to be a type of String but instead we got a "${value.runtimeType}".
-The value: $value
-''');
-    }
-
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
-      length: (_) => value.length,
-      split: (obj) => value.split(obj.pattern.build(context, zacContext)),
-      isEmpty: (_) => value.isEmpty,
-      isNotEmpty: (_) => value.isNotEmpty,
-      replaceAll: (obj) => value.replaceAll(
+      length: (obj) => obj.string.build(context, zacContext).length,
+      split: (obj) => obj.string
+          .build(context, zacContext)
+          .split(obj.pattern.build(context, zacContext)),
+      isEmpty: (obj) => obj.string.build(context, zacContext).isEmpty,
+      isNotEmpty: (obj) => obj.string.build(context, zacContext).isNotEmpty,
+      replaceAll: (obj) => obj.string.build(context, zacContext).replaceAll(
           RegExp(obj.from.build(context, zacContext)),
           obj.replace.build(context, zacContext)),
     );
@@ -688,28 +775,18 @@ class JsonTransformer
       _$JsonTransformerFromJson(json);
 
   @FreezedUnionValue(JsonTransformer.unionValue)
-  factory JsonTransformer.encode() = _JsonEncode;
+  factory JsonTransformer.encode(ZacBuilder<Object> object) = _JsonEncode;
 
   @FreezedUnionValue(JsonTransformer.unionValueDecode)
-  factory JsonTransformer.decode() = _JsonDencode;
+  factory JsonTransformer.decode(ZacBuilder<String> jsonString) = _JsonDencode;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final value = transformValue.value;
-
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
-      decode: (_) {
-        if (value is! String) {
-          throw ZacTransformError('''
-There was an error while trying to transform a value in $runtimeType.
-The value was expected to be a type of String but instead we got a "${value.runtimeType}".
-The value: $value
-''');
-        }
-        return jsonDecode(value);
+      decode: (obj) {
+        return jsonDecode(obj.jsonString.build(context, zacContext));
       },
-      encode: (_) => jsonEncode(value),
+      encode: (obj) => jsonEncode(obj.object.build(context, zacContext)),
     );
   });
 
@@ -728,19 +805,13 @@ class BoolTransformer
       _$BoolTransformerFromJson(json);
 
   @FreezedUnionValue(BoolTransformer.unionValue)
-  factory BoolTransformer.negate() = _BoolTransformerNegate;
+  factory BoolTransformer.negate(ZacBuilder<bool> boolean) =
+      _BoolTransformerNegate;
 
-  late final ZacTransform _transform = ZacTransform(
-      (ZacTransformValue transformValue, BuildContext context,
-          ZacContext zacContext, ZacActionPayload? payload) {
-    final value = transformValue.value;
-    if (value is! bool) {
-      throw ZacTransformError(
-          '$BoolTransformer could not use the value because it is no bool but "$value"');
-    }
-
+  late final ZacTransform _transform =
+      ZacTransform((BuildContext context, ZacContext zacContext) {
     return map(
-      negate: (_) => !value,
+      negate: (obj) => !obj.boolean.build(context, zacContext),
     );
   });
 

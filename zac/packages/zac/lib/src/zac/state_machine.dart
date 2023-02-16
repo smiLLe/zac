@@ -39,18 +39,18 @@ class ZacStateMachineStateConfig with _$ZacStateMachineStateConfig {
 }
 
 @freezedZacBuilder
-class ZacStateMachineConfig with _$ZacStateMachineConfig {
-  ZacStateMachineConfig._();
+class ZacStateMachineProvide with _$ZacStateMachineProvide {
+  ZacStateMachineProvide._();
 
-  factory ZacStateMachineConfig.fromJson(Map<String, dynamic> json) =>
-      _$ZacStateMachineConfigFromJson(json);
+  factory ZacStateMachineProvide.fromJson(Map<String, dynamic> json) =>
+      _$ZacStateMachineProvideFromJson(json);
 
-  @FreezedUnionValue('z:1:StateMachine')
-  factory ZacStateMachineConfig({
+  @FreezedUnionValue('z:1:StateMachine.provide')
+  factory ZacStateMachineProvide({
     required Map<String, ZacStateMachineStateConfig> states,
     required String initialState,
     ZacBuilder<Widget>? initialWidget,
-  }) = _ZacStateMachineConfig;
+  }) = _ZacStateMachineProvide;
 
   late final Idle idle = () {
     final endlichStateConfigs = states.map((stateName, stateConfig) {
@@ -126,7 +126,7 @@ payload of type ${ZacBuilder<Widget>} for event "$event".''');
 class ZacStateMachine with _$ZacStateMachine {
   ZacStateMachine._();
 
-  static final provider = Provider.autoDispose.family<ZacStateMachine, String>(
+  static final provider = Provider.family<ZacStateMachine, String>(
     (_, family) {
       throw StateError(
           'Could not find a $ZacStateMachine for family "$family".');
@@ -135,7 +135,7 @@ class ZacStateMachine with _$ZacStateMachine {
   );
 
   static ZacStateMachine _create({
-    required AutoDisposeProviderRef<ZacStateMachine> ref,
+    required ProviderRef<ZacStateMachine> ref,
     required Idle idle,
     required String family,
   }) {
@@ -171,9 +171,9 @@ because there was already a transition.''');
       };
     }
 
-//     ref.onDispose(() {
-//       sessionId = -1;
-//     });
+    ref.onDispose(() {
+      sessionId = -1;
+    });
 
     return ZacStateMachine(
       family: family,
@@ -213,7 +213,7 @@ class ZacStateMachineProvider
 
   @FreezedUnionValue('z:1:StateMachines.provide')
   factory ZacStateMachineProvider({
-    required Map<String, ZacStateMachineConfig> machines,
+    required Map<String, ZacStateMachineProvide> machines,
     required ZacBuilder<Widget> child,
   }) = _ZacStateMachineProvider;
 
@@ -231,7 +231,7 @@ class ZacStateMachineProviderWidget extends HookWidget {
       {required this.buildChild, required this.machines, super.key});
 
   final Widget Function(BuildContext context, ZacContext zacContext) buildChild;
-  final Map<String, ZacStateMachineConfig> machines;
+  final Map<String, ZacStateMachineProvide> machines;
 
   @override
   Widget build(BuildContext context) {
@@ -297,7 +297,7 @@ class ZacStateMachineBuildWidget extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final stateMachineWidget = ref.watch(
         ZacStateMachine.provider(family).select((machine) => machine.widget));
-    final zacContext = useZacContext();
+    final zacContext = useZacContext(ref);
     return stateMachineWidget.build(context, zacContext);
   }
 }
@@ -313,32 +313,27 @@ class ZacStateMachineActions
 
   @FreezedUnionValue('z:1:StateMachine:Action.send')
   factory ZacStateMachineActions.send({
+    ZacBuilder<Widget>? widget,
     required String family,
     required String event,
   }) = _ZacStateMachineActionsSend;
 
   @FreezedUnionValue('z:1:StateMachine:Action.trySend')
   factory ZacStateMachineActions.trySend({
+    ZacBuilder<Widget>? widget,
     required String family,
     required String event,
   }) = _ZacStateMachineActionsTrySend;
 
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action =
+      ZacAction((BuildContext context, ZacContext zacContext) {
     map(
       send: (obj) {
-        final widget = payload.params is ZacBuilder<Widget>?
-            ? payload.params as ZacBuilder<Widget>?
-            : null;
         context.widgetRef
             .read(ZacStateMachine.provider(obj.family))
             .send(obj.event, widget);
       },
       trySend: (obj) {
-        final widget = payload.params is ZacBuilder<Widget>?
-            ? payload.params as ZacBuilder<Widget>?
-            : null;
-
         context.widgetRef
             .read(ZacStateMachine.provider(obj.family))
             .trySend(obj.event, widget);

@@ -104,12 +104,7 @@ void main() {
     await tester.enterText(findMe, 'hello world');
     await tester.pump();
 
-    verify(cb(
-            argThat(isA<ZacActionPayload>()
-                .having((p0) => p0.params, 'param', 'hello world')),
-            any,
-            any))
-        .called(1);
+    verify(cb(any, any)).called(1);
   });
 
   testWidgets(

@@ -5,7 +5,6 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:zac/src/zac/action.dart' as _i6;
 import 'package:zac/src/zac/context.dart' as _i5;
 import 'package:zac/src/zac/transformers.dart' as _i3;
 
@@ -33,10 +32,9 @@ class MockTestTransformExecute extends _i1.Mock
 
   @override
   Object? call(
-    _i3.ZacTransformValue? transformValue,
+    _i3.ZacTransformValue<dynamic>? transformValue,
     _i4.BuildContext? context,
     _i5.ZacContext? zacContext,
-    _i6.ZacActionPayload? payload,
   ) =>
       (super.noSuchMethod(Invocation.method(
         #call,
@@ -44,7 +42,6 @@ class MockTestTransformExecute extends _i1.Mock
           transformValue,
           context,
           zacContext,
-          payload,
         ],
       )) as Object?);
 }
@@ -59,7 +56,6 @@ class MockTestActionExecute extends _i1.Mock implements _i2.TestActionExecute {
 
   @override
   void call(
-    _i6.ZacActionPayload? payload,
     _i4.BuildContext? context,
     _i5.ZacContext? zacContext,
   ) =>
@@ -67,7 +63,6 @@ class MockTestActionExecute extends _i1.Mock implements _i2.TestActionExecute {
         Invocation.method(
           #call,
           [
-            payload,
             context,
             zacContext,
           ],

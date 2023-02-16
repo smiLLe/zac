@@ -1,4 +1,3 @@
-import 'package:zac/src/zac/action.dart';
 import 'package:zac/src/zac/registry.dart';
 import 'package:zac/src/flutter/widgets/interactive_viewer.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +8,7 @@ import '../models.dart';
 
 void main() {
   testWidgets('FlutterInteractiveViewer()', (tester) async {
-    ZacRegistry().register<ZacAction>('test.action', TestAction.noop);
+    ZacRegistry().register('test.action', TestAction.noop);
     await testJSON(
       tester,
       <String, dynamic>{

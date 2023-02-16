@@ -1,19 +1,26 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'context.freezed.dart';
-
-enum BuildIn { widget, action, transformer }
 
 @freezed
 class ZacContext with _$ZacContext {
   factory ZacContext({
     required void Function(void Function() cb) onUnmount,
-    required BuildIn buildIn,
+    required ZacContextConsume consume,
   }) = _ZacContext;
 }
 
-ZacContext useZacContext() {
+@freezed
+class ZacContextConsume with _$ZacContextConsume {
+  factory ZacContextConsume({required WidgetRef ref}) = _BuildingWidgets;
+
+  factory ZacContextConsume.manual({required ProviderContainer container}) =
+      _Manual;
+}
+
+ZacContext useZacContext(WidgetRef ref) {
   final unmountCallbacks = useRef(<void Function()>[]);
   final addCb = useMemoized(
     () => (void Function() cb) => unmountCallbacks.value.add(cb),
@@ -31,6 +38,6 @@ ZacContext useZacContext() {
 
   return ZacContext(
     onUnmount: addCb,
-    buildIn: BuildIn.widget,
+    consume: ZacContextConsume(ref: ref),
   );
 }

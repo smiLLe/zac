@@ -6,22 +6,6 @@ part of 'zac_value.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ZacValueActionsAsPayload _$$_ZacValueActionsAsPayloadFromJson(
-        Map<String, dynamic> json) =>
-    $checkedCreate(
-      r'_$_ZacValueActionsAsPayload',
-      json,
-      ($checkedConvert) {
-        final val = _$_ZacValueActionsAsPayload(
-          value: $checkedConvert(
-              'value', (v) => ZacBuilder<Object?>.fromJson(v as Object)),
-          actions: $checkedConvert('actions',
-              (v) => ZacBuilder<List<ZacAction>>.fromJson(v as Object)),
-        );
-        return val;
-      },
-    );
-
 _$_ZacNum _$$_ZacNumFromJson(Map<String, dynamic> json) => $checkedCreate(
       r'_$_ZacNum',
       json,

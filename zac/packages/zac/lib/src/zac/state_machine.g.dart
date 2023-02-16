@@ -44,13 +44,13 @@ _$_ZacStateMachineStateConfig _$$_ZacStateMachineStateConfigFromJson(
       },
     );
 
-_$_ZacStateMachineConfig _$$_ZacStateMachineConfigFromJson(
+_$_ZacStateMachineProvide _$$_ZacStateMachineProvideFromJson(
         Map<String, dynamic> json) =>
     $checkedCreate(
-      r'_$_ZacStateMachineConfig',
+      r'_$_ZacStateMachineProvide',
       json,
       ($checkedConvert) {
-        final val = _$_ZacStateMachineConfig(
+        final val = _$_ZacStateMachineProvide(
           states: $checkedConvert(
               'states',
               (v) => (v as Map<String, dynamic>).map(
@@ -81,7 +81,7 @@ _$_ZacStateMachineProvider _$$_ZacStateMachineProviderFromJson(
               (v) => (v as Map<String, dynamic>).map(
                     (k, e) => MapEntry(
                         k,
-                        ZacStateMachineConfig.fromJson(
+                        ZacStateMachineProvide.fromJson(
                             e as Map<String, dynamic>)),
                   )),
           child: $checkedConvert(
@@ -111,6 +111,10 @@ _$_ZacStateMachineActionsSend _$$_ZacStateMachineActionsSendFromJson(
       json,
       ($checkedConvert) {
         final val = _$_ZacStateMachineActionsSend(
+          widget: $checkedConvert(
+              'widget',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget>.fromJson(v as Object)),
           family: $checkedConvert('family', (v) => v as String),
           event: $checkedConvert('event', (v) => v as String),
           $type: $checkedConvert('builder', (v) => v as String?),
@@ -127,6 +131,10 @@ _$_ZacStateMachineActionsTrySend _$$_ZacStateMachineActionsTrySendFromJson(
       json,
       ($checkedConvert) {
         final val = _$_ZacStateMachineActionsTrySend(
+          widget: $checkedConvert(
+              'widget',
+              (v) =>
+                  v == null ? null : ZacBuilder<Widget>.fromJson(v as Object)),
           family: $checkedConvert('family', (v) => v as String),
           event: $checkedConvert('event', (v) => v as String),
           $type: $checkedConvert('builder', (v) => v as String?),

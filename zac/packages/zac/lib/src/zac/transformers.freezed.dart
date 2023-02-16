@@ -15,166 +15,9 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$ZacTransformValue {
-  Object? get value => throw _privateConstructorUsedError;
-  Object? get extra1 => throw _privateConstructorUsedError;
-  Object? get extra2 => throw _privateConstructorUsedError;
-  Object? get extra3 => throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $ZacTransformValueCopyWith<ZacTransformValue> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ZacTransformValueCopyWith<$Res> {
-  factory $ZacTransformValueCopyWith(
-          ZacTransformValue value, $Res Function(ZacTransformValue) then) =
-      _$ZacTransformValueCopyWithImpl<$Res, ZacTransformValue>;
-  @useResult
-  $Res call({Object? value, Object? extra1, Object? extra2, Object? extra3});
-}
-
-/// @nodoc
-class _$ZacTransformValueCopyWithImpl<$Res, $Val extends ZacTransformValue>
-    implements $ZacTransformValueCopyWith<$Res> {
-  _$ZacTransformValueCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? value = freezed,
-    Object? extra1 = freezed,
-    Object? extra2 = freezed,
-    Object? extra3 = freezed,
-  }) {
-    return _then(_value.copyWith(
-      value: freezed == value ? _value.value : value,
-      extra1: freezed == extra1 ? _value.extra1 : extra1,
-      extra2: freezed == extra2 ? _value.extra2 : extra2,
-      extra3: freezed == extra3 ? _value.extra3 : extra3,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$_ZacTransformValueCopyWith<$Res>
-    implements $ZacTransformValueCopyWith<$Res> {
-  factory _$$_ZacTransformValueCopyWith(_$_ZacTransformValue value,
-          $Res Function(_$_ZacTransformValue) then) =
-      __$$_ZacTransformValueCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Object? value, Object? extra1, Object? extra2, Object? extra3});
-}
-
-/// @nodoc
-class __$$_ZacTransformValueCopyWithImpl<$Res>
-    extends _$ZacTransformValueCopyWithImpl<$Res, _$_ZacTransformValue>
-    implements _$$_ZacTransformValueCopyWith<$Res> {
-  __$$_ZacTransformValueCopyWithImpl(
-      _$_ZacTransformValue _value, $Res Function(_$_ZacTransformValue) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? value = freezed,
-    Object? extra1 = freezed,
-    Object? extra2 = freezed,
-    Object? extra3 = freezed,
-  }) {
-    return _then(_$_ZacTransformValue(
-      freezed == value ? _value.value : value,
-      freezed == extra1 ? _value.extra1 : extra1,
-      freezed == extra2 ? _value.extra2 : extra2,
-      freezed == extra3 ? _value.extra3 : extra3,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_ZacTransformValue extends _ZacTransformValue {
-  _$_ZacTransformValue(this.value,
-      [this.extra1 = null, this.extra2 = null, this.extra3 = null])
-      : super._();
-
-  @override
-  final Object? value;
-  @override
-  @JsonKey()
-  final Object? extra1;
-  @override
-  @JsonKey()
-  final Object? extra2;
-  @override
-  @JsonKey()
-  final Object? extra3;
-
-  @override
-  String toString() {
-    return 'ZacTransformValue(value: $value, extra1: $extra1, extra2: $extra2, extra3: $extra3)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_ZacTransformValue &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.extra1, extra1) &&
-            const DeepCollectionEquality().equals(other.extra2, extra2) &&
-            const DeepCollectionEquality().equals(other.extra3, extra3));
-  }
-
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(extra1),
-      const DeepCollectionEquality().hash(extra2),
-      const DeepCollectionEquality().hash(extra3));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_ZacTransformValueCopyWith<_$_ZacTransformValue> get copyWith =>
-      __$$_ZacTransformValueCopyWithImpl<_$_ZacTransformValue>(
-          this, _$identity);
-}
-
-abstract class _ZacTransformValue extends ZacTransformValue {
-  factory _ZacTransformValue(final Object? value,
-      [final Object? extra1,
-      final Object? extra2,
-      final Object? extra3]) = _$_ZacTransformValue;
-  _ZacTransformValue._() : super._();
-
-  @override
-  Object? get value;
-  @override
-  Object? get extra1;
-  @override
-  Object? get extra2;
-  @override
-  Object? get extra3;
-  @override
-  @JsonKey(ignore: true)
-  _$$_ZacTransformValueCopyWith<_$_ZacTransformValue> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
 mixin _$ZacTransform {
-  Object? Function(
-          ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
-      get transform => throw _privateConstructorUsedError;
+  Object? Function(BuildContext, ZacContext) get transform =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ZacTransformCopyWith<ZacTransform> get copyWith =>
@@ -187,10 +30,7 @@ abstract class $ZacTransformCopyWith<$Res> {
           ZacTransform value, $Res Function(ZacTransform) then) =
       _$ZacTransformCopyWithImpl<$Res, ZacTransform>;
   @useResult
-  $Res call(
-      {Object? Function(
-              ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
-          transform});
+  $Res call({Object? Function(BuildContext, ZacContext) transform});
 }
 
 /// @nodoc
@@ -212,8 +52,7 @@ class _$ZacTransformCopyWithImpl<$Res, $Val extends ZacTransform>
       transform: null == transform
           ? _value.transform
           : transform // ignore: cast_nullable_to_non_nullable
-              as Object? Function(ZacTransformValue, BuildContext, ZacContext,
-                  ZacActionPayload?),
+              as Object? Function(BuildContext, ZacContext),
     ) as $Val);
   }
 }
@@ -226,10 +65,7 @@ abstract class _$$_ZacTransformCopyWith<$Res>
       __$$_ZacTransformCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {Object? Function(
-              ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
-          transform});
+  $Res call({Object? Function(BuildContext, ZacContext) transform});
 }
 
 /// @nodoc
@@ -249,8 +85,7 @@ class __$$_ZacTransformCopyWithImpl<$Res>
       null == transform
           ? _value.transform
           : transform // ignore: cast_nullable_to_non_nullable
-              as Object? Function(ZacTransformValue, BuildContext, ZacContext,
-                  ZacActionPayload?),
+              as Object? Function(BuildContext, ZacContext),
     ));
   }
 }
@@ -261,8 +96,7 @@ class _$_ZacTransform implements _ZacTransform {
   _$_ZacTransform(this.transform);
 
   @override
-  final Object? Function(
-      ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?) transform;
+  final Object? Function(BuildContext, ZacContext) transform;
 
   @override
   String toString() {
@@ -290,18 +124,132 @@ class _$_ZacTransform implements _ZacTransform {
 
 abstract class _ZacTransform implements ZacTransform {
   factory _ZacTransform(
-      final Object? Function(
-              ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
-          transform) = _$_ZacTransform;
+          final Object? Function(BuildContext, ZacContext) transform) =
+      _$_ZacTransform;
 
   @override
-  Object? Function(
-          ZacTransformValue, BuildContext, ZacContext, ZacActionPayload?)
-      get transform;
+  Object? Function(BuildContext, ZacContext) get transform;
   @override
   @JsonKey(ignore: true)
   _$$_ZacTransformCopyWith<_$_ZacTransform> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+ZacTransformValue<T> _$ZacTransformValueFromJson<T>(Map<String, dynamic> json) {
+  switch (json['builder']) {
+    case 'z:1:TransformValue.current':
+      return _ZacTransformValueCurrent<T>.fromJson(json);
+    case 'z:1:TransformValue.initial':
+      return _ZacTransformValueInitial<T>.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'builder', 'ZacTransformValue',
+          'Invalid union type "${json['builder']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$ZacTransformValue<T> {
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacTransformValueCurrent<T> value) current,
+    required TResult Function(_ZacTransformValueInitial<T> value) initial,
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacTransformValueCurrent<T> extends _ZacTransformValueCurrent<T> {
+  _$_ZacTransformValueCurrent({final String? $type})
+      : $type = $type ?? 'z:1:TransformValue.current',
+        super._();
+
+  factory _$_ZacTransformValueCurrent.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacTransformValueCurrentFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacTransformValue<$T>.current()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacTransformValueCurrent<T>);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacTransformValueCurrent<T> value) current,
+    required TResult Function(_ZacTransformValueInitial<T> value) initial,
+  }) {
+    return current(this);
+  }
+}
+
+abstract class _ZacTransformValueCurrent<T> extends ZacTransformValue<T> {
+  factory _ZacTransformValueCurrent() = _$_ZacTransformValueCurrent<T>;
+  _ZacTransformValueCurrent._() : super._();
+
+  factory _ZacTransformValueCurrent.fromJson(Map<String, dynamic> json) =
+      _$_ZacTransformValueCurrent<T>.fromJson;
+}
+
+/// @nodoc
+@JsonSerializable(createToJson: false)
+class _$_ZacTransformValueInitial<T> extends _ZacTransformValueInitial<T> {
+  _$_ZacTransformValueInitial({final String? $type})
+      : $type = $type ?? 'z:1:TransformValue.initial',
+        super._();
+
+  factory _$_ZacTransformValueInitial.fromJson(Map<String, dynamic> json) =>
+      _$$_ZacTransformValueInitialFromJson(json);
+
+  @JsonKey(name: 'builder')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'ZacTransformValue<$T>.initial()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_ZacTransformValueInitial<T>);
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_ZacTransformValueCurrent<T> value) current,
+    required TResult Function(_ZacTransformValueInitial<T> value) initial,
+  }) {
+    return initial(this);
+  }
+}
+
+abstract class _ZacTransformValueInitial<T> extends ZacTransformValue<T> {
+  factory _ZacTransformValueInitial() = _$_ZacTransformValueInitial<T>;
+  _ZacTransformValueInitial._() : super._();
+
+  factory _ZacTransformValueInitial.fromJson(Map<String, dynamic> json) =
+      _$_ZacTransformValueInitial<T>.fromJson;
 }
 
 MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
@@ -343,6 +291,9 @@ MapTransformer _$MapTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MapTransformer {
+  ZacBuilder<Map<Object?, Object?>> get fromMap =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_MapValues value) values,
@@ -367,30 +318,35 @@ mixin _$MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapValues extends _MapValues {
-  _$_MapValues({final String? $type})
+  _$_MapValues(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.values',
         super._();
 
   factory _$_MapValues.fromJson(Map<String, dynamic> json) =>
       _$$_MapValuesFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.values()';
+    return 'MapTransformer.values(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapValues);
+        (other.runtimeType == runtimeType &&
+            other is _$_MapValues &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -416,40 +372,49 @@ class _$_MapValues extends _MapValues {
 }
 
 abstract class _MapValues extends MapTransformer {
-  factory _MapValues() = _$_MapValues;
+  factory _MapValues(final ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _$_MapValues;
   _MapValues._() : super._();
 
   factory _MapValues.fromJson(Map<String, dynamic> json) =
       _$_MapValues.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapKeys extends _MapKeys {
-  _$_MapKeys({final String? $type})
+  _$_MapKeys(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.keys',
         super._();
 
   factory _$_MapKeys.fromJson(Map<String, dynamic> json) =>
       _$$_MapKeysFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.keys()';
+    return 'MapTransformer.keys(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapKeys);
+        (other.runtimeType == runtimeType &&
+            other is _$_MapKeys &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -475,39 +440,48 @@ class _$_MapKeys extends _MapKeys {
 }
 
 abstract class _MapKeys extends MapTransformer {
-  factory _MapKeys() = _$_MapKeys;
+  factory _MapKeys(final ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _$_MapKeys;
   _MapKeys._() : super._();
 
   factory _MapKeys.fromJson(Map<String, dynamic> json) = _$_MapKeys.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapEntries extends _MapEntries {
-  _$_MapEntries({final String? $type})
+  _$_MapEntries(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.entries',
         super._();
 
   factory _$_MapEntries.fromJson(Map<String, dynamic> json) =>
       _$$_MapEntriesFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.entries()';
+    return 'MapTransformer.entries(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapEntries);
+        (other.runtimeType == runtimeType &&
+            other is _$_MapEntries &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -533,40 +507,49 @@ class _$_MapEntries extends _MapEntries {
 }
 
 abstract class _MapEntries extends MapTransformer {
-  factory _MapEntries() = _$_MapEntries;
+  factory _MapEntries(final ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _$_MapEntries;
   _MapEntries._() : super._();
 
   factory _MapEntries.fromJson(Map<String, dynamic> json) =
       _$_MapEntries.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapLength extends _MapLength {
-  _$_MapLength({final String? $type})
+  _$_MapLength(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.length',
         super._();
 
   factory _$_MapLength.fromJson(Map<String, dynamic> json) =>
       _$$_MapLengthFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.length()';
+    return 'MapTransformer.length(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapLength);
+        (other.runtimeType == runtimeType &&
+            other is _$_MapLength &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -592,40 +575,49 @@ class _$_MapLength extends _MapLength {
 }
 
 abstract class _MapLength extends MapTransformer {
-  factory _MapLength() = _$_MapLength;
+  factory _MapLength(final ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _$_MapLength;
   _MapLength._() : super._();
 
   factory _MapLength.fromJson(Map<String, dynamic> json) =
       _$_MapLength.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapIsEmpty extends _MapIsEmpty {
-  _$_MapIsEmpty({final String? $type})
+  _$_MapIsEmpty(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.isEmpty',
         super._();
 
   factory _$_MapIsEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_MapIsEmptyFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.isEmpty()';
+    return 'MapTransformer.isEmpty(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapIsEmpty);
+        (other.runtimeType == runtimeType &&
+            other is _$_MapIsEmpty &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -651,40 +643,49 @@ class _$_MapIsEmpty extends _MapIsEmpty {
 }
 
 abstract class _MapIsEmpty extends MapTransformer {
-  factory _MapIsEmpty() = _$_MapIsEmpty;
+  factory _MapIsEmpty(final ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _$_MapIsEmpty;
   _MapIsEmpty._() : super._();
 
   factory _MapIsEmpty.fromJson(Map<String, dynamic> json) =
       _$_MapIsEmpty.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapIsNotEmpty extends _MapIsNotEmpty {
-  _$_MapIsNotEmpty({final String? $type})
+  _$_MapIsNotEmpty(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.isNotEmpty',
         super._();
 
   factory _$_MapIsNotEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_MapIsNotEmptyFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.isNotEmpty()';
+    return 'MapTransformer.isNotEmpty(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapIsNotEmpty);
+        (other.runtimeType == runtimeType &&
+            other is _$_MapIsNotEmpty &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -710,23 +711,29 @@ class _$_MapIsNotEmpty extends _MapIsNotEmpty {
 }
 
 abstract class _MapIsNotEmpty extends MapTransformer {
-  factory _MapIsNotEmpty() = _$_MapIsNotEmpty;
+  factory _MapIsNotEmpty(final ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _$_MapIsNotEmpty;
   _MapIsNotEmpty._() : super._();
 
   factory _MapIsNotEmpty.fromJson(Map<String, dynamic> json) =
       _$_MapIsNotEmpty.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapContainsKey extends _MapContainsKey {
-  _$_MapContainsKey(this.key, {final String? $type})
+  _$_MapContainsKey(this.fromMap, this.key, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.containsKey',
         super._();
 
   factory _$_MapContainsKey.fromJson(Map<String, dynamic> json) =>
       _$$_MapContainsKeyFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
   @override
   final ZacBuilder<Object?>? key;
 
@@ -735,7 +742,7 @@ class _$_MapContainsKey extends _MapContainsKey {
 
   @override
   String toString() {
-    return 'MapTransformer.containsKey(key: $key)';
+    return 'MapTransformer.containsKey(fromMap: $fromMap, key: $key)';
   }
 
   @override
@@ -743,12 +750,13 @@ class _$_MapContainsKey extends _MapContainsKey {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapContainsKey &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap) &&
             (identical(other.key, key) || other.key == key));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, key);
+  int get hashCode => Object.hash(runtimeType, fromMap, key);
 
   @override
   @optionalTypeArgs
@@ -774,25 +782,30 @@ class _$_MapContainsKey extends _MapContainsKey {
 }
 
 abstract class _MapContainsKey extends MapTransformer {
-  factory _MapContainsKey(final ZacBuilder<Object?>? key) = _$_MapContainsKey;
+  factory _MapContainsKey(final ZacBuilder<Map<Object?, Object?>> fromMap,
+      final ZacBuilder<Object?>? key) = _$_MapContainsKey;
   _MapContainsKey._() : super._();
 
   factory _MapContainsKey.fromJson(Map<String, dynamic> json) =
       _$_MapContainsKey.fromJson;
 
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
   ZacBuilder<Object?>? get key;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapContainsValue extends _MapContainsValue {
-  _$_MapContainsValue(this.value, {final String? $type})
+  _$_MapContainsValue(this.fromMap, this.value, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.containsValue',
         super._();
 
   factory _$_MapContainsValue.fromJson(Map<String, dynamic> json) =>
       _$$_MapContainsValueFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
   @override
   final ZacBuilder<Object?>? value;
 
@@ -801,7 +814,7 @@ class _$_MapContainsValue extends _MapContainsValue {
 
   @override
   String toString() {
-    return 'MapTransformer.containsValue(value: $value)';
+    return 'MapTransformer.containsValue(fromMap: $fromMap, value: $value)';
   }
 
   @override
@@ -809,12 +822,13 @@ class _$_MapContainsValue extends _MapContainsValue {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapContainsValue &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap) &&
             (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, fromMap, value);
 
   @override
   @optionalTypeArgs
@@ -840,13 +854,15 @@ class _$_MapContainsValue extends _MapContainsValue {
 }
 
 abstract class _MapContainsValue extends MapTransformer {
-  factory _MapContainsValue(final ZacBuilder<Object?>? value) =
-      _$_MapContainsValue;
+  factory _MapContainsValue(final ZacBuilder<Map<Object?, Object?>> fromMap,
+      final ZacBuilder<Object?>? value) = _$_MapContainsValue;
   _MapContainsValue._() : super._();
 
   factory _MapContainsValue.fromJson(Map<String, dynamic> json) =
       _$_MapContainsValue.fromJson;
 
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
   ZacBuilder<Object?>? get value;
 }
 
@@ -854,13 +870,18 @@ abstract class _MapContainsValue extends MapTransformer {
 @JsonSerializable(createToJson: false)
 class _$_MapMapper extends _MapMapper {
   _$_MapMapper(
-      {this.keyTransformer, this.valueTransformer, final String? $type})
+      {required this.fromMap,
+      this.keyTransformer,
+      this.valueTransformer,
+      final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.map',
         super._();
 
   factory _$_MapMapper.fromJson(Map<String, dynamic> json) =>
       _$$_MapMapperFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
   @override
   final ZacBuilder<List<ZacTransform>?>? keyTransformer;
   @override
@@ -871,7 +892,7 @@ class _$_MapMapper extends _MapMapper {
 
   @override
   String toString() {
-    return 'MapTransformer.mapper(keyTransformer: $keyTransformer, valueTransformer: $valueTransformer)';
+    return 'MapTransformer.mapper(fromMap: $fromMap, keyTransformer: $keyTransformer, valueTransformer: $valueTransformer)';
   }
 
   @override
@@ -879,6 +900,7 @@ class _$_MapMapper extends _MapMapper {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapMapper &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap) &&
             (identical(other.keyTransformer, keyTransformer) ||
                 other.keyTransformer == keyTransformer) &&
             (identical(other.valueTransformer, valueTransformer) ||
@@ -888,7 +910,7 @@ class _$_MapMapper extends _MapMapper {
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, keyTransformer, valueTransformer);
+      Object.hash(runtimeType, fromMap, keyTransformer, valueTransformer);
 
   @override
   @optionalTypeArgs
@@ -915,13 +937,16 @@ class _$_MapMapper extends _MapMapper {
 
 abstract class _MapMapper extends MapTransformer {
   factory _MapMapper(
-      {final ZacBuilder<List<ZacTransform>?>? keyTransformer,
+      {required final ZacBuilder<Map<Object?, Object?>> fromMap,
+      final ZacBuilder<List<ZacTransform>?>? keyTransformer,
       final ZacBuilder<List<ZacTransform>?>? valueTransformer}) = _$_MapMapper;
   _MapMapper._() : super._();
 
   factory _MapMapper.fromJson(Map<String, dynamic> json) =
       _$_MapMapper.fromJson;
 
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
   ZacBuilder<List<ZacTransform>?>? get keyTransformer;
   ZacBuilder<List<ZacTransform>?>? get valueTransformer;
 }
@@ -929,30 +954,35 @@ abstract class _MapMapper extends MapTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapFromObjectObject extends _MapFromObjectObject {
-  _$_MapFromObjectObject({final String? $type})
+  _$_MapFromObjectObject(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map<Object, Object>.from',
         super._();
 
   factory _$_MapFromObjectObject.fromJson(Map<String, dynamic> json) =>
       _$$_MapFromObjectObjectFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.fromObjectObject()';
+    return 'MapTransformer.fromObjectObject(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapFromObjectObject);
+        (other.runtimeType == runtimeType &&
+            other is _$_MapFromObjectObject &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -978,40 +1008,49 @@ class _$_MapFromObjectObject extends _MapFromObjectObject {
 }
 
 abstract class _MapFromObjectObject extends MapTransformer {
-  factory _MapFromObjectObject() = _$_MapFromObjectObject;
+  factory _MapFromObjectObject(
+      final ZacBuilder<Map<Object?, Object?>> fromMap) = _$_MapFromObjectObject;
   _MapFromObjectObject._() : super._();
 
   factory _MapFromObjectObject.fromJson(Map<String, dynamic> json) =
       _$_MapFromObjectObject.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapFromStringObject extends _MapFromStringObject {
-  _$_MapFromStringObject({final String? $type})
+  _$_MapFromStringObject(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map<String, Object>.from',
         super._();
 
   factory _$_MapFromStringObject.fromJson(Map<String, dynamic> json) =>
       _$$_MapFromStringObjectFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.fromStringObject()';
+    return 'MapTransformer.fromStringObject(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MapFromStringObject);
+        (other.runtimeType == runtimeType &&
+            other is _$_MapFromStringObject &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -1037,41 +1076,49 @@ class _$_MapFromStringObject extends _MapFromStringObject {
 }
 
 abstract class _MapFromStringObject extends MapTransformer {
-  factory _MapFromStringObject() = _$_MapFromStringObject;
+  factory _MapFromStringObject(
+      final ZacBuilder<Map<Object?, Object?>> fromMap) = _$_MapFromStringObject;
   _MapFromStringObject._() : super._();
 
   factory _MapFromStringObject.fromJson(Map<String, dynamic> json) =
       _$_MapFromStringObject.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapFromStringNullObject extends _MapFromStringNullObject {
-  _$_MapFromStringNullObject({final String? $type})
+  _$_MapFromStringNullObject(this.fromMap, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map<String, Object?>.from',
         super._();
 
   factory _$_MapFromStringNullObject.fromJson(Map<String, dynamic> json) =>
       _$$_MapFromStringNullObjectFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'MapTransformer.fromStringNullObject()';
+    return 'MapTransformer.fromStringNullObject(fromMap: $fromMap)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MapFromStringNullObject);
+            other is _$_MapFromStringNullObject &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, fromMap);
 
   @override
   @optionalTypeArgs
@@ -1097,23 +1144,30 @@ class _$_MapFromStringNullObject extends _MapFromStringNullObject {
 }
 
 abstract class _MapFromStringNullObject extends MapTransformer {
-  factory _MapFromStringNullObject() = _$_MapFromStringNullObject;
+  factory _MapFromStringNullObject(
+          final ZacBuilder<Map<Object?, Object?>> fromMap) =
+      _$_MapFromStringNullObject;
   _MapFromStringNullObject._() : super._();
 
   factory _MapFromStringNullObject.fromJson(Map<String, dynamic> json) =
       _$_MapFromStringNullObject.fromJson;
+
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_MapKey extends _MapKey {
-  _$_MapKey(this.key, {final String? $type})
+  _$_MapKey(this.fromMap, this.key, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map[key]',
         super._();
 
   factory _$_MapKey.fromJson(Map<String, dynamic> json) =>
       _$$_MapKeyFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
   @override
   final ZacBuilder<String> key;
 
@@ -1122,7 +1176,7 @@ class _$_MapKey extends _MapKey {
 
   @override
   String toString() {
-    return 'MapTransformer.key(key: $key)';
+    return 'MapTransformer.key(fromMap: $fromMap, key: $key)';
   }
 
   @override
@@ -1130,12 +1184,13 @@ class _$_MapKey extends _MapKey {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapKey &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap) &&
             (identical(other.key, key) || other.key == key));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, key);
+  int get hashCode => Object.hash(runtimeType, fromMap, key);
 
   @override
   @optionalTypeArgs
@@ -1161,11 +1216,14 @@ class _$_MapKey extends _MapKey {
 }
 
 abstract class _MapKey extends MapTransformer {
-  factory _MapKey(final ZacBuilder<String> key) = _$_MapKey;
+  factory _MapKey(final ZacBuilder<Map<Object?, Object?>> fromMap,
+      final ZacBuilder<String> key) = _$_MapKey;
   _MapKey._() : super._();
 
   factory _MapKey.fromJson(Map<String, dynamic> json) = _$_MapKey.fromJson;
 
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
   ZacBuilder<String> get key;
 }
 
@@ -1173,13 +1231,18 @@ abstract class _MapKey extends MapTransformer {
 @JsonSerializable(createToJson: false)
 class _$_MapSetValueForKey extends _MapSetValueForKey {
   _$_MapSetValueForKey(
-      {required this.value, required this.key, final String? $type})
+      {required this.fromMap,
+      required this.value,
+      required this.key,
+      final String? $type})
       : $type = $type ?? 'z:1:Transformer:Map.setValueForKey',
         super._();
 
   factory _$_MapSetValueForKey.fromJson(Map<String, dynamic> json) =>
       _$$_MapSetValueForKeyFromJson(json);
 
+  @override
+  final ZacBuilder<Map<Object?, Object?>> fromMap;
   @override
   final ZacBuilder<Object> value;
   @override
@@ -1190,7 +1253,7 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
 
   @override
   String toString() {
-    return 'MapTransformer.setValueForKey(value: $value, key: $key)';
+    return 'MapTransformer.setValueForKey(fromMap: $fromMap, value: $value, key: $key)';
   }
 
   @override
@@ -1198,13 +1261,14 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapSetValueForKey &&
+            (identical(other.fromMap, fromMap) || other.fromMap == fromMap) &&
             (identical(other.value, value) || other.value == value) &&
             (identical(other.key, key) || other.key == key));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, value, key);
+  int get hashCode => Object.hash(runtimeType, fromMap, value, key);
 
   @override
   @optionalTypeArgs
@@ -1231,13 +1295,16 @@ class _$_MapSetValueForKey extends _MapSetValueForKey {
 
 abstract class _MapSetValueForKey extends MapTransformer {
   factory _MapSetValueForKey(
-      {required final ZacBuilder<Object> value,
+      {required final ZacBuilder<Map<Object?, Object?>> fromMap,
+      required final ZacBuilder<Object> value,
       required final ZacBuilder<String> key}) = _$_MapSetValueForKey;
   _MapSetValueForKey._() : super._();
 
   factory _MapSetValueForKey.fromJson(Map<String, dynamic> json) =
       _$_MapSetValueForKey.fromJson;
 
+  @override
+  ZacBuilder<Map<Object?, Object?>> get fromMap;
   ZacBuilder<Object> get value;
   ZacBuilder<String> get key;
 }
@@ -1283,6 +1350,9 @@ IterableTransformer _$IterableTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$IterableTransformer {
+  ZacBuilder<Iterable<Object?>> get iterable =>
+      throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_IterableMap value) map,
@@ -1307,13 +1377,16 @@ mixin _$IterableTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableMap extends _IterableMap {
-  _$_IterableMap({required this.transformer, final String? $type})
+  _$_IterableMap(
+      {required this.iterable, required this.transformer, final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.map',
         super._();
 
   factory _$_IterableMap.fromJson(Map<String, dynamic> json) =>
       _$$_IterableMapFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
   @override
   final ZacBuilder<List<ZacTransform>> transformer;
 
@@ -1322,7 +1395,7 @@ class _$_IterableMap extends _IterableMap {
 
   @override
   String toString() {
-    return 'IterableTransformer.map(transformer: $transformer)';
+    return 'IterableTransformer.map(iterable: $iterable, transformer: $transformer)';
   }
 
   @override
@@ -1330,13 +1403,15 @@ class _$_IterableMap extends _IterableMap {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableMap &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable) &&
             (identical(other.transformer, transformer) ||
                 other.transformer == transformer));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, transformer);
+  int get hashCode => Object.hash(runtimeType, iterable, transformer);
 
   @override
   @optionalTypeArgs
@@ -1363,43 +1438,52 @@ class _$_IterableMap extends _IterableMap {
 
 abstract class _IterableMap extends IterableTransformer {
   factory _IterableMap(
-          {required final ZacBuilder<List<ZacTransform>> transformer}) =
+          {required final ZacBuilder<Iterable<Object?>> iterable,
+          required final ZacBuilder<List<ZacTransform>> transformer}) =
       _$_IterableMap;
   _IterableMap._() : super._();
 
   factory _IterableMap.fromJson(Map<String, dynamic> json) =
       _$_IterableMap.fromJson;
 
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
   ZacBuilder<List<ZacTransform>> get transformer;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableSingle extends _IterableSingle {
-  _$_IterableSingle({final String? $type})
+  _$_IterableSingle(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.single',
         super._();
 
   factory _$_IterableSingle.fromJson(Map<String, dynamic> json) =>
       _$$_IterableSingleFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.single()';
+    return 'IterableTransformer.single(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableSingle);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableSingle &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1425,40 +1509,50 @@ class _$_IterableSingle extends _IterableSingle {
 }
 
 abstract class _IterableSingle extends IterableTransformer {
-  factory _IterableSingle() = _$_IterableSingle;
+  factory _IterableSingle(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableSingle;
   _IterableSingle._() : super._();
 
   factory _IterableSingle.fromJson(Map<String, dynamic> json) =
       _$_IterableSingle.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableFirst extends _IterableFirst {
-  _$_IterableFirst({final String? $type})
+  _$_IterableFirst(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.first',
         super._();
 
   factory _$_IterableFirst.fromJson(Map<String, dynamic> json) =>
       _$$_IterableFirstFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.first()';
+    return 'IterableTransformer.first(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableFirst);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableFirst &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1484,40 +1578,50 @@ class _$_IterableFirst extends _IterableFirst {
 }
 
 abstract class _IterableFirst extends IterableTransformer {
-  factory _IterableFirst() = _$_IterableFirst;
+  factory _IterableFirst(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableFirst;
   _IterableFirst._() : super._();
 
   factory _IterableFirst.fromJson(Map<String, dynamic> json) =
       _$_IterableFirst.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableLast extends _IterableLast {
-  _$_IterableLast({final String? $type})
+  _$_IterableLast(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.last',
         super._();
 
   factory _$_IterableLast.fromJson(Map<String, dynamic> json) =>
       _$$_IterableLastFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.last()';
+    return 'IterableTransformer.last(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableLast);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableLast &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1543,40 +1647,50 @@ class _$_IterableLast extends _IterableLast {
 }
 
 abstract class _IterableLast extends IterableTransformer {
-  factory _IterableLast() = _$_IterableLast;
+  factory _IterableLast(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableLast;
   _IterableLast._() : super._();
 
   factory _IterableLast.fromJson(Map<String, dynamic> json) =
       _$_IterableLast.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableLength extends _IterableLength {
-  _$_IterableLength({final String? $type})
+  _$_IterableLength(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.length',
         super._();
 
   factory _$_IterableLength.fromJson(Map<String, dynamic> json) =>
       _$$_IterableLengthFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.length()';
+    return 'IterableTransformer.length(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableLength);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableLength &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1602,40 +1716,50 @@ class _$_IterableLength extends _IterableLength {
 }
 
 abstract class _IterableLength extends IterableTransformer {
-  factory _IterableLength() = _$_IterableLength;
+  factory _IterableLength(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableLength;
   _IterableLength._() : super._();
 
   factory _IterableLength.fromJson(Map<String, dynamic> json) =
       _$_IterableLength.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableIsEmpty extends _IterableIsEmpty {
-  _$_IterableIsEmpty({final String? $type})
+  _$_IterableIsEmpty(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.isEmpty',
         super._();
 
   factory _$_IterableIsEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_IterableIsEmptyFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.isEmpty()';
+    return 'IterableTransformer.isEmpty(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableIsEmpty);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableIsEmpty &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1661,40 +1785,50 @@ class _$_IterableIsEmpty extends _IterableIsEmpty {
 }
 
 abstract class _IterableIsEmpty extends IterableTransformer {
-  factory _IterableIsEmpty() = _$_IterableIsEmpty;
+  factory _IterableIsEmpty(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableIsEmpty;
   _IterableIsEmpty._() : super._();
 
   factory _IterableIsEmpty.fromJson(Map<String, dynamic> json) =
       _$_IterableIsEmpty.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableIsNotEmpty extends _IterableIsNotEmpty {
-  _$_IterableIsNotEmpty({final String? $type})
+  _$_IterableIsNotEmpty(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.isNotEmpty',
         super._();
 
   factory _$_IterableIsNotEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_IterableIsNotEmptyFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.isNotEmpty()';
+    return 'IterableTransformer.isNotEmpty(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableIsNotEmpty);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableIsNotEmpty &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1720,40 +1854,50 @@ class _$_IterableIsNotEmpty extends _IterableIsNotEmpty {
 }
 
 abstract class _IterableIsNotEmpty extends IterableTransformer {
-  factory _IterableIsNotEmpty() = _$_IterableIsNotEmpty;
+  factory _IterableIsNotEmpty(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableIsNotEmpty;
   _IterableIsNotEmpty._() : super._();
 
   factory _IterableIsNotEmpty.fromJson(Map<String, dynamic> json) =
       _$_IterableIsNotEmpty.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableToList extends _IterableToList {
-  _$_IterableToList({final String? $type})
+  _$_IterableToList(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.toList',
         super._();
 
   factory _$_IterableToList.fromJson(Map<String, dynamic> json) =>
       _$$_IterableToListFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.toList()';
+    return 'IterableTransformer.toList(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableToList);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableToList &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1779,40 +1923,50 @@ class _$_IterableToList extends _IterableToList {
 }
 
 abstract class _IterableToList extends IterableTransformer {
-  factory _IterableToList() = _$_IterableToList;
+  factory _IterableToList(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableToList;
   _IterableToList._() : super._();
 
   factory _IterableToList.fromJson(Map<String, dynamic> json) =
       _$_IterableToList.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableToSet extends _IterableToSet {
-  _$_IterableToSet({final String? $type})
+  _$_IterableToSet(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.toSet',
         super._();
 
   factory _$_IterableToSet.fromJson(Map<String, dynamic> json) =>
       _$$_IterableToSetFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.toSet()';
+    return 'IterableTransformer.toSet(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableToSet);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableToSet &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1838,40 +1992,50 @@ class _$_IterableToSet extends _IterableToSet {
 }
 
 abstract class _IterableToSet extends IterableTransformer {
-  factory _IterableToSet() = _$_IterableToSet;
+  factory _IterableToSet(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableToSet;
   _IterableToSet._() : super._();
 
   factory _IterableToSet.fromJson(Map<String, dynamic> json) =
       _$_IterableToSet.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableToString extends _IterableToString {
-  _$_IterableToString({final String? $type})
+  _$_IterableToString(this.iterable, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.toString',
         super._();
 
   factory _$_IterableToString.fromJson(Map<String, dynamic> json) =>
       _$$_IterableToStringFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IterableTransformer.toString()';
+    return 'IterableTransformer.toString(iterable: $iterable)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IterableToString);
+        (other.runtimeType == runtimeType &&
+            other is _$_IterableToString &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, iterable);
 
   @override
   @optionalTypeArgs
@@ -1897,23 +2061,29 @@ class _$_IterableToString extends _IterableToString {
 }
 
 abstract class _IterableToString extends IterableTransformer {
-  factory _IterableToString() = _$_IterableToString;
+  factory _IterableToString(final ZacBuilder<Iterable<Object?>> iterable) =
+      _$_IterableToString;
   _IterableToString._() : super._();
 
   factory _IterableToString.fromJson(Map<String, dynamic> json) =
       _$_IterableToString.fromJson;
+
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableJoin extends _IterableJoin {
-  _$_IterableJoin({this.separator, final String? $type})
+  _$_IterableJoin(this.iterable, {this.separator, final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.join',
         super._();
 
   factory _$_IterableJoin.fromJson(Map<String, dynamic> json) =>
       _$$_IterableJoinFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
   @override
   final String? separator;
 
@@ -1922,7 +2092,7 @@ class _$_IterableJoin extends _IterableJoin {
 
   @override
   String toString() {
-    return 'IterableTransformer.join(separator: $separator)';
+    return 'IterableTransformer.join(iterable: $iterable, separator: $separator)';
   }
 
   @override
@@ -1930,13 +2100,15 @@ class _$_IterableJoin extends _IterableJoin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableJoin &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable) &&
             (identical(other.separator, separator) ||
                 other.separator == separator));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, separator);
+  int get hashCode => Object.hash(runtimeType, iterable, separator);
 
   @override
   @optionalTypeArgs
@@ -1962,25 +2134,30 @@ class _$_IterableJoin extends _IterableJoin {
 }
 
 abstract class _IterableJoin extends IterableTransformer {
-  factory _IterableJoin({final String? separator}) = _$_IterableJoin;
+  factory _IterableJoin(final ZacBuilder<Iterable<Object?>> iterable,
+      {final String? separator}) = _$_IterableJoin;
   _IterableJoin._() : super._();
 
   factory _IterableJoin.fromJson(Map<String, dynamic> json) =
       _$_IterableJoin.fromJson;
 
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
   String? get separator;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableContains extends _IterableContains {
-  _$_IterableContains(this.element, {final String? $type})
+  _$_IterableContains(this.iterable, this.element, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.contains',
         super._();
 
   factory _$_IterableContains.fromJson(Map<String, dynamic> json) =>
       _$$_IterableContainsFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
   @override
   final ZacBuilder<Object?>? element;
 
@@ -1989,7 +2166,7 @@ class _$_IterableContains extends _IterableContains {
 
   @override
   String toString() {
-    return 'IterableTransformer.contains(element: $element)';
+    return 'IterableTransformer.contains(iterable: $iterable, element: $element)';
   }
 
   @override
@@ -1997,12 +2174,14 @@ class _$_IterableContains extends _IterableContains {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableContains &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable) &&
             (identical(other.element, element) || other.element == element));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, element);
+  int get hashCode => Object.hash(runtimeType, iterable, element);
 
   @override
   @optionalTypeArgs
@@ -2028,26 +2207,30 @@ class _$_IterableContains extends _IterableContains {
 }
 
 abstract class _IterableContains extends IterableTransformer {
-  factory _IterableContains(final ZacBuilder<Object?>? element) =
-      _$_IterableContains;
+  factory _IterableContains(final ZacBuilder<Iterable<Object?>> iterable,
+      final ZacBuilder<Object?>? element) = _$_IterableContains;
   _IterableContains._() : super._();
 
   factory _IterableContains.fromJson(Map<String, dynamic> json) =
       _$_IterableContains.fromJson;
 
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
   ZacBuilder<Object?>? get element;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableElementAt extends _IterableElementAt {
-  _$_IterableElementAt(this.index, {final String? $type})
+  _$_IterableElementAt(this.iterable, this.index, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.elementAt',
         super._();
 
   factory _$_IterableElementAt.fromJson(Map<String, dynamic> json) =>
       _$$_IterableElementAtFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
   @override
   final int index;
 
@@ -2056,7 +2239,7 @@ class _$_IterableElementAt extends _IterableElementAt {
 
   @override
   String toString() {
-    return 'IterableTransformer.elementAt(index: $index)';
+    return 'IterableTransformer.elementAt(iterable: $iterable, index: $index)';
   }
 
   @override
@@ -2064,12 +2247,14 @@ class _$_IterableElementAt extends _IterableElementAt {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableElementAt &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable) &&
             (identical(other.index, index) || other.index == index));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, index);
+  int get hashCode => Object.hash(runtimeType, iterable, index);
 
   @override
   @optionalTypeArgs
@@ -2095,25 +2280,31 @@ class _$_IterableElementAt extends _IterableElementAt {
 }
 
 abstract class _IterableElementAt extends IterableTransformer {
-  factory _IterableElementAt(final int index) = _$_IterableElementAt;
+  factory _IterableElementAt(
+          final ZacBuilder<Iterable<Object?>> iterable, final int index) =
+      _$_IterableElementAt;
   _IterableElementAt._() : super._();
 
   factory _IterableElementAt.fromJson(Map<String, dynamic> json) =
       _$_IterableElementAt.fromJson;
 
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
   int get index;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableSkip extends _IterableSkip {
-  _$_IterableSkip(this.count, {final String? $type})
+  _$_IterableSkip(this.iterable, this.count, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.skip',
         super._();
 
   factory _$_IterableSkip.fromJson(Map<String, dynamic> json) =>
       _$$_IterableSkipFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
   @override
   final int count;
 
@@ -2122,7 +2313,7 @@ class _$_IterableSkip extends _IterableSkip {
 
   @override
   String toString() {
-    return 'IterableTransformer.skip(count: $count)';
+    return 'IterableTransformer.skip(iterable: $iterable, count: $count)';
   }
 
   @override
@@ -2130,12 +2321,14 @@ class _$_IterableSkip extends _IterableSkip {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableSkip &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable) &&
             (identical(other.count, count) || other.count == count));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, count);
+  int get hashCode => Object.hash(runtimeType, iterable, count);
 
   @override
   @optionalTypeArgs
@@ -2161,25 +2354,31 @@ class _$_IterableSkip extends _IterableSkip {
 }
 
 abstract class _IterableSkip extends IterableTransformer {
-  factory _IterableSkip(final int count) = _$_IterableSkip;
+  factory _IterableSkip(
+          final ZacBuilder<Iterable<Object?>> iterable, final int count) =
+      _$_IterableSkip;
   _IterableSkip._() : super._();
 
   factory _IterableSkip.fromJson(Map<String, dynamic> json) =
       _$_IterableSkip.fromJson;
 
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
   int get count;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IterableTake extends _IterableTake {
-  _$_IterableTake(this.count, {final String? $type})
+  _$_IterableTake(this.iterable, this.count, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Iterable.take',
         super._();
 
   factory _$_IterableTake.fromJson(Map<String, dynamic> json) =>
       _$$_IterableTakeFromJson(json);
 
+  @override
+  final ZacBuilder<Iterable<Object?>> iterable;
   @override
   final int count;
 
@@ -2188,7 +2387,7 @@ class _$_IterableTake extends _IterableTake {
 
   @override
   String toString() {
-    return 'IterableTransformer.take(count: $count)';
+    return 'IterableTransformer.take(iterable: $iterable, count: $count)';
   }
 
   @override
@@ -2196,12 +2395,14 @@ class _$_IterableTake extends _IterableTake {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IterableTake &&
+            (identical(other.iterable, iterable) ||
+                other.iterable == iterable) &&
             (identical(other.count, count) || other.count == count));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, count);
+  int get hashCode => Object.hash(runtimeType, iterable, count);
 
   @override
   @optionalTypeArgs
@@ -2227,12 +2428,16 @@ class _$_IterableTake extends _IterableTake {
 }
 
 abstract class _IterableTake extends IterableTransformer {
-  factory _IterableTake(final int count) = _$_IterableTake;
+  factory _IterableTake(
+          final ZacBuilder<Iterable<Object?>> iterable, final int count) =
+      _$_IterableTake;
   _IterableTake._() : super._();
 
   factory _IterableTake.fromJson(Map<String, dynamic> json) =
       _$_IterableTake.fromJson;
 
+  @override
+  ZacBuilder<Iterable<Object?>> get iterable;
   int get count;
 }
 
@@ -2251,6 +2456,8 @@ ListTransformer _$ListTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ListTransformer {
+  ZacBuilder<List<Object?>> get list => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ListReversed value) reversed,
@@ -2262,30 +2469,35 @@ mixin _$ListTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ListReversed extends _ListReversed {
-  _$_ListReversed({final String? $type})
+  _$_ListReversed(this.list, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:List.reversed',
         super._();
 
   factory _$_ListReversed.fromJson(Map<String, dynamic> json) =>
       _$$_ListReversedFromJson(json);
 
+  @override
+  final ZacBuilder<List<Object?>> list;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ListTransformer.reversed()';
+    return 'ListTransformer.reversed(list: $list)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ListReversed);
+        (other.runtimeType == runtimeType &&
+            other is _$_ListReversed &&
+            (identical(other.list, list) || other.list == list));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, list);
 
   @override
   @optionalTypeArgs
@@ -2298,17 +2510,20 @@ class _$_ListReversed extends _ListReversed {
 }
 
 abstract class _ListReversed extends ListTransformer {
-  factory _ListReversed() = _$_ListReversed;
+  factory _ListReversed(final ZacBuilder<List<Object?>> list) = _$_ListReversed;
   _ListReversed._() : super._();
 
   factory _ListReversed.fromJson(Map<String, dynamic> json) =
       _$_ListReversed.fromJson;
+
+  @override
+  ZacBuilder<List<Object?>> get list;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ListAdd extends _ListAdd {
-  _$_ListAdd(this.value, {final String? $type})
+  _$_ListAdd(this.list, this.value, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:List.add',
         super._();
 
@@ -2316,14 +2531,16 @@ class _$_ListAdd extends _ListAdd {
       _$$_ListAddFromJson(json);
 
   @override
-  final ZacBuilder<Object> value;
+  final ZacBuilder<List<Object?>> list;
+  @override
+  final ZacBuilder<Object?> value;
 
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ListTransformer.add(value: $value)';
+    return 'ListTransformer.add(list: $list, value: $value)';
   }
 
   @override
@@ -2331,12 +2548,13 @@ class _$_ListAdd extends _ListAdd {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ListAdd &&
+            (identical(other.list, list) || other.list == list) &&
             (identical(other.value, value) || other.value == value));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, value);
+  int get hashCode => Object.hash(runtimeType, list, value);
 
   @override
   @optionalTypeArgs
@@ -2349,12 +2567,15 @@ class _$_ListAdd extends _ListAdd {
 }
 
 abstract class _ListAdd extends ListTransformer {
-  factory _ListAdd(final ZacBuilder<Object> value) = _$_ListAdd;
+  factory _ListAdd(final ZacBuilder<List<Object?>> list,
+      final ZacBuilder<Object?> value) = _$_ListAdd;
   _ListAdd._() : super._();
 
   factory _ListAdd.fromJson(Map<String, dynamic> json) = _$_ListAdd.fromJson;
 
-  ZacBuilder<Object> get value;
+  @override
+  ZacBuilder<List<Object?>> get list;
+  ZacBuilder<Object?> get value;
 }
 
 ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
@@ -2373,8 +2594,6 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
       return _ObjectIsInt.fromJson(json);
     case 'z:1:Transformer:Object.isNull':
       return _ObjectIsNull.fromJson(json);
-    case 'z:1:Transformer:Object.isActionPayload':
-      return _ObjectIsActionPayload.fromJson(json);
     case 'z:1:Transformer:Object.equals':
       return _ObjectEquals.fromJson(json);
     case 'z:1:Transformer:Object.toString':
@@ -2392,6 +2611,8 @@ ObjectTransformer _$ObjectTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$ObjectTransformer {
+  ZacBuilder<Object?> get object => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_ObjectIsList value) isList,
@@ -2401,7 +2622,6 @@ mixin _$ObjectTransformer {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2413,30 +2633,35 @@ mixin _$ObjectTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectIsList extends _ObjectIsList {
-  _$_ObjectIsList({final String? $type})
+  _$_ObjectIsList(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.isList',
         super._();
 
   factory _$_ObjectIsList.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsListFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.isList()';
+    return 'ObjectTransformer.isList(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsList);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectIsList &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -2448,7 +2673,6 @@ class _$_ObjectIsList extends _ObjectIsList {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2459,40 +2683,48 @@ class _$_ObjectIsList extends _ObjectIsList {
 }
 
 abstract class _ObjectIsList extends ObjectTransformer {
-  factory _ObjectIsList() = _$_ObjectIsList;
+  factory _ObjectIsList(final ZacBuilder<Object?> object) = _$_ObjectIsList;
   _ObjectIsList._() : super._();
 
   factory _ObjectIsList.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsList.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectIsMap extends _ObjectIsMap {
-  _$_ObjectIsMap({final String? $type})
+  _$_ObjectIsMap(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.isMap',
         super._();
 
   factory _$_ObjectIsMap.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsMapFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.isMap()';
+    return 'ObjectTransformer.isMap(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsMap);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectIsMap &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -2504,7 +2736,6 @@ class _$_ObjectIsMap extends _ObjectIsMap {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2515,40 +2746,48 @@ class _$_ObjectIsMap extends _ObjectIsMap {
 }
 
 abstract class _ObjectIsMap extends ObjectTransformer {
-  factory _ObjectIsMap() = _$_ObjectIsMap;
+  factory _ObjectIsMap(final ZacBuilder<Object?> object) = _$_ObjectIsMap;
   _ObjectIsMap._() : super._();
 
   factory _ObjectIsMap.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsMap.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectIsBool extends _ObjectIsBool {
-  _$_ObjectIsBool({final String? $type})
+  _$_ObjectIsBool(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.isBool',
         super._();
 
   factory _$_ObjectIsBool.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsBoolFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.isBool()';
+    return 'ObjectTransformer.isBool(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsBool);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectIsBool &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -2560,7 +2799,6 @@ class _$_ObjectIsBool extends _ObjectIsBool {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2571,40 +2809,48 @@ class _$_ObjectIsBool extends _ObjectIsBool {
 }
 
 abstract class _ObjectIsBool extends ObjectTransformer {
-  factory _ObjectIsBool() = _$_ObjectIsBool;
+  factory _ObjectIsBool(final ZacBuilder<Object?> object) = _$_ObjectIsBool;
   _ObjectIsBool._() : super._();
 
   factory _ObjectIsBool.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsBool.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectIsString extends _ObjectIsString {
-  _$_ObjectIsString({final String? $type})
+  _$_ObjectIsString(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.isString',
         super._();
 
   factory _$_ObjectIsString.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsStringFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.isString()';
+    return 'ObjectTransformer.isString(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsString);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectIsString &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -2616,7 +2862,6 @@ class _$_ObjectIsString extends _ObjectIsString {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2627,40 +2872,48 @@ class _$_ObjectIsString extends _ObjectIsString {
 }
 
 abstract class _ObjectIsString extends ObjectTransformer {
-  factory _ObjectIsString() = _$_ObjectIsString;
+  factory _ObjectIsString(final ZacBuilder<Object?> object) = _$_ObjectIsString;
   _ObjectIsString._() : super._();
 
   factory _ObjectIsString.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsString.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectIsDouble extends _ObjectIsDouble {
-  _$_ObjectIsDouble({final String? $type})
+  _$_ObjectIsDouble(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.isDouble',
         super._();
 
   factory _$_ObjectIsDouble.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsDoubleFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.isDouble()';
+    return 'ObjectTransformer.isDouble(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsDouble);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectIsDouble &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -2672,7 +2925,6 @@ class _$_ObjectIsDouble extends _ObjectIsDouble {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2683,40 +2935,48 @@ class _$_ObjectIsDouble extends _ObjectIsDouble {
 }
 
 abstract class _ObjectIsDouble extends ObjectTransformer {
-  factory _ObjectIsDouble() = _$_ObjectIsDouble;
+  factory _ObjectIsDouble(final ZacBuilder<Object?> object) = _$_ObjectIsDouble;
   _ObjectIsDouble._() : super._();
 
   factory _ObjectIsDouble.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsDouble.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectIsInt extends _ObjectIsInt {
-  _$_ObjectIsInt({final String? $type})
+  _$_ObjectIsInt(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.isInt',
         super._();
 
   factory _$_ObjectIsInt.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsIntFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.isInt()';
+    return 'ObjectTransformer.isInt(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsInt);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectIsInt &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -2728,7 +2988,6 @@ class _$_ObjectIsInt extends _ObjectIsInt {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2739,40 +2998,48 @@ class _$_ObjectIsInt extends _ObjectIsInt {
 }
 
 abstract class _ObjectIsInt extends ObjectTransformer {
-  factory _ObjectIsInt() = _$_ObjectIsInt;
+  factory _ObjectIsInt(final ZacBuilder<Object?> object) = _$_ObjectIsInt;
   _ObjectIsInt._() : super._();
 
   factory _ObjectIsInt.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsInt.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectIsNull extends _ObjectIsNull {
-  _$_ObjectIsNull({final String? $type})
+  _$_ObjectIsNull(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.isNull',
         super._();
 
   factory _$_ObjectIsNull.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectIsNullFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.isNull()';
+    return 'ObjectTransformer.isNull(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsNull);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectIsNull &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -2784,7 +3051,6 @@ class _$_ObjectIsNull extends _ObjectIsNull {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2795,79 +3061,29 @@ class _$_ObjectIsNull extends _ObjectIsNull {
 }
 
 abstract class _ObjectIsNull extends ObjectTransformer {
-  factory _ObjectIsNull() = _$_ObjectIsNull;
+  factory _ObjectIsNull(final ZacBuilder<Object?> object) = _$_ObjectIsNull;
   _ObjectIsNull._() : super._();
 
   factory _ObjectIsNull.fromJson(Map<String, dynamic> json) =
       _$_ObjectIsNull.fromJson;
-}
-
-/// @nodoc
-@JsonSerializable(createToJson: false)
-class _$_ObjectIsActionPayload extends _ObjectIsActionPayload {
-  _$_ObjectIsActionPayload({final String? $type})
-      : $type = $type ?? 'z:1:Transformer:Object.isActionPayload',
-        super._();
-
-  factory _$_ObjectIsActionPayload.fromJson(Map<String, dynamic> json) =>
-      _$$_ObjectIsActionPayloadFromJson(json);
-
-  @JsonKey(name: 'builder')
-  final String $type;
 
   @override
-  String toString() {
-    return 'ObjectTransformer.isActionPayload()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectIsActionPayload);
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_ObjectIsList value) isList,
-    required TResult Function(_ObjectIsMap value) isMap,
-    required TResult Function(_ObjectIsBool value) isBool,
-    required TResult Function(_ObjectIsString value) isString,
-    required TResult Function(_ObjectIsDouble value) isDouble,
-    required TResult Function(_ObjectIsInt value) isInt,
-    required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
-    required TResult Function(_ObjectEquals value) equals,
-    required TResult Function(_ObjectToString value) toString,
-    required TResult Function(_ObjectRuntimeType value) runtimeType,
-    required TResult Function(_ObjectHashCode value) hashCode,
-  }) {
-    return isActionPayload(this);
-  }
-}
-
-abstract class _ObjectIsActionPayload extends ObjectTransformer {
-  factory _ObjectIsActionPayload() = _$_ObjectIsActionPayload;
-  _ObjectIsActionPayload._() : super._();
-
-  factory _ObjectIsActionPayload.fromJson(Map<String, dynamic> json) =
-      _$_ObjectIsActionPayload.fromJson;
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectEquals extends _ObjectEquals {
-  _$_ObjectEquals({required this.other, final String? $type})
+  _$_ObjectEquals(
+      {required this.object, required this.other, final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.equals',
         super._();
 
   factory _$_ObjectEquals.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectEqualsFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
   @override
   final ZacBuilder<Object?> other;
 
@@ -2876,7 +3092,7 @@ class _$_ObjectEquals extends _ObjectEquals {
 
   @override
   String toString() {
-    return 'ObjectTransformer.equals(other: $other)';
+    return 'ObjectTransformer.equals(object: $object, other: $other)';
   }
 
   @override
@@ -2884,12 +3100,13 @@ class _$_ObjectEquals extends _ObjectEquals {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ObjectEquals &&
+            (identical(other.object, object) || other.object == object) &&
             (identical(other.other, this.other) || other.other == this.other));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, other);
+  int get hashCode => Object.hash(runtimeType, object, other);
 
   @override
   @optionalTypeArgs
@@ -2901,7 +3118,6 @@ class _$_ObjectEquals extends _ObjectEquals {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2912,43 +3128,51 @@ class _$_ObjectEquals extends _ObjectEquals {
 }
 
 abstract class _ObjectEquals extends ObjectTransformer {
-  factory _ObjectEquals({required final ZacBuilder<Object?> other}) =
-      _$_ObjectEquals;
+  factory _ObjectEquals(
+      {required final ZacBuilder<Object?> object,
+      required final ZacBuilder<Object?> other}) = _$_ObjectEquals;
   _ObjectEquals._() : super._();
 
   factory _ObjectEquals.fromJson(Map<String, dynamic> json) =
       _$_ObjectEquals.fromJson;
 
+  @override
+  ZacBuilder<Object?> get object;
   ZacBuilder<Object?> get other;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectToString extends _ObjectToString {
-  _$_ObjectToString({final String? $type})
+  _$_ObjectToString(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.toString',
         super._();
 
   factory _$_ObjectToString.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectToStringFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.toString()';
+    return 'ObjectTransformer.toString(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectToString);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectToString &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -2960,7 +3184,6 @@ class _$_ObjectToString extends _ObjectToString {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -2971,40 +3194,48 @@ class _$_ObjectToString extends _ObjectToString {
 }
 
 abstract class _ObjectToString extends ObjectTransformer {
-  factory _ObjectToString() = _$_ObjectToString;
+  factory _ObjectToString(final ZacBuilder<Object?> object) = _$_ObjectToString;
   _ObjectToString._() : super._();
 
   factory _ObjectToString.fromJson(Map<String, dynamic> json) =
       _$_ObjectToString.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectRuntimeType extends _ObjectRuntimeType {
-  _$_ObjectRuntimeType({final String? $type})
+  _$_ObjectRuntimeType(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.runtimeType',
         super._();
 
   factory _$_ObjectRuntimeType.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectRuntimeTypeFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.runtimeType()';
+    return 'ObjectTransformer.runtimeType(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectRuntimeType);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectRuntimeType &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -3016,7 +3247,6 @@ class _$_ObjectRuntimeType extends _ObjectRuntimeType {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -3027,40 +3257,49 @@ class _$_ObjectRuntimeType extends _ObjectRuntimeType {
 }
 
 abstract class _ObjectRuntimeType extends ObjectTransformer {
-  factory _ObjectRuntimeType() = _$_ObjectRuntimeType;
+  factory _ObjectRuntimeType(final ZacBuilder<Object?> object) =
+      _$_ObjectRuntimeType;
   _ObjectRuntimeType._() : super._();
 
   factory _ObjectRuntimeType.fromJson(Map<String, dynamic> json) =
       _$_ObjectRuntimeType.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_ObjectHashCode extends _ObjectHashCode {
-  _$_ObjectHashCode({final String? $type})
+  _$_ObjectHashCode(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Object.hashCode',
         super._();
 
   factory _$_ObjectHashCode.fromJson(Map<String, dynamic> json) =>
       _$$_ObjectHashCodeFromJson(json);
 
+  @override
+  final ZacBuilder<Object?> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'ObjectTransformer.hashCode()';
+    return 'ObjectTransformer.hashCode(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_ObjectHashCode);
+        (other.runtimeType == runtimeType &&
+            other is _$_ObjectHashCode &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -3072,7 +3311,6 @@ class _$_ObjectHashCode extends _ObjectHashCode {
     required TResult Function(_ObjectIsDouble value) isDouble,
     required TResult Function(_ObjectIsInt value) isInt,
     required TResult Function(_ObjectIsNull value) isNull,
-    required TResult Function(_ObjectIsActionPayload value) isActionPayload,
     required TResult Function(_ObjectEquals value) equals,
     required TResult Function(_ObjectToString value) toString,
     required TResult Function(_ObjectRuntimeType value) runtimeType,
@@ -3083,11 +3321,14 @@ class _$_ObjectHashCode extends _ObjectHashCode {
 }
 
 abstract class _ObjectHashCode extends ObjectTransformer {
-  factory _ObjectHashCode() = _$_ObjectHashCode;
+  factory _ObjectHashCode(final ZacBuilder<Object?> object) = _$_ObjectHashCode;
   _ObjectHashCode._() : super._();
 
   factory _ObjectHashCode.fromJson(Map<String, dynamic> json) =
       _$_ObjectHashCode.fromJson;
+
+  @override
+  ZacBuilder<Object?> get object;
 }
 
 NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {
@@ -3127,6 +3368,8 @@ NumTransformer _$NumTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$NumTransformer {
+  ZacBuilder<num> get number => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_NumToDouble value) toDouble,
@@ -3149,30 +3392,35 @@ mixin _$NumTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumToDouble extends _NumToDouble {
-  _$_NumToDouble({final String? $type})
+  _$_NumToDouble(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.toDouble',
         super._();
 
   factory _$_NumToDouble.fromJson(Map<String, dynamic> json) =>
       _$$_NumToDoubleFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.toDouble()';
+    return 'NumTransformer.toDouble(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumToDouble);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumToDouble &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3196,40 +3444,48 @@ class _$_NumToDouble extends _NumToDouble {
 }
 
 abstract class _NumToDouble extends NumTransformer {
-  factory _NumToDouble() = _$_NumToDouble;
+  factory _NumToDouble(final ZacBuilder<num> number) = _$_NumToDouble;
   _NumToDouble._() : super._();
 
   factory _NumToDouble.fromJson(Map<String, dynamic> json) =
       _$_NumToDouble.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumToInt extends _NumToInt {
-  _$_NumToInt({final String? $type})
+  _$_NumToInt(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.toInt',
         super._();
 
   factory _$_NumToInt.fromJson(Map<String, dynamic> json) =>
       _$$_NumToIntFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.toInt()';
+    return 'NumTransformer.toInt(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumToInt);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumToInt &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3253,39 +3509,47 @@ class _$_NumToInt extends _NumToInt {
 }
 
 abstract class _NumToInt extends NumTransformer {
-  factory _NumToInt() = _$_NumToInt;
+  factory _NumToInt(final ZacBuilder<num> number) = _$_NumToInt;
   _NumToInt._() : super._();
 
   factory _NumToInt.fromJson(Map<String, dynamic> json) = _$_NumToInt.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumAbs extends _NumAbs {
-  _$_NumAbs({final String? $type})
+  _$_NumAbs(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.abs',
         super._();
 
   factory _$_NumAbs.fromJson(Map<String, dynamic> json) =>
       _$$_NumAbsFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.abs()';
+    return 'NumTransformer.abs(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumAbs);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumAbs &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3309,39 +3573,47 @@ class _$_NumAbs extends _NumAbs {
 }
 
 abstract class _NumAbs extends NumTransformer {
-  factory _NumAbs() = _$_NumAbs;
+  factory _NumAbs(final ZacBuilder<num> number) = _$_NumAbs;
   _NumAbs._() : super._();
 
   factory _NumAbs.fromJson(Map<String, dynamic> json) = _$_NumAbs.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumCeil extends _NumCeil {
-  _$_NumCeil({final String? $type})
+  _$_NumCeil(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.ceil',
         super._();
 
   factory _$_NumCeil.fromJson(Map<String, dynamic> json) =>
       _$$_NumCeilFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.ceil()';
+    return 'NumTransformer.ceil(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumCeil);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumCeil &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3365,39 +3637,47 @@ class _$_NumCeil extends _NumCeil {
 }
 
 abstract class _NumCeil extends NumTransformer {
-  factory _NumCeil() = _$_NumCeil;
+  factory _NumCeil(final ZacBuilder<num> number) = _$_NumCeil;
   _NumCeil._() : super._();
 
   factory _NumCeil.fromJson(Map<String, dynamic> json) = _$_NumCeil.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumCeilToDouble extends _NumCeilToDouble {
-  _$_NumCeilToDouble({final String? $type})
+  _$_NumCeilToDouble(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.ceilToDouble',
         super._();
 
   factory _$_NumCeilToDouble.fromJson(Map<String, dynamic> json) =>
       _$$_NumCeilToDoubleFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.ceilToDouble()';
+    return 'NumTransformer.ceilToDouble(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumCeilToDouble);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumCeilToDouble &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3421,40 +3701,48 @@ class _$_NumCeilToDouble extends _NumCeilToDouble {
 }
 
 abstract class _NumCeilToDouble extends NumTransformer {
-  factory _NumCeilToDouble() = _$_NumCeilToDouble;
+  factory _NumCeilToDouble(final ZacBuilder<num> number) = _$_NumCeilToDouble;
   _NumCeilToDouble._() : super._();
 
   factory _NumCeilToDouble.fromJson(Map<String, dynamic> json) =
       _$_NumCeilToDouble.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumFloor extends _NumFloor {
-  _$_NumFloor({final String? $type})
+  _$_NumFloor(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.floor',
         super._();
 
   factory _$_NumFloor.fromJson(Map<String, dynamic> json) =>
       _$$_NumFloorFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.floor()';
+    return 'NumTransformer.floor(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumFloor);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumFloor &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3478,39 +3766,47 @@ class _$_NumFloor extends _NumFloor {
 }
 
 abstract class _NumFloor extends NumTransformer {
-  factory _NumFloor() = _$_NumFloor;
+  factory _NumFloor(final ZacBuilder<num> number) = _$_NumFloor;
   _NumFloor._() : super._();
 
   factory _NumFloor.fromJson(Map<String, dynamic> json) = _$_NumFloor.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumFloorToDouble extends _NumFloorToDouble {
-  _$_NumFloorToDouble({final String? $type})
+  _$_NumFloorToDouble(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.floorToDouble',
         super._();
 
   factory _$_NumFloorToDouble.fromJson(Map<String, dynamic> json) =>
       _$$_NumFloorToDoubleFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.floorToDouble()';
+    return 'NumTransformer.floorToDouble(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumFloorToDouble);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumFloorToDouble &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3534,40 +3830,48 @@ class _$_NumFloorToDouble extends _NumFloorToDouble {
 }
 
 abstract class _NumFloorToDouble extends NumTransformer {
-  factory _NumFloorToDouble() = _$_NumFloorToDouble;
+  factory _NumFloorToDouble(final ZacBuilder<num> number) = _$_NumFloorToDouble;
   _NumFloorToDouble._() : super._();
 
   factory _NumFloorToDouble.fromJson(Map<String, dynamic> json) =
       _$_NumFloorToDouble.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumRound extends _NumRound {
-  _$_NumRound({final String? $type})
+  _$_NumRound(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.round',
         super._();
 
   factory _$_NumRound.fromJson(Map<String, dynamic> json) =>
       _$$_NumRoundFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.round()';
+    return 'NumTransformer.round(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumRound);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumRound &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3591,39 +3895,47 @@ class _$_NumRound extends _NumRound {
 }
 
 abstract class _NumRound extends NumTransformer {
-  factory _NumRound() = _$_NumRound;
+  factory _NumRound(final ZacBuilder<num> number) = _$_NumRound;
   _NumRound._() : super._();
 
   factory _NumRound.fromJson(Map<String, dynamic> json) = _$_NumRound.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumRoundToDouble extends _NumRoundToDouble {
-  _$_NumRoundToDouble({final String? $type})
+  _$_NumRoundToDouble(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.roundToDouble',
         super._();
 
   factory _$_NumRoundToDouble.fromJson(Map<String, dynamic> json) =>
       _$$_NumRoundToDoubleFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.roundToDouble()';
+    return 'NumTransformer.roundToDouble(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumRoundToDouble);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumRoundToDouble &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3647,40 +3959,48 @@ class _$_NumRoundToDouble extends _NumRoundToDouble {
 }
 
 abstract class _NumRoundToDouble extends NumTransformer {
-  factory _NumRoundToDouble() = _$_NumRoundToDouble;
+  factory _NumRoundToDouble(final ZacBuilder<num> number) = _$_NumRoundToDouble;
   _NumRoundToDouble._() : super._();
 
   factory _NumRoundToDouble.fromJson(Map<String, dynamic> json) =
       _$_NumRoundToDouble.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumIsFinite extends _NumIsFinite {
-  _$_NumIsFinite({final String? $type})
+  _$_NumIsFinite(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.isFinite',
         super._();
 
   factory _$_NumIsFinite.fromJson(Map<String, dynamic> json) =>
       _$$_NumIsFiniteFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.isFinite()';
+    return 'NumTransformer.isFinite(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumIsFinite);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumIsFinite &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3704,40 +4024,48 @@ class _$_NumIsFinite extends _NumIsFinite {
 }
 
 abstract class _NumIsFinite extends NumTransformer {
-  factory _NumIsFinite() = _$_NumIsFinite;
+  factory _NumIsFinite(final ZacBuilder<num> number) = _$_NumIsFinite;
   _NumIsFinite._() : super._();
 
   factory _NumIsFinite.fromJson(Map<String, dynamic> json) =
       _$_NumIsFinite.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumIsInfinite extends _NumIsInfinite {
-  _$_NumIsInfinite({final String? $type})
+  _$_NumIsInfinite(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.isInfinite',
         super._();
 
   factory _$_NumIsInfinite.fromJson(Map<String, dynamic> json) =>
       _$$_NumIsInfiniteFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.isInfinite()';
+    return 'NumTransformer.isInfinite(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumIsInfinite);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumIsInfinite &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3761,40 +4089,48 @@ class _$_NumIsInfinite extends _NumIsInfinite {
 }
 
 abstract class _NumIsInfinite extends NumTransformer {
-  factory _NumIsInfinite() = _$_NumIsInfinite;
+  factory _NumIsInfinite(final ZacBuilder<num> number) = _$_NumIsInfinite;
   _NumIsInfinite._() : super._();
 
   factory _NumIsInfinite.fromJson(Map<String, dynamic> json) =
       _$_NumIsInfinite.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumIsNan extends _NumIsNan {
-  _$_NumIsNan({final String? $type})
+  _$_NumIsNan(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.isNan',
         super._();
 
   factory _$_NumIsNan.fromJson(Map<String, dynamic> json) =>
       _$$_NumIsNanFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.isNan()';
+    return 'NumTransformer.isNan(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumIsNan);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumIsNan &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3818,39 +4154,47 @@ class _$_NumIsNan extends _NumIsNan {
 }
 
 abstract class _NumIsNan extends NumTransformer {
-  factory _NumIsNan() = _$_NumIsNan;
+  factory _NumIsNan(final ZacBuilder<num> number) = _$_NumIsNan;
   _NumIsNan._() : super._();
 
   factory _NumIsNan.fromJson(Map<String, dynamic> json) = _$_NumIsNan.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_NumIsNegative extends _NumIsNegative {
-  _$_NumIsNegative({final String? $type})
+  _$_NumIsNegative(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:num.isNegative',
         super._();
 
   factory _$_NumIsNegative.fromJson(Map<String, dynamic> json) =>
       _$$_NumIsNegativeFromJson(json);
 
+  @override
+  final ZacBuilder<num> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'NumTransformer.isNegative()';
+    return 'NumTransformer.isNegative(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_NumIsNegative);
+        (other.runtimeType == runtimeType &&
+            other is _$_NumIsNegative &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3874,11 +4218,14 @@ class _$_NumIsNegative extends _NumIsNegative {
 }
 
 abstract class _NumIsNegative extends NumTransformer {
-  factory _NumIsNegative() = _$_NumIsNegative;
+  factory _NumIsNegative(final ZacBuilder<num> number) = _$_NumIsNegative;
   _NumIsNegative._() : super._();
 
   factory _NumIsNegative.fromJson(Map<String, dynamic> json) =
       _$_NumIsNegative.fromJson;
+
+  @override
+  ZacBuilder<num> get number;
 }
 
 IntTransformer _$IntTransformerFromJson(Map<String, dynamic> json) {
@@ -3900,6 +4247,8 @@ IntTransformer _$IntTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$IntTransformer {
+  ZacBuilder<Object> get number => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_IntParse value) parse,
@@ -3913,30 +4262,35 @@ mixin _$IntTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IntParse extends _IntParse {
-  _$_IntParse({final String? $type})
+  _$_IntParse(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:int.parse',
         super._();
 
   factory _$_IntParse.fromJson(Map<String, dynamic> json) =>
       _$$_IntParseFromJson(json);
 
+  @override
+  final ZacBuilder<String> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IntTransformer.parse()';
+    return 'IntTransformer.parse(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IntParse);
+        (other.runtimeType == runtimeType &&
+            other is _$_IntParse &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3951,39 +4305,47 @@ class _$_IntParse extends _IntParse {
 }
 
 abstract class _IntParse extends IntTransformer {
-  factory _IntParse() = _$_IntParse;
+  factory _IntParse(final ZacBuilder<String> number) = _$_IntParse;
   _IntParse._() : super._();
 
   factory _IntParse.fromJson(Map<String, dynamic> json) = _$_IntParse.fromJson;
+
+  @override
+  ZacBuilder<String> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IntTryParse extends _IntTryParse {
-  _$_IntTryParse({final String? $type})
+  _$_IntTryParse(this.number, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:int.tryParse',
         super._();
 
   factory _$_IntTryParse.fromJson(Map<String, dynamic> json) =>
       _$$_IntTryParseFromJson(json);
 
+  @override
+  final ZacBuilder<String> number;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'IntTransformer.tryParse()';
+    return 'IntTransformer.tryParse(number: $number)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IntTryParse);
+        (other.runtimeType == runtimeType &&
+            other is _$_IntTryParse &&
+            (identical(other.number, number) || other.number == number));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, number);
 
   @override
   @optionalTypeArgs
@@ -3998,23 +4360,28 @@ class _$_IntTryParse extends _IntTryParse {
 }
 
 abstract class _IntTryParse extends IntTransformer {
-  factory _IntTryParse() = _$_IntTryParse;
+  factory _IntTryParse(final ZacBuilder<String> number) = _$_IntTryParse;
   _IntTryParse._() : super._();
 
   factory _IntTryParse.fromJson(Map<String, dynamic> json) =
       _$_IntTryParse.fromJson;
+
+  @override
+  ZacBuilder<String> get number;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IntIncr extends _IntIncr {
-  _$_IntIncr(this.by, {final String? $type})
+  _$_IntIncr(this.number, this.by, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:int.incr',
         super._();
 
   factory _$_IntIncr.fromJson(Map<String, dynamic> json) =>
       _$$_IntIncrFromJson(json);
 
+  @override
+  final ZacBuilder<int> number;
   @override
   final ZacBuilder<int> by;
 
@@ -4023,7 +4390,7 @@ class _$_IntIncr extends _IntIncr {
 
   @override
   String toString() {
-    return 'IntTransformer.incr(by: $by)';
+    return 'IntTransformer.incr(number: $number, by: $by)';
   }
 
   @override
@@ -4031,12 +4398,13 @@ class _$_IntIncr extends _IntIncr {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IntIncr &&
+            (identical(other.number, number) || other.number == number) &&
             (identical(other.by, by) || other.by == by));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, by);
+  int get hashCode => Object.hash(runtimeType, number, by);
 
   @override
   @optionalTypeArgs
@@ -4051,24 +4419,29 @@ class _$_IntIncr extends _IntIncr {
 }
 
 abstract class _IntIncr extends IntTransformer {
-  factory _IntIncr(final ZacBuilder<int> by) = _$_IntIncr;
+  factory _IntIncr(final ZacBuilder<int> number, final ZacBuilder<int> by) =
+      _$_IntIncr;
   _IntIncr._() : super._();
 
   factory _IntIncr.fromJson(Map<String, dynamic> json) = _$_IntIncr.fromJson;
 
+  @override
+  ZacBuilder<int> get number;
   ZacBuilder<int> get by;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_IntDecr extends _IntDecr {
-  _$_IntDecr(this.by, {final String? $type})
+  _$_IntDecr(this.number, this.by, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:int.decr',
         super._();
 
   factory _$_IntDecr.fromJson(Map<String, dynamic> json) =>
       _$$_IntDecrFromJson(json);
 
+  @override
+  final ZacBuilder<int> number;
   @override
   final ZacBuilder<int> by;
 
@@ -4077,7 +4450,7 @@ class _$_IntDecr extends _IntDecr {
 
   @override
   String toString() {
-    return 'IntTransformer.decr(by: $by)';
+    return 'IntTransformer.decr(number: $number, by: $by)';
   }
 
   @override
@@ -4085,12 +4458,13 @@ class _$_IntDecr extends _IntDecr {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_IntDecr &&
+            (identical(other.number, number) || other.number == number) &&
             (identical(other.by, by) || other.by == by));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, by);
+  int get hashCode => Object.hash(runtimeType, number, by);
 
   @override
   @optionalTypeArgs
@@ -4105,11 +4479,14 @@ class _$_IntDecr extends _IntDecr {
 }
 
 abstract class _IntDecr extends IntTransformer {
-  factory _IntDecr(final ZacBuilder<int> by) = _$_IntDecr;
+  factory _IntDecr(final ZacBuilder<int> number, final ZacBuilder<int> by) =
+      _$_IntDecr;
   _IntDecr._() : super._();
 
   factory _IntDecr.fromJson(Map<String, dynamic> json) = _$_IntDecr.fromJson;
 
+  @override
+  ZacBuilder<int> get number;
   ZacBuilder<int> get by;
 }
 
@@ -4134,6 +4511,8 @@ StringTransformer _$StringTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$StringTransformer {
+  ZacBuilder<String> get string => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_StringLength value) length,
@@ -4148,30 +4527,35 @@ mixin _$StringTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringLength extends _StringLength {
-  _$_StringLength({final String? $type})
+  _$_StringLength(this.string, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.length',
         super._();
 
   factory _$_StringLength.fromJson(Map<String, dynamic> json) =>
       _$$_StringLengthFromJson(json);
 
+  @override
+  final ZacBuilder<String> string;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'StringTransformer.length()';
+    return 'StringTransformer.length(string: $string)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StringLength);
+        (other.runtimeType == runtimeType &&
+            other is _$_StringLength &&
+            (identical(other.string, string) || other.string == string));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, string);
 
   @override
   @optionalTypeArgs
@@ -4187,23 +4571,29 @@ class _$_StringLength extends _StringLength {
 }
 
 abstract class _StringLength extends StringTransformer {
-  factory _StringLength() = _$_StringLength;
+  factory _StringLength(final ZacBuilder<String> string) = _$_StringLength;
   _StringLength._() : super._();
 
   factory _StringLength.fromJson(Map<String, dynamic> json) =
       _$_StringLength.fromJson;
+
+  @override
+  ZacBuilder<String> get string;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringSplit extends _StringSplit {
-  _$_StringSplit({required this.pattern, final String? $type})
+  _$_StringSplit(
+      {required this.string, required this.pattern, final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.split',
         super._();
 
   factory _$_StringSplit.fromJson(Map<String, dynamic> json) =>
       _$$_StringSplitFromJson(json);
 
+  @override
+  final ZacBuilder<String> string;
   @override
   final ZacBuilder<String> pattern;
 
@@ -4212,7 +4602,7 @@ class _$_StringSplit extends _StringSplit {
 
   @override
   String toString() {
-    return 'StringTransformer.split(pattern: $pattern)';
+    return 'StringTransformer.split(string: $string, pattern: $pattern)';
   }
 
   @override
@@ -4220,12 +4610,13 @@ class _$_StringSplit extends _StringSplit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StringSplit &&
+            (identical(other.string, string) || other.string == string) &&
             (identical(other.pattern, pattern) || other.pattern == pattern));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, pattern);
+  int get hashCode => Object.hash(runtimeType, string, pattern);
 
   @override
   @optionalTypeArgs
@@ -4241,43 +4632,51 @@ class _$_StringSplit extends _StringSplit {
 }
 
 abstract class _StringSplit extends StringTransformer {
-  factory _StringSplit({required final ZacBuilder<String> pattern}) =
-      _$_StringSplit;
+  factory _StringSplit(
+      {required final ZacBuilder<String> string,
+      required final ZacBuilder<String> pattern}) = _$_StringSplit;
   _StringSplit._() : super._();
 
   factory _StringSplit.fromJson(Map<String, dynamic> json) =
       _$_StringSplit.fromJson;
 
+  @override
+  ZacBuilder<String> get string;
   ZacBuilder<String> get pattern;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringIsEmpty extends _StringIsEmpty {
-  _$_StringIsEmpty({final String? $type})
+  _$_StringIsEmpty(this.string, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.isEmpty',
         super._();
 
   factory _$_StringIsEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_StringIsEmptyFromJson(json);
 
+  @override
+  final ZacBuilder<String> string;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'StringTransformer.isEmpty()';
+    return 'StringTransformer.isEmpty(string: $string)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StringIsEmpty);
+        (other.runtimeType == runtimeType &&
+            other is _$_StringIsEmpty &&
+            (identical(other.string, string) || other.string == string));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, string);
 
   @override
   @optionalTypeArgs
@@ -4293,40 +4692,48 @@ class _$_StringIsEmpty extends _StringIsEmpty {
 }
 
 abstract class _StringIsEmpty extends StringTransformer {
-  factory _StringIsEmpty() = _$_StringIsEmpty;
+  factory _StringIsEmpty(final ZacBuilder<String> string) = _$_StringIsEmpty;
   _StringIsEmpty._() : super._();
 
   factory _StringIsEmpty.fromJson(Map<String, dynamic> json) =
       _$_StringIsEmpty.fromJson;
+
+  @override
+  ZacBuilder<String> get string;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringIsNotEmpty extends _StringIsNotEmpty {
-  _$_StringIsNotEmpty({final String? $type})
+  _$_StringIsNotEmpty(this.string, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.isNotEmpty',
         super._();
 
   factory _$_StringIsNotEmpty.fromJson(Map<String, dynamic> json) =>
       _$$_StringIsNotEmptyFromJson(json);
 
+  @override
+  final ZacBuilder<String> string;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'StringTransformer.isNotEmpty()';
+    return 'StringTransformer.isNotEmpty(string: $string)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_StringIsNotEmpty);
+        (other.runtimeType == runtimeType &&
+            other is _$_StringIsNotEmpty &&
+            (identical(other.string, string) || other.string == string));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, string);
 
   @override
   @optionalTypeArgs
@@ -4342,23 +4749,30 @@ class _$_StringIsNotEmpty extends _StringIsNotEmpty {
 }
 
 abstract class _StringIsNotEmpty extends StringTransformer {
-  factory _StringIsNotEmpty() = _$_StringIsNotEmpty;
+  factory _StringIsNotEmpty(final ZacBuilder<String> string) =
+      _$_StringIsNotEmpty;
   _StringIsNotEmpty._() : super._();
 
   factory _StringIsNotEmpty.fromJson(Map<String, dynamic> json) =
       _$_StringIsNotEmpty.fromJson;
+
+  @override
+  ZacBuilder<String> get string;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_StringReplaceAll extends _StringReplaceAll {
-  _$_StringReplaceAll(this.from, this.replace, {final String? $type})
+  _$_StringReplaceAll(this.string, this.from, this.replace,
+      {final String? $type})
       : $type = $type ?? 'z:1:Transformer:String.replaceAll',
         super._();
 
   factory _$_StringReplaceAll.fromJson(Map<String, dynamic> json) =>
       _$$_StringReplaceAllFromJson(json);
 
+  @override
+  final ZacBuilder<String> string;
   @override
   final ZacBuilder<String> from;
   @override
@@ -4369,7 +4783,7 @@ class _$_StringReplaceAll extends _StringReplaceAll {
 
   @override
   String toString() {
-    return 'StringTransformer.replaceAll(from: $from, replace: $replace)';
+    return 'StringTransformer.replaceAll(string: $string, from: $from, replace: $replace)';
   }
 
   @override
@@ -4377,13 +4791,14 @@ class _$_StringReplaceAll extends _StringReplaceAll {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_StringReplaceAll &&
+            (identical(other.string, string) || other.string == string) &&
             (identical(other.from, from) || other.from == from) &&
             (identical(other.replace, replace) || other.replace == replace));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, from, replace);
+  int get hashCode => Object.hash(runtimeType, string, from, replace);
 
   @override
   @optionalTypeArgs
@@ -4400,13 +4815,16 @@ class _$_StringReplaceAll extends _StringReplaceAll {
 
 abstract class _StringReplaceAll extends StringTransformer {
   factory _StringReplaceAll(
-          final ZacBuilder<String> from, final ZacBuilder<String> replace) =
-      _$_StringReplaceAll;
+      final ZacBuilder<String> string,
+      final ZacBuilder<String> from,
+      final ZacBuilder<String> replace) = _$_StringReplaceAll;
   _StringReplaceAll._() : super._();
 
   factory _StringReplaceAll.fromJson(Map<String, dynamic> json) =
       _$_StringReplaceAll.fromJson;
 
+  @override
+  ZacBuilder<String> get string;
   ZacBuilder<String> get from;
   ZacBuilder<String> get replace;
 }
@@ -4437,30 +4855,35 @@ mixin _$JsonTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_JsonEncode extends _JsonEncode {
-  _$_JsonEncode({final String? $type})
+  _$_JsonEncode(this.object, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Json.encode',
         super._();
 
   factory _$_JsonEncode.fromJson(Map<String, dynamic> json) =>
       _$$_JsonEncodeFromJson(json);
 
+  @override
+  final ZacBuilder<Object> object;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'JsonTransformer.encode()';
+    return 'JsonTransformer.encode(object: $object)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_JsonEncode);
+        (other.runtimeType == runtimeType &&
+            other is _$_JsonEncode &&
+            (identical(other.object, object) || other.object == object));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, object);
 
   @override
   @optionalTypeArgs
@@ -4473,40 +4896,48 @@ class _$_JsonEncode extends _JsonEncode {
 }
 
 abstract class _JsonEncode extends JsonTransformer {
-  factory _JsonEncode() = _$_JsonEncode;
+  factory _JsonEncode(final ZacBuilder<Object> object) = _$_JsonEncode;
   _JsonEncode._() : super._();
 
   factory _JsonEncode.fromJson(Map<String, dynamic> json) =
       _$_JsonEncode.fromJson;
+
+  ZacBuilder<Object> get object;
 }
 
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_JsonDencode extends _JsonDencode {
-  _$_JsonDencode({final String? $type})
+  _$_JsonDencode(this.jsonString, {final String? $type})
       : $type = $type ?? 'z:1:Transformer:Json.decode',
         super._();
 
   factory _$_JsonDencode.fromJson(Map<String, dynamic> json) =>
       _$$_JsonDencodeFromJson(json);
 
+  @override
+  final ZacBuilder<String> jsonString;
+
   @JsonKey(name: 'builder')
   final String $type;
 
   @override
   String toString() {
-    return 'JsonTransformer.decode()';
+    return 'JsonTransformer.decode(jsonString: $jsonString)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_JsonDencode);
+        (other.runtimeType == runtimeType &&
+            other is _$_JsonDencode &&
+            (identical(other.jsonString, jsonString) ||
+                other.jsonString == jsonString));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, jsonString);
 
   @override
   @optionalTypeArgs
@@ -4519,11 +4950,13 @@ class _$_JsonDencode extends _JsonDencode {
 }
 
 abstract class _JsonDencode extends JsonTransformer {
-  factory _JsonDencode() = _$_JsonDencode;
+  factory _JsonDencode(final ZacBuilder<String> jsonString) = _$_JsonDencode;
   _JsonDencode._() : super._();
 
   factory _JsonDencode.fromJson(Map<String, dynamic> json) =
       _$_JsonDencode.fromJson;
+
+  ZacBuilder<String> get jsonString;
 }
 
 BoolTransformer _$BoolTransformerFromJson(Map<String, dynamic> json) {
@@ -4532,6 +4965,8 @@ BoolTransformer _$BoolTransformerFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$BoolTransformer {
+  ZacBuilder<bool> get boolean => throw _privateConstructorUsedError;
+
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_BoolTransformerNegate value) negate,
@@ -4542,25 +4977,30 @@ mixin _$BoolTransformer {
 /// @nodoc
 @JsonSerializable(createToJson: false)
 class _$_BoolTransformerNegate extends _BoolTransformerNegate {
-  _$_BoolTransformerNegate() : super._();
+  _$_BoolTransformerNegate(this.boolean) : super._();
 
   factory _$_BoolTransformerNegate.fromJson(Map<String, dynamic> json) =>
       _$$_BoolTransformerNegateFromJson(json);
 
   @override
+  final ZacBuilder<bool> boolean;
+
+  @override
   String toString() {
-    return 'BoolTransformer.negate()';
+    return 'BoolTransformer.negate(boolean: $boolean)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_BoolTransformerNegate);
+        (other.runtimeType == runtimeType &&
+            other is _$_BoolTransformerNegate &&
+            (identical(other.boolean, boolean) || other.boolean == boolean));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, boolean);
 
   @override
   @optionalTypeArgs
@@ -4572,9 +5012,13 @@ class _$_BoolTransformerNegate extends _BoolTransformerNegate {
 }
 
 abstract class _BoolTransformerNegate extends BoolTransformer {
-  factory _BoolTransformerNegate() = _$_BoolTransformerNegate;
+  factory _BoolTransformerNegate(final ZacBuilder<bool> boolean) =
+      _$_BoolTransformerNegate;
   _BoolTransformerNegate._() : super._();
 
   factory _BoolTransformerNegate.fromJson(Map<String, dynamic> json) =
       _$_BoolTransformerNegate.fromJson;
+
+  @override
+  ZacBuilder<bool> get boolean;
 }

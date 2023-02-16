@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:zac/src/base.dart';
 import 'package:zac/src/flutter/all.dart';
-import 'package:zac/src/zac/shared_state.dart';
 import 'package:zac/src/zac/build.dart';
+import 'package:zac/src/zac/state.dart';
 import 'package:zac/src/zac/zac_value.dart';
 
 import '../../../helper.dart';
@@ -230,16 +231,18 @@ void main() {
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
-                    body: ZacSharedStateProvider(
+                    body: ZacStatesProvider(
                   states: {
-                    'shared': ZacSharedStateProvide.value('hello world'),
+                    'shared': ZacStateProvide(
+                      builderOr: ZacBuilderOr.builtIn('hello world'),
+                    ),
                   },
                   child: FlutterElevatedButton(
                     key: FlutterValueKey('button'),
                     onPressed: ZacListOfActions([
                       FlutterScaffoldActions.showBottomSheet(
                         FlutterText(
-                          SharedStateConsume<String>(family: 'shared'),
+                          ZacStateConsume<String>(family: 'shared'),
                         ),
                       ),
                     ]),
@@ -310,9 +313,10 @@ void main() {
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
-                  body: ZacSharedStateProvider(
+                  body: ZacStatesProvider(
                     states: {
-                      'shared': ZacSharedStateProvide.value('hello world'),
+                      'shared': ZacStateProvide(
+                          builderOr: ZacBuilderOr.builtIn('hello world'))
                     },
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),
@@ -320,7 +324,7 @@ void main() {
                         FlutterScaffoldMessenger.showSnackBar(
                           FlutterSnackBar(
                             content: FlutterText(
-                              SharedStateConsume<String>(family: 'shared'),
+                              ZacStateConsume<String>(family: 'shared'),
                             ),
                           ),
                         ),
@@ -447,9 +451,10 @@ void main() {
             data: FlutterMaterialApp(
               home: FlutterMaterial(
                 child: FlutterScaffold(
-                  body: ZacSharedStateProvider(
+                  body: ZacStatesProvider(
                     states: {
-                      'shared': ZacSharedStateProvide.value('hello world'),
+                      'shared': ZacStateProvide(
+                          builderOr: ZacBuilderOr.builtIn('hello world'))
                     },
                     child: FlutterElevatedButton(
                       key: FlutterValueKey('button'),

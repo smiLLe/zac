@@ -134,8 +134,8 @@ class FlutterScaffoldActions
 // AnimationController? transitionAnimationController,
   }) = _FlutterScaffoldActionsShowBottomSheet;
 
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action =
+      ZacAction((BuildContext context, ZacContext zacContext) {
     map(
       showBottomSheet: (value) {
         final state = Scaffold.maybeOf(context);
@@ -237,8 +237,8 @@ class FlutterScaffoldMessenger
   factory FlutterScaffoldMessenger.removeCurrentMaterialBanner() =
       _FlutterScaffoldMessengerRemoveCurrentMaterialBanner;
 
-  late final ZacAction _action = ZacAction(
-      (ZacActionPayload payload, BuildContext context, ZacContext zacContext) {
+  late final ZacAction _action =
+      ZacAction((BuildContext context, ZacContext zacContext) {
     map(
       showSnackBar: (value) {
         final state = ScaffoldMessenger.maybeOf(context);
@@ -326,7 +326,7 @@ class FlutterSnackBar with _$FlutterSnackBar implements ZacBuilder<SnackBar> {
       elevation: elevation?.build(context, zacContext),
       margin: margin?.build(context, zacContext),
       onVisible:
-          onVisible?.build(context, zacContext)?.createCb(context, zacContext),
+          onVisible?.build(context, zacContext)?.callack(context, zacContext),
       padding: padding?.build(context, zacContext),
       shape: shape?.build(context, zacContext),
       width: width?.build(context, zacContext),
@@ -391,7 +391,7 @@ class FlutterSnackBarAction
       key: key?.build(context, zacContext),
       label: label.build(context, zacContext),
       onPressed:
-          onPressed.build(context, zacContext).createCb(context, zacContext),
+          onPressed.build(context, zacContext).callack(context, zacContext),
       disabledTextColor: disabledTextColor?.build(context, zacContext),
       textColor: textColor?.build(context, zacContext),
     );
@@ -444,7 +444,7 @@ class FlutterMaterialBanner
       leading: leading?.build(context, zacContext),
       leadingPadding: leadingPadding?.build(context, zacContext),
       onVisible:
-          onVisible?.build(context, zacContext)?.createCb(context, zacContext),
+          onVisible?.build(context, zacContext)?.callack(context, zacContext),
       // overflowAlignment: backgroundColor?.toFlutter(context),
       padding: padding?.build(context, zacContext),
     );

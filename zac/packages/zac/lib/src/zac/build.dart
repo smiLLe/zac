@@ -112,7 +112,7 @@ class ZacBuildWidget extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final zacContext = useZacContext();
+    final zacContext = useZacContext(ref);
     final zacBuilder = useMemoized<ZacBuilder<Widget>>(() {
       if (data is ZacBuilder<Widget>) return data as ZacBuilder<Widget>;
 
@@ -203,7 +203,7 @@ class ZacBuildIsolatedWidget extends HookConsumerWidget {
       ],
       child: HookConsumer(
         builder: (context, ref, ___) {
-          final zacContext = useZacContext();
+          final zacContext = useZacContext(ref);
           return ref.watch(provider).map<Widget>(
                 data: (obj) => obj.value.build(context, zacContext),
                 error: (obj) {
